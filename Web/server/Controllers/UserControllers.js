@@ -55,6 +55,38 @@ async function registerUser(req, res) {
   }
 }
 
-// loginUser
+// generate token
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+};
+///login user
+ async function loginUser (req,res){
 
-module.exports = { registerUser };
+    //getting email and password
+    const {email,password}=req.body;
+    //empty request
+    if(!email,!password){
+     res.status(400).json({
+       "Sucess":false,
+       "Msg":"Kindly fill all fields"
+     })}
+
+  try{
+    //find email 
+    const findEmail=await UserModel.findOne({email})
+    //if not email
+    if(!findEmail){
+      res.status(404).json({
+      "Sucess":false,
+      "Msg":"Invalid Email or password"
+      })} 
+
+  }
+  
+   catch(err){
+    res.send(err)
+    console.log(err)
+  }}
+module.exports = { registerUser,loginUser };
