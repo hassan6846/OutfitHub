@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.Alert{
+width: 100%;
+height: 30px;
+background-color:#C02F2F;
+align-items: center;
+display: flex;
+justify-content: center;
+
+}
+.wrapper{
+    width: 90%;
+display: flex;
+justify-content: space-between;
+}
+
+.closebtn{
+    cursor: pointer;
+}
