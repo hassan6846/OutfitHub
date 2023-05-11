@@ -1,4 +1,8 @@
 const express=require("express")
+const mongoose=require("mongoose")
+mongoose.connect('mongodb://127.0.0.1:27017/Commerce');
+// dotenv for environmental variables
+require("dotenv").config()
 const app=express();
 const port=3000;
 
@@ -18,5 +22,6 @@ shop fetch all the  product
 */
 // listen
 app.listen(port,function(req,res){
+    console.log(process.env.MSG);
     console.log(`app is running on ${port}`)
 })

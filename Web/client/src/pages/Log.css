@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.log_wrapper {
+    width: 100%;
+    height: 100vh;
+    background-color: gray;
+    /* carefully */
+    display: flex;
+    flex-direction: row;
+}
+
+.log_child1 {
+    width: 50%;
+    height: 100%;
+    background-color: rgb(31, 102, 3);
+
+}
+
+.log_child2 {
+    width: 50%;
+    height: 100%;
+    background-color: rgb(84, 238, 23);
+
+}
+
+@media (min-width:300px) and (max-width:600px) {
+    .log_child1 {
+        width: 100%;
+        height: 100%;
+        background-color: rgb(102, 3, 61);
+
+    }
+
+    .log_child2 {
+        width: 0%;
+        height: 0%;
+        display: none;
+
+    }
+
+}

@@ -1,13 +1,13 @@
 import './Nav.css'
 import React from 'react'
 import Search from './search'
-
+import Logo from './Logo'
 function Nav() {
     return (
         <nav className='nav'>
             <div className='nav_wrapper'>
                 {/* logo */}
-                <div className='logo'><img src='/logo.svg' alt='DESIGN' className='logo-svg' /></div>       
+                   <Logo />
                 {/* logo */}
                {/* links */}
                 <div className='links'>
