@@ -1,12 +1,10 @@
 // imports
 import './App.css';
-import Logs from './pages/Log';
-
-// main
+// main 
 function App() {
   return (
     <div className="App">
-<Logs/>
+
     </div>
   );
 }

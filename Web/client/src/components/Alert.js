@@ -1,7 +1,7 @@
 import React from 'react';
 import './Alert.css';
 
-function Alert() {
+function Alertbar() {
   return (
     <div className='Alert'>
       <div className='wrapper'>
@@ -28,4 +28,4 @@ function Alert() {
   );
 }
 
-export default Alert;
+export default Alertbar;
