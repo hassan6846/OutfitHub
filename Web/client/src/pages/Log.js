@@ -5,7 +5,7 @@ import './Log2.css';
 
 
 // import Logo from '../components/Logo'
-const Log = () => {
+const Logs = () => {
     return (
         <section className='log_wrapper'>
             <section className='log_child1'>
@@ -42,4 +42,4 @@ const Log = () => {
     )
 }
 
-export default Log
+export default Logs
