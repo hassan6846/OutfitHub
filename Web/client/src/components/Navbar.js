@@ -1,11 +1,11 @@
 import React from 'react'
-// imports css
-import './Navbar.css';
-
-const Nav = () => {
+import "./Navbar.css"
+const Navbar = () => {
   return (
- <Nav>Navbar</Nav>
+    <nav>
+      <div className='main_Nav'></div>
+    </nav>
   )
 }
 
-export default Nav
+export default Navbar

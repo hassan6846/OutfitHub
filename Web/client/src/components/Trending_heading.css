@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.heading__flex_wrapper_100{
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.heading__child_70{
+width: 85%;
+height: fit-content;
+flex-direction: row;
+display: flex ;
+align-items: center;
+
+justify-content: space-between;
+}
+h3{
+font-size: 1.6rem;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
