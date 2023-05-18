@@ -3,7 +3,7 @@ import React from 'react'
 // components
 import Alertbar from '../../components/Alert'
 import Nav from '../../components/Navbar'
-import TrendingCarsoul from '../../components/TrendingCarsoul'
+
 
 // ////////////////
 
@@ -12,7 +12,7 @@ const Home = () => {
     <>  
      <Alertbar />
       <Nav /> 
-      <TrendingCarsoul/>
+   
       </>
 
   )
