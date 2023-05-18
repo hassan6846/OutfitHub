@@ -1,37 +1,61 @@
-const mongoose=require("mongoose");// require Mongoose for creating models
-const jwt=require("jsonwebtoken") //for json web token
-const bycrypt=require("bcrypt"); // for encryption
 
-// creating new users Schema
-const newUserSchema=new mongoose.Schema({
-// fields with properties
-    name:{
-type:String,
-trim:true,
-required:[true,"Please Enter your Name"],
-maxlength:32,
-minlength:5
+const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
+
+const userSchema = new mongoose.Schema({
+
+    name: {
+        type: String,
+        trim: true,
+        required: [true, 'Please add a Name'],
+        maxlength: 32
+    },
+
+    email: {
+        type: String,
+        trim: true,
+        required: [true, 'Please add a E-mail'],
+        unique: true,
+        match: [
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+            'Please add a valid E-mail'
+        ]
+
+    },
+
+    password: {
+        type: String,
+        trim: true,
+        required: [true, 'Please add a Password'],
+        minlength: [6, 'password must have at least six(6) characters'],
+        match: [
+            /^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]+$/,
+            'Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and a special characters'
+        ]
+    },
+
+    role: {
+        type: Number,
+        default: 0,
+
+    },
+
+
+
 },
-// userEmail field
-email:{
-      type: String,
-       trim: true,
-       required : [true, 'Please add a E-mail'],
-       unique: true,
-       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please add a valid E-mail']
-},
-// userPasswordField
-password:{
-    type: String,
-    trim: true,
-    required : [true, 'Please add a Password'],
-    minlength: [6, 'password must have at least six(6) characters'],
-    match: [
-        /^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]+$/,
-        'Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and a special characters'
-    ]
-},
-userRole:{
-    
-}
-})
+    {
+        timestamps: true
+
+    }
+
+);
+
+// encrypting Users password before saving
+userSchema.pre('save', async function (next) {
+
+    if (!this.isModified('password')) {
+        next()
+    }
+    this.password = await bcrypt.hash(this.password, 10);
+});
+
