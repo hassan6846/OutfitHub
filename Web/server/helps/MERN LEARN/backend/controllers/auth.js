@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const ErrorResponse = require('../utils/errorResponse');
 
-
+//signup (for creating account)
 exports.signup = async (req, res, next)=>{
 
     const {email} = req.body;
@@ -26,7 +26,7 @@ exports.signup = async (req, res, next)=>{
     }
    
 }
-
+//for creating new account
 
 exports.signin = async (req, res, next)=>{
 

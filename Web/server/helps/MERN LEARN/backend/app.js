@@ -4,7 +4,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const cors = require('cors');
+const cors = require('cors');  
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
 
@@ -27,7 +27,7 @@ mongoose.connect(process.env.DATABASE, {
 .then(()=> console.log('DB connected'))
 .catch((err)=> console.log(err));
 
-// MIDDLEWARE
+// MIDDLEWARES
 app.use(morgan('dev'));
 app.use(bodyParser.json({limit: '100mb'}));
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
