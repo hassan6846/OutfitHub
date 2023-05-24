@@ -3,17 +3,39 @@
     padding: 0;
     box-sizing: border-box;
 }
-nav{
-    width: 100%;
+.Nav_wrapper{
+    width: 90%;
+    height: 80px;
+    border-bottom: 1px solid #5E5E5E;
+    margin: 0 auto;
+    /* flex  is herer */
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    height: 75px;
+    align-items: center;
+    justify-content: space-between;
 
-   
 }
-.main_Nav{
-width: 90%;
+.Nav__links{
+
 height: 100%;
-border-bottom: 1px solid gray;
+width: 35%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-around;
+
+}
+.Nav__actions{
+    background-color: red;
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3rem;
+
+
+}
+.Nav__menu_ICO{
+    display: none;
 }
