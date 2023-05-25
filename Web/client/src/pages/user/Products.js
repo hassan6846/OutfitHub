@@ -1,12 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Nav from '../../components/Navbar'
+import "./Products.css";
+import Filter from '../../components/ProductFilterCarousel'
 
 const Products = () => {
   return (
-    <div>this is the main product page where user can click and view all 
-        product
-  <Link to="/"  >click here</Link>
-    </div>
+  
+  <div>    
+    <div className='top_gap'></div>
+    <Nav />
+    <Filter/>
+</div>  
   )
 }
 

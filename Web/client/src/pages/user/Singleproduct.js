@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Nav from '../../components/Navbar'
 const Singleproduct = () => {
   return (
-    <div>Singleproduct</div>
+    <div>
+      <Nav/>
+    </div>
   )
 }
 

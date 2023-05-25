@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className='mobile_menu'>Menu</div>
        <div className='nav_actions'>
         <div className='user_profile'>  <img src='/person.svg' alt='Close button' className='svg' /></div>
-        <div className='wishlist' > <img src='/heart.svg' alt='Close button' className='svg' /></div>
+        <div className='wishlist' > <div className='point'>1</div> <img src='/heart.svg' alt='Close button' className='svg' /></div>
         <div className='cart' ><i>🧺</i></div>
         <div className='search_Bar' ><input className='inp' placeholder='Search Products' ></input> 🔎</div>
         {/* hidden menu */}
@@ -28,4 +28,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;
