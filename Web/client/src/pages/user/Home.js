@@ -6,8 +6,12 @@ import TrendingCarsoul from '../../components/TrendingCarsoul'
 import Alertbar from '../../components/Alert'
 import Nav from '../../components/Navbar'
 import LandingCarsoul from '../../components/LandingCarsoul'
-import Trending_heading from '../../components/Trending_heading'
+// import TrendingHead from '../../components/TrendingHead'
 import Footer from '../../components/Footer'
+import Catalogue from '../../components/Catalogue'
+import Cathead from '../../components/Catalogue_Heading'
+
+
 
 
 // ////////////////
@@ -20,11 +24,12 @@ const Home = () => {
     <LandingCarsoul/>
     {/* trending carsoul div */}
    <div>
-    <Trending_heading/>
+   {/* <TrendingHead/> */}
    < TrendingCarsoul />
    </div>
-   {/* trending carsoul  div*/}
-
+   {/* trending carsoul ends  div*/}
+  <Cathead/>
+<Catalogue/>
   <Footer/>
   </div>
 

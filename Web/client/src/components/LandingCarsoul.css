@@ -45,3 +45,24 @@
     border-radius: 10px;
     background-color:#D9D9D9;
 }
+
+/* mobile  media queries */
+@media (min-width:300px) and (max-width:600px) {
+  .main_wrapper{
+    flex-direction: column;
+  }
+  .big_carsoul{
+    width: 100%;
+  }
+  .column_item1{
+    height: 100%;
+  }
+  .column_item2{
+    height: 100%;
+  }
+  .column_carsoul_wrapper{
+    width: 100%;
+    flex-direction: row;
+    height:60%
+  }
+}

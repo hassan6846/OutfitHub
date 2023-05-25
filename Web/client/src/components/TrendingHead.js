@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import "./Trending_heading.css";
+import "./TrendingHead.css"
 import React from 'react'
 
-const Trending_heading = () => {
+const TrendingHead = () => {
   return (
     <div className="heading__flex_wrapper_100">
         <div className="heading__child_70">
@@ -13,4 +13,4 @@ const Trending_heading = () => {
   )
 }
 
-export default Trending_heading
+export default TrendingHead;
