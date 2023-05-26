@@ -1,0 +1,14 @@
+.InputProp{
+    padding: 12px 40px;
+    border-radius: 10px;
+    border:  2px solid black;
+    font-family:sans-serif;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+}
+.InputProp::placeholder{
+    text-align: left;
+    font-size: 14px;
+    text-transform: uppercase;
+ font-family: monospace;
+}

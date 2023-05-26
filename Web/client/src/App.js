@@ -8,7 +8,7 @@ import Products from './pages/user/Products';
 import LoginPage from './pages/user/Login';
 import SignupPage from './pages/user/Signup';
 import AddProduct from './pages/admin/AddProduct';
-
+import ErrorPage from './pages/user/ErrorPage';
 // /////////////////
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
 <Route path='/login' element={<LoginPage/>} />
 <Route path='/signup' element={<SignupPage/>} />
 <Route path='/addproduct' element={<AddProduct/>} />
+<Route path='*' element={<ErrorPage/>} />
 
 {/* add more routes here */}
 </Routes>
