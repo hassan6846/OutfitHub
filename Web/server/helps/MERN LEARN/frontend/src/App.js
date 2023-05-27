@@ -24,12 +24,12 @@ const App = () => {
       <ToastContainer/>
         <BrowserRouter>
           <Route exact path="/" component={Footer}/>
-          {/* <Route exact path="/signup" component={SignUp}/>
+          <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/signin" component={SignIn}/>
           <PrivateRoute exact path="/user/dashboard" component={Home}/>
           <Route exact path="/admin/dashboard" component={AdminDashboard}/>
           <Route exact path="/admin/dashboard/product/create" component={AdminCreateProduct}/>
-          <Route exact path="/admin/dashboard/banner/create" component={AdminAddBanner}/> */}
+          <Route exact path="/admin/dashboard/banner/create" component={AdminAddBanner}/>
         
       </BrowserRouter>
     </>

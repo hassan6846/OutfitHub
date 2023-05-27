@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from '../../components/Navbar'
 import "./Products.css";
-import Filter from '../../components/ProductFilterCarousel'
+// import Filter from '../../components/ProductFilterCarousel'
 
 const Products = () => {
   return (
@@ -9,7 +9,10 @@ const Products = () => {
   <div>    
     <div className='top_gap'></div>
     <Nav />
-    <Filter/>
+    {/* <Filter/> */}
+    {/* wrapper of Shop filter and products */}
+    
+        {/* wrapper of Shop filter and products */}
 </div>  
   )
 }

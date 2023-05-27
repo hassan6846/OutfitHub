@@ -25,10 +25,11 @@ const Home = () => {
     {/* trending carsoul div */}
    <div>
    {/* <TrendingHead/> */}
+   <Cathead heading="Trending Products"  LinkText="See more items" />
    < TrendingCarsoul />
    </div>
    {/* trending carsoul ends  div*/}
-  <Cathead/>
+  <Cathead heading="Browse Category "  LinkText="See more" />
 <Catalogue/>
   <Footer/>
   </div>

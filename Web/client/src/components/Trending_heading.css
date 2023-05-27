@@ -1,0 +1,21 @@
+.heading__flex_wrapper_90{
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    flex-direction: row;
+    margin-top: 1rem;
+    /* background-color: red; */
+    justify-content: center;
+}
+.heading__child_70{
+    width: 88%;
+    height: 100%;
+    display: flex;
+    /* background-color: rgb(138, 10, 10); */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.cat_heading_text{
+    font-size: 1.3rem;
+}
