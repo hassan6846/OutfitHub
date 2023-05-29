@@ -1,16 +1,24 @@
-import React from 'react'
-import "./App.css"
-// imports component
-import MenuFilter from "../src/Components/Menu"
-import Card from "../src/Components/Card"
-const App = () => {
-  return (
-    <div className='full_mainWrapper' >
-<MenuFilter/>
+// imports Css
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import React from 'react';
+// Compomnents  and pages
+import HomePage from './pages/Home';
+import SingleProduct from './pages/SingleProduct';
 
-  <Card/>
-    </div>
+function App() {
+  return (
+<Routes>
+  {/* add more routes page here */}
+<Route path='/' element={<HomePage/>} />
+<Route path='/shop' element={<SingleProduct/>} />
+
+
+{/* add more routes here */}
+</Routes>
+
+
   )
 }
 
-export default App
+export default App;
