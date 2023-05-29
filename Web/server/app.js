@@ -8,6 +8,12 @@ const morgan=require("morgan");
 require("dotenv").config();
 //importing all routes
 
+function SendJson(req,res){
+  res.json({
+  "Hello":"Test1 Passed"
+  })
+}
+app.get("/",SendJson)
 
 //middlewares 
 app.use(cookieParser());
