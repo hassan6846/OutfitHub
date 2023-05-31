@@ -8,7 +8,7 @@ const LandingCarsoul = () => {
     {/* flex carsoul */}
     <div className='column_carsoul_wrapper'>
         <div className='column_item1' ></div>
-        <div className='column_item2'> </div>
+        <div className='column_item2'>  </div>
     </div>
     {/*  */}
 </div>

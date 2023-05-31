@@ -1,34 +1,32 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.carsoul {
+height: 350px;
+width: 90%;
+gap: 2rem;
+display: flex;
+flex-direction: row;
+margin: 0 auto;
+}
+
+
+
+.box {
+height: 350px;
+margin-top: 0.3rem;
+width: 200px;
+border-radius: 3px;
+border: 1px solid black;
+background-color: rgb(148, 142, 132);
+}
+
+@media (min-width:300px) and (max-width:600px) {
+  .box{
+    height: 320px;
+   
   }
-  
-  .main_100_width {
-    width: 100%;
-    height: 300px;
-    display: flex;
-    margin-top: 1rem;
-    justify-content: center;
-    flex-direction: row;
-  }
-  
-  .trending__90_width {
-    width: 90%;
-    height: 100%;
-    background-color: #d9d9d9;
-  }
-  
-  .TrendingCard {
-    width: 100%;
-    height: 100%;
-    background-color: red;
-  }
-  
-  .fwh {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    background-color: orange;
-  }
-  
+}
