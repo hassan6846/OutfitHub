@@ -10,7 +10,7 @@ require("dotenv").config();
 const AuthRoutes=require("./Routes/AuthRoutes")
 dbConnect(); // Connect to the database
 // Importing all routes
-app.use("/", SendJson);
+// app.use("/", SendJson);
 app.use("/api",AuthRoutes)
 function SendJson(req, res) {
   res.json({

@@ -1,4 +1,5 @@
 // imports modules
+const { default: mongoose } = require("mongoose");
 const User=require("../models/UserModel")
 
 // main
