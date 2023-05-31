@@ -1,50 +1,41 @@
-const express=require("express");
-const app=express();
-const mongoose=require("mongoose");
-const cookieParser=require("cookie-parser");
-const bodyParser=require("body-parser");
-const cors=require("cors");
-const morgan=require("morgan");
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const morgan = require("morgan");
+const dbConnect = require("./config/dbConnect");
+
 require("dotenv").config();
-//importing all routes
 
-function SendJson(req,res){
+dbConnect(); // Connect to the database
+
+// Importing all routes
+
+function SendJson(req, res) {
   res.json({
-  "Hello":"Test1 Passed"
-  })
+    "Hello": "Test1 Passed"
+  });
 }
-app.get("/",SendJson)
 
-//middlewares 
+app.use("/", SendJson);
+
+// Middlewares
 app.use(cookieParser());
 app.use(cors());
-app.use(morgan('dev'))
-app.use(bodyParser.json({  //bodyparser
-    limit:'100mb'
-}))
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-    limit: '100mb',
-    extended: true
-    }));
+app.use(morgan('dev'));
+app.use(bodyParser.json({
+  limit: '100mb'
+}));
+app.use(bodyParser.urlencoded({
+  limit: '100mb',
+  extended: true
+}));
 
-
-
-// connecting to databse
-mongoose.connect(process.env.DatabaseUrl)
-  .then(() => {
-    console.log('DB connected');
-  }).then(
-    console.log(process.env.DatabaseUrl)
-  )
-  .catch((err) => {
-    console.log(err);
-  });
-
-
-
-// listen
-const port=process.env.PORT;
-app.listen(port,function(req,res){
-    console.log(process.env.MSG);
-    console.log(`app is running on ${port}`)
-})
+// Listen
+const port = process.env.PORT;
+app.listen(port, function (req, res) {
+  console.log(process.env.MSG);
+  console.log(`app is running on ${port}`);
+});
