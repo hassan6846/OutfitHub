@@ -1,6 +1,11 @@
 import React from 'react'
-// import Slider from 'react-slick';
+// css 
 import "./TrendingCarsoul.css";
+/**
+ * 
+ * 
+ */
+
 // class
 
 // class ends

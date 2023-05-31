@@ -28,6 +28,7 @@ justify-content: center;
     background-color: #e5e5e5;
     height: 100%;
     border-radius: 5px;
+    background-size: contain;
 }
 .width_33_2{
     width: 33.33%;
@@ -40,6 +41,8 @@ justify-content: center;
     background-color: #e5e5e5;
     height: 100%;
     border-radius: 5px;
+    background-position: center;
+    background-size: contain;
 }
 .middle_column{
     display: flex;
@@ -49,6 +52,8 @@ justify-content: center;
 }
 .middle_child{
     width: 100%;
+    background-size: cover;
+    background-position: center;
 height: 50%;
 border-radius: 5px;
  background-color: #f80404;

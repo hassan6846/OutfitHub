@@ -1,6 +1,6 @@
 // imports Css
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
+
 import React from 'react';
 // Compomnents  and pages
 import Home from './pages/user/Home';
@@ -9,6 +9,7 @@ import LoginPage from './pages/user/Login';
 import SignupPage from './pages/user/Signup';
 import AddProduct from './pages/admin/AddProduct';
 import ErrorPage from './pages/user/ErrorPage';
+// import Singleproduct from './pages/user/Singleproduct';
 // /////////////////
 function App() {
   return (
