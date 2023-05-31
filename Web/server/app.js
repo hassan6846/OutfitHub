@@ -6,20 +6,19 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
 const dbConnect = require("./config/dbConnect");
-
 require("dotenv").config();
-
+const AuthRoutes=require("./Routes/AuthRoutes")
 dbConnect(); // Connect to the database
-
 // Importing all routes
-
+app.use("/", SendJson);
+app.use("/api",AuthRoutes)
 function SendJson(req, res) {
   res.json({
     "Hello": "Test1 Passed"
   });
 }
 
-app.use("/", SendJson);
+
 
 // Middlewares
 app.use(cookieParser());
