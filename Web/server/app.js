@@ -7,17 +7,12 @@ const cors = require("cors");
 const morgan = require("morgan");
 const dbConnect = require("./config/dbConnect");
 require("dotenv").config();
-const AuthRoutes=require("./Routes/AuthRoutes")
+const testRouter = require("./Routes/TestRoute");
 dbConnect(); // Connect to the database
 // Importing all routes
-// app.use("/", SendJson);
-app.use("/api",AuthRoutes)
-function SendJson(req, res) {
-  res.json({
-    "Hello": "Test1 Passed"
-  });
-}
+app.use(bodyParser.json())
 
+app.use("/api/v1",testRouter)
 
 
 // Middlewares
@@ -31,7 +26,6 @@ app.use(bodyParser.urlencoded({
   limit: '100mb',
   extended: true
 }));
-
 // Listen
 const port = process.env.PORT;
 app.listen(port, function (req, res) {
