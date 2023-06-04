@@ -10,12 +10,12 @@ const Navbar = () => {
     
     <Link className='Nav__LOGO'> <img src='/logo.svg' alt='Close button' className='svg' /></Link>
     <div className='nav__links'>
-      <Link className='Nav_link' >Men</Link>
-      <Link className='Nav_link'>Women</Link>
-      <Link className='Nav_link'  >Kids</Link>
-      <Link className='Nav_link'  >Girl</Link>
-      <Link className='Nav_link'  >Beauty</Link>
-      <Link className='Nav_link'  >Trending</Link>
+      <Link className='Nav_link' to="/shop"  >Men</Link>
+      <Link className='Nav_link' to="/shop" >Women</Link>
+      <Link className='Nav_link'  to="/shop"  >Kids</Link>
+      <Link className='Nav_link'   to="/shop" >Girl</Link>
+      <Link className='Nav_link'  to="/shop"  >Beauty</Link>
+      <Link className='Nav_link'  to="/shop"  >Trending</Link>
       </div>  
      
       <div className='mobile_menu'>Menu</div>  
