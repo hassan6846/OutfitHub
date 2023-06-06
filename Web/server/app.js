@@ -7,12 +7,12 @@ const cors = require("cors");
 const morgan = require("morgan");
 const dbConnect = require("./config/dbConnect");
 require("dotenv").config();
-const testRouter = require("./Routes/TestRoute");
+const AllRoutes = require("./Routes/Routes");
 dbConnect(); // Connect to the database
 // Importing all routes
 app.use(bodyParser.json())
 
-app.use("/api/v1",testRouter)
+app.use("/api/v1",AllRoutes)
 
 
 // Middlewares
