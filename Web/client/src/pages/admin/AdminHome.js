@@ -1,15 +1,21 @@
 import React from 'react'
-import TopCards from '../../AdminCompoments/TopProps'
-import CategorySalesGraph from '../../AdminCompoments/CategorySalesGraph'
+// css
+import "./AdminHome.css"
+import AdminSideBar from '../../AdminCompoments/AdminSideBar'
 // components
+
+
 
 const AdminHome = () => {
   return (
-    <div>
-        <TopCards/>
-        <CategorySalesGraph/>
+    <div className="admin_wrapper">
+      <AdminSideBar/>
+   
     </div>
   )
 }
+
+
+  
 
 export default AdminHome

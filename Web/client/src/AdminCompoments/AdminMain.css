@@ -1,0 +1,18 @@
+.admin_80_wrapper{
+    
+    background-color: orange;
+    width: 80%;
+    height: 100vh;
+}
+.wrapper_flow{
+
+
+ width: 80%;
+ margin: 0 auto;
+
+}
+.props_row{
+    display: flex;
+column-gap: 0rem;
+    flex-direction: row;
+}

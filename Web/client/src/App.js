@@ -10,6 +10,10 @@ import SignupPage from './pages/user/Signup';
 import ErrorPage from './pages/user/ErrorPage';
 // admin
 import AdminHome from './pages/admin/AdminHome';
+import AdminSettings from './pages/admin/AdminSettings';
+import AddProduct from './pages/admin/AddProduct';
+import AdminOrders from './pages/admin/AdminOrders';
+import AdminUsers from './pages/admin/AdminUsers';
 // /////////////////
 function App() {
   return (
@@ -22,7 +26,10 @@ function App() {
 <Route path='*' element={<ErrorPage/>} />
 {/* admin routes */}
 <Route path='/admin' element={<AdminHome/>} />
-{/* add more routes here */}
+<Route path='/admin/products' element={<AddProduct/>} />
+<Route path='/admin/orders'element={<AdminOrders/>}/>
+<Route path='/admin/users' element={<AdminUsers/>} />
+<Route path='/admin/settings' element={<AdminSettings/>} />
 </Routes>
 
 

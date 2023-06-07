@@ -2,7 +2,10 @@ import React from 'react'
 import "./CategorySalesGraph.css"
 const CategorySalesGraph = () => {
   return (
-    <div>CategorySalesGraph</div>
+<div className='graphs_wrapper'>
+<div className='graph' draggable ></div>
+    <div className='pie_graph'></div>
+</div>
   )
 }
 

@@ -4,7 +4,7 @@ import LogoLink from '../../components/LogoLink';
 
 const ErrorPage = () => {
   return (
-<div className='error__Wrapper' >
+<div className='error__Wrapper' style={{ backgroundImage: `url(./download.png)` }} >
 <LogoLink/>
 <p className='error_text'>404</p>
 
