@@ -9,10 +9,8 @@ const Products = () => {
   <div>    
     <div className='top_gap'></div>
     <Nav />
-    {/* <Filter/> */}
-    {/* wrapper of Shop filter and products */}
-    
-        {/* wrapper of Shop filter and products */}
+   
+       
 </div>  
   )
 }
