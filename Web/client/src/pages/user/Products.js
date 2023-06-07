@@ -1,7 +1,8 @@
 import React from 'react'
 import Nav from '../../components/Navbar'
 import "./Products.css";
-// import Filter from '../../components/ProductFilterCarousel'
+import FilterBar from '../../components/FilterBar';
+
 
 const Products = () => {
   return (
@@ -9,8 +10,8 @@ const Products = () => {
   <div>    
     <div className='top_gap'></div>
     <Nav />
-   
-       
+   {/* product carsoul */}
+       <FilterBar/>
 </div>  
   )
 }
