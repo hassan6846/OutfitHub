@@ -10,6 +10,7 @@
 }
 .filterBtns_Container{
     width: 90%;
+    overflow-x: scroll;
     display: flex;
     align-items: center;
     gap: 1rem;
