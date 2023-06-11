@@ -1,9 +1,12 @@
 import React from 'react'
 import "./Card.css"
-const Card = () => {
+const ProductCard = (props) => {
   return (
-    <div>Card</div>
+    <div className='card_wrapper'>
+      <p className='product_price'>{props.price}</p>
+      <p className='product_title'>{props.title}</p>
+    </div>
   )
 }
 
-export default Card
+export default ProductCard
