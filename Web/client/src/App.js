@@ -8,12 +8,14 @@ import Products from './pages/user/Products';
 import LoginPage from './pages/user/Login';
 import SignupPage from './pages/user/Signup';
 import ErrorPage from './pages/user/ErrorPage';
+import Singleproduct from './pages/user/Singleproduct';
 // admin
 import AdminHome from './pages/admin/AdminHome';
 import AdminSettings from './pages/admin/AdminSettings';
 import AddProduct from './pages/admin/AddProduct';
 import AdminOrders from './pages/admin/AdminOrders';
 import AdminUsers from './pages/admin/AdminUsers';
+
 // /////////////////
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
 <Route path='/shop' element={<Products/>} />
 <Route path='/login' element={<LoginPage/>} />
 <Route path='/signup' element={<SignupPage/>} />
+<Route path='/single' element={<Singleproduct/>} />
 <Route path='*' element={<ErrorPage/>} />
 {/* admin routes */}
 <Route path='/admin' element={<AdminHome/>} />
