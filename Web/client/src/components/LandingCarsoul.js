@@ -20,7 +20,7 @@ const LandingCarsoul = () => {
     <Slider  {...settings} className='big_carsoul'>  
 <Link><img  className='imgCarsoul' src="./jeans.png"  alt="img1" /></Link>
 <Link><img  className='imgCarsoul' src="./menshirt.jpg"  alt="img1" /></Link>
-<Link><img  className='imgCarsoul' src="./mentshirt.avif"  alt="img1" /></Link>
+<Link><img  className='imgCarsoul' src="./men.png"  alt="img1" /></Link>
 
     </Slider>
     {/* flex carsoul */}
