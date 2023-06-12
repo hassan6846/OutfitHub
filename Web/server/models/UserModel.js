@@ -53,3 +53,4 @@ avatar: {
 
 })
 // what is after this
+module.exports = mongoose.model("User", UserSchema);
