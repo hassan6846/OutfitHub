@@ -1,59 +1,28 @@
-const mongoose = require("mongoose");
+const mongoose=require("mongoose");
 
-// Schema for a single sub product
-const SubCategorySchema = new mongoose.Schema({
-  // Name of a product
-  ProductName: {
+const ProductSchema= new mongoose.Schema({
+  //name Or title of the product
+  name: {
     type: String,
-    required: true
+    required: [true, "Please Enter product Name"],
+    trim: true,
   },
-  // Description of the product
-  Description: String,
-  Price: {
-    OrignalPrice: Number,
-    SalePrice: Number
+  // description of the product could be long or html vice versa
+  description: {
+    type: String,
+    required: [true, "Please Enter product Description"],
   },
-  Reviews: {
-    Stars: {
-      type: Number,
-      default: 0,
-      max: 5,
-      min: 1
-    }
-  },
-  // Setting if the product is trending on the homepage
-  isTrendingHomePage: {
+  // price of the product
+  price: {
     type: Number,
-    default: 0
+    required: [true, "Please Enter product Price"],
+    maxLength: [8, "Price cannot exceed 8 characters"],
   },
-  // How many users liked a single product
-  Likes: {
+  beforePrice:{
     type: Number,
-    default: 0
-  },
-  ProductImages: {
-    CoverImages: [String],
-    OtherImages: [String]
+    required: [true, "Please Enter product Price"],
+    maxLength: [8, "Price cannot exceed 8 characters"],
   }
-});
-
-// Define the main Category
-const ProductSchema = new mongoose.Schema({
-  ParentCategory: {
-    // Name of all the Parent Categories e.g., male, female, etc.
-    CategoryName: {
-      type: String,
-      required: true
-    },
-    SubCategory: [SubCategorySchema]
-  }
-});
-
-// Add a method to add a subcategory to the existing product
-ProductSchema.methods.addSubCategory = function (subCategory) {
-  this.ParentCategory.SubCategory.push(subCategory);
-  return this.save();
-};
-
-// Export the Product model
-module.exports = mongoose.model("Product", ProductSchema);
+  // 
+  
+})
