@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import TrendingCarsoul from '../../components/TrendingCarsoul'
 // style sheets
 
@@ -17,6 +17,10 @@ import Cathead from '../../components/Catalogue_Heading'
 // ////////////////
 
 const Home = () => {
+  // for changing title
+  useEffect(() => {
+    document.title = "Home";  
+  }, []);
   return (
   <div>
     <Alertbar/>

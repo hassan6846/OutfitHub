@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import "./ErrorPage.css"
 import LogoLink from '../../components/LogoLink';
 
 const ErrorPage = () => {
+useEffect(()=>{
+  document.title="404 🔍💻💻😂😂😂😂😂😂😂"
+})
   return (
 <div className='error__Wrapper' style={{ backgroundImage: `url(./download.png)` }} >
 <LogoLink/>

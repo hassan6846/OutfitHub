@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useForm } from 'react-hook-form';
 import LogoLink from '../../components/LogoLink';
 // css
@@ -6,6 +6,10 @@ import "./Signup.css"
 import { Link } from 'react-router-dom';
 
 const SignupPage = () => {
+  // use effect for  changing page  title
+  useEffect(()=>{
+    document.title="Sign up"
+  })
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);

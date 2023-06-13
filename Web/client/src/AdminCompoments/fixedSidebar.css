@@ -1,0 +1,51 @@
+.AdminHomeWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0rem;
+    align-items: center;
+  }
+  
+  button {
+    border-radius: 200px;
+    padding: 10px 10px;
+    outline: none;
+    border: 1px solid black;
+  }
+  
+  * {
+    margin: 0;
+  }
+  
+  .menu {
+    width: 5%;
+    height: 100vh;
+    background-color: red;
+    transition: width 0.3s ease;
+  }
+  
+  .menu-open {
+    width: 20%;
+  }
+  
+  .set-menu {
+    width: 10%;
+    background-color: olive;
+    height: 100vh;
+  }
+  .Content {
+    width: 100%;
+    height: 100vh;
+    border-left: 1px solid black;
+    background-color: gray;
+  }
+  
+  .btnWrapper{
+    height: 100%;
+    position: relative;
+    width: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .sidebartoggle{
+    position: absolute;
+  }

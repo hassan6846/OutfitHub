@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React,{useEffect} from 'react'
 
 import GoogleBtn from '../../components/GoogleBtn';
 import InputComponent from '../../components/InputComponent';
@@ -8,6 +8,10 @@ import SimpleBtn from '../../components/SimpleBtn';
 import LogoLink from '../../components/LogoLink';
 import { Link } from 'react-router-dom';
 const LoginPage = () => {
+  // use effect 
+  useEffect(function(){
+    document.title="login"
+  })
   return (
    <div className='login_container'>
 

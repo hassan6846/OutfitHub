@@ -1,6 +1,5 @@
 // imports Css
-import { Route, Routes } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React from 'react';
 // Compomnents  and pages
 import Home from './pages/user/Home';
@@ -15,12 +14,14 @@ import AdminSettings from './pages/admin/AdminSettings';
 import AddProduct from './pages/admin/AddProduct';
 import AdminOrders from './pages/admin/AdminOrders';
 import AdminUsers from './pages/admin/AdminUsers';
+// admin components
 
 // /////////////////
 function App() {
   return (
-<Routes>
-  {/* add more routes page here */}
+<Router>
+  <Routes>
+   {/* add more routes page here */}
 <Route path='/' element={<Home/>} />
 <Route path='/shop' element={<Products/>} />
 <Route path='/login' element={<LoginPage/>} />
@@ -33,8 +34,9 @@ function App() {
 <Route path='/admin/orders'element={<AdminOrders/>}/>
 <Route path='/admin/users' element={<AdminUsers/>} />
 <Route path='/admin/settings' element={<AdminSettings/>} />
-</Routes>
 
+  </Routes>
+</Router>
 
   )
 }
