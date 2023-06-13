@@ -6,7 +6,7 @@ const User = require("../models/UserModel");
 exports.isAuthenticated=catchAsyncError(async(req,res,next)=>{
     const {token}=req.cookies;
     if(!token){
-        return next(new ErrorResponse("Pleaselogin to access this resource",401))
+        return next(new ErrorResponse("Please login to access this resource",401))
     }
     //add env Secret to decode
     const decodeData=jwt.verify(token,process.env.JWT_SECRET)
