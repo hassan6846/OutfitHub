@@ -1,4 +1,5 @@
 import React from 'react'
+import { CiSearch,CiShoppingCart } from "react-icons/ci";
 // css 
 import "./Navbar.css"
 import { Link } from 'react-router-dom'
@@ -23,8 +24,8 @@ const Navbar = () => {
      <div className='nav_actions'>
       <div className='user_profile'>  <img src='/person.svg' alt='Close button' className='svg' /></div>
       <div className='wishlist' > <div className='point'>1</div> <img src='/heart.svg' alt='Close button' className='svg' /></div>
-      <div className='cart' ><i>🧺</i></div>
-      <div className='search_Bar' ><input className='inp' placeholder='Search Products' ></input> 🔎</div>
+      <div className='cart' ><CiShoppingCart/></div>
+      <div className='search_Bar' ><input className='inp' placeholder='Search Products' ></input> <CiSearch/></div>
       {/* hidden menu */}
    
      </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./fixedSidebar.css";
-
+import { Link } from "react-router-dom";
+import { BsFillBarChartLineFill } from "react-icons/bs";
 export default function FixedSidebar() {
   const [menuOpen, setMenuOpen] = useState(true);
 
@@ -20,9 +21,11 @@ export default function FixedSidebar() {
 
   return (
     <div className="AdminHomeWrapper">
-      <div className={menuClass}> </div>
+      <div className={menuClass}> 
+      <Link className="AdminNavBtn"> <BsFillBarChartLineFill className="iconHome"/> <p className="AdminNavBtnTitle">Dashboard</p>   </Link>
+       </div>
       <div className="btnWrapper"> <button className="sidebartoggle" onClick={toggleMenu}>🎯</button></div>
-    
+    <div className="content">l</div>
     </div>
   );
 }

@@ -26,6 +26,7 @@
   .menu-open {
     width: 20%;
   }
+
   
   .set-menu {
     width: 10%;
@@ -48,4 +49,24 @@
   }
   .sidebartoggle{
     position: absolute;
+  }
+  /* Button */
+  .AdminNavBtn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    justify-content: left;
+    gap: 0.6rem;
+    text-decoration: none;
+    background-color: white;
+  }
+  .iconHome{
+    fill: black;
+height: 20px;
+width: 20px;
+  }
+  .AdminNavBtnTitle{
+    text-decoration: none;
   }

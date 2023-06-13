@@ -34,7 +34,7 @@ function App() {
 <Route path='/admin/orders'element={<AdminOrders/>}/>
 <Route path='/admin/users' element={<AdminUsers/>} />
 <Route path='/admin/settings' element={<AdminSettings/>} />
-
+<Route path='/admin/*' element={<ErrorPage/>} />
   </Routes>
 </Router>
 
