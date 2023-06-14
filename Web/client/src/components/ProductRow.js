@@ -1,34 +1,35 @@
-import React from 'react'
-import axios from 'axios'
-// css
-import "./ProductRow.css"
-import ProductCard from './Card'
-
-// components
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import "./ProductRow.css";
+import ProductCard from './Card';
 
 const ProductRow = () => {
-    axios.get("https://dummyjson.com/products")
-    .then(function(response){
-        console.log(response.data.products[0])
-    })
-    .catch(function (error) {
-        // handle error
-        console.log(error);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://dummyjson.com/products')
+      .then(response => {
+        const productsData = response.data.products;
+        setProducts(productsData);
       })
-      .finally(function () {
-        // always executed
+      .catch(error => {
+        console.error('Error fetching products:', error);
       });
+  }, []); // Empty dependency array to ensure the effect runs only once
+
   return (
     <div className='ProductRow'>
-        <div className='Product_Filter'></div>
-        <div className='ProductCards_Container'>
+      <div className='Product_Filter'></div>
+      <div className='ProductCards_Container'>
         <div className='card_menu'></div>
         <div className='ShopCard-Wrapper'>
-            <ProductCard price="29" title="this is title" />
+          {products.map(product => (
+            <ProductCard title={product.title} price={product.price} src={product.images[0]} />
+          ))}
         </div>
-        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductRow
+export default ProductRow;

@@ -37,9 +37,6 @@ const Home = () => {
 <Catalogue/>
   <Footer/>
   </div>
-
- 
-
   )
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Alert.css';
+import { Link } from 'react-router-dom';
 
 function Alertbar() {
   const [showAlert, setShowAlert] = useState(true);
@@ -25,7 +26,7 @@ function Alertbar() {
         <div>
           <p>
             Sign up today and <span>GET 20% OFF</span> on your first order{' '}
-            <span>| Sign Up Now</span>
+            <Link className='signup_link' to="/signup">| Sign Up Now</Link>
           </p>
         </div>
         {/* 2 */}

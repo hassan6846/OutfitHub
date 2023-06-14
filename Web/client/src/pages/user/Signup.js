@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react'
 import { useForm } from 'react-hook-form';
 import LogoLink from '../../components/LogoLink';
+Footer
 // css
 import "./Signup.css"
 import { Link } from 'react-router-dom';
@@ -38,7 +39,7 @@ const SignupPage = () => {
 </div>
 <Link to="/login">Login Instead..</Link>
 </div>
-
+<footer/>
 </div>
   )
 }

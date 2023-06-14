@@ -7,12 +7,16 @@ useEffect(()=>{
   document.title="404 🔍💻💻😂😂😂😂😂😂😂"
 })
   return (
+<div>
 <div className='error__Wrapper' style={{ backgroundImage: `url(./download.png)` }} >
 <LogoLink/>
 <p className='error_text'>404</p>
 
 
 </div>
+<footer/>
+</div>
+
  
   )
 }

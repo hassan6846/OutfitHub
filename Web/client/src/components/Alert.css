@@ -1,34 +1,41 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&family=Roboto:wght@100&display=swap');
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
-}
-
-.Alert{
-width: 100%;
-height: 25px;
-background-color:#C02F2F;
-align-items: center;
-display: flex;
-justify-content: center;
-margin-bottom: 2px;
-
-
-}
-.wrapper{
+  }
+  .signup_link{
+    font-weight: 400;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+  .Alert {
+    width: 100%;
+    height: 25px;
+    background-color: #c02f2f;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2px;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out 0.2s; /* Added transition property with delay */
+  }
+  
+  .wrapper {
     width: 90%;
-display: flex;
-justify-content: space-between;
-}
-
-.closebtn{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .closebtn {
     cursor: pointer;
     transition: opacity 0.3s ease-in-out;
-
-}
-@media (min-width:300px) and (max-width:660px) {
-    .Alert{
-        display: none;
+  }
+  
+  @media (min-width: 300px) and (max-width: 660px) {
+    .Alert {
+      display: none;
     }
-}
+  }
+  

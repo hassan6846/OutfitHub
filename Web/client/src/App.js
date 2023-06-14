@@ -9,11 +9,7 @@ import SignupPage from './pages/user/Signup';
 import ErrorPage from './pages/user/ErrorPage';
 import Singleproduct from './pages/user/Singleproduct';
 // admin
-import AdminHome from './pages/admin/AdminHome';
-import AdminSettings from './pages/admin/AdminSettings';
-import AddProduct from './pages/admin/AddProduct';
-import AdminOrders from './pages/admin/AdminOrders';
-import AdminUsers from './pages/admin/AdminUsers';
+
 // admin components
 
 // /////////////////
@@ -29,12 +25,7 @@ function App() {
 <Route path='/single' element={<Singleproduct/>} />
 <Route path='*' element={<ErrorPage/>} />
 {/* admin routes */}
-<Route path='/admin' element={<AdminHome/>} />
-<Route path='/admin/products' element={<AddProduct/>} />
-<Route path='/admin/orders'element={<AdminOrders/>}/>
-<Route path='/admin/users' element={<AdminUsers/>} />
-<Route path='/admin/settings' element={<AdminSettings/>} />
-<Route path='/admin/*' element={<ErrorPage/>} />
+
   </Routes>
 </Router>
 
