@@ -1,44 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AdminHome.css";
-import { BsFillBarChartLineFill,BsGearFill,BsFillBagPlusFill,BsFillPersonFill } from "react-icons/bs";
-import { BiBookAlt,BiLogOut ,BiLeftArrow} from "react-icons/bi";
-import LinkProps from "../../AdminCompoments/LinkProps";
-import { Link } from "react-router-dom";
-export default function FixedSidebar() {
-  const [menuOpen, setMenuOpen] = useState(true);
+import FixedSidebar from "../../AdminCompoments/FixedAdminSidebar";
 
-  // handle click
-  function toggleMenu() {
-    if (menuOpen) {
-      setMenuOpen(false);
-    } else {
-      setMenuOpen(true);
-    }
-  }
-
-  let menuClass = "menu";
-  if (menuOpen) {
-    menuClass += " menu-open";
-  }
+export default function AdminHome() {
 
   return (
-    <div className="AdminHomeWrapper">
-      <div className={menuClass}> 
-     <Link   to="/"  className="admin_Logo"><img className="Admin_Logo"  alt="main logo" src="./logo.svg"/></Link> 
-    <div className="Admin_actions_wrapper">
-    <LinkProps to="/admin" linkName="Dashboard" iconName={BsFillBarChartLineFill} />
-      <LinkProps to="/admin/products" linkName="Products" iconName={BsFillBagPlusFill} />
-      <LinkProps to="/admin/orders" linkName="Orders" iconName={BiBookAlt} />
-      <LinkProps to="/admin/users"  linkName="Users" iconName={BsFillPersonFill} />
-      <LinkProps to="/admin/settings" disp="block" linkName="Settings" iconName={BsGearFill} />
-    </div>
-{/* other admin Actions */}
- 
- <div  className="bottom"><LinkProps  to="/admin/logout"  linkName="Logout" iconName={BiLogOut} /></div>
-
-       </div>
-      <div className="btnWrapper"> <button className="sidebartoggle" onClick={toggleMenu}><BiLeftArrow className="SideArrow" /></button></div>
-      <div className="content">l</div>
+    <div >
+    <FixedSidebar/>
+      <div className="content"></div>
     </div>
   );
 }

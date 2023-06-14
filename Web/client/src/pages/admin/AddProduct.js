@@ -1,8 +1,13 @@
 import React from 'react'
+import FixedSidebar from '../../AdminCompoments/FixedAdminSidebar'
 
 const AddProduct = () => {
   return (
-    <div className='lol'>AddProduct</div>
+    <div >
+      
+      <FixedSidebar/>
+      sus
+    </div>
   )
 }
 
