@@ -9,7 +9,7 @@ const SubCategorySlider = () => {
    const [data,saveData]=useState([])
   //  fetch function
    const fetchUserData = () => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch("https://dummyjson.com/products")
       .then((response) => {
         return response.json();
       })
@@ -20,6 +20,7 @@ const SubCategorySlider = () => {
   // calling when its load
   useEffect(() => {
     fetchUserData();
+    console.log(fetchUserData())
   }, []);
 
   return (
