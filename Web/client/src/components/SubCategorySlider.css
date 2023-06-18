@@ -1,0 +1,44 @@
+.slider_wrapper_100 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: center;
+    background-color: orange;
+}
+
+.slider_wrapper_90 {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    background-color: red;
+    height: 80px;
+}
+
+/* the  product  Filterbtn */
+.subCategoryBtn {
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid rgb(156, 153, 153);
+    display: flex;
+    column-gap: 0.3rem;
+    padding: 5px 8px;
+    border-radius: 20px;
+    align-items: center;
+    height: fit-content;
+    justify-content: center;
+}
+
+.SubCat-Img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+
+}
+
+.Sub_Link {
+    font-size: 13px;
+    text-decoration: none;
+    color: #201f1fe1;
+    font-weight: bold;
+}

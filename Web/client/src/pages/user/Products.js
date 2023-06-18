@@ -1,8 +1,14 @@
+// modules and Liabary
 import React from 'react'
+//css
+import './Products.css'
+// components and layouts
 
 const Products = () => {
   return (
-    <div>Products</div>
+    <div className='product-page-wrapper'>
+product are here
+    </div>
   )
 }
 

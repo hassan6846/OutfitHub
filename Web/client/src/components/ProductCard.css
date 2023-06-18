@@ -1,0 +1,51 @@
+*{
+    text-decoration: none;
+}
+/* goal is to nest the css */
+.card_flex{
+    height:440px;
+    width: 42vh;
+    display: flex;
+    flex-direction: column;
+ 
+}
+.Product_preview{
+height: 80%;
+
+
+position: relative;
+}
+.product-img{
+position: absolute;
+border-radius: 3px 3px 0px 0px ;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.Product_details{
+border-radius: 0px 0px 3px 3px;
+    background-color:rgb(238,238,238);
+    padding: 1%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.product-subCategory{
+    color: #666666;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.product-title{
+    color: #666666;
+    font-weight: bolder;
+}
+.priceBefore{
+    margin-right: 0.3rem;
+    font-weight: 400;
+    color: #666666;
+    text-decoration: line-through;
+}
+.SalePrice{
+    color:#D0134A;
+}

@@ -11,6 +11,9 @@ import SignupPage from './pages/user/Signup';
 import ErrorPage from './pages/user/ErrorPage';
 import Products from './pages/user/Products';
 
+// testing components
+// import ProductCard from './components/ProductCard';
+import SubCategorySlider from './components/SubCategorySlider';
 
 function App() {
   return (
@@ -22,6 +25,7 @@ function App() {
 <Route path='/signup' element={<SignupPage/>} />
 {/* 404 page  */}
 <Route path='*' element={<ErrorPage/>} />
+<Route path='/product' element={<SubCategorySlider/>} />
 {/* protected Routes are down below */}
   </Routes>
 </Router>
