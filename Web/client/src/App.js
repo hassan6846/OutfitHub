@@ -1,29 +1,28 @@
-// imports Css
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// Liabrary Or Modules
 import React from 'react';
-// Compomnents  and pages
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+/**
+ * Pages 
+ */
 import Home from './pages/user/Home';
-import Products from './pages/user/Products';
 import LoginPage from './pages/user/Login';
 import SignupPage from './pages/user/Signup';
 import ErrorPage from './pages/user/ErrorPage';
-import Singleproduct from './pages/user/Singleproduct';
+import Products from './pages/user/Products';
 
 
-// /////////////////
 function App() {
   return (
 <Router>
   <Routes>
-   {/* add more routes page here */}
 <Route path='/' element={<Home/>} />
 <Route path='/shop' element={<Products/>} />
 <Route path='/login' element={<LoginPage/>} />
 <Route path='/signup' element={<SignupPage/>} />
-<Route path='/single' element={<Singleproduct/>} />
+{/* 404 page  */}
 <Route path='*' element={<ErrorPage/>} />
-
-
+{/* protected Routes are down below */}
   </Routes>
 </Router>
 

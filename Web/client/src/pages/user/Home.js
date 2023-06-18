@@ -1,3 +1,4 @@
+// library
 import React,{useEffect} from 'react'
 import TrendingCarsoul from '../../components/TrendingCarsoul'
 // style sheets
@@ -7,10 +8,10 @@ import Alertbar from '../../components/Alert'
 import Nav from '../../components/Navbar'
 import LandingCarsoul from '../../components/LandingCarsoul'
 // import TrendingHead from '../../components/TrendingHead'
-import Footer from '../../components/Footer'
+
 import Catalogue from '../../components/Catalogue'
 import Cathead from '../../components/Catalogue_Heading'
-
+import Footer from "../../Layouts/footer/Footer"
 
 
 
@@ -35,7 +36,7 @@ const Home = () => {
    {/* trending carsoul ends  div*/}
   <Cathead heading="Browse Category " LinkPage="/shop"  LinkText="See more" />
 <Catalogue/>
-  <Footer/>
+<Footer MarginTop="4vmax"/>
   </div>
   )
 }

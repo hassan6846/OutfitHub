@@ -2,9 +2,9 @@ import React from "react";
 
 import "./Footer.css";
 
-const Footer = () => {
+const Footer = (props) => {
   return (
-    <footer id="footer">
+    <footer id="footer" style={{marginTop:props.MarginTop}}>
       <div className="leftFooter">
         <h4>DOWNLOAD OUR APP</h4>
         <p>Download App for Android and IOS mobile phone</p>
