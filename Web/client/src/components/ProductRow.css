@@ -14,7 +14,10 @@ background-color: orange;
 }
 .ProductCards_Container{
     width: 80%;
-    height: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     background-color:rgb(224, 76, 168);
 }
 /* ProductRow.css */

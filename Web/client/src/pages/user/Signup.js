@@ -1,10 +1,11 @@
 import React,{useEffect} from 'react'
 import { useForm } from 'react-hook-form';
 import LogoLink from '../../components/LogoLink';
-Footer
+
 // css
 import "./Signup.css"
 import { Link } from 'react-router-dom';
+import Footer from '../../components/Footer';
 
 const SignupPage = () => {
   // use effect for  changing page  title

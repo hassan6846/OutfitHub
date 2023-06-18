@@ -4,5 +4,15 @@
     box-sizing: border-box;
 }
 .card_wrapper{
+    height: 400px;
+    width: 60%;
+    position: relative;
     border: 1px solid black;
+}
+.productImages{
+
+    
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
 }

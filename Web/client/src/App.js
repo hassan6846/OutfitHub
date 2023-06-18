@@ -8,9 +8,7 @@ import LoginPage from './pages/user/Login';
 import SignupPage from './pages/user/Signup';
 import ErrorPage from './pages/user/ErrorPage';
 import Singleproduct from './pages/user/Singleproduct';
-// admin
 
-// admin components
 
 // /////////////////
 function App() {
@@ -24,7 +22,7 @@ function App() {
 <Route path='/signup' element={<SignupPage/>} />
 <Route path='/single' element={<Singleproduct/>} />
 <Route path='*' element={<ErrorPage/>} />
-{/* admin routes */}
+
 
   </Routes>
 </Router>
