@@ -5,7 +5,10 @@ import "./ProductView.css"
 // components and pages
 const ProductView = () => {
   return (
-    <div>ProductView</div>
+    <div className='vue_row'>
+      <div className='vue_col_1'></div>
+      <div className='vue_col_2'></div>
+    </div>
   )
 }
 

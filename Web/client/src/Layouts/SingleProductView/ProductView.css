@@ -1,0 +1,17 @@
+.vue_row{
+display: flex;height: 100vh;background-color: orange;
+width: 100%;margin-top: 0.4rem;
+flex-direction: row;
+}
+.vue_col_1{
+
+width: 50%;
+height: 100%;
+background-color: gray;
+}
+.vue_col_2{
+width: 50%;
+height: 100%;
+
+background-color: blueviolet;
+}
