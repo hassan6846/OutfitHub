@@ -4,14 +4,27 @@
     flex-direction: row;
     height: 100%;
     justify-content: center;
-    background-color: orange;
+    /* background-color: orange; */
+}
+
+.Outer-Carsoul {
+    cursor: grab;
+
+    overflow: hidden;
+}
+
+.Inner-Carsoul {}
+
+* {
+    text-decoration: none;
 }
 
 .slider_wrapper_90 {
     width: 90%;
     display: flex;
     align-items: center;
-    background-color: red;
+
+    column-gap: 1%;
     height: 80px;
 }
 
@@ -22,7 +35,7 @@
     border: 1px solid rgb(156, 153, 153);
     display: flex;
     column-gap: 0.3rem;
-    padding: 5px 8px;
+    padding: 5px 6px;
     border-radius: 20px;
     align-items: center;
     height: fit-content;
@@ -31,7 +44,9 @@
 
 .SubCat-Img {
     height: 30px;
+    pointer-events: none;
     width: 30px;
+    border-radius: 30px;
     object-fit: cover;
 
 }
@@ -42,3 +57,29 @@
     color: #201f1fe1;
     font-weight: bold;
 }
+.scrollButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .scrollButton-left {
+    left: 10px;
+  }
+  
+  .scrollButton-right {
+    right: 10px;
+  }
+  
