@@ -3,12 +3,19 @@ import React from 'react'
 // css
 import "./Singleproduct.css"
 // components or Layouts
-import Nav from '../../components/Navbar'
+
+import ResponsiveNav from '../../Layouts/NavbarMain/ResponsiveNav'
+import ProductView from '../../Layouts/SingleProductView/ProductView'
+import Footer from '../../Layouts/footer/Footer'
+
+
+
 const Singleproduct = () => {
   return (
     <div className='SingleProduct_wrapper'>
-      <Nav/>
-
+   <ResponsiveNav/>
+   <ProductView/>
+<Footer/>
     </div>
   )
 }

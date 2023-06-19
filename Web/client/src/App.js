@@ -15,6 +15,7 @@ import Products from './pages/user/Products';
 // testing components
 // import ProductCard from './components/ProductCard';
 import SubCategorySlider from './Layouts/SubCategorySlider/SubCategorySlider';
+import Singleproduct from './pages/user/Singleproduct';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
 {/* 404 page  */}
 <Route path='*' element={<ErrorPage/>} />
 <Route path='/product' element={<SubCategorySlider/>} />
+<Route path='/single' element={<Singleproduct/>} />
 {/* protected Routes are down below */}
   </Routes>
 </Router>
