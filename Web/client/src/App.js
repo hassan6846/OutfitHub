@@ -11,9 +11,10 @@ import SignupPage from './pages/user/Signup';
 import ErrorPage from './pages/user/ErrorPage';
 import Products from './pages/user/Products';
 
+
 // testing components
 // import ProductCard from './components/ProductCard';
-import SubCategorySlider from './components/SubCategorySlider';
+import SubCategorySlider from './Layouts/SubCategorySlider/SubCategorySlider';
 
 function App() {
   return (
