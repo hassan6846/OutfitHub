@@ -15,7 +15,7 @@ const Otp = () => {
                     <div class="alert alert-success" role="alert">
                         We've sent a verificaton code to your email-ha *******@gmail.com</div>
                     <input className='otp-input' type="number" placeholder='Enter Verifcation Code' />
-                    <p className='otp-msg'>Incorrect</p>
+                 
                     <button type="submit" className='otp-submit'>Submit</button>
                 </div>
             </section>
