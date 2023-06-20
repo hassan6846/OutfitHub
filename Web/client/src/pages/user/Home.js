@@ -5,7 +5,7 @@ import TrendingCarsoul from '../../components/TrendingCarsoul'
 
 // components
 import Alertbar from '../../components/Alert'
-import Nav from '../../components/Navbar'
+import Nav from "../../Layouts/NavbarMain/ResponsiveNav"
 import LandingCarsoul from '../../components/LandingCarsoul'
 // import TrendingHead from '../../components/TrendingHead'
 

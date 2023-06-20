@@ -10,13 +10,13 @@ import LoginPage from './pages/user/Login';
 import SignupPage from './pages/user/Signup';
 import ErrorPage from './pages/user/ErrorPage';
 import Products from './pages/user/Products';
-
-
-// testing components
-// import ProductCard from './components/ProductCard';
-import SubCategorySlider from './Layouts/SubCategorySlider/SubCategorySlider';
 import Singleproduct from './pages/user/Singleproduct';
 import Otp from './pages/user/Otp';
+
+// testing components
+import ProductCard from './components/ProductCard';
+// import SubCategorySlider from './Layouts/SubCategorySlider/SubCategorySlider';
+
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
 <Route path='/signup' element={<SignupPage/>} />
 {/* 404 page  */}
 <Route path='*' element={<ErrorPage/>} />
-<Route path='/product' element={<SubCategorySlider/>} />
+<Route path='/product' element={<ProductCard/>} />
 <Route path='/single' element={<Singleproduct/>} />
 <Route path='/verify' element={<Otp/>} />
 {/* protected Routes are down below */}

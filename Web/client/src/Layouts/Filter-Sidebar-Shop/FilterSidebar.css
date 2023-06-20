@@ -1,0 +1,6 @@
+.FilterSidebar{
+    height: 100vh;
+    width: 20%;
+    position: sticky;
+    background-color: aqua;
+}
