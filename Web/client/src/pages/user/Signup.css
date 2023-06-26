@@ -1,0 +1,42 @@
+.main_wrapper{
+height:100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+}
+.form_wrapper{
+    height:75%;
+    width:30%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: rgba(17, 12, 46, 0.342) 0px 48px 100px 0px;   
+}
+.signup_txt{
+    text-align: center;
+  
+    font-size: 1.8rem;
+    font-weight: 500;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.signup-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}.signup_email{
+    width: 90%;
+    height: 3rem;
+}
+.registerBtn{
+    width: 90%;padding:0.8rem;
+    color:white,
+background-color:
+    border-radius: 5px;
+    background-color: #3F3F46;
+}

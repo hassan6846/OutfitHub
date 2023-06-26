@@ -20,9 +20,10 @@ const Login = () => {
           <input className='otp-input' type="password" placeholder='Enter Password' />
         
          <button type="submit" className='otp-submit'>Login </button>
+         
+         </form>
          <p className='or'>or</p>
             <Link to="/signup" className='register'>Create Account Instead</Link>
-         </form>
         </div>
       </section>
       <Footer />
