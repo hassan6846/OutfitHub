@@ -31,13 +31,18 @@ password:{
 avatar: {
     public_id: {
       type: String,
-      required: true,
+      required: false,
     },
     url: {
       type: String,
-      required: true,
+      required: false,
     },
+    default:{
+      type:String,
+    
+    }
   },
+
   role: {
     type: String,
     default: "user",
