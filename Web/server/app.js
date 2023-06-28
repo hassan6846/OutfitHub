@@ -1,3 +1,4 @@
+//imports and modules
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
@@ -7,11 +8,9 @@ const morgan = require("morgan");
 const dbConnect = require("./config/dbConnect");
 require("dotenv").config();
 
-dbConnect(); // Connect to the database
+// Connect to the database
+dbConnect(); 
 // Importing all routes
-
-
-
 
 // Middlewares
 app.use(bodyParser.json())
@@ -26,13 +25,16 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.disable('x-powered-by')
+
 /**
  * testing route
  */
-
 app.get("/",(req,res)=>{
   res.send("hello")
 })
+
+
+
 // Listen
 const port = process.env.PORT;
 app.listen(port, function (req, res) {
