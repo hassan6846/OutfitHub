@@ -31,11 +31,23 @@ app.disable('x-powered-by')
 //routes
 app.use("/api/v1",user)
 //for build version
-app.use(express.static(path.join(__dirname,"../client/build")))
+
 //for non build version
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
-});
+app.get('/',function(req,res){
+  const option={
+    root:path.join(__dirname)
+  }
+  const fileName="./index.html"
+  res.sendFile(fileName,user.options,function(err){
+    if(err){
+      next(err)
+    }else{
+      console.log('send',fileName)
+    }
+  })
+})
+
+
 
 
 // Listen
