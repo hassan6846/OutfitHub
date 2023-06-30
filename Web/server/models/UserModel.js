@@ -8,6 +8,7 @@ const bycrypt=require("bcrypt")
 const crypto =require("crypto")
 //validator helps to validate the post and input fields
 const validator=require("validator")
+
 const UserSchema=new mongoose.Schema({
 // name
 name:{
@@ -39,6 +40,7 @@ avatar: {
     },
     default:{
       type:String,
+
     
     }
   },

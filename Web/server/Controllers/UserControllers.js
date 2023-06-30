@@ -5,20 +5,53 @@ const sendToken=require("../utils/JwtToken")
 const catchAsyncErrors = require("../utils/catchAsyncErrors");
 const sendEmail =require("../utils/SendMail")
 const express=require("express")
-
+const jwt=require("jsonwebtoken")
+const bycrpt=require("bcrypt")
 
 //register a new user
 exports.registerUser=catchAsyncErrors(async(req,res,next)=>{
     const {name,email,password}=req.body;
+    //if fields is entered incorrectly
+    if (!name || !email || !password) {
+        res.status(401).json({
+            "msg":"kindly fill all fields"
+        })
+        
+      }
+      //check if user already exists
+      const DuplicateEmail= await User.findOne({email})
+      if(DuplicateEmail){
+        res.status(400).json({
+            "msg":`user already exists with  ${email}`
+        })
+      }
+      
+      //hashing password field
+      const salt=await bycrpt.genSalt(2)
+      const hashedPassword=await bycrpt.hash(password,salt)
+   //creating user
     const user=await User.create({
         name,
         email,
-        password
+        password:hashedPassword,
     })
+
     //sending token
-res.send(user)
+res.status(201).json({
+    user,
+    token:generateToken(user._id)
+})
     
 })
+
+/**
+ * generate jwt
+ */
+const generateToken=(id)=>{
+    return jwt.sign({id},process.env.JWT_SECRET,{
+        expiresIn:"30d",
+    })
+}
 //logout user
 exports.logout=catchAsyncErrors(async(req,res,next)=>{
     //sended empety cookie that person is logout with expire time
