@@ -33,22 +33,12 @@ app.use("/api/v1",user)
 //for build version
 
 //for non build version
-app.get('/',function(req,res){
-  const option={
-    root:path.join(__dirname)
-  }
-  const fileName="./index.html"
-  res.sendFile(fileName,user.options,function(err){
-    if(err){
-      next(err)
-    }else{
-      console.log('send',fileName)
-    }
-  })
-})
+// app.use(express.Router(path.join(__dirname,"../client/public")))
+// console.log(__dirname)
 
-
-
+// app.get("/",function(req,res){
+//   res.sendFile(path.join(__dirname,'../client/public/index.html'))
+// })
 
 // Listen
 const port = process.env.PORT;
