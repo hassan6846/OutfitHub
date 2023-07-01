@@ -24,15 +24,15 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     const DuplicateEmail = await User.findOne({ email })
     if (DuplicateEmail) {
         res.status(400).json({
-            "sucess":"false",
+            "sucess": "false",
             "msg": `user already exists with  ${email}`
         })
     }
     //hashing password field
-    const salt = await bycrpt.genSalt(2)
-    const hashedPassword = await bycrpt.hash(password, salt)
+    var salt = await bycrpt.genSalt(1)
+    var hashedPassword = await bycrpt.hash(password, salt)
     //creating user
-    const user = await User.create({
+    var user = await User.create({
         name,
         email,
         password: hashedPassword,
@@ -53,7 +53,9 @@ const generateToken = (id) => {
         expiresIn: "30d",
     })
 }
-//logout user
+/**
+ * loginUser
+ */
 exports.logout = catchAsyncErrors(async (req, res, next) => {
     //sended empety cookie that person is logout with expire time
     res.cookie("token", null, {
@@ -66,17 +68,28 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
         message: "logout"
     })
 })
-/***
- * login user
- */
-exports.loginUser = catchAsyncErrors(async (req, res, next) => {
-const {email,password}=req.body
-if(!email||!password){
-    res.status(400).json({
-        "sucess":"false",
-       "msg":"kindly fill all fields"
-    })
-// if not email 
+exports.loginUser=catchAsyncErrors(async(req,res,next)=>{
+    //geting data
+    const { email, password } = req.body;
+    //not email or password
+    if(!email ||!password){
+        res.status(401).json({
+            sucess: false,
+            message: "kindly fill all fields"
+        }) }
+ //compare password
 
-}
+//find email
+const FindbyEmail= await User.findOne({email})
+var salts = await bycrpt.genSalt(1)
+var hashedrounds = await bycrpt.hash(password, salts)
+const createUser=await User.create({
+    email,password:hashedrounds
+})
+const comparehash=await bycrpt.compare(password,user.password)
+
+    if(FindbyEmail&&comparehash){
+      res.send("created")
+    }
+
 })
