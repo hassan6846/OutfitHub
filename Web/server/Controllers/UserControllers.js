@@ -68,28 +68,16 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
         message: "logout"
     })
 })
-exports.loginUser=catchAsyncErrors(async(req,res,next)=>{
+exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     //geting data
-    const { email, password } = req.body;
+    const email = req.body.email;
+    const password = req.body.password
     //not email or password
-    if(!email ||!password){
+    if (!email || !password) {
         res.status(401).json({
             sucess: false,
             message: "kindly fill all fields"
-        }) }
- //compare password
-
-//find email
-const FindbyEmail= await User.findOne({email})
-var salts = await bycrpt.genSalt(1)
-var hashedrounds = await bycrpt.hash(password, salts)
-const createUser=await User.create({
-    email,password:hashedrounds
-})
-const comparehash=await bycrpt.compare(password,user.password)
-
-    if(FindbyEmail&&comparehash){
-      res.send("created")
+        })
     }
-
+ 
 })
