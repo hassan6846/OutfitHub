@@ -26,8 +26,10 @@ const ProductSchema= new mongoose.Schema({
   Category:{
     type:String,
     required:[true,"Please Enter Category"],
+    default:"undefined",
     Subcategoy:{ 
       type:String,
+      default:"undefined",
       required:[true,"Please enter SubCategory"]
     },
     Stock:{

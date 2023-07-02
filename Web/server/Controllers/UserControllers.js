@@ -6,7 +6,8 @@ const catchAsyncErrors = require("../utils/catchAsyncErrors");
 const sendEmail = require("../utils/SendMail")
 const express = require("express")
 const jwt = require("jsonwebtoken")
-const bycrpt = require("bcryptjs")
+const bycrpt = require("bcryptjs");
+const catchAsyncError = require("../middlewares/catchAsyncError");
 
 /**
  * //register a new user
@@ -78,35 +79,26 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
     })
 })
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
-    //geting data
-    const email = req.body.email;
-    const password = req.body.password
-    //not email or password
+    const { email, password } = req.body;
+  
+    // checking if user has given password and email both
+  
     if (!email || !password) {
-        res.status(401).json({
-            sucess: false,
-            message: "kindly fill all fields"
-        })
+      return next(new ErrorHandler("Please Enter Email & Password", 400));
     }
-    //checking if email exits
-    try {
-        const checkEmail = await User.findOne({ email: email })
-        //if we'll find the email already exits
-        if (checkEmail) {
-
-        }
-        //if not then tell that to create account instead
-        if (!checkEmail) {
-            return res.status(404).json({
-                "msg": "User doesn't already exists Create Account instead"
-            })
-        }
-
-
+  
+    const user = await User.findOne({email }).select(password);
+  
+    if (!user) {
+      return next(new ErrorHandler("Invalid email or password", 401));
     }
-    //if not exits
-    catch (err) {
-        console.log(err)
-    }
-
-})
+    //compare password
+    const saltsRate = await bcrypt.genSalt(10)
+    const hashed = await bcrypt.hash(password, salt)
+     const compareHash=await bycrpt.compare(password,hashed)
+     if(user&&compareHash){
+        res.send("hello logged")
+     }
+    sendToken(user, 200, res);
+  });
+  
