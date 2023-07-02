@@ -6,7 +6,7 @@ const catchAsyncErrors = require("../utils/catchAsyncErrors");
 const sendEmail = require("../utils/SendMail")
 const express = require("express")
 const jwt = require("jsonwebtoken")
-const bycrpt = require("bcrypt")
+const bycrpt = require("bcryptjs")
 
 /**
  * //register a new user
@@ -14,34 +14,43 @@ const bycrpt = require("bcrypt")
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     const { name, email, password } = req.body;
     //if fields is entered incorrectly
-    if (!name || !email || !password) {
-        res.status(401).json({
-            "msg": "kindly fill all fields"
+    try {
+        if (!name, !email, !password) {
+            res.status(204).json({
+                "sucess": false,
+                "msg": "Kindly fill all fields"
+            })
+        }
+        //check user email 
+        const UserAlreadyExists = await User.find({ email:email })
+        if (UserAlreadyExists) {
+            res.status(409).json({
+                sucess: false,
+                msg: "user email already exists with this email try login instead"
+            })
+        }
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt)
+        const user = await User.create({
+            name,
+            email,
+            password: hashedPassword,
         })
-
+        if (user) {
+            res.status(201).json({
+                _id: user.id,
+                name: user.name,
+                email: user.email,
+                token: generateToken(user._id),
+            })
+        } else {
+            res.status(400)
+            throw new Error('Invalid user data')
+        }
     }
-    //check if user already exists
-    const DuplicateEmail = await User.findOne({ email })
-    if (DuplicateEmail) {
-        res.status(400).json({
-            "sucess": "false",
-            "msg": `user already exists with  ${email}`
-        })
+    catch (err) {
+        console.log(err)
     }
-    //hashing password field
-    var salt = await bycrpt.genSalt(1)
-    var hashedPassword = await bycrpt.hash(password, salt)
-    //creating user
-    var user = await User.create({
-        name,
-        email,
-        password: hashedPassword,
-    })
-    //sending token
-    res.status(201).json({
-        user,
-        token: generateToken(user._id)
-    })
 
 })
 
@@ -79,5 +88,25 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
             message: "kindly fill all fields"
         })
     }
- 
+    //checking if email exits
+    try {
+        const checkEmail = await User.findOne({ email: email })
+        //if we'll find the email already exits
+        if (checkEmail) {
+
+        }
+        //if not then tell that to create account instead
+        if (!checkEmail) {
+            return res.status(404).json({
+                "msg": "User doesn't already exists Create Account instead"
+            })
+        }
+
+
+    }
+    //if not exits
+    catch (err) {
+        console.log(err)
+    }
+
 })
