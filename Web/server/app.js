@@ -15,17 +15,18 @@ dbConnect();
 // Importing all routes
 const user=require("./Routes/UserRoutes")
 // Middlewares
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json({
   limit: '100mb'
 }));
-app.use(bodyParser.urlencoded({
-  limit: '100mb',
-  extended: true
-}));
+
+
+// Body parsing middleware
+
 app.use(fileUpload())
 app.disable('x-powered-by')
 //routes

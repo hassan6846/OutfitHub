@@ -18,7 +18,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const userExists = await User.findOne({ email })
 
     if (userExists) {
-        res.status(400)
+        res.status(409)
         throw new Error('User already exists')
     }
 
@@ -71,9 +71,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @desc    Get user data
 // @route   GET /api/users/me
 // @access  Private
-const getMe = asyncHandler(async (req, res) => {
-    res.status(200).json(req.user)
-})
+
 
 // Generate JWT
 const generateToken = (id) => {
@@ -88,31 +86,3 @@ module.exports = {
     getMe,
 }
 
-if (!name || !email || !password) {
-    res.status(401).json({
-        "msg": "kindly fill all fields"
-    })
-
-}
-//check if user already exists
-const DuplicateEmail = await User.findOne({ email })
-if (DuplicateEmail) {
-    res.status(400).json({
-        "sucess": "false",
-        "msg": `user already exists with  ${email}`
-    })
-}
-//hashing password field
-var salt = await bycrpt.genSalt(1)
-var hashedPassword = await bycrpt.hash(password, salt)
-//creating user
-var user = await User.create({
-    name,
-    email,
-    password: hashedPassword,
-})
-//sending token
-res.status(201).json({
-    user,
-    token: generateToken(user._id)
-})
