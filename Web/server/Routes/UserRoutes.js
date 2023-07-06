@@ -8,10 +8,10 @@
  */
 const express=require("express")
 const router=express.Router();
-const {registerUser,loginUser}  =require( "../Controllers/UserControllers")
+const {registerUser}  =require( "../Controllers/UserControllers")
 router.route("/register").post(registerUser)
 // router.route("/logout").get(logout);
-router.route("/login").post(loginUser)
+// router.route("/login").post(loginUser)
 // router.route("/password/forgot").post();
 // router.route("/password/reset/:token").put();
 
