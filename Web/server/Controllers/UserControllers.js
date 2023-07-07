@@ -26,25 +26,22 @@ async function registerUser(req, res) {
     }
 
     // Hash the password
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    bcrypt.genSalt(process.env.SALT_ROUNDS, function (err, salt) {
+      bcrypt.hash(process.env.SUPER_SECRET, salt, function (err, hash) {
+        const user = new UserModel({
+          username,
+          email,
+          password: hash,
+        });
 
-    // Create new user
-    const newUser = await UserModel.create({
-      username,
-      email,
-      password: hashedPassword,
-    });
+        // Save the user to the database
+        user.save();
 
-    // Generate token
-    const token = generateToken(newUser._id);
-
-    // Return response
-    return res.status(201).json({
-      success: true,
-      msg: "User registered successfully",
-      user: newUser,
-      token,
+        res.status(201).json({
+          success: true,
+          msg: "User created successfully",
+        });
+      });
     });
   } catch (error) {
     return res.status(500).json({
@@ -54,6 +51,7 @@ async function registerUser(req, res) {
     });
   }
 }
+
 
 // generate token
 const generateToken = (id) => {
@@ -75,14 +73,27 @@ const generateToken = (id) => {
 
   try{
     //find email 
-    const findEmail=await UserModel.findOne({email})
+    const findEmail=await UserModel.findOne({email}).select("+password")
     //if not email
     if(!findEmail){
       res.status(404).json({
       "Sucess":false,
       "Msg":"Invalid Email or password"
       })} 
-
+//compare password
+const ComparePassword=await findEmail.comparePassword(password)
+if(!ComparePassword){
+  return res.status(401).json({
+    "Sucess":false,
+    "Msg":"Invalid Email or password"
+  })
+}
+if(ComparePassword){
+  res.status(201).json({
+    sucess:true,
+    "Msg":"sucessfull loged in"
+  })
+}
   }
   
    catch(err){
