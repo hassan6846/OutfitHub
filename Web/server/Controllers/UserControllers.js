@@ -26,22 +26,26 @@ async function registerUser(req, res) {
     }
 
     // Hash the password
-    bcrypt.genSalt(process.env.SALT_ROUNDS, function (err, salt) {
-      bcrypt.hash(process.env.SUPER_SECRET, salt, function (err, hash) {
-        const user = new UserModel({
-          username,
-          email,
-          password: hash,
-        });
+    const SALT_ROUNDS = 10
+    const salt = await bcrypt.genSalt(SALT_ROUNDS);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Save the user to the database
-        user.save();
+    const user = new UserModel({
+      username,
+      email,
+      password: hashedPassword,
+    });
 
-        res.status(201).json({
-          success: true,
-          msg: "User created successfully",
-        });
-      });
+    // Save the user to the database
+    const savedUser = await user.save();
+
+    // Generate token for the user
+    const token = generateToken(savedUser._id);
+
+    res.status(201).json({
+      success: true,
+      msg: "User created successfully",
+      token,
     });
   } catch (error) {
     return res.status(500).json({
@@ -52,52 +56,37 @@ async function registerUser(req, res) {
   }
 }
 
-
-// generate token
+// Generate token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
 };
-///login user
- async function loginUser (req,res){
+/**
+ * LOGIN FUNCTION
+ * 
+ *
+ */
+const loginUser = async (req, res) => {
+  // Getting email and password
+  const { email, password } = req.body;
 
-    //getting email and password
-    const {email,password}=req.body;
-    //empty request
-    if(!email,!password){
-     res.status(400).json({
-       "Sucess":false,
-       "Msg":"Kindly fill all fields"
-     })}
-
-  try{
-    //find email 
-    const findEmail=await UserModel.findOne({email}).select("+password")
-    //if not email
-    if(!findEmail){
-      res.status(404).json({
-      "Sucess":false,
-      "Msg":"Invalid Email or password"
-      })} 
-//compare password
-const ComparePassword=await findEmail.comparePassword(password)
-if(!ComparePassword){
-  return res.status(401).json({
-    "Sucess":false,
-    "Msg":"Invalid Email or password"
-  })
-}
-if(ComparePassword){
-  res.status(201).json({
-    sucess:true,
-    "Msg":"sucessfull loged in"
-  })
-}
+  // If email or password is missing
+  if (!email || !password) {
+    return res.status(400).json({
+      success: false,
+      msg: "Kindly fill all required fields",
+    });
   }
-  
-   catch(err){
-    res.send(err)
-    console.log(err)
-  }}
-module.exports = { registerUser,loginUser };
+
+  try { } catch (error) {
+    return res.status(500).json({
+      success: false,
+      msg: "Internal server error",
+      error: error.message,
+    });
+  }
+};
+
+
+module.exports = { registerUser, loginUser };

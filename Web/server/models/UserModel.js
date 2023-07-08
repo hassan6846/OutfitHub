@@ -11,7 +11,7 @@ const validator=require("validator")
 
 const UserSchema=new mongoose.Schema({
 // name
-name:{
+username:{
     type:String,
     require:[true,"Please  Enter  your name"],
     maxLength: [30, "Name cannot exceed 30 characters"],
