@@ -28,12 +28,12 @@ async function registerUser(req, res) {
     // Hash the password
     const SALT_ROUNDS = 10
     const salt = await bcrypt.genSalt(SALT_ROUNDS);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hash = await bcrypt.hash(password, salt);
 
     const user = new UserModel({
       username,
       email,
-      password: hashedPassword,
+      password: hash,
     });
 
     // Save the user to the database
@@ -79,7 +79,30 @@ const loginUser = async (req, res) => {
     });
   }
 
-  try { } catch (error) {
+  try {
+    // Find user by email
+    const findUser = await UserModel.findOne({ email });
+    const SALT_ROUNDS = 10
+    const salt = await bcrypt.genSalt(SALT_ROUNDS);
+    const hash = await bcrypt.hash(password, salt);
+   if(findUser){
+   await bcrypt.compare(password,hash,async function(err,result1){
+      if(result1){
+        res.status(201).json({
+          success:true,
+          "type":"Login",
+          "Msg":"User Logged in Sucessfully",
+          token:generateToken(findUser._id)
+        })
+      }
+    })
+   }
+   else{
+    res.status(404).json({
+     success:true,
+     "Msg":"Invaild Credentials."
+    })}
+  } catch (error) {
     return res.status(500).json({
       success: false,
       msg: "Internal server error",
@@ -87,6 +110,4 @@ const loginUser = async (req, res) => {
     });
   }
 };
-
-
 module.exports = { registerUser, loginUser };
