@@ -7,6 +7,8 @@ const ProductSchema= new mongoose.Schema({
     required: [true, "Please Enter product Name"],
     trim: true,
   },
+Images:{},
+
   // description of the product could be long or html vice versa
   description: {
     type: String,

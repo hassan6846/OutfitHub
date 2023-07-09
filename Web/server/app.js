@@ -4,7 +4,6 @@ const fileUpload=require("express-fileupload")
 const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const path=require("path")
 const cors = require("cors");
 const morgan = require("morgan");
 const dbConnect = require("./config/dbConnect");
@@ -31,15 +30,6 @@ app.use(fileUpload())
 app.disable('x-powered-by')
 //routes
 app.use("/api/v1",user)
-//for build version
-
-//for non build version
-// app.use(express.Router(path.join(__dirname,"../client/public")))
-// console.log(__dirname)
-
-// app.get("/",function(req,res){
-//   res.sendFile(path.join(__dirname,'../client/public/index.html'))
-// })
 
 // Listen
 const port = process.env.PORT;

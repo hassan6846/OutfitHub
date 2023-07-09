@@ -6,12 +6,12 @@
 /**
  * import of controllers by destucturing
  */
-const express=require("express")
-const router=express.Router();
-const {registerUser,loginUser}  =require( "../Controllers/UserControllers")
+const express = require("express")
+const router = express.Router();
+const { registerUser, loginUser,Userlogout} = require("../Controllers/UserControllers")
 router.route("/register").post(registerUser)
- router.route("/login").post(loginUser)
-// router.route("/logout").get(logout);
+router.route("/login").post(loginUser)
+router.route("/logout").get(Userlogout);
 
 // router.route("/password/forgot").post();
 // router.route("/password/reset/:token").put();
@@ -30,4 +30,4 @@ router.route("/register").post(registerUser)
 //   .get(isAuthenticatedUser, authorizeRoles("admin"), getSingleUser)
 //   .put(isAuthenticatedUser, authorizeRoles("admin"), updateUserRole)
 //   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUser);
-module.exports=router
+module.exports = router

@@ -24,7 +24,7 @@ async function registerUser(req, res) {
         msg: "Email is already registered",
       });
     }
-
+  
     // Hash the password
     const SALT_ROUNDS = 10
     const salt = await bcrypt.genSalt(SALT_ROUNDS);
@@ -46,7 +46,7 @@ async function registerUser(req, res) {
       success: true,
       msg: "User created successfully",
       token,
-    });
+    })
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -82,18 +82,21 @@ const loginUser = async (req, res) => {
   try {
     // Find user by email
     const findUser = await UserModel.findOne({ email });
+
     const SALT_ROUNDS = 10
     const salt = await bcrypt.genSalt(SALT_ROUNDS);
     const hash = await bcrypt.hash(password, salt);
    if(findUser){
    await bcrypt.compare(password,hash,async function(err,result1){
       if(result1){
-        res.status(201).json({
+        res.status(201)
+        .json({
           success:true,
           "type":"Login",
           "Msg":"User Logged in Sucessfully",
           token:generateToken(findUser._id)
         })
+       
       }
     })
    }
@@ -103,11 +106,31 @@ const loginUser = async (req, res) => {
      "Msg":"Invaild Credentials."
     })}
   } catch (error) {
-    return res.status(500).json({
+    return res
+    .status(500)
+    .json({
       success: false,
       msg: "Internal server error",
       error: error.message,
     });
   }
 };
-module.exports = { registerUser, loginUser };
+
+/**
+ * logout 
+ */
+const Userlogout = async (req, res, next) => {
+
+  // Set the cookie with an expiration time of 12 seconds
+  res.cookie('token', null, {
+    expires: new Date(Date.now()), // Add 12000 milliseconds (12 seconds) to the current time
+    httpOnly: true,
+    secure:true
+  });
+  res.status(200).json({
+    success: true,
+    message: 'Logged Out',
+  });
+};
+
+module.exports = { registerUser, loginUser,Userlogout };
