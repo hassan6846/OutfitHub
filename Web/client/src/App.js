@@ -1,7 +1,8 @@
 // Liabrary Or Modules
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import axios from "axios"
+import WebFont from "webfontloader";
 /**
  * Pages 
  */
@@ -24,6 +25,19 @@ import ProductCard from './components/ProductCard';
 
 
 function App() {
+  const [stripeApiKey, setStripeApiKey] = useState("");
+  //get api key for payment 
+  async function GetApiKey(){
+ const {data}=await axios.get("/api/v1/stripeapikey")
+ setStripeApiKey(data.stripeApiKey)
+  }
+  // benifits of loading fonts in app.js
+  useEffect(()=>{
+    WebFont.load({
+      google:{
+        families: ["Roboto", "Droid Sans", "Chilanka"],
+      }})
+  })
   return (
 <Router>
   <Routes>

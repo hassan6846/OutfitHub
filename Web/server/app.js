@@ -12,6 +12,7 @@ require("dotenv").config();
 
 // Importing all routes
 const user=require("./Routes/UserRoutes")
+const payment= require("./Routes/PaymentRoute")
 // Middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,6 +29,7 @@ app.use(fileUpload())
 app.disable('x-powered-by')
 //routes
 app.use("/api/v1",user)
+app.use("/api/v1",payment)
 // app.use("/api/v1",product)
 // app.use("/api/v1",orders)
 // app.use("/api/v1", payment);

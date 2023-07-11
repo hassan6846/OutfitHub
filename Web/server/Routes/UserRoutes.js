@@ -14,7 +14,7 @@ router.route("/login").post(loginUser)
 router.route("/logout").get(Userlogout);
 
 // router.route("/password/forgot").post();
-// router.route("/password/reset/:token").put();
+//router.route("/password/reset/:token").put();
 
 // router.route("/me").get()
 // router.route("/password/update").put(isAuthenticatedUser, updatePassword);
