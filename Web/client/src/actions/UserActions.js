@@ -39,5 +39,14 @@ import {
     USER_DETAILS_FAIL,
     CLEAR_ERRORS,
   } from "../constants/UserConstants";
-
-  
+import axios from "axios"
+  /**
+   * login request
+   * 
+   */
+  const login=async(email,password)=>{
+    try{}
+    catch(error){
+      dispatch
+    }
+  }

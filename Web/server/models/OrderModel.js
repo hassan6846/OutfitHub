@@ -98,7 +98,10 @@ const orderSchema = new mongoose.Schema({
         required: true,
         default: "Processing",
     },
-    deliveredAt: Date,
+    deliveredAt: {
+        type:Date,
+        default: 2
+    },
     createdAt: {
         type: Date,
         default: Date.now,
