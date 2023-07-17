@@ -47,6 +47,6 @@ import axios from "axios"
   const login=async(email,password)=>{
     try{}
     catch(error){
-      dispatch
+      dispatchEvent()
     }
   }
