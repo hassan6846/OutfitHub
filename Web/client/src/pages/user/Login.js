@@ -14,8 +14,8 @@ const Login = () => {
       email: '@gmail.com',
       password: '',
     },
-    validateOnBlur: false,
-    validateOnChange: false,
+    validateOnBlur: true,
+    validateOnChange: true,
     validate: (values) => {
       const errors = {};
 
@@ -28,7 +28,7 @@ const Login = () => {
       }
 
       if (values.password.length < 7) {
-        errors.password = 'Please valid Password You might be';
+        errors.password = 'Please valid Password You might be joking';
       }
 
       return errors;
