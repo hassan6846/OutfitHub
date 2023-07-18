@@ -40,7 +40,7 @@ api.post("/api/v1/login",{
   password:values.password
 }).then(
   function(response){
-    console.log(response.status)
+    console.log(response)
   }
 ).catch(function(error){
   console.log(error)
