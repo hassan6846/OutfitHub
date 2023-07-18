@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import './Login.css';
 import Footer from '../../Layouts/footer/Footer';
 import toast, { Toaster } from 'react-hot-toast';
-
+import axios from "axios"
 const Login = () => {
-  const useNav = useNavigate();
+  // const useNav = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -28,8 +28,22 @@ const Login = () => {
       toast.error('Please fill the correct password you might be joking');
       return;
     }
-      alert(JSON.stringify(values));
-   
+
+    const api=axios.create({
+      baseURL:"http://localhost:3001"
+    })
+    const loginReq=JSON.stringify(values)
+    console.log(loginReq)
+   try{
+const response=await api.post("/api/v1/login",loginReq)
+console.log(response.data); 
+   }
+   catch(error){
+    console.error(error)
+   }
+
+
+
     },
   });
 
