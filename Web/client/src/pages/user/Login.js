@@ -27,7 +27,7 @@ const Login = () => {
 
         if (response.ok) {
           // Redirect to the home page
-          history.push('/home');
+          history.push('/');
         } else {
           const data = await response.json();
           setLoginError(data.message);
