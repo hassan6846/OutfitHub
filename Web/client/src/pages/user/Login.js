@@ -1,52 +1,55 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import './Login.css';
 import Footer from '../../Layouts/footer/Footer';
-import { unstable_HistoryRouter as useHistory } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+
 const Login = () => {
-  const [loginError, setLoginError] = useState('');
-  const history = useHistory();
+  const useNav = useNavigate();
 
   const formik = useFormik({
     initialValues: {
       email: '@gmail.com',
-      password: ''
+      password: '',
     },
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      try {
-        const response = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(values)
-        });
-
-        if (response.ok) {
-          // Redirect to the home page
-          history.push('/');
-        } else {
-          const data = await response.json();
-          setLoginError(data.message);
-        }
-      } catch (error) {
-        console.error('Error occurred during login:', error);
+      if (values.email === '') {
+        toast.error('Please fill the email field');
+        return;
       }
+    else if (values.password===""){
+      toast.error('Please fill the password field');
+      return;
     }
+    else if (values.password.length<7){
+      toast.error('Please fill the correct password you might be joking');
+      return;
+    }
+      alert(JSON.stringify(values));
+   
+    },
   });
+
+  useEffect(() => {
+    sessionStorage.clear();
+  }, []);
 
   return (
     <div>
+     
+
       <section className="login_wrapper-100">
+         <div><Toaster 
+         /></div>
         <Link to="/" className="login-logo">
           <img alt="company" src="./logo.svg" />
         </Link>
         <div className="login-container">
           <p className="login-heading">Login Account</p>
-          <form onSubmit={formik.handleSubmit} className="login-form" method="post">
+          <form onSubmit={formik.handleSubmit} className="login-form">
             <input
               {...formik.getFieldProps('email')}
               className="otp-input"
@@ -69,7 +72,6 @@ const Login = () => {
           <Link to="/signup" className="register">
             Create Account Instead
           </Link>
-          {loginError && <p className="login-error">{loginError}</p>}
         </div>
       </section>
       <Footer />

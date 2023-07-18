@@ -4,7 +4,7 @@ import LogoLink from '../../components/LogoLink';
 
 const ErrorPage = () => {
 useEffect(()=>{
-  document.title="404 🔍💻💻😂😂😂😂😂😂😂"
+  document.title="404 Conflict"
 })
   return (
 <div>
