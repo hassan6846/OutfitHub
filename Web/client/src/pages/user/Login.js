@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import './Login.css';
 import Footer from '../../Layouts/footer/Footer';
 import toast, { Toaster } from 'react-hot-toast';
-import axios from "axios"
+import axios from "axios";
+
 const Login = () => {
-  // const useNav = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false); // Track login submission
 
   const formik = useFormik({
     initialValues: {
@@ -15,36 +16,57 @@ const Login = () => {
     },
     validateOnBlur: false,
     validateOnChange: false,
+    validate: (values) => {
+      const errors = {};
+
+      if (!values.email) {
+        errors.email = 'Please fill the email field';
+      }
+
+      if (!values.password) {
+        errors.password = 'Please fill the password field';
+      }
+
+      if (values.password.length < 7) {
+        errors.password = 'Please valid Password You might be';
+      }
+
+      return errors;
+    },
     onSubmit: async (values) => {
-      if (values.email === '') {
-        toast.error('Please fill the email field');
+      if (!formik.isValid) {
         return;
       }
-      else if (values.password === "") {
-        toast.error('Please fill the password field');
-        return;
-      }
-      else if (values.password.length < 7) {
-        toast.error('Please fill the correct password you might be joking');
-        return;
-      }
+
+      setIsSubmitting(true); // Start login submission
 
       const api = axios.create({
         baseURL: "http://localhost:3001"
-      })
+      });
 
+      try {
+        const response = await api.post("/api/v1/login", {
+          email: values.email,
+          password: values.password
+        });
 
-   
-api.post("/api/v1/login",{
-  email:values.email,
-  password:values.password
-}).then(
-  function(response){
-    console.log(response)
-  }
-).catch(function(error){
-  console.log(error)
-})
+        console.log(response);
+
+        // Handle successful login
+        toast.success('Successfully logged in');
+      } catch (error) {
+        console.log(error);
+
+        if (error.response && error.response.data && error.response.data.msg) {
+          toast.error(error.response.data.msg);
+        } else if (error.message) {
+          toast.error(error.response.data.Msg);
+        } else {
+          toast.error('Error when logging in');
+        }
+      } finally {
+        setIsSubmitting(false); // End login submission
+      }
     },
   });
 
@@ -54,11 +76,10 @@ api.post("/api/v1/login",{
 
   return (
     <div>
-
-
       <section className="login_wrapper-100">
-        <div><Toaster
-        /></div>
+        <div>
+          <Toaster />
+        </div>
         <Link to="/" className="login-logo">
           <img alt="company" src="./logo.svg" />
         </Link>
@@ -71,6 +92,9 @@ api.post("/api/v1/login",{
               type="email"
               placeholder="Enter Email"
             />
+            {formik.touched.email && formik.errors.email && (
+              <div className="error">{formik.errors.email}</div>
+            )}
 
             <input
               {...formik.getFieldProps('password')}
@@ -78,9 +102,12 @@ api.post("/api/v1/login",{
               type="password"
               placeholder="Enter Password"
             />
+            {formik.touched.password && formik.errors.password && (
+              <div className="error">{formik.errors.password}</div>
+            )}
 
-            <button type="submit" className="otp-submit">
-              Login
+            <button type="submit" className="otp-submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Logging in...' : 'Login'}
             </button>
           </form>
           <p className="or">or</p>
