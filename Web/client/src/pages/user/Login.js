@@ -20,30 +20,31 @@ const Login = () => {
         toast.error('Please fill the email field');
         return;
       }
-    else if (values.password===""){
-      toast.error('Please fill the password field');
-      return;
-    }
-    else if (values.password.length<7){
-      toast.error('Please fill the correct password you might be joking');
-      return;
-    }
+      else if (values.password === "") {
+        toast.error('Please fill the password field');
+        return;
+      }
+      else if (values.password.length < 7) {
+        toast.error('Please fill the correct password you might be joking');
+        return;
+      }
 
-    const api=axios.create({
-      baseURL:"http://localhost:3001"
-    })
-    const loginReq=JSON.stringify(values)
-    console.log(loginReq)
-   try{
-const response=await api.post("/api/v1/login",loginReq)
-console.log(response.data); 
-   }
-   catch(error){
-    console.error(error)
-   }
+      const api = axios.create({
+        baseURL: "http://localhost:3001"
+      })
 
 
-
+   
+api.post("/api/v1/login",{
+  email:values.email,
+  password:values.password
+}).then(
+  function(response){
+    console.log(response.status)
+  }
+).catch(function(error){
+  console.log(error)
+})
     },
   });
 
@@ -53,11 +54,11 @@ console.log(response.data);
 
   return (
     <div>
-     
+
 
       <section className="login_wrapper-100">
-         <div><Toaster 
-         /></div>
+        <div><Toaster
+        /></div>
         <Link to="/" className="login-logo">
           <img alt="company" src="./logo.svg" />
         </Link>
