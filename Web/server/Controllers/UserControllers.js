@@ -2,6 +2,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/UserModel");
 const ErrorHandler = require("../utils/errorhandler");
+const router = require("../Routes/UserRoutes");
+const { isAuthenticated } = require("../middlewares/Auth");
 // registerUser
 async function registerUser(req, res) {
   // Getting username, email, and password
@@ -175,6 +177,23 @@ const getAllUser=async(req,res,next)=>{
   }
 }
 /**
+  get single user
+  -- type :user
+    --is authentication required:true
+    //description this controller is basically for like user know about his details or his account
+    like /me
+  */
+ const GetUsersDetails=async(req,res,next)=>{
+ const user=await UserModel.findById(req.user.id)
+ res
+ .status(200)
+.json({
+  success:true,
+  user
+})}
+ 
+
+/**
  * get a single user
  * type-admin
  */
@@ -186,4 +205,4 @@ const getAllUser=async(req,res,next)=>{
  * delete user -admin
  * type -admin
  */
-module.exports = { registerUser, loginUser,Userlogout,getAllUser };
+module.exports = { registerUser, loginUser,Userlogout,getAllUser,GetUsersDetails };
