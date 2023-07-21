@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/UserModel");
-
+const ErrorHandler = require("../utils/errorhandler");
 // registerUser
 async function registerUser(req, res) {
   // Getting username, email, and password
@@ -132,5 +132,58 @@ const Userlogout = async (req, res, next) => {
     message: 'Logged Out',
   });
 };
+/**
+ * forgot password 
+ *
+ * method post
+ * requires email only
+ * type user
+ */ 
 
-module.exports = { registerUser, loginUser,Userlogout };
+const ForgotPassword=async (req,res,next)=>{
+ try{
+//find email exists or not
+const user=await UserModel.findOne({email:req.body.email})
+if(!user){
+  return
+  next(new ErrorHandler("User doesn't exists",404))
+}
+ } catch(error){
+  res.send(error)
+  console.log(error)
+ }
+}
+
+/**
+ * get all users
+ * type-admin
+ * 
+ */
+const getAllUser=async(req,res,next)=>{
+  try{
+    const AllUsers=await UserModel.find()
+    res
+    .status(200)
+    .json({
+      success:true,
+      AllUsers
+    })
+  }catch(error){
+    
+    res.send(error)
+    console.log(error)
+  }
+}
+/**
+ * get a single user
+ * type-admin
+ */
+/**
+ * update users role
+ * 
+ */
+/**
+ * delete user -admin
+ * type -admin
+ */
+module.exports = { registerUser, loginUser,Userlogout,getAllUser };

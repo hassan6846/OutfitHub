@@ -50,10 +50,27 @@ default:"https://randomuser.me/api/"
     type: Date,
     default: Date.now,
   },
+  VerifiedEmail: {
+    type: String,
+    default: "NO",
+  },
 
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 
+
 })
 // what is after this
+// after this i had to made oop based or funcitonal based methods
 module.exports = mongoose.model("User", UserSchema);
+//generating reset password token
+UserSchema.methods.getResetPasswordToken=function(){
+//token
+const resetToken=crypto.randomBytes(20).toString("hex")
+this.resetPasswordToken=crypto
+.createHash("sha256")
+.update(resetToken)
+.digest("hex");
+this.resetPasswordExpire=Data.now()+15*60*1000
+return resetToken
+}
