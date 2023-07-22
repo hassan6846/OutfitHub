@@ -45,6 +45,7 @@ function App() {
 <Route exact={true} path='/' element={<Home/>} />
 <Route path='*' element={<ErrorPage/>} />
 <Route path='/shop' element={<Products/>} />
+<Route path='/shop/men'/>
 <Route path='/login' element={<LoginPage/>} />
 <Route path='/signup' element={<SignupPage/>} />
 <Route exact path='/password/forgot' element ={<ForgotPassword/>}/>

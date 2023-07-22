@@ -12,6 +12,9 @@
     min-height: 100vh; /* Set a minimum height to ensure the sidebar is sticky during scrolling */
 }
 
+.logo_admin:hover{
+text-decoration: none;
+}
 .Action-Sidebar {
     position: sticky;
     top: 0; /* Sticky elements need a 'top' value to indicate where they stick to */
@@ -26,6 +29,11 @@
     gap: 0.5rem;
 }
 
+.arrow{
+    scale: 1.2;
+    width: 2rem;
+    fill: black;
+}
 .Switch_links {
     width: 92%;
     border-radius: 0.3rem;
@@ -43,6 +51,7 @@
     bottom: 10%;
     left: 10%;
     border-radius: 0.3rem;
+    color: red;
     position: absolute;
 }
 
