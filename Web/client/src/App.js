@@ -20,6 +20,7 @@ import Otp from './pages/user/Otp';
 
 // testing components
 import ProductCard from './components/ProductCard';
+import AdminSidebar from './pages/admin/Sidebar/AdminSidebar';
 
 // import SubCategorySlider from './Layouts/SubCategorySlider/SubCategorySlider';
 
@@ -41,7 +42,7 @@ function App() {
   return (
 <Router>
   <Routes>
-<Route path='/' element={<Home/>} />
+<Route exact={true} path='/' element={<Home/>} />
 <Route path='*' element={<ErrorPage/>} />
 <Route path='/shop' element={<Products/>} />
 <Route path='/login' element={<LoginPage/>} />
@@ -55,10 +56,8 @@ function App() {
 <Route path='/cart'/>
 {/* User Routes */}
 <Route path='/about' element={<Faq/>}/>
-
-
-
 {/* protected Routes are down below */}
+<Route exact={true} path='/admin' element={<AdminSidebar/>} />
   </Routes>
 </Router>
 
