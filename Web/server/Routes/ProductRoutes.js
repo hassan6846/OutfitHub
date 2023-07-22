@@ -4,7 +4,7 @@ const router = expres.Router();
 // middleware
 
 //controllers
-
+//neeeded a admin sidebar with different routes
 
 /**
  * type:User
@@ -20,7 +20,8 @@ router.route("/product/:id").get()
 /**
  *Admin Routes 
  */
-router.route("/admin/products").get()
+router.route("/admin/products")
+.get()
 router.route("/admin/products/new")
 router.route("/admin/product/:id")
 module.exports = router
