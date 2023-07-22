@@ -4,7 +4,7 @@ const router = expres.Router();
 // middleware
 
 //controllers
-//neeeded a admin sidebar with different routes
+//neeeded a admin sidebar with different routes 
 
 /**
  * type:User

@@ -110,10 +110,12 @@ const Login = () => {
               {isSubmitting ? 'Logging in...' : 'Login'}
             </button>
           </form>
+          <Link className='forgot-link' to="/password/forgot">Forgot Password</Link>
           <p className="or">or</p>
           <Link to="/signup" className="register">
             Create Account Instead
           </Link>
+          
         </div>
       </section>
       <Footer />

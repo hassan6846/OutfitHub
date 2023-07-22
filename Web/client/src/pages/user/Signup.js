@@ -26,7 +26,7 @@ const Signup = () => {
     },
 
     validateOnBlur: false,
-    validateOnChange: false,
+    validateOnChange: true,
     onSubmit: async (values) => {
       //making sure if password length is greater than 
       if (values.password.length < 8) {
@@ -73,7 +73,9 @@ const Signup = () => {
     <div>
       <Toaster position='top-center' reverseOrder={false}></Toaster>
       <div className="main_wrapper">
-
+      <Link to="/" className="login-logo">
+          <img alt="company" src="./logo.svg" />
+        </Link>
         <form onSubmit={formik.handleSubmit} method='post' className='form_wrapper'>
           <p className='signup_txt'>Create Account</p>
 
@@ -81,7 +83,7 @@ const Signup = () => {
           <input {...formik.getFieldProps('email')} className='signup_email' type="email" placeholder='Enter Email' />
           <input {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder='Enter Password' />
           <input {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder='Repeat Password' />
-          <button className='registerBtn'>Register</button>
+          <button type='submit' className='registerBtn'>Register</button>
 
           <Link to="/login">Login Instead....</Link>
         </form>

@@ -11,7 +11,13 @@ const router = express.Router();
 //middlewares
 const { isAuthenticated, authorizeRoles } = require("../middlewares/Auth")
 //controllers
-const { registerUser, loginUser, Userlogout, getAllUser, GetUsersDetails } = require("../Controllers/UserControllers")
+const {
+    registerUser,
+    loginUser,
+    Userlogout,
+    getAllUser,
+    GetUsersDetails
+} = require("../Controllers/UserControllers")
 
 //simple actions
 router.route("/register").post(registerUser)
@@ -37,8 +43,8 @@ router
 
 //Admin actions on user for doing cruds on users
 router
-.route("/admin/user/:id")
-.get()
-.put()
-.delete()
+    .route("/admin/user/:id")
+    .get()
+    .put()
+    .delete()
 module.exports = router
