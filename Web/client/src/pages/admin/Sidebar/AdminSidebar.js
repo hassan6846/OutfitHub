@@ -28,10 +28,10 @@ const AdminSidebar = () => {
         <Link className='Switch_links' to='/admin/products'>
           <BsFillBagFill />     Products
         </Link>
-        <Link className='Switch_links' to='/admin/products/add'>
+        <Link className='Switch_links' to='/admin/products/all'>
           <AiFillFileAdd />  Add New Product
         </Link>
-        <Link className='Switch_links' to='/admin/allusers'>
+        <Link className='Switch_links' to='/admin/users'>
           <HiOutlineUsers />        All Users
         </Link>
         {/* Add other links here */}

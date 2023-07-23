@@ -21,7 +21,12 @@ import Otp from './pages/user/Otp';
 // testing components
 import ProductCard from './components/ProductCard';
 import AdminSidebar from './pages/admin/Sidebar/AdminSidebar';
-
+import AllProducts from './pages/admin/Components/AllProducts';
+import AddProduct from './pages/admin/Components/AddProduct';
+import AllUsers from './pages/admin/Components/AllUsers';
+import Orders from './pages/admin/Components/Orders';
+import Messages from './pages/admin/Components/Messages';
+import AdminLogout from './pages/admin/Components/AdminLogout';
 // import SubCategorySlider from './Layouts/SubCategorySlider/SubCategorySlider';
 
 
@@ -59,6 +64,13 @@ function App() {
 <Route path='/about' element={<Faq/>}/>
 {/* protected Routes are down below */}
 <Route exact={true} path='/admin' element={<AdminSidebar/>} />
+<Route path='/admin/products' element={<AllProducts/>} />
+<Route path='/admin/products/all' element={<AddProduct/>} />
+<Route path='/admin/users' element={<AllUsers/>}/>
+<Route path='/admin/orders' element={<Orders/>}/>
+
+<Route path='/admin/messages' element={<Messages/>}/>
+<Route path='/admin/logout' element={<AdminLogout/>}/>
   </Routes>
 </Router>
 
