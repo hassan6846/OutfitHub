@@ -14,8 +14,18 @@
 }
 .public_actions{
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
 }
 .searchbtn{
     margin-left: 0.3rem;
+}
+.search_result{
+    margin-top: 0.2rem;
+    width: 13%;
+    background-color: orange;
+    position: absolute;
+    height: 350px;
+    border-radius: 0.3rem;
+    z-index: 999;
+    overflow-y: scroll;
 }

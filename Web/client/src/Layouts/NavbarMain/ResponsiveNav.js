@@ -24,6 +24,7 @@ const ResponsiveNav = () => {
       <div className='public_actions'>
        <form className='product-form'> <input  placeholder='Search Anything'/>
         <button className='searchbtn'>Search</button>
+        <div className='search_result'>Search</div>
         </form>
         <Link to="/login">Login</Link>
         <Link to="/signup">SignUp</Link>
