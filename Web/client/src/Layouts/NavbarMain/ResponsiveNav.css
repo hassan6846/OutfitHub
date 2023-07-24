@@ -1,5 +1,21 @@
-nav{
+.navbar {
     height: 80px;
     width: 100%;
     background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.nav_links {
+    display: flex;
+    gap: 1rem;
+}
+.public_actions{
+    display: flex;
+    gap: 1rem;
+}
+.searchbtn{
+    margin-left: 0.3rem;
 }
