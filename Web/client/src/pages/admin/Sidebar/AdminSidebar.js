@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useEffect} from 'react';
+import {toast,Toaster} from "react-hot-toast"
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ImSwitch } from "react-icons/im";
 import { BsGraphUpArrow, BsFillBagFill } from "react-icons/bs";
@@ -9,6 +10,10 @@ import { MdOutlinePendingActions } from "react-icons/md";
 import './AdminSidebar.css';
 
 const AdminSidebar = () => {
+  useEffect(()=>{
+    toast.success("Welcome this is example of use effect idk why it is reloading again and again")
+
+  })
   const location = useLocation();
 
   // Extract the pathname from the location object
@@ -20,6 +25,7 @@ const AdminSidebar = () => {
 
   return (
     <div className='Admin_wrapper'>
+      <Toaster/>
       <div className='Action-Sidebar'>
         <Link to='/' className='login-logo logo_admin'>
           <AiOutlineArrowLeft className='arrow' /> <img alt='company' src='./logo.svg' />
