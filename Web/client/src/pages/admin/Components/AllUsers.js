@@ -6,7 +6,7 @@ const AllUsers = () => {
   return (
     <div className='All_user_cont'>
 <div className='user_head'>
-  <h2>Users Manegment</h2>
+  <h2 className='allusers_head'>Users Manegment</h2>
   <button className='invite_btn'><IoAddSharp/> Invite User</button>
   </div>
   <p className='user_message'>There are currently 12 Users and 3 admins</p>
