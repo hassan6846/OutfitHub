@@ -91,7 +91,16 @@ text-decoration: none;
   .breadcrumb-separator {
     margin: 0 5px;
   }
-  
+  .sidetoggle_link{
+    height: 30px;position: absolute;
+    width: 30px;
+background-color: rgb(83, 83, 83);
+right: -7%;
+border-radius: 20px;
+top: 10%;
+
+}
+
 @media (min-width:300px) and (max-width:600px) {
     .Action-Sidebar{
         width: 55%;

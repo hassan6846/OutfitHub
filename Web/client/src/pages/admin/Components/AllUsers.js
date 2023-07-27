@@ -10,8 +10,15 @@ const AllUsers = () => {
   <button className='invite_btn'><IoAddSharp/> Invite User</button>
   </div>
   <p className='user_message'>There are currently 12 Users and 3 admins</p>
-  <div  className='all-users'>allUsers Would be here </div>
-  <button className='saveBtn'>Save</button>
+  <div  className='all-users'>
+    
+    <div className='user-card'>
+      
+      
+       </div>
+    
+     </div>
+
     </div>
   )
 }
