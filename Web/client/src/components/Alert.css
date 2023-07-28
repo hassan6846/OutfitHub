@@ -35,8 +35,11 @@
   }
   
   @media (min-width: 300px) and (max-width: 660px) {
-    .Alert {
+    .Alert__phone {
       display: none;
+    }
+    .alert_msg{
+      font-size: 12px;
     }
   }
   

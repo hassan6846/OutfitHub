@@ -1,6 +1,6 @@
 import React from 'react'
 import "./ResponsiveNav.css"
-
+import {BiCart} from "react-icons/bi"
 import { Link } from 'react-router-dom'
 /**
  * 
@@ -28,7 +28,7 @@ const ResponsiveNav = () => {
         </form>
         <Link className='links_btns' to="/login">Login</Link>
         <Link className='links_btns' to="/signup">SignUp</Link>
- 
+        <Link className='cart_btn_toggle'> <span className='product_counter'>1</span> <BiCart/> </Link>
       </div>
     </nav>
   )

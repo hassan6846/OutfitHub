@@ -17,14 +17,14 @@ function Alertbar() {
     <div className={`Alert ${showAlert ? 'show' : 'hide'}`}>
       <div className='wrapper'>
         {/* 1 */}
-        <div>
+        <div className='Alert__phone'>
           <p>+1 408 666 7812</p>
         </div>
         {/* 1 */}
 
         {/* 2 */}
         <div>
-          <p>
+          <p className='alert_msg'>
             Sign up today and <span>GET 20% OFF</span> on your first order{' '}
             <Link className='signup_link' to="/signup">| Sign Up Now</Link>
           </p>

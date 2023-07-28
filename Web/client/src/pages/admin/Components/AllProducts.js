@@ -38,6 +38,7 @@ const AllProducts = () => {
       <th scope="col">Selled  <CgArrowsExchangeAltV className='cgArrow'/></th>
       <th scope="col">Views  <CgArrowsExchangeAltV className='cgArrow'/></th>
       <th scope="col">Earnings  <CgArrowsExchangeAltV className='cgArrow'/></th>
+      <th scope="col">Actions  <CgArrowsExchangeAltV className='cgArrow'/></th>
     </tr>
   </thead>
   <tbody>
