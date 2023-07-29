@@ -8,8 +8,15 @@ const AllUsers = () => {
     <div className='allUser_head'>
       <p className='Users_title'> Users Manegment</p>
   <div>   
+  <label for="sort">Sort by:</label>
+<select id="sort">
+  <option value="newest">Newest </option>
+  <option value="oldest">Oldest </option>
+  <option value="activity">Most Orders</option>
+</select>
      <Link className='invite_Link'>Invite Users</Link>
-      <Link className='invite_Link'>Table Filterations</Link></div>
+
+      </div>
     </div>
     <div className='table_container'>
     <table class="table">

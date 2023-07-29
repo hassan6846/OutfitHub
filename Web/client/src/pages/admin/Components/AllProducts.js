@@ -20,8 +20,16 @@ const AllProducts = () => {
        add routes not accesble before not logged in 
        implement jwt token
        */}
-          <div className='product_actions'>
-            <Link className='add_product_link'>Most Sell</Link>
+          <div className='product_actions'>  
+          <select>
+<option>Sort by</option>
+<option>Best Seller</option>
+<option>Most Viewed</option>
+<option>Low to high</option>
+<option>high to low</option>
+<option>Recently Added</option>
+<option>Out of Stock</option>
+</select>
             <Link to="/admin/products/add" className='add_product_link'>Add Product</Link>
           </div>
      
