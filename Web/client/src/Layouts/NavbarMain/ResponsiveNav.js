@@ -19,7 +19,7 @@ const ResponsiveNav = () => {
       <div className='nav_links'>
        <form>
        <input placeholder='Search Anything' className='Search_field'/>
-       <button className='navSearchField'><IoSearchOutline className='search_ico'/></button>
+       <button className='navSearchField'><IoSearchOutline id='search_ico'/></button>
        </form>
       </div>
       {/* mobile search field */}

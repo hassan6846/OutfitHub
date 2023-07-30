@@ -32,7 +32,11 @@ Images:{},
     Subcategoy:{ 
       type:String,
       default:"undefined",
-      required:[true,"Please enter SubCategory"]
+      required:[true,"Please enter SubCategory"],
+      SubCatImg:{
+          type:String,
+          default:"Null"
+      }
     },
     Stock:{
       type: Number,

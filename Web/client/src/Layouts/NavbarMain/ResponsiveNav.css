@@ -94,8 +94,10 @@ border: none;
  background-color: #EB4034;
    width: 50px;
  
-}.search_ico{
-font-size: 1rem;
+}#search_ico{
+ color: white;
+
+font-size: 1.3rem;
 }
 @media (min-width:300px) and (max-width:600px) {
 
