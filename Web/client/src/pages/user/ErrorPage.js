@@ -8,7 +8,7 @@ useEffect(()=>{
 })
   return (
 <div>
-<div className='error__Wrapper' style={{ backgroundImage: `url(./download.png)` }} >
+<div className='error__Wrapper' style={{ backgroundImage: `url(https://flxt.tmsimg.com/assets/p194843_i_h9_ab.jpg)` }}>
 <LogoLink/>
 <p className='error_text'>404</p>
 

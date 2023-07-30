@@ -6,11 +6,7 @@ const AddProduct = () => {
     
 <div className='addproduct_container'>  
 <p className='addproduct_title'>Add Product</p>
-<select>
 
-  <option>Category</option>
-  <option>Jesse</option>
-</select>
 
 </div>
     </div>

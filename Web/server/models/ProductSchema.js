@@ -1,5 +1,5 @@
 const mongoose=require("mongoose");
-
+const User=require("./UserModel")
 const ProductSchema= new mongoose.Schema({
   //name Or title of the product
   name: {

@@ -6,47 +6,55 @@
     align-items: center;
     justify-content: space-around;
 
+}.serach_field_mobile{
+    display: none;
 }
 
 .nav_links {
     display: flex;
     gap: 1rem;
 }
-.public_actions{
+
+.public_actions {
     display: flex;
     gap: 2rem;
 }
-.searchbtn{
+
+.searchbtn {
     margin-left: 0.3rem;
     padding: 2px 15px;
-border-radius: 3rem;
+    border-radius: 3rem;
 }
-.search_result{
+
+.search_result {
     margin-top: 0.2rem;
     width: 20%;
 
     background-color: orange;
     position: absolute;
-    height:4rem;
+    height: 4rem;
     border-radius: 0.3rem;
     z-index: 999;
     overflow-y: scroll;
 }
-.links_btns{
+
+.links_btns {
     font-weight: 500;
     color: #747474;
     display: inline-block;
     position: relative;
- 
+
 }
-.search_inp{
+
+.search_inp {
     position: relative;
     padding: 3px 0px;
 }
-.links_btns:after{
+
+.links_btns:after {
     content: '';
     position: absolute;
-    width: 100%; 
+    width: 100%;
     transform: scaleX(0);
     height: 2px;
     bottom: 0;
@@ -55,11 +63,68 @@ border-radius: 3rem;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
-.links_btns:hover{
+
+.links_btns:hover {
     color: #747474;
     text-decoration: none;
 }
-.links_btns:hover::after{
+
+.links_btns:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+.Search_field{
+    padding: 12px 18px;
+  
+    background-color: #f5f5f5;
+outline: none;
+border-radius: 5px;
+border: none;
+    width: 450px;
+}
+.Search_field::placeholder{
+    color: #a7a7a7;
+    font-weight: 300;
+}
+.navSearchField{
+   height: 100%;
+   border-radius: 0px 5px 5px 0px;
+   border: none;
+   padding: 4px;
+ background-color: #EB4034;
+   width: 50px;
+ 
+}.search_ico{
+font-size: 1rem;
+}
+@media (min-width:300px) and (max-width:600px) {
+
+
+    .login_btn_nav {
+        display: none;
+    }
+
+    .signup_btn_nav {
+        display: none;
+    }
+
+    .product-form {
+        display: none;
+    }
+.navlogo{
+width: fit-content;
+height: fit-content;
+}
+    .navbar {
+        justify-content: space-between;
+      
+    }.serach_field_mobile{
+        display:block;
+    }.nav_logos{
+        width: 80px;
+        scale: 1.2;
+    }.Search_field{
+        width: 180px;
+        padding: 8px 10px;
+    }
 }

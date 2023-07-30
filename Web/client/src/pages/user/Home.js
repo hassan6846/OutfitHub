@@ -2,7 +2,7 @@
 import React,{useEffect} from 'react'
 import TrendingCarsoul from '../../components/TrendingCarsoul'
 // style sheets
-
+import "./Home.css"
 // components
 import Alertbar from '../../components/Alert'
 import Nav from "../../Layouts/NavbarMain/ResponsiveNav"
@@ -24,8 +24,11 @@ const Home = () => {
   }, []);
   return (
   <div>
+      
     <Alertbar/>
+ 
     <Nav/>
+
     <LandingCarsoul/>
     {/* trending carsoul div */}
    <div>
@@ -36,7 +39,7 @@ const Home = () => {
    {/* trending carsoul ends  div*/}
   <Cathead heading="Browse Category " LinkPage="/shop"  LinkText="See more" />
 <Catalogue/>
-<Footer MarginTop="4vmax"/>
+<Footer MarginTop="1vmax"/>
   </div>
   )
 }
