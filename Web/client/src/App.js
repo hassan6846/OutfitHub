@@ -64,6 +64,7 @@ function App() {
           <Route path='products' element={<AllProducts />} />
           <Route path='products/add' element={<AddProduct />} />
           <Route path='users' element={<AllUsers />} />
+          <Route path='user/:id'/>
           <Route path='orders' element={<Orders />} />
           <Route path='messages' element={<Messages />} />
           <Route path='logout' element={<AdminLogout />} />
