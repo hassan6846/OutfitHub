@@ -1,0 +1,16 @@
+.category_wrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+ justify-content: center;
+ color: #747474;    column-gap: 2rem;
+}
+.cat_link{
+    color: #747474;
+    font-weight: 500;
+
+}
+.cat_cont{
+    display: flex;
+    flex-direction: column;
+}

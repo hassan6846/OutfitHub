@@ -1,6 +1,7 @@
 // library
 import React,{useEffect} from 'react'
 import TrendingCarsoul from '../../components/TrendingCarsoul'
+
 // style sheets
 import "./Home.css"
 // components
@@ -12,6 +13,7 @@ import LandingCarsoul from '../../components/LandingCarsoul'
 import Catalogue from '../../components/Catalogue'
 import Cathead from '../../components/Catalogue_Heading'
 import Footer from "../../Layouts/footer/Footer"
+import CategoryBar from '../../components/CategoryBar'
 
 
 
@@ -26,9 +28,9 @@ const Home = () => {
   <div>
       
     <Alertbar/>
- 
-    <Nav/>
 
+    <Nav/>
+<CategoryBar/>
     <LandingCarsoul/>
     {/* trending carsoul div */}
    <div>

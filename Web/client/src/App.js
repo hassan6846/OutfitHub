@@ -73,7 +73,7 @@ function App() {
         {/* User Routes */}
         <Route path='/shop' element={<Products />} />
         <Route path='/cart' element={<Cart/>}/>
-        <Route path='/product/:id' element={<Singleproduct />} />
+        <Route path='/shop/product/:id' element={<Singleproduct />} />
         <Route path='/about' element={<Faq />} />
       </Routes>
     </Router>

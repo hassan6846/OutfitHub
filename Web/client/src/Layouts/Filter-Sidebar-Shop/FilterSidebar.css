@@ -4,3 +4,8 @@
     position: sticky;
     background-color: aqua;
 }
+@media (min-width:300px) and (max-width:600px) {
+    .FilterSidebar{
+        display: none;
+    }
+}

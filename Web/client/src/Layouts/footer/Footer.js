@@ -21,9 +21,9 @@ const Footer = (props) => {
 
       <div className="rightFooter">
         <h4>Follow Us</h4>
-        <a  target="__blank"  href="http://instagram.com/meabhisingh">Instagram</a>
-        <a target="__blank"  href="http://youtube.com/6packprogramemr">Youtube</a>
-        <a  target="__blank" href="http://instagram.com/meabhisingh">Facebook</a>
+        <a  target="__blank"  href="http://instagram.com/jessepinkman">Instagram</a>
+        <a target="__blank"  href="http://youtube.com/waltersus">Youtube</a>
+        <a  target="__blank" href="http://instagram.com/Solong_gay_bowser">Facebook</a>
       </div>
     </footer>
   );

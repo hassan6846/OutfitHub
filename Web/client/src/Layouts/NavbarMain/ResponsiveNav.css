@@ -6,9 +6,13 @@
     align-items: center;
     justify-content: space-around;
 
-}.serach_field_mobile{
+
+}
+
+.serach_field_mobile{
     display: none;
 }
+
 
 .nav_links {
     display: flex;
@@ -42,10 +46,15 @@
     font-weight: 500;
     color: #747474;
     display: inline-block;
+ 
     position: relative;
 
 }
-
+.list_link{
+    list-style-type: none;
+    border:1px solid black;
+   
+}
 .search_inp {
     position: relative;
     padding: 3px 0px;
@@ -72,6 +81,32 @@
 .links_btns:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+.user_account_image{
+    height: 35px;
+    border-radius:20px;
+object-fit: contain;
+image-rendering:optimizeQuality ;
+}
+.logged_true_userAcc{
+    list-style: none;
+    text-decoration: none;
+    position: relative;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+.list_actions{
+    position: absolute;
+    display: none;
+padding: 15px 16px;
+min-width: 160px;
+   border-radius: 3px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.logged_true_userAcc:hover .list_actions{
+display: block;
 }
 .Search_field{
     padding: 12px 18px;
@@ -105,6 +140,8 @@ font-size: 1.3rem;
     .login_btn_nav {
         display: none;
     }
+    
+
 
     .signup_btn_nav {
         display: none;
@@ -123,10 +160,22 @@ height: fit-content;
     }.serach_field_mobile{
         display:block;
     }.nav_logos{
-        width: 80px;
+        width: 50px;
         scale: 1.2;
-    }.Search_field{
+    }.public_actions{
+        gap: 0.3rem;
+        flex-direction: row-reverse;
+    }
+    
+    .Search_field{
         width: 180px;
         padding: 8px 10px;
+    }
+}
+@media (min-width:820px) and (max-width:1180px) {
+    .Search_field{
+        width: 275px;
+    }.public_actions{
+        gap: 1rem ;
     }
 }

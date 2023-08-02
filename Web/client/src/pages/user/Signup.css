@@ -46,3 +46,10 @@ row-gap: 0.003rem;
     border-radius: 5px;
     background-color: #3F3F46;
 }
+@media (min-width:300px) and (max-width:600px) {
+    .form_wrapper{
+        width: 76%;
+        margin-top: 2rem;
+    }
+}
+/* ipad media query */

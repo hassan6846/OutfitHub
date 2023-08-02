@@ -1,14 +1,28 @@
-.top_gap{
-    width: 100%;  
-    /* background-color: red; */
-    height: 1.7rem;
+.parental-row_product{
+width: 100%;
+background-color: orange;
+display: flex;
+height: 100vh;
 }
-.shop_filter_Wrapper{
-    width: 100%;
-    height: 90vh;
-    display: flex;
-    flex-direction: row;
-    background-color: red;
-}.shop-wrapper{
-    display: flex;
+.sidebar_product{
+width: 25%;
+background-color: gray;
+height: 100%;
 }
+.product_container_cards{
+width: 100%;
+height: 100%;
+background-color: black;
+color: white;
+text-align: center;
+font-size: 5rem;
+
+}
+.product-page-wrapper{
+    height: fit-content;
+}
+.sidebar_product.toggled {
+    /* Your styles for the toggled sidebar here */
+    /* For example, set width to 5 */
+    width: 5%;
+  }

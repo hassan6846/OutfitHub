@@ -27,10 +27,21 @@ const ResponsiveNav = () => {
      
       <div className='public_actions'>
         
-      
+      <div className='logged_true_userAcc'><img className='user_account_image' alt='users_img' src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80'/>
+      {/* add user acctions while he is loged in */}
+     <div className='dropdown'>
+     <ul className='list_actions'>
+        <li className='list_link'><Link>Profile</Link></li>
+        <li  className='list_link' > Orders</li>
+        <li className='list_link' >Liked</li>
+        <li className='list_link' >Faqs</li>
+        <li className='list_link' >Logout</li>
+      </ul>
+     </div>
+      </div>
         <Link className='links_btns login_btn_nav' to="/login">Login</Link>
         <Link className='links_btns signup_btn_nav' to="/signup">SignUp</Link>
-        <Link className='cart_btn_toggle'> <span className='product_counter'>1</span> <BiCart/> </Link>
+        <Link to="/cart" className='cart_btn_toggle'> <span className='product_counter'>1</span> <BiCart/> </Link>
       </div>
     </nav>
   )

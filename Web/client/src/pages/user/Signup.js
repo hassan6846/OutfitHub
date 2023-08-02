@@ -11,6 +11,7 @@ import { useFormik } from 'formik'
 import "./Signup.css"
 // layouts or components
 import Footer from '../../Layouts/footer/Footer'
+import axios from 'axios'
 
 
 const Signup = () => {
@@ -66,7 +67,21 @@ const Signup = () => {
         toast.error('Username must contain at least one special character');
 
       }
-      // name already exist
+ const api=axios.create({
+  baseURL: "http://localhost:3001"
+ })
+  const Register=()=>{
+    axios.post("/api/v1/register",{
+      username:values.username,
+      email:values.email,
+      password:values.password
+    })
+  }
+  toast.promise(Register,{
+    loading:"Creating Account",
+    success:<b>Account Created Successfully</b>,
+    error:<b>Error While creating account</b>
+  })
     }
   })
   return (
