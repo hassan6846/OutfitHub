@@ -2,7 +2,8 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import "./CategoryBar.css"
 import 'swiper/css';
-import {Swiper,SwiperSlide} from "swiper/react"
+import {Swiper,SwiperSlide,} from "swiper/react"
+import {Pagination } from "swiper"
 const CategoryBar = () => {
   return (
     <div className='cat_cont'>   
@@ -15,9 +16,11 @@ const CategoryBar = () => {
     <Link className='cat_link'>Beauty</Link>
     <Link className='cat_link'>Jewellery</Link>
         </div>
-<div className='category_items_slider'>
+<Swiper 
+
+className='category_items_slider'>
   The Selectable SubCategoryItems will be here but i  center
-</div>
+</Swiper>
         </div>
 
   )

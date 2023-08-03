@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'; // Import motion and An
 import Nav from '../../Layouts/NavbarMain/ResponsiveNav';
 import Footer from '../../Layouts/footer/Footer';
 import CategoryBar from '../../components/CategoryBar';
-
+import Card from "../../components/ProductCard"
+import ProductCard from '../../components/ProductCard';
 const Products = () => {
   const [isSidebarToggled, setIsSidebarToggled] = useState(false);
 
@@ -29,7 +30,7 @@ const Products = () => {
             <button onClick={handleSidebarToggle}>Toggle</button>
           </motion.div>
         </AnimatePresence>
-        <div className='product_container_cards'>2</div>
+        <div className='product_container_cards'><ProductCard/></div>
       </div>
       <Footer />
     </div>

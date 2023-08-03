@@ -25,6 +25,7 @@ import ResetPassword from './pages/user/ResetPassword';
 import Faq from './pages/user/Faq';
 import Otp from './pages/user/Otp';
 import { Cart } from './pages/user/Cart';
+import UserProfilePage from './pages/user/UserProfilePage';
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -74,6 +75,7 @@ function App() {
         <Route path='/shop' element={<Products />} />
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/shop/product/:id' element={<Singleproduct />} />
+        <Route path="/user/:id" element={<UserProfilePage/>}/>
         <Route path='/about' element={<Faq />} />
       </Routes>
     </Router>

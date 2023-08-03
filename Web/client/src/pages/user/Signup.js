@@ -59,29 +59,32 @@ const Signup = () => {
         toast.error("Username must be at least 6 characters long ");
         return;
       }
-      else if (!uppercaseRegex.test(values.username)) {
-        toast.error('Username must contain at least one uppercase character');
-        return;
-      }
-      else if (!specialChar.test(values.username)) {
-        toast.error('Username must contain at least one special character');
 
-      }
  const api=axios.create({
   baseURL: "http://localhost:3001"
  })
-  const Register=()=>{
-    axios.post("/api/v1/register",{
-      username:values.username,
-      email:values.email,
-      password:values.password
-    })
-  }
-  toast.promise(Register,{
-    loading:"Creating Account",
-    success:<b>Account Created Successfully</b>,
-    error:<b>Error While creating account</b>
-  })
+      // register promise pending
+      const Register=async()=>{
+        try{
+          const response=await api.post("/api/v1/register",{
+            username:values.username,
+            email:values.email,
+            password:values.password,
+
+          })
+          return response.data
+        }
+        catch(err){
+       throw(err)
+        }
+      }
+      toast.promise(Register(),{
+        loading: "Creating Account",
+        success: <b>Account Created Successfully</b>,
+        error: <b>Error While creating account</b>,
+        
+      })
+
     }
   })
   return (

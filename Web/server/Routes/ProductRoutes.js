@@ -20,8 +20,8 @@ router.route("/product/:id").get()
 /**
  *Admin Routes 
  */
-router.route("/admin/products")
-.get()
-router.route("/admin/products/new")
-router.route("/admin/product/:id")
+router.route("/admin/products").get()
+// create a new product
+router.route("/admin/products/new").post()
+router.route("/admin/product/:id").get()
 module.exports = router
