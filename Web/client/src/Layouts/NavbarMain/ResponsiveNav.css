@@ -9,15 +9,47 @@
 
 }
 
-.serach_field_mobile{
+.serach_field_mobile {
     display: none;
 }
 
 
 .nav_links {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+position: relative;
     gap: 1rem;
 }
+.Search_results{
+    background-color: orange;
+    width: 100%;
+    overflow-y: scroll;
+    position: absolute;
+border-radius: 5px;
+top: 110%;
+}
+/* scroll design */
+
+.Search_results::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.Search_results::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.Search_results::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+}
+
+
+/* ends here */
 
 .public_actions {
     display: flex;
@@ -46,15 +78,17 @@
     font-weight: 500;
     color: #747474;
     display: inline-block;
- 
+
     position: relative;
 
 }
-.list_link{
+
+.list_link {
     list-style-type: none;
-    border:1px solid black;
-   
+    border: 1px solid black;
+
 }
+
 .search_inp {
     position: relative;
     padding: 3px 0px;
@@ -82,65 +116,82 @@
     transform: scaleX(1);
     transform-origin: bottom left;
 }
-.user_account_image{
+
+.user_account_image {
     height: 35px;
-    border-radius:20px;
-object-fit: contain;
-image-rendering:optimizeQuality ;
+    border-radius: 20px;
+    object-fit: contain;
+    image-rendering: optimizeQuality;
 }
-.logged_true_userAcc{
+
+.logged_true_userAcc {
     list-style: none;
     text-decoration: none;
     position: relative;
 }
-.dropdown{
+
+.dropdown {
     position: relative;
     display: inline-block;
 }
-.list_actions{
+
+.list_actions {
     position: absolute;
     display: none;
-padding: 15px 16px;
-min-width: 160px;
-   border-radius: 3px;
+    padding: 15px 16px;
+    min-width: 160px;
+    border-radius: 3px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.logged_true_userAcc:hover .list_actions{
-display: block;
+
+.logged_true_userAcc:hover .list_actions {
+    display: block;
 }
-.Search_field{
+
+.Search_field {
     padding: 12px 18px;
-  
+
     background-color: #f5f5f5;
-outline: none;
-border-radius: 5px;
-border: none;
+    outline: none;
+    border-radius: 5px;
+    border: none;
     width: 450px;
 }
-.Search_field::placeholder{
+
+.Search_field:focus {
+    border: 1px solid #eb4034c0;
+    box-shadow: 0 0 0 1px rgba(235, 64, 52, 0.5);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.Search_field::placeholder {
     color: #a7a7a7;
     font-weight: 300;
 }
-.navSearchField{
-   height: 100%;
-   border-radius: 0px 5px 5px 0px;
-   border: none;
-   padding: 4px;
- background-color: #EB4034;
-   width: 50px;
- 
-}#search_ico{
- color: white;
 
-font-size: 1.3rem;
+.navSearchField {
+    height: 100%;
+    border-radius: 0px 5px 5px 0px;
+    border: none;
+    padding: 12px;
+    background-color: #EB4034;
+    width: 50px;
+
 }
+
+#search_ico {
+    color: white;
+
+    font-size: 1.3rem;
+}
+
 @media (min-width:300px) and (max-width:600px) {
 
 
     .login_btn_nav {
         display: none;
     }
-    
+
 
 
     .signup_btn_nav {
@@ -150,32 +201,43 @@ font-size: 1.3rem;
     .product-form {
         display: none;
     }
-.navlogo{
-width: fit-content;
-height: fit-content;
-}
+
+    .navlogo {
+        width: fit-content;
+        height: fit-content;
+    }
+
     .navbar {
         justify-content: space-between;
-      
-    }.serach_field_mobile{
-        display:block;
-    }.nav_logos{
+
+    }
+
+    .serach_field_mobile {
+        display: block;
+    }
+
+    .nav_logos {
         width: 50px;
         scale: 1.2;
-    }.public_actions{
+    }
+
+    .public_actions {
         gap: 0.3rem;
         flex-direction: row-reverse;
     }
-    
-    .Search_field{
+
+    .Search_field {
         width: 180px;
         padding: 8px 10px;
     }
 }
+
 @media (min-width:820px) and (max-width:1180px) {
-    .Search_field{
+    .Search_field {
         width: 275px;
-    }.public_actions{
-        gap: 1rem ;
+    }
+
+    .public_actions {
+        gap: 1rem;
     }
 }

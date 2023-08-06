@@ -17,10 +17,13 @@ const ResponsiveNav = () => {
     
       <div className='navlogo'><Link to="/"><img className='nav_logos' src='./logo.svg' alt='logo'/></Link></div>
       <div className='nav_links'>
-       <form>
+        <div>
+       <form className='form'>
        <input placeholder='Search Anything' className='Search_field'/>
        <button className='navSearchField'><IoSearchOutline id='search_ico'/></button>
        </form>
+       </div>
+       <div className='Search_results'>Search</div>
       </div>
       {/* mobile search field */}
    
