@@ -2,7 +2,7 @@ import React from 'react';
 import "./ForgotPassword.css";
 import { useFormik } from 'formik';
 import { Link } from "react-router-dom";
-import Footer from "../../Layouts/footer/Footer";
+import Footer from "../../../Layouts/footer/Footer";
 import toast, { Toaster } from 'react-hot-toast';
 
 const ForgotPassword = () => {

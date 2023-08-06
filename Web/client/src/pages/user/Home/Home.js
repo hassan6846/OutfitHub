@@ -1,19 +1,19 @@
 // library
 import React,{useEffect} from 'react'
-import TrendingCarsoul from '../../components/TrendingCarsoul'
+import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul'
 
 // style sheets
 import "./Home.css"
 // components
-import Alertbar from '../../components/Alert'
-import Nav from "../../Layouts/NavbarMain/ResponsiveNav"
-import LandingCarsoul from '../../components/LandingCarsoul'
-// import TrendingHead from '../../components/TrendingHead'
+import Alertbar from '../../../components/Alert/Alert'
+import Nav from "../../../Layouts/NavbarMain/ResponsiveNav"
+import LandingCarsoul from '../../../components/LandingCarsoul/LandingCarsoul'
+// import TrendingHead from "../../components/CatalogueHeading/"
 
-import Catalogue from '../../components/Catalogue'
-import Cathead from '../../components/Catalogue_Heading'
-import Footer from "../../Layouts/footer/Footer"
-import CategoryBar from '../../components/CategoryBar'
+import Catalogue from '../../../components/Catalogue/Catalogue'
+import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading'
+import Footer from "../../../Layouts/footer/Footer"
+import CategoryBar from '../../../components/CategoryBar/CategoryBar'
 
 
 

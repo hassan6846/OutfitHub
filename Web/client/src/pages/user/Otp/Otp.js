@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 // footer
-import Footer from "../../Layouts/footer/Footer"
+import Footer from "../../../Layouts/footer/Footer"
 import "./Otp.css"
 const Otp = () => {
     return (

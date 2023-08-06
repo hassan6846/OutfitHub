@@ -1,9 +1,9 @@
 import React from 'react';
 import './products.css';
 
-import Nav from '../../Layouts/NavbarMain/ResponsiveNav';
-import Footer from '../../Layouts/footer/Footer';
-import CategoryBar from '../../components/CategoryBar';
+import Nav from '../../../Layouts/NavbarMain/ResponsiveNav';
+import Footer from '../../../Layouts/footer/Footer';
+import CategoryBar from '../../../components/CategoryBar/CategoryBar';
 
 const Products = () => {
   

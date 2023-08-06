@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import './Login.css';
-import Footer from '../../Layouts/footer/Footer';
+import Footer from '../../../Layouts/footer/Footer';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from "axios";
 

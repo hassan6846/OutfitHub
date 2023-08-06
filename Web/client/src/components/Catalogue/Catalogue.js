@@ -1,5 +1,7 @@
 // imports css
-import React from 'react'
+import React,{PropsWithChildren} from 'react'
+import Skeleton,{SkeletonTheme} from "react-loading-skeleton"
+import 'react-loading-skeleton/dist/skeleton.css'
 import "./Catalogue.css";
 import { Link } from 'react-router-dom'
 

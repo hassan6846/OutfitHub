@@ -10,7 +10,7 @@ import { useFormik } from 'formik'
 // css
 import "./Signup.css"
 // layouts or components
-import Footer from '../../Layouts/footer/Footer'
+import Footer from '../../../Layouts/footer/Footer'
 import axios from 'axios'
 
 
