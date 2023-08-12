@@ -1,6 +1,8 @@
 // Modules or Utils
-import React, { useEffect } from 'react'
+import React, { useEffect} from 'react'
 import { Link } from 'react-router-dom'
+
+
 import { BiLeftArrowAlt } from "react-icons/bi"
 // css
 import "./ErrorPage.css"
@@ -9,12 +11,13 @@ import Logo from "../../../components/LogoLink"
 import Footer from "../../../Layouts/footer/Footer"
 
 const ErrorPage = () => {
+
   useEffect(() => {
     document.title = 404
   })
   return (
     <div>
-      <Logo to="/" />
+<Logo/>
       <div id="notfound">
         <div class="notfound">
           <div class="notfound-404">

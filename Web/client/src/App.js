@@ -17,7 +17,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from './pages/user/Home/Home';
 // import LoginPage from './pages/user/Login/Login';
 // import SignupPage from './pages/user/Register/Signup';
-// import ErrorPage from './pages/user/404/ErrorPage';
+import ErrorPage from './pages/user/404/ErrorPage';
 // import Products from './pages/user/Shop/Products';
 // import Singleproduct from './pages/user/ProductDetails/Singleproduct';
 // import ForgotPassword from './pages/user/ForgotPassword/ForgotPassword';
@@ -45,7 +45,7 @@ function App() {
         <Route path='/password/otp/:token' element={<Otp />} /> */}
 
         {/* 404 page */}
-        {/* <Route path='*' element={<ErrorPage />} /> */}
+        <Route path='*' element={<ErrorPage />} />
 
         {/* Protected Routes */}
         {/* <Route path='/admin/*' element={<AdminSidebar />}> */}
