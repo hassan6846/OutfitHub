@@ -26,7 +26,8 @@ import ErrorPage from './pages/user/404/ErrorPage';
 // import Otp from './pages/user/Otp/Otp';
 // import { Cart } from './pages/user/Cart/Cart';
 // import UserProfilePage from './pages/user/UserProfilePage';
-
+//card
+import ProductCard from "./components/Card/ProductCard"
 function App() {
 
 
@@ -65,6 +66,9 @@ function App() {
         <Route path='/shop/product/:id' element={<Singleproduct />} />
         <Route path="/user/:id" element={<UserProfilePage/>}/> */}
         {/* <Route path='/faqs' element={<Faq />} /> */}
+
+        {/* testing components */}
+        <Route path='/component/card' element={<ProductCard/>}/>
       </Routes>
     </Router>
   );
