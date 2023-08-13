@@ -1,7 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
 .category_wrapper{
     width: 100%;
     height: auto;
     display: flex;
+
  justify-content: center;
  color: #747474;    column-gap: 2rem;
 }
@@ -13,4 +20,9 @@
 .cat_cont{
     display: flex;
     flex-direction: column;
+}
+@media (min-width:300px) and (max-width:600px) {
+ .category_wrapper{
+    column-gap: 1rem;
+ }   
 }

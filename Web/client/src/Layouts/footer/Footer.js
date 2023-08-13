@@ -8,8 +8,8 @@ const Footer = (props) => {
       <div className="leftFooter">
         <h4>DOWNLOAD OUR APP</h4>
         <p>Download App for Android and IOS mobile phone</p>
-        <img src="./playstore.png" alt="playstore" />
-        <img src="./Appstore.png" alt="Appstore" />
+        <img className="store_image"  src="./playstore.png" alt="playstore" />
+        <img className="store_image" src="./Appstore.png" alt="Appstore" />
       </div>
 
       <div className="midFooter">

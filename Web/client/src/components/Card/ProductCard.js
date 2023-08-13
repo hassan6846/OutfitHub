@@ -14,7 +14,7 @@ export default function ProductCard(props) {
       <div className="card">
         <div className="image-container">
           <div className="sale_intro">20% Off</div>
-          <img src={props.image} alt="ProductImage" />
+          <img  className="product_card_image_view" src={props.image} alt="ProductImage" />
           <div
            
           >

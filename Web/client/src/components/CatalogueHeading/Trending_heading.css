@@ -4,6 +4,7 @@
     height: fit-content;
     flex-direction: row;
     margin-top: 1rem;
+    margin-bottom: 10px;
     /* background-color: red; */
     justify-content: center;
 }

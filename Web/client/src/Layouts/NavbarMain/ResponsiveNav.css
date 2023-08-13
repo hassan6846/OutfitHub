@@ -8,11 +8,18 @@
 
 
 }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 .serach_field_mobile {
     display: none;
 }
-
+.search_form{
+    display: flex;
+}
 
 .nav_links {
     display: flex;
@@ -28,6 +35,9 @@ position: relative;
     position: absolute;
 border-radius: 5px;
 top: 110%;
+}
+.Search_results{
+    display: none;
 }
 /* scroll design */
 
@@ -178,6 +188,11 @@ top: 110%;
     width: 50px;
 
 }
+.nav_logos_img{
+  
+
+    height: 30px;
+}
 
 #search_ico {
     color: white;
@@ -186,7 +201,10 @@ top: 110%;
 }
 
 @media (min-width:300px) and (max-width:600px) {
-
+.navSearchField{
+    height: 40px;
+    padding: 2px;
+}
 
     .login_btn_nav {
         display: none;
@@ -211,9 +229,14 @@ top: 110%;
         justify-content: space-between;
 
     }
-
+.navSearchField{
+    width: 35px;
+}
     .serach_field_mobile {
         display: block;
+    }
+    .nav_logos_img{
+        height: 18px;
     }
 
     .nav_logos {
@@ -222,22 +245,33 @@ top: 110%;
     }
 
     .public_actions {
-        gap: 0.3rem;
+        gap: 5px;
+        align-items: center;
         flex-direction: row-reverse;
     }
 
     .Search_field {
-        width: 180px;
+        width: 170px;
+        height: 40px;
         padding: 8px 10px;
     }
-}
-
-@media (min-width:820px) and (max-width:1180px) {
-    .Search_field {
-        width: 275px;
-    }
-
-    .public_actions {
-        gap: 1rem;
+    .user_account_image{
+        height: 24px;
     }
 }
+
+
+/* Target iPad in portrait mode */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .public_actions{
+    gap: 0.8rem;
+align-items: center;
+flex-direction: row-reverse;
+  }
+  .Search_field{
+    width: 320px;
+  }.dropdown{
+    top: 1rem;
+    right: 10rem;
+  }
+  }

@@ -15,10 +15,10 @@ function Alertbar() {
 
   return (
     <div className={`Alert ${showAlert ? 'show' : 'hide'}`}>
-      <div className='wrapper'>
+      <div className='alerted_wrapper'>
         {/* 1 */}
         <div className='Alert__phone'>
-          <p>+1 408 666 7812</p>
+          <p style={{marginBottom:"0px"}}>+1 408 666 7812</p>
         </div>
         {/* 1 */}
 
@@ -33,7 +33,7 @@ function Alertbar() {
 
         {/* 3 */}
         <div className='closebtn' onClick={closeAlert}>
-          <img src='/close.svg' alt='Close button' className='svg' />
+          <img src='/close.svg' alt='Close button' className='close_alert_svg' />
         </div>
         {/* 3 */}
       </div>

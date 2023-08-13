@@ -1,43 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import Card from "../Card/ProductCard";
-import Axios from "axios";
+import React from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import {  Navigation } from 'swiper/modules';
+// Import Swiper styles
+import "swiper/css";
+import 'swiper/css/navigation';
 
-const TrendingCarousel = () => {
-  const [products, setProducts] = useState([]);
+import "./TrendingCarsoul.css";
 
-  useEffect(() => {
-    Axios.get("https://fakestoreapi.com/products")
-      .then(response => {
-        const mensClothingProducts = response.data.filter(product => product.category === "men's clothing");
-        setProducts(mensClothingProducts);
-      })
-      .catch(error => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-
+export default function TrendingCarsoul() {
   return (
-    <div>
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={2}
-        navigation
+    <>
+      <Swiper 
+  
+  breakpoints={{
+    
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 4,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 6,
+      spaceBetween: 50,
+    },
+  }}
+
+      navigation={true} modules={[Navigation]} className="mySwiper"
+      
       >
-        {products.map(product => (
-          <SwiperSlide key={product.id}>
-            <Card
-              image={product.image} // Pass the image URL here
-              originalPrice={product.price} // Pass the price
-              discountedPrice={product.discountedPrice} // Pass the discounted price if available
-              productName={product.title} // Pass the product title
-            />
-          </SwiperSlide>
-        ))}
+
+        <SwiperSlide>Slide 1</SwiperSlide>
+        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide>Slide 4</SwiperSlide>
+        <SwiperSlide>Slide 5</SwiperSlide>
+        <SwiperSlide>Slide 6</SwiperSlide>
+        <SwiperSlide>Slide 7</SwiperSlide>
+        <SwiperSlide>Slide 8</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>Slide 10</SwiperSlide>
       </Swiper>
-    </div>
+    </>
   );
 }
-
-export default TrendingCarousel;

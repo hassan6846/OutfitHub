@@ -38,11 +38,11 @@ function App() {
       <Routes>
         {/* Public Routes */}
         <Route path='/' element={<Home />} />
-        {/* <Route path='/login' element={<LoginPage />} />
-        <Route path='/signup' element={<SignupPage />} />
-        <Route exact path='/password/forgot' element={<ForgotPassword />} />
+         {/* <Route path='/login' element={<LoginPage />} />
+        <Route path='/signup' element={<SignupPage />} /> */}
+        {/* <Route exact path='/password/forgot' element={<ForgotPassword />} />
         <Route exact path='/password/reset/:token' element={<ResetPassword />} />
-        <Route path='/password/otp/:token' element={<Otp />} /> */}
+        <Route path='/password/otp/:token' element={<Otp />} />  */}
 
         {/* 404 page */}
         <Route path='*' element={<ErrorPage />} />

@@ -26,7 +26,7 @@ footer {
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
-  .leftFooter > img {
+  .store_image {
     width: 10vmax;
     margin: 1vmax;
     cursor: pointer;
