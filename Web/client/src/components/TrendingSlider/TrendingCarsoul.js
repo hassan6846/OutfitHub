@@ -32,9 +32,13 @@ breakpoints={{
         slidesPerView:2
   },
 
-  1024:{
+  1100:{
         slidesPerView:5,
-        spaceBetween:0,
+        spaceBetween:30,
+  },
+  1280:{
+    slidesPerView:5,
+        spaceBetween:150,
   },
   768:{
 slidesPerView:3,
