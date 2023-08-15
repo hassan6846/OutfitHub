@@ -21,7 +21,7 @@ import ErrorPage from './pages/user/404/ErrorPage';
  import ForgotPassword from './pages/user/ForgotPassword/ForgotPassword';
  import ResetPassword from './pages/user/ResetPassword/ResetPassword';
 import Products from './pages/user/Shop/Products';
-// import Singleproduct from './pages/user/ProductDetails/Singleproduct';
+import Singleproduct from './pages/user/ProductDetails/Singleproduct';
 
 
 // import Faq from './pages/user/Faqs/Faq';
@@ -65,7 +65,7 @@ function App() {
         {/* User Routes */}
         <Route path='/shop' element={<Products />} />
          <Route path='/cart' element={<Cart/>}/>
-         {/* <Route path='/shop/product/:id' element={<Singleproduct />} /> */}
+         <Route path='/shop/product/:id' element={<Singleproduct />} />
         {/* <Route path="/user/:id" element={<UserProfilePage/>}/>  */}
         {/* <Route path='/faqs' element={<Faq />} /> */}
 

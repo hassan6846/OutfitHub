@@ -35,7 +35,7 @@ const Home = () => {
     {/* trending carsoul div */}
    <div>
    {/* <TrendingHead/> */}
-   <Cathead heading="Trending Products"  LinkText="See more items" />
+   <Cathead heading="Trending Products" LinkPage="/shop/trending"  LinkText="See more items" />
    < TrendingCarsoul />
    </div>
    {/* trending carsoul ends  div*/}

@@ -4,9 +4,9 @@ import React from 'react'
 import "./Singleproduct.css"
 // components or Layouts
 
-import ResponsiveNav from '../../Layouts/NavbarMain/ResponsiveNav'
-import ProductView from '../../Layouts/SingleProductView/ProductView'
-import Footer from '../../Layouts/footer/Footer'
+import ResponsiveNav from '../../../Layouts/NavbarMain/ResponsiveNav'
+import SingleproductView from "../../../Layouts/SingleProductView/ProductView"
+import Footer from '../../../Layouts/footer/Footer'
 import BreadCrumb from '../../../Layouts/BreadCrumb/BreadCrumb'
 
 
@@ -17,7 +17,7 @@ const Singleproduct = () => {
       <ResponsiveNav/>
 <div className='SingleViewContainer'>
    <BreadCrumb/>
-   <ProductView/>
+   <SingleproductView/>
 </div>
 <Footer/>
     </div>
