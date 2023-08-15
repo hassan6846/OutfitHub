@@ -15,16 +15,18 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
  * Pages
  */
 import Home from './pages/user/Home/Home';
-// import LoginPage from './pages/user/Login/Login';
-// import SignupPage from './pages/user/Register/Signup';
+import LoginPage from './pages/user/Login/Login';
+import SignupPage from './pages/user/Register/Signup';
 import ErrorPage from './pages/user/404/ErrorPage';
-// import Products from './pages/user/Shop/Products';
+ import ForgotPassword from './pages/user/ForgotPassword/ForgotPassword';
+ import ResetPassword from './pages/user/ResetPassword/ResetPassword';
+import Products from './pages/user/Shop/Products';
 // import Singleproduct from './pages/user/ProductDetails/Singleproduct';
-// import ForgotPassword from './pages/user/ForgotPassword/ForgotPassword';
-// import ResetPassword from './pages/user/ResetPassword/ResetPassword';
+
+
 // import Faq from './pages/user/Faqs/Faq';
 // import Otp from './pages/user/Otp/Otp';
-// import { Cart } from './pages/user/Cart/Cart';
+import { Cart } from './pages/user/Cart/Cart';
 // import UserProfilePage from './pages/user/UserProfilePage';
 //card
 import ProductCard from "./components/Card/ProductCard"
@@ -39,11 +41,11 @@ function App() {
       <Routes>
         {/* Public Routes */}
         <Route path='/' element={<Home />} />
-         {/* <Route path='/login' element={<LoginPage />} />
-        <Route path='/signup' element={<SignupPage />} /> */}
-        {/* <Route exact path='/password/forgot' element={<ForgotPassword />} />
-        <Route exact path='/password/reset/:token' element={<ResetPassword />} />
-        <Route path='/password/otp/:token' element={<Otp />} />  */}
+         <Route path='/login' element={<LoginPage />} />
+        <Route path='/signup' element={<SignupPage />} />
+         <Route exact path='/password/forgot' element={<ForgotPassword />} />
+        <Route exact path='/password/reset/:id' element={<ResetPassword />} />
+        {/* <Route path='/password/otp/:token' element={<Otp />} />   */}
 
         {/* 404 page */}
         <Route path='*' element={<ErrorPage />} />
@@ -61,10 +63,10 @@ function App() {
         {/* </Route> */}
 
         {/* User Routes */}
-        {/* <Route path='/shop' element={<Products />} /> */}
-        {/* <Route path='/cart' element={<Cart/>}/>
-        <Route path='/shop/product/:id' element={<Singleproduct />} />
-        <Route path="/user/:id" element={<UserProfilePage/>}/> */}
+        <Route path='/shop' element={<Products />} />
+         <Route path='/cart' element={<Cart/>}/>
+         {/* <Route path='/shop/product/:id' element={<Singleproduct />} /> */}
+        {/* <Route path="/user/:id" element={<UserProfilePage/>}/>  */}
         {/* <Route path='/faqs' element={<Faq />} /> */}
 
         {/* testing components */}

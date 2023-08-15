@@ -7,8 +7,8 @@
 }
 
 .form_wrapper {
-    height: 75%;
-    width: 30%;
+    height: 65%;
+    width: 25%;
 row-gap: 0.003rem;
     display: flex;
     flex-direction: column;
@@ -36,6 +36,7 @@ row-gap: 0.003rem;
 .signup_email {
     width: 90%;
     height: 3rem;
+    padding: 0px 1rem;
 }
 
 .registerBtn {
@@ -53,3 +54,9 @@ row-gap: 0.003rem;
     }
 }
 /* ipad media query */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    .form_wrapper{
+      width: 55%;
+      height: 65%;
+    }
+    }

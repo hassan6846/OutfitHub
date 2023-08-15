@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { useFormik } from 'formik';
 import './Login.css';
 import Footer from '../../../Layouts/footer/Footer';
@@ -88,7 +89,7 @@ const Login = () => {
           <form onSubmit={formik.handleSubmit} className="login-form">
             <input
               {...formik.getFieldProps('email')}
-              className="otp-input"
+              className="login-input"
               type="email"
               placeholder="Enter Email"
             />
@@ -98,7 +99,7 @@ const Login = () => {
 
             <input
               {...formik.getFieldProps('password')}
-              className="otp-input"
+              className="login-input"
               type="password"
               placeholder="Enter Password"
             />

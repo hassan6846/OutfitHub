@@ -16,8 +16,7 @@ const ForgotPassword = () => {
       if (!isValidEmail(values.email)) {
         toast.error('Kindly fill all the fields');
       } else {
-        // Perform password recovery logic here
-        // Display success message or navigate to another page
+        
       }
     },
   });
