@@ -1,78 +1,34 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-// import WebFont from "webfontloader";
-// import AdminSidebar from './pages/admin/Sidebar/AdminSidebar';
-// import Overview from './pages/admin/Components/Overview';
-// import AllProducts from './pages/admin/Components/AllProducts';
-// import AddProduct from './pages/admin/Components/AddProduct';
-// import AllUsers from './pages/admin/Components/AllUsers';
-// import Orders from './pages/admin/Components/Orders';
-// import Messages from './pages/admin/Components/Messages';
-// import AdminLogout from './pages/admin/Components/AdminLogout';
+import React, { useReducer } from 'react';
+import { UserContext } from './context/UserContext';
+import AllRoutes from './Routing';
 
 /**
  * Pages
  */
-import Home from './pages/user/Home/Home';
-import LoginPage from './pages/user/Login/Login';
-import SignupPage from './pages/user/Register/Signup';
-import ErrorPage from './pages/user/404/ErrorPage';
- import ForgotPassword from './pages/user/ForgotPassword/ForgotPassword';
- import ResetPassword from './pages/user/ResetPassword/ResetPassword';
-import Products from './pages/user/Shop/Products';
-import Singleproduct from './pages/user/ProductDetails/Singleproduct';
 
+// Define your initialState and reducer functions here
+const initialState = {}; // Replace with your initial state
+const reducer = (state, action) => {
+  // Define your reducer logic here
+  return state;
+};
+const init = (initialState) => {
+  // Define your init logic here if needed
+  return initialState;
+};
 
-// import Faq from './pages/user/Faqs/Faq';
-// import Otp from './pages/user/Otp/Otp';
-import { Cart } from './pages/user/Cart/Cart';
-// import UserProfilePage from './pages/user/UserProfilePage';
-//card
-import ProductCard from "./components/Card/ProductCard"
 function App() {
+  /**
+   * // benefits of loading fonts in app.js
+   *  we need context api
+   */
 
-
-  // benefits of loading fonts in app.js
- 
+  const [state, dispatch] = useReducer(reducer, initialState, init);
 
   return (
-    <Router>
-      <Routes>
-        {/* Public Routes */}
-        <Route path='/' element={<Home />} />
-         <Route path='/login' element={<LoginPage />} />
-        <Route path='/signup' element={<SignupPage />} />
-         <Route exact path='/password/forgot' element={<ForgotPassword />} />
-        <Route exact path='/password/reset/:id' element={<ResetPassword />} />
-        {/* <Route path='/password/otp/:token' element={<Otp />} />   */}
-
-        {/* 404 page */}
-        <Route path='*' element={<ErrorPage />} />
-
-        {/* Protected Routes */}
-        {/* <Route path='/admin/*' element={<AdminSidebar />}> */}
-          {/* <Route index element={<Overview />} />
-          <Route path='products' element={<AllProducts />} />
-          <Route path='products/add' element={<AddProduct />} />
-          <Route path='users' element={<AllUsers />} />
-          <Route path='user/:id'/>
-          <Route path='orders' element={<Orders />} /> */}
-          {/* <Route path='messages' element={<Messages />} />
-          <Route path='logout' element={<AdminLogout />} /> */}
-        {/* </Route> */}
-
-        {/* User Routes */}
-        <Route path='/shop' element={<Products />} />
-         <Route path='/cart' element={<Cart/>}/>
-         <Route path='/shop/product/:id' element={<Singleproduct />} />
-        {/* <Route path="/user/:id" element={<UserProfilePage/>}/>  */}
-        {/* <Route path='/faqs' element={<Faq />} /> */}
-
-        {/* testing components */}
-        <Route path='/component/card' element={<ProductCard/>}/>
-      </Routes>
-    </Router>
+    <UserContext.Provider value={{ state, dispatch }}>
+      <AllRoutes />
+    </UserContext.Provider>
   );
 }
 
