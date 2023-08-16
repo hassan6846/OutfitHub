@@ -60,7 +60,7 @@ spaceBetween:140,
         {
           products.map((product) => (
             <SwiperSlide key={product.id}>
-              <ProductCard name={product.name} image={product.image} />
+              <ProductCard to={`/shop/product/${product.name}`} name={product.name} image={product.image} />
             </SwiperSlide>
           ))
         }

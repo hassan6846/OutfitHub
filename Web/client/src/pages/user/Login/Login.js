@@ -72,6 +72,7 @@ const Login = () => {
   });
 
   useEffect(() => {
+document.title="LOGIN"
     sessionStorage.clear();
   }, []);
 

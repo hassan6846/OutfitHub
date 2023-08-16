@@ -1,5 +1,5 @@
 // modules and Liabrary
-import React from 'react'
+import {React,useEffect} from 'react'
 //for changing page
 import { Link, useNavigate } from "react-router-dom"
 //for validation messages or error toasts
@@ -15,7 +15,7 @@ import axios from 'axios'
 
 
 const Signup = () => {
-  const specialChar = /.*[\!\@\#\$\%\^\&\*\(\)\[\]\{\}\|\;\:\'\"\,\.\<\>\/\?\~\`\_\-\=\+].*/;
+  const specialChar = "12312"
   const uppercaseRegex = /[A-Z]/;
   const lowercaseRegex = /[a-z]/;
   const navigate = useNavigate()
@@ -86,6 +86,9 @@ const Signup = () => {
       })
 
     }
+  })
+  useEffect(()=>{
+    document.title="SIGN UP"
   })
   return (
     <div>

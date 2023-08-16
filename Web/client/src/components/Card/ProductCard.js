@@ -11,7 +11,9 @@ export default function ProductCard(props) {
 
 
   return (
-    <Link className="card-container">
+    <Link 
+       to={props.to}
+    className="card-container">
       <div className="card">
         <div className="image-container">
           <div className="sale_intro">Trending</div>
