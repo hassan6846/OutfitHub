@@ -8,7 +8,8 @@ import ForgotPassword from './pages/user/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/user/ResetPassword/ResetPassword';
 import Products from './pages/user/Shop/Products';
 import Singleproduct from './pages/user/ProductDetails/Singleproduct';
-import CartPage from './pages/user/Cart/Cart';
+import Cart from './pages/user/Cart/Cart';
+
 
 
 const AllRoutes = () => (
@@ -26,7 +27,7 @@ const AllRoutes = () => (
 
       {/* User Routes */}
       <Route path="/shop" element={<Products />} />
-      <Route path="/cart" element={<CartPage />} />
+      <Route path="/cart" element={<Cart/>} />
       <Route path="/shop/product/:id" element={<Singleproduct />} />
     </Routes>
   </Router>

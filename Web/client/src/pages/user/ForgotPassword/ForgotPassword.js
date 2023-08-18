@@ -4,7 +4,11 @@ import { useFormik } from 'formik';
 import { Link } from "react-router-dom";
 import Footer from "../../../Layouts/footer/Footer";
 import toast, { Toaster } from 'react-hot-toast';
+import {MDBInput,
+  MDBBtn 
 
+
+} from "mdb-react-ui-kit"
 const ForgotPassword = () => {
   const formik = useFormik({
     initialValues: {     
@@ -36,13 +40,16 @@ const ForgotPassword = () => {
         <form onSubmit={formik.handleSubmit} className='forgor-form'>
           <h3 className='forgor-head'>Forgot Password</h3>
           <p className='forgor-tag'>No Worries,We'll send you instructions in your email</p>
-          <input
-            {...formik.getFieldProps("email")}
+      
+              <MDBInput  {...formik.getFieldProps("email")}
             type='email'
             placeholder='Email'
-            className='forgor-inp'
-          />
-          <button className='forgor-btn' type="submit">Recover Password</button>
+            className='forgor-inp' size="lg" label="Enter your Email" />
+        
+            <MDBBtn color='danger'  type="submit"block size="lg">
+            Recover Password
+            </MDBBtn>
+         
         </form>
       </section>
       <Footer/>

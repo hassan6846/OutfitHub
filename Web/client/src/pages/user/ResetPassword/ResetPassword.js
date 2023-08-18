@@ -1,6 +1,6 @@
 import { React } from 'react'
 import "./ResetPassword.css"
-import { Toaster, toast } from "react-hot-toast"
+import { Toaster } from "react-hot-toast"
 import { useParams } from 'react-router-dom'
 
 const ResetPassword = () => {

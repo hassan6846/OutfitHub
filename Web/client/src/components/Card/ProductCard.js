@@ -14,7 +14,7 @@ export default function ProductCard(props) {
     <Link 
        to={props.to}
     className="card-container">
-      <div className="card">
+      <div className="card_wrapper">
         <div className="image-container">
           <div className="sale_intro">Trending</div>
           <img className="product_card_image_view" src={props.image} alt="ProductImage" />

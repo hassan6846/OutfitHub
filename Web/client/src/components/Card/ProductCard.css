@@ -4,12 +4,13 @@
     justify-content: center;
   }
   
-  .card {
+  .card_wrapper {
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 280px;
+
     margin: 15px;
   }
   
@@ -92,12 +93,12 @@
     column-gap: 0.4rem;
   }
   @media (min-width:300px ) and (max-width:600px) {
-  .card{
+  .card_wrapper{
     width: 259px;
   }
   }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-.card{
+.card_wrapper{
   width: 300px;
 }
 }
