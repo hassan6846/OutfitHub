@@ -4,14 +4,15 @@ import { useFormik } from 'formik';
 import { Link } from "react-router-dom";
 import Footer from "../../../Layouts/footer/Footer";
 import toast, { Toaster } from 'react-hot-toast';
-import {MDBInput,
-  MDBBtn 
+import {
+  MDBInput,
+  MDBBtn
 
 
 } from "mdb-react-ui-kit"
 const ForgotPassword = () => {
   const formik = useFormik({
-    initialValues: {     
+    initialValues: {
       email: '',
     },
     validateOnBlur: false,
@@ -20,7 +21,7 @@ const ForgotPassword = () => {
       if (!isValidEmail(values.email)) {
         toast.error('Kindly fill all the fields');
       } else {
-        
+
       }
     },
   });
@@ -39,20 +40,25 @@ const ForgotPassword = () => {
         </Link>
         <form onSubmit={formik.handleSubmit} className='forgor-form'>
           <h3 className='forgor-head'>Forgot Password</h3>
-          <p className='forgor-tag'>No Worries,We'll send you instructions in your email</p>
-      
-              <MDBInput  {...formik.getFieldProps("email")}
-            type='email'
-            placeholder='Email'
-            className='forgor-inp' size="lg" label="Enter your Email" />
-        
-            <MDBBtn color='danger'  type="submit"block size="lg">
+
+          <div className='alert_wrapper_change_event'>
+            <p className='forgor-tag'>No Worries,We'll send you instructions in your email</p>
+
+            <MDBInput  {...formik.getFieldProps("email")}
+              type='email'
+              placeholder='Email'
+              className='forgor-inp' size="lg" label="Enter your Email" />
+          </div>
+{/*  add this bootsrap element inside */}
+<div class="alert alert-success" role="alert">
+                        We've sent Link to your email {formik.values.email} </div>
+          <MDBBtn  color='danger' type="submit" block size="lg">
             Recover Password
-            </MDBBtn>
-         
+          </MDBBtn>
+
         </form>
       </section>
-      <Footer/>
+      <Footer />
       <Toaster /> {/* React-hot-toast component */}
     </div>
   );

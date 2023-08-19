@@ -8,6 +8,7 @@
 
 .form_wrapper {
     height: 65%;
+    padding: 1rem;
     width: 25%;
 row-gap: 0.003rem;
     display: flex;

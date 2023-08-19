@@ -11,7 +11,7 @@ import Singleproduct from './pages/user/ProductDetails/Singleproduct';
 import Cart from './pages/user/Cart/Cart';
 
 
-
+import Otp from "./pages/user/Otp/Otp"
 const AllRoutes = () => (
   <Router>
     <Routes>
@@ -21,7 +21,7 @@ const AllRoutes = () => (
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/password/forgot" element={<ForgotPassword />} />
       <Route path="/password/reset/:id" element={<ResetPassword />} />
-
+      <Route path='/otp' element={<Otp/>}/>
       {/* 404 page */}
       <Route path="*" element={<ErrorPage />} />
 
