@@ -27,8 +27,8 @@ const Signup = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: 'xyz@gmail.com',
-      username: 'ImaginaryName',
+      email: '',
+      username: '',
       password: ''
     },
 

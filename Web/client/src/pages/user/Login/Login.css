@@ -68,15 +68,21 @@
 @media (min-width:300px) and (max-width:600px) {
     .login-container{
         width: 85%;
-        height: 60%;
+        height: fit-content;
+    }
+    .forgot-link{
+        margin-top: 0.5rem;
     }
  .login-input{
     height: 2.5rem;
  }   
 }
-@media (min-width:600px) and (max-width:1000px) {
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
     .login-container{
-        width: 58%;
-        height: 58%;
+        width: 60%;
+     height: fit-content;
+    }.forgot-link{
+        margin-top: 0.3rem;
     }
 }

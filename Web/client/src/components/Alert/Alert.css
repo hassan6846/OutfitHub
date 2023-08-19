@@ -13,11 +13,11 @@
   .Alert {
     width: 100%;
     height: 30px;
-    background-color: #c02f2f;
+    background-color: rgb(220,76,100);
     align-items: center;
     display: flex;
     justify-content: center;
-    margin-bottom: 2px;
+
     opacity: 1;
     transition: opacity 0.3s ease-in-out 0.2s; /* Added transition property with delay */
   }
