@@ -39,7 +39,7 @@ border-radius: 20px;
 .search_dropdown{
     background-color: red;
     width: 100%;
-    top: 10%;
+    top: 11%;
  height: fit-content;
 }
 .flex-coulumn-search{
@@ -68,8 +68,17 @@ max-height: 200px; /* Set a max height for the dropdown */
   @media (min-width:300px) and (max-width:660px) {
     .search_dropdown{
         width: 80%;
+    top: 12%;
     }.logo_nav_Link{
         width: 90px;
         margin-left: 0.4rem;
     }
   }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+   .search_dropdown{
+    width: 60%;
+ top: 8%;
+   }
+   
+}
