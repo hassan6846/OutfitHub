@@ -5,7 +5,7 @@ import { MDBCol, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
 
 const ResponsiveNav = () => {
   const [searchResults, setSearchResults] = useState([]);
-
+const [nofication,Setnofication]=useState(false)
   const handleSearch = (query) => {
     // Perform your search logic here and update the searchResults state
     // For now, let's use a mock array of search results
@@ -44,9 +44,12 @@ const ResponsiveNav = () => {
       )}
 
       <div className='optional_links' style={{ display: "flex" }}>
-        <Link><img style={{ cursor: "pointer" }} className='userImage_linked' src='https://tinyurl.com/y3p4rhbs' alt='img' /></Link>
+        <Link>
+        <img style={{ cursor: "pointer" }} className='userImage_linked' src='https://tinyurl.com/y3p4rhbs' alt='img' />
+        <span className='notification_alert_user'></span>
+        </Link>
         <Link className='cart-link-url-route' to="/cart"><MDBIcon fas icon="shopping-cart" /> <p className='cart-length-item'>{0}</p> </Link>
-        <Link>Login</Link>
+        <Link className='login_link_nav'>Login</Link>
       </div>
     </nav>
   );
