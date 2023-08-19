@@ -1,5 +1,5 @@
 // modules and Liabrary
-import {React,useEffect} from 'react'
+import { React, useEffect } from 'react'
 //for changing page
 import { Link } from "react-router-dom"
 //for validation messages or error toasts
@@ -66,56 +66,56 @@ const Signup = () => {
         return;
       }
 
- const api=axios.create({
-  baseURL: "http://localhost:3001"
- })
+      const api = axios.create({
+        baseURL: "http://localhost:3001"
+      })
       // register promise pending
-      const Register=async()=>{
-        try{
-          const response=await api.post("/api/v1/register",{
-            username:values.username,
-            email:values.email,
-            password:values.password,
+      const Register = async () => {
+        try {
+          const response = await api.post("/api/v1/register", {
+            username: values.username,
+            email: values.email,
+            password: values.password,
 
           })
           return response.data
         }
-        catch(err){
-       throw(err)
+        catch (err) {
+          throw (err)
         }
       }
-      toast.promise(Register(),{
+      toast.promise(Register(), {
         loading: "Creating Account",
         success: <b>Account Created Successfully</b>,
         error: <b>Error While creating account</b>,
-        
+
       })
 
     }
   })
-  useEffect(()=>{
-    document.title="SIGN UP"
+  useEffect(() => {
+    document.title = "SIGN UP"
   })
   return (
     <div>
       <Toaster position='top-center' reverseOrder={false}></Toaster>
       <div className="main_wrapper">
-      <Link to="/" className="login-logo">
+        <Link to="/" className="login-logo">
           <img alt="company" src="./logo.svg" />
         </Link>
         <form onSubmit={formik.handleSubmit} method='post' className='form_wrapper'>
           <p className='signup_txt'>Create Account</p>
 
-        
-         
-        
-         
-      
-<MDBInput {...formik.getFieldProps('username')} className='signup_email' type="text" placeholder='Enter Name'/>
-<MDBInput {...formik.getFieldProps("email")} className='signup_email' type="text" placeholder='Enter Name'/>
-<MDBInput   {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder='Enter Password'/>
-<MDBInput  {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder="Repeat"/>
-<MDBBtn type='submit' color="dark" className='registerBtn'>Register</MDBBtn>
+
+
+
+
+
+          <MDBInput {...formik.getFieldProps('username')} className='signup_email' type="text" placeholder='Name'   label=" Name" />
+          <MDBInput {...formik.getFieldProps("email")} className='signup_email' type="text" placeholder='Email'   label=" Email" />
+          <MDBInput   {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder='Password'  label="Password" />
+          <MDBInput  {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder="Repeat Repeat"  label="Repeat Password"  />
+          <MDBBtn type='submit' color="dark" className='registerBtn'onClick={formik.handleSubmit} >Register</MDBBtn>
           <Link to="/login">Login Instead....</Link>
         </form>
       </div>

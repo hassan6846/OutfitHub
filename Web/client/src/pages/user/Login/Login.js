@@ -6,7 +6,12 @@ import './Login.css';
 import Footer from '../../../Layouts/footer/Footer';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from "axios";
+import {
+  MDBInput,
+  MDBBtn
 
+
+} from "mdb-react-ui-kit"
 const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false); // Track login submission
 
@@ -88,29 +93,32 @@ document.title="LOGIN"
         <div className="login-container">
           <p className="login-heading">Login Account</p>
           <form onSubmit={formik.handleSubmit} className="login-form">
-            <input
+            <MDBInput
               {...formik.getFieldProps('email')}
               className="login-input"
               type="email"
               placeholder="Enter Email"
+              label="Email"
             />
             {formik.touched.email && formik.errors.email && (
               <div className="error">{formik.errors.email}</div>
             )}
 
-            <input
+            <MDBInput
               {...formik.getFieldProps('password')}
               className="login-input"
               type="password"
               placeholder="Enter Password"
+              label="Password"
             />
             {formik.touched.password && formik.errors.password && (
               <div className="error">{formik.errors.password}</div>
             )}
 
-            <button type="submit" className="otp-submit" disabled={isSubmitting}>
+            <MDBBtn type="submit" color='dark'  className="otp-submit" disabled={isSubmitting}>
               {isSubmitting ? 'Logging in...' : 'Login'}
-            </button>
+         
+            </MDBBtn>
           </form>
           <Link className='forgot-link' to="/password/forgot">Forgot Password</Link>
           <p className="or">or</p>

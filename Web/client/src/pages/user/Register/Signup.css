@@ -10,7 +10,7 @@
     height: 65%;
     padding: 1rem;
     width: 25%;
-row-gap: 0.003rem;
+    row-gap: 0.003rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -21,11 +21,9 @@ row-gap: 0.003rem;
 
 .signup_txt {
     text-align: center;
-
     font-size: 1.8rem;
     font-weight: 500;
 
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .signup-form {
@@ -48,16 +46,18 @@ row-gap: 0.003rem;
     border-radius: 5px;
     background-color: #3F3F46;
 }
+
 @media (min-width:300px) and (max-width:600px) {
-    .form_wrapper{
+    .form_wrapper {
         width: 76%;
         margin-top: 2rem;
     }
 }
+
 /* ipad media query */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-    .form_wrapper{
-      width: 55%;
-      height: 65%;
+    .form_wrapper {
+        width: 55%;
+        height: 65%;
     }
-    }
+}
