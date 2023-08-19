@@ -13,6 +13,7 @@ import {
   } from "mdb-react-ui-kit";
   import React from "react";
 import ResponsiveNav from "../../../Layouts/NavbarMain/ResponsiveNav";
+import { Link } from "react-router-dom";
   
 function Cart() {
   return (
@@ -158,8 +159,10 @@ function Cart() {
                     <div className="pt-5">
                       <MDBTypography tag="h6" className="mb-0">
                         <MDBCardText tag="a" href="#!" className="text-body">
-                          <MDBIcon fas icon="long-arrow-alt-left me-2" /> Back
-                          to shop
+                          <Link to="/shop">
+                          <MDBIcon   fas icon="long-arrow-alt-left me-2" /> 
+                          Back
+                          to shop</Link>
                         </MDBCardText>
                       </MDBTypography>
                     </div>
