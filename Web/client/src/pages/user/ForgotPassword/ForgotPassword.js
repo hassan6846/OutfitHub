@@ -52,7 +52,7 @@ const ForgotPassword = () => {
 {/*  add this bootsrap element inside */}
 <div class="alert alert-success" role="alert">
                         We've sent Link to your email {formik.values.email} </div>
-          <MDBBtn  color='danger' type="submit" block size="lg">
+          <MDBBtn className='recover_btn custom-button-color'   type="submit" block size="lg">
             Recover Password
           </MDBBtn>
 

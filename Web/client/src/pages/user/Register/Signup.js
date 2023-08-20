@@ -115,7 +115,7 @@ const Signup = () => {
           <MDBInput {...formik.getFieldProps("email")} className='signup_email' type="text" placeholder='Email'   label=" Email" />
           <MDBInput   {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder='Password'  label="Password" />
           <MDBInput  {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder="Repeat Repeat"  label="Repeat Password"  />
-          <MDBBtn type='submit' color="dark" className='registerBtn'onClick={formik.handleSubmit} >Register</MDBBtn>
+          <MDBBtn block type='submit'  size="lg" className='reset-btn_form'onClick={formik.handleSubmit} >Register</MDBBtn>
           <Link to="/login">Login Instead....</Link>
         </form>
       </div>
