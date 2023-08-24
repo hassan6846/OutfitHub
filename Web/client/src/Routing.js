@@ -28,7 +28,8 @@ const AllRoutes = () => (
       {/* User Routes */}
       <Route path="/shop" element={<Products />} />
       <Route path="/cart" element={<Cart/>} />
-      <Route path="/shop/product/:id" element={<Singleproduct />} />
+      <Route path="/shop/product/:title" element={<Singleproduct />}/>
+  
     </Routes>
   </Router>
 );
