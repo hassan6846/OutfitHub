@@ -18,15 +18,15 @@ function Alertbar() {
       <div className='alerted_wrapper'>
         {/* 1 */}
         <div className='Alert__phone'>
-          <p style={{marginBottom:"0px"}}>+1 408 666 7812</p>
+          <p style={{marginBottom:"0px",color:"white"}}>+1 408 666 7812</p>
         </div>
         {/* 1 */}
 
         {/* 2 */}
         <div>
-          <p className='alert_msg'>
+          <p className='alert_msg' style={{color:"white"}}>
             Sign up today and <span>GET 20% OFF</span> on your first order{' '}
-            <Link className='signup_link' to="/signup">| Sign Up Now</Link>
+            <Link style={{fontWeight:"bold"}} className='signup_link' to="/signup">| Sign Up Now</Link>
           </p>
         </div>
         {/* 2 */}

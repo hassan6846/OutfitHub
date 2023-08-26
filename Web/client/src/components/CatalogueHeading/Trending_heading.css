@@ -1,4 +1,4 @@
-.heading__flex_wrapper_90{
+.heading__flex_wrapper_90 {
     width: 100%;
     display: flex;
     height: fit-content;
@@ -8,7 +8,8 @@
     /* background-color: red; */
     justify-content: center;
 }
-.heading__child_70{
+
+.heading__child_70 {
     width: 88%;
     height: 100%;
     display: flex;
@@ -17,11 +18,18 @@
     align-items: center;
     justify-content: space-between;
 }
-.cat_heading_text{
+
+.cat_heading_text {
     font-size: 1.3rem;
+    color: #131039;
+    font-weight: bold;
 }
 
-.Nav_link{
-    color:#747474;
+.Nav_link {
+    color: #4BB497;
     font-weight: 500;
+}
+
+.next_icon {
+    color: #4BB497;
 }

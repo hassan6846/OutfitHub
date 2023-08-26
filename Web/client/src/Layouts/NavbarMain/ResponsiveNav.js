@@ -5,7 +5,7 @@ import { MDBCol, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
 
 const ResponsiveNav = () => {
   const [searchResults, setSearchResults] = useState([]);
-const [nofication,Setnofication]=useState(false)
+
   const handleSearch = (query) => {
     // Perform your search logic here and update the searchResults state
     // For now, let's use a mock array of search results
@@ -19,16 +19,17 @@ const [nofication,Setnofication]=useState(false)
         <img  className='logo_nav_Link' alt='Company' src='./logo.svg' />
       </Link>
 
-      <MDBCol style={{ display: "flex", columnGap: "0.3rem" }} md="4">
+      <MDBCol style={{ display: "flex", columnGap: "0.3rem"  }} md="4">
         <input
           className="form-control"
           type="text"
+         
           placeholder="Search"
           aria-label="Search"
           onBlur={() => setSearchResults([])}
           onChange={(e) => handleSearch(e.target.value)}
         />
-        <MDBBtn style={{padding:"10px 22px"}} color="danger">
+        <MDBBtn style={{padding:"10px 22px",backgroundColor:"#131039"}}>
           <MDBIcon fas icon="search" />
         </MDBBtn>
       </MDBCol>

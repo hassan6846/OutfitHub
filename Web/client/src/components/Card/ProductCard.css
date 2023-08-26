@@ -74,9 +74,9 @@
     
     left: 3%;
     color: #ddd1d1;
-    font-weight:400;
+  font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgba(255, 0, 0, 0.877); /* Complementary green color */
+    background-color:#4BB497; /* Complementary green color */
   
     border-radius: 5px;
   }
@@ -94,7 +94,7 @@
   }
   @media (min-width:300px ) and (max-width:600px) {
   .card_wrapper{
-    width: 259px;
+    width: 295px;
   }
   }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {

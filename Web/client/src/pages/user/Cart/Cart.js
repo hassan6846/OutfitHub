@@ -18,12 +18,12 @@ import { Link } from "react-router-dom";
 function Cart() {
   return (
    
-  <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
+  <section className="h-100 h-custom" style={{ backgroundColor: "white" }}>
     <ResponsiveNav/>
-    <MDBContainer className="py-5 h-100">
+    <MDBContainer className="py-5 h-100" >
       <MDBRow className="justify-content-center align-items-center h-100">
-        <MDBCol className="d-flex justify-content-center" size="12">
-          <MDBCard className="ipad-card  card-registration card-registration-2" style={{ borderRadius: "15px" }}>
+        <MDBCol className="d-flex justify-content-center" size="13">
+          <MDBCard className="ipad-card  card-registration card-registration-2" style={{ borderRadius: "0px", boxShadow:"none" }}>
             <MDBCardBody className="p-0">
               <MDBRow className="g-0">
                 <MDBCol lg="8">
@@ -213,7 +213,7 @@ function Cart() {
                       <MDBTypography tag="h5">€ 137.00</MDBTypography>
                     </div>
   
-                    <MDBBtn color="dark" block size="lg">
+                    <MDBBtn style={{backgroundColor:"#4BB497"}} block size="lg">
                       Register
                     </MDBBtn>
                   </div>
