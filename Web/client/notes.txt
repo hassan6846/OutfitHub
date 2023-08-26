@@ -1,5 +1,9 @@
 // colors
 card Discount color 
 --background:#F1EDEF
+
 --fontColor:#d01345
-//font
+//font d01345
+card color
+#666666
+808080

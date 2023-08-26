@@ -6,12 +6,12 @@
 
 .card_wrapper {
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 280px;
 
-  margin: 15px;
+  width: 295px;
+
+
 }
 
 .image-container {
@@ -21,7 +21,7 @@
 
 .product_card_image_view {
   width: 100%;
-  height: 400px;
+  height: 430px;
   object-fit: cover;
 }
 
@@ -44,7 +44,7 @@
 .heart-icon.liked {
   stroke: #333;
   stroke-width: 0px;
-  stroke-width: 36px;
+  stroke-width: 0px;
   color: #F44336;
 }
 
@@ -57,14 +57,22 @@
   font-weight: bold;
   color: #333;
 }
-
+.product-name_card{
+  font-family: 'Outfit', sans-serif;
+  font-style: normal;
+}
 .original-price {
   text-decoration: line-through;
   margin-right: 8px;
+  color: #808080;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
 }
 
 .discounted-price {
-  color: #ff5a5f;
+  color: #d01345;
+  font-weight: 700;  font-size: 15px;
+  font-family: 'Outfit', sans-serif;
 }
 
 .sale_intro {
@@ -75,8 +83,8 @@
 
   left: 0%;
   color: #d01345;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+
   background-color: #F1EDEF;
   letter-spacing: .8px;
   /* Complementary green color */
@@ -87,11 +95,12 @@
 .tag-links {
   background-color: #d6d6d4;
   font-size: 12px;
-  color: gray;
+  color: #808080;
   padding: 5px 10px;
   border-radius: 5px;
-  font-weight: bolder;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+
 }
 
 .category_buttons_wrapper {

@@ -11,9 +11,9 @@ export default function ProductCard(props) {
 
 
   return (
-    <Link 
-       to={props.to}
-    className="card-container">
+    <Link
+      to={props.to}
+      className="card-container">
       <div className="card_wrapper">
         <div className="image-container">
           <div className="sale_intro">-20%</div>
@@ -25,11 +25,12 @@ export default function ProductCard(props) {
           </div>
         </div>
         <div className="product-info">
-          <div className="price">
-            <span className="original-price">300rs</span>
+          <div className="product-name_card" style={{ textAlign: "start", color: "#666678",fontWeight:"500",fontSize:"16px" }}>{props.name}</div>
+          <div style={{ display: "flex",alignItems:"center" }} className="price">
+            <span style={{fontSize:"13px"}} className="original-price">Rs 300</span>
             <span className="discounted-price">20rs</span>
           </div>
-          <div className="product-name">{props.name}</div>
+
           <div className="category_buttons_wrapper">
 
             <Link className="tag-links">Cosemetics</Link>
