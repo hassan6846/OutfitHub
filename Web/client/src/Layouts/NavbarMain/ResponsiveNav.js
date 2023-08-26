@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ResponsiveNav.css';
 import { Link } from 'react-router-dom';
 import { MDBCol, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
-
+ 
 const ResponsiveNav = () => {
   const [searchResults, setSearchResults] = useState([]);
 
