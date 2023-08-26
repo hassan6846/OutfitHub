@@ -29,7 +29,7 @@ const ResponsiveNav = () => {
           onBlur={() => setSearchResults([])}
           onChange={(e) => handleSearch(e.target.value)}
         />
-        <MDBBtn style={{padding:"10px 22px",backgroundColor:"#131039"}}>
+        <MDBBtn style={{padding:"10px 22px",backgroundColor:"#4BB497"}}>
           <MDBIcon fas icon="search" />
         </MDBBtn>
       </MDBCol>

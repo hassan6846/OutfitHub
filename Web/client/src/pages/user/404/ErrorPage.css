@@ -45,7 +45,7 @@ body {
     font-size: 252px;
     font-weight: 900;
     margin: 0;
-    color: #262626;
+    color: #131039;
     text-transform: uppercase;
     letter-spacing: -40px;
     margin-left: -20px
@@ -61,7 +61,7 @@ body {
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
-    color: #262626;
+    color: #131039;
     margin: 0;
     letter-spacing: 3px;
     padding-left: 6px
@@ -72,14 +72,14 @@ body {
     font-size: 20px;
     font-weight: 400;
     text-transform: uppercase;
-    color: #000;
+    color: #131039;
     margin-top: 0;
     margin-bottom: 25px
 }
 .HomeLink{
     font-weight: 500;
     color: white;
-    background-color: #C02F2F;
+    background-color: #4BB497;
     padding: 8px 10px;
 }
 

@@ -7,7 +7,7 @@ import { BiLeftArrowAlt } from "react-icons/bi"
 // css
 import "./ErrorPage.css"
 // components
-import Logo from "../../../components/LogoLink"
+
 import Footer from "../../../Layouts/footer/Footer"
 
 const ErrorPage = () => {
@@ -17,7 +17,8 @@ const ErrorPage = () => {
   })
   return (
     <div>
-<Logo/>
+    <Link style={{top:"3.5%",left:"8%" ,position:"absolute"}} to="/"><img alt="company" src="./logo.svg"/></Link>
+
       <div id="notfound">
         <div class="notfound">
           <div class="notfound-404">

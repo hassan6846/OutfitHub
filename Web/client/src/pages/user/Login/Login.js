@@ -115,7 +115,7 @@ document.title="LOGIN"
               <div className="error">{formik.errors.password}</div>
             )}
 
-            <MDBBtn type="submit" color='dark'  className="otp-submit" disabled={isSubmitting}>
+            <MDBBtn type="submit"  style={{backgroundColor:"#4BB497",border:"0px"}}  className="otp-submit" disabled={isSubmitting}>
               {isSubmitting ? 'Logging in...' : 'Login'}
          
             </MDBBtn>
