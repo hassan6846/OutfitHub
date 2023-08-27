@@ -2,7 +2,7 @@ import React from 'react';
 import { TabPanel, useTabs } from 'react-headless-tabs';
 import { TabSelector } from '../../helpers/ActiveSelector';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {Pagination} from "swiper/modules"
+import { Navigation } from 'swiper/modules';
 import "swiper/css";
 import 'swiper/css/navigation';
 import './CategoryBar.css';
@@ -52,15 +52,12 @@ const CategoryBar = () => {
       <div className="card_load_flex_wrap">
 
 
-        <Swiper
-        modules={[Pagination]}
 
-        >
-          <SwiperSlide>  <TabPanel hidden={selectedTab !== 'Men'}>Men Content</TabPanel> </SwiperSlide>
-         <SwiperSlide><TabPanel hidden={selectedTab !== 'Women'}>Women Content</TabPanel></SwiperSlide>
-         <SwiperSlide> <TabPanel hidden={selectedTab !== 'Kids'}>Kids Content</TabPanel>  </SwiperSlide>
-         <SwiperSlide> <TabPanel hidden={selectedTab !== 'Girl'}>Girl Content</TabPanel></SwiperSlide>
-        </Swiper>
+        <TabPanel  hidden={selectedTab !== 'Men'}>    <Swiper modules={[Navigation]} slidesPerView={1}  ><SwiperSlide>Men</SwiperSlide> <SwiperSlide>Men 2</SwiperSlide></Swiper></TabPanel>
+        <TabPanel hidden={selectedTab !== 'Women'}>   <Swiper modules={[Navigation]} ><SwiperSlide>Women</SwiperSlide></Swiper> </TabPanel>
+        <TabPanel hidden={selectedTab !== 'Kids'}>   <Swiper modules={[Navigation]} >  <SwiperSlide>kids</SwiperSlide> </Swiper>  </TabPanel>
+        <TabPanel hidden={selectedTab !== 'Girl'}>  <Swiper modules={[Navigation]} > <SwiperSlide>Girl</SwiperSlide></Swiper> </TabPanel>
+
       </div>
     </div>
   );

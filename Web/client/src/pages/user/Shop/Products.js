@@ -4,8 +4,10 @@ import Nav from '../../../Layouts/NavbarMain/ResponsiveNav';
 import CategoryBar from '../../../components/CategoryBar/CategoryBar';
 // css
 import './products.css';
-
-
+import ProductContainer from '../../../components/Infinite-Container_products/ProductContainer';
+import ShopFilteration from '../../../components/ProductPageFilter/ShopFilteration';
+import Footer from "../../../Layouts/footer/Footer"
+import Pagination from "../../../components/Pagination/Pagination"
 const Products = () => {
 
 
@@ -13,7 +15,10 @@ const Products = () => {
     <div className='product-page-wrapper'>
       <Nav />
       <CategoryBar />
- 
+      <ShopFilteration />
+      <ProductContainer />
+<Pagination/>
+      <Footer/>
     </div>
   );
 };

@@ -1,22 +1,24 @@
-
-
-
 import React from "react";
-import "./ProductCard.css"; // Make sure to import your CSS file
 import { Link } from "react-router-dom";
+import UseAnimations from "react-useanimations";
+import heart from "react-useanimations/lib/heart"
+import "./ProductCard.css";
+
+
+
 
 export default function ProductCard(props) {
-
-
-
-
   return (
-    <Link
-      to={props.to}
+
+    <div
+
       className="card-container">
       <div className="card_wrapper">
+
         <div className="image-container">
           <div className="sale_intro">-20%</div>
+          <div className="like_item_card">     <UseAnimations animation={heart} size={32} /></div>
+
           <img className="product_card_image_view" src={props.image} alt="ProductImage" />
           <div
 
@@ -25,9 +27,9 @@ export default function ProductCard(props) {
           </div>
         </div>
         <div className="product-info">
-          <div className="product-name_card" style={{ textAlign: "start", color: "#666678",fontWeight:"500",fontSize:"16px" }}>{props.name}</div>
-          <div style={{ display: "flex",alignItems:"center" }} className="price">
-            <span style={{fontSize:"13px"}} className="original-price">Rs 300</span>
+          <div className="product-name_card" style={{ textAlign: "start", color: "#666678", fontWeight: "500", fontSize: "16px" }}>{props.name}</div>
+          <div style={{ display: "flex", alignItems: "center" }} className="price">
+            <span style={{ fontSize: "13px" }} className="original-price">Rs 300</span>
             <span className="discounted-price">20rs</span>
           </div>
 
@@ -39,6 +41,8 @@ export default function ProductCard(props) {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
+
+
   );
 }

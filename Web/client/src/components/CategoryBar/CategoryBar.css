@@ -2,7 +2,6 @@
     border-bottom: 1px solid #ccb9b9;
     width: 90%;
     display: flex;
-  
     justify-content: center;
     column-gap: 1rem;
 }
@@ -11,7 +10,6 @@
     display: flex;
     justify-content: center;
     width: 100%;
-  
     height: fit-content;
     row-gap: 0.3rem;
     padding: 1rem;
