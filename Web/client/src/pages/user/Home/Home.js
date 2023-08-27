@@ -30,7 +30,7 @@ const Home = () => {
     <Alertbar/>
 
     <Nav/>
-<CategoryBar/>
+
     <LandingCarsoul/>
     {/* trending carsoul div */}
    <div>
@@ -38,10 +38,12 @@ const Home = () => {
    <Cathead heading="Trending Products" LinkPage="/shop/trending"  LinkText="See more items" />
    < TrendingCarsoul />
    </div>
+
    {/* trending carsoul ends  div*/}
   <Cathead heading="Browse Category " LinkPage="/shop"  LinkText="See more" />
 <Catalogue/>
-<Footer MarginTop="1vmax"/>
+<CategoryBar/>
+<Footer/>
   </div>
   )
 }
