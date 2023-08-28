@@ -1,127 +1,125 @@
 .navbar_container {
-    height: 80px;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-
-    align-items: center;
-    
-
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  align-items: center;
+  margin-bottom: 0.5rem;
+  z-index: 9999;
+  background-color: white;
 }
 
 * {
-    list-style: none;
+  list-style: none;
 }
 
 .userImage_linked {
-    height: 42px;
-    border-radius: 15px;
-    image-rendering: optimizeQuality;
+  height: 42px;
+  border-radius: 15px;
+  image-rendering: optimizeQuality;
 }
 
 .optional_links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 1rem;
-
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1rem;
 }
 
 .cart-link-url-route {
-    position: relative;
+  position: relative;
 }
 
 .cart-length-item {
-    position: absolute;
-    background-color: red;
-    color: white;
-    top: -50%;
-    padding: 1px 10px;
-    scale: 0.6;
-    z-index: -9;
-    border-radius: 20px;
-
+  position: absolute;
+  background-color: red;
+  color: white;
+  top: -50%;
+  padding: 1px 10px;
+  scale: 0.6;
+  z-index: -9;
+  border-radius: 20px;
 }
 
 .search_dropdown {
-    background-color: red;
-    width: 100%;
-    top: 11%;
-    height: fit-content;
+  background-color: red;
+  width: 100%;
+  top: 11%;
+  height: fit-content;
 }
 
 .flex-coulumn-search {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Add your existing CSS rules here */
 
 .search_dropdown {
-    background-color: #fff;
-    /* Adjust background color */
-    width: 32%;
-    transition: all 0.5s ease-in;
-    border-radius: 5px;
-    max-height: 200px;
-    /* Set a max height for the dropdown */
-    overflow-y: scroll;
-    /* Enable vertical scrolling if content exceeds max height */
-    position: absolute;
-    z-index: 10;
-    /* Ensure the dropdown is above other content */
-    border: 1px solid #ccc;
-    /* Add a border for styling */
+  background-color: #fff;
+  /* Adjust background color */
+  width: 32%;
+  transition: all 0.5s ease-in;
+  border-radius: 5px;
+  max-height: 200px;
+  /* Set a max height for the dropdown */
+  overflow-y: scroll;
+  /* Enable vertical scrolling if content exceeds max height */
+  position: absolute;
+  z-index: 10;
+  /* Ensure the dropdown is above other content */
+  border: 1px solid #ccc;
+  /* Add a border for styling */
 }
 
 .flex-column-search {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .userImage_linked {
-    position: relative;
+  position: relative;
 }
 
 .notification_alert_user {
-    position: absolute;
-    z-index: 99;
+  position: absolute;
+  z-index: 99;
 
-    border-radius: 40px;
+  border-radius: 40px;
 
-    scale: 1.2;
-    padding: 5px 5px;
+  scale: 1.2;
+  padding: 5px 5px;
 
-    background-color: #24CC63;
+  background-color: #24cc63;
 }
 
 /* Adjust any other styles as needed */
-@media (min-width:300px) and (max-width:660px) {
-    .search_dropdown {
-        width: 80%;
-        top: 12%;
-    }
-    .login_link_nav{
-        display: none;
-    }
+@media (min-width: 300px) and (max-width: 660px) {
+  .search_dropdown {
+    width: 80%;
+    top: 12%;
+  }
+  .login_link_nav {
+    display: none;
+  }
 
-    .logo_nav_Link {
-        width: 90px;
-        margin-left: 0.4rem;
-    }
-    .cart-link-url-route{
-        display: none;
-    }.userImage_linked{
-        margin-right: 1rem;
-    }
+  .logo_nav_Link {
+    width: 90px;
+    margin-left: 0.4rem;
+  }
+  .cart-link-url-route {
+    display: none;
+  }
+  .userImage_linked {
+    margin-right: 1rem;
+  }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    .search_dropdown {
-        width: 60%;
-        top: 8%;
-    }
-
+  .search_dropdown {
+    width: 60%;
+    top: 8%;
+  }
 }
