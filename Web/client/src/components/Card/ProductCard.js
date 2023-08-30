@@ -34,7 +34,7 @@ export default function ProductCard(props) {
           </div>
 
           <div className="category_buttons_wrapper">
-
+{/* all category or tags will be map here no using  */}
             <Link className="tag-links">{props.catgory}</Link>
             <Link className="tag-links">Women</Link>
             <Link className="tag-links">Serum</Link>

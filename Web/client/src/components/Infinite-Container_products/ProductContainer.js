@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
 import "./ProductContainer.css";
-import ProductCard from "../Card/ProductCard";
+import ProductCard from "../ProductCard_Shop/ProductCard";
 import axios from 'axios';
 
 const ProductContainer = () => {
@@ -34,26 +34,27 @@ const ProductContainer = () => {
 
   return (
     <section className='product_container_flex'>
-      <InfiniteScroll style={{ display: "flex", justifyContent: "center" }}
+      <InfiniteScroll 
         dataLength={products.length}
         next={fetchProducts}
         hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
+        loader={<h4 style={{overflow:"hidden"}}>Loading..</h4> }
+        className='Product_container_results'
       >
-        <div className='Product_container_results'>
-          {products.map(product => (
-            <ProductCard
-              key={product.id}
-              image={product.image} // Replace with the actual property name for image
-              name={product.title}
-              price={product.price}
-              actualPrice={product.actualPrice}
-              catgory={product.category}
-              saved={Math.floor(((product.actualPrice - product.price) / product.price) * 100)}
-            // Replace with the actual property name for name
-            />
-          ))}
-        </div>
+
+        {products.map(product => (
+          <ProductCard
+            key={product.id}
+            image={product.image} // Replace with the actual property name for image
+            name={product.title}
+            price={product.price}
+            actualPrice={product.actualPrice}
+            catgory={product.category}
+            saved={Math.floor(((product.actualPrice - product.price) / product.price) * 100)}
+          // Replace with the actual property name for name
+          />
+        ))}
+
       </InfiniteScroll>
     </section>
   );
