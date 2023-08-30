@@ -115,18 +115,21 @@
 
 @media (min-width: 300px) and (max-width: 667px) {
   .card_wrapper_shop {
-    width: 151px;
+    width: 160px;
   }
   .tag-links_shop {
     font-weight: 500;
-    padding: 2px 1px;
-    font-size: 10px;
+padding: 2px 4px ;
+    font-size: 9px;
   }
   .product_card_image_view_shop {
     height: 210px;
   }
   .product-name_card_shop {
     font-size: 14px;
+  }.category_buttons_wrapper_shop{
+    column-gap: 0.3rem;
+    align-items: center;
   }
 }
 
