@@ -1,7 +1,8 @@
-// src/store.js
-import { legacy_createStore } from "redux"; // Import the legacy_createStore function
-import CartReducer from "./reducers/UserReducer"; // Assuming UserReducer is the default export
-
-const store = legacy_createStore(CartReducer); // Create the store using the legacy_createStore function
-
-export default store;
+import { applyMiddleware,combineReducers,legacy_createStore,compose } from "redux";
+import thunk from "redux-thunk";
+import { CartReducer } from "./redux/CartReducer/reducer";
+const rootReducer= combineReducers({
+    CartReducer
+})
+const composeEnhancers=compose
+export const store = legacy_createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)));
