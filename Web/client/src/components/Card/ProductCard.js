@@ -19,7 +19,7 @@ export default function ProductCard(props) {
           <div className="sale_intro">-{props.saved}%</div>
           <div className="like_item_card">     <UseAnimations animation={heart} size={32} /></div>
 
-          <img className="product_card_image_view" src={props.image} alt="ProductImage" />
+          <Link to="sa"><img className="product_card_image_view" src={props.image} alt="ProductImage" /></Link>
           <div
 
           >
@@ -27,14 +27,15 @@ export default function ProductCard(props) {
           </div>
         </div>
         <div className="product-info">
-          <div className="product-name_card" style={{ textAlign: "start", color: "#666678", fontWeight: "500", fontSize: "16px" }}>{props.name}</div>
+         
+        <Link to="/s">  <div className="product-name_card" style={{ textAlign: "start", color: "#666678", fontWeight: "500", fontSize: "16px" }}>{props.name}</div></Link>
           <div style={{ display: "flex", alignItems: "center" }} className="price">
             <span style={{ fontSize: "13px" }} className="original-price">{props.actualPrice}</span>
             <span className="discounted-price">{props.price}</span>
           </div>
 
           <div className="category_buttons_wrapper">
-{/* all category or tags will be map here no using  */}
+            {/* all category or tags will be map here no using  */}
             <Link className="tag-links">{props.catgory}</Link>
             <Link className="tag-links">Women</Link>
             <Link className="tag-links">Serum</Link>

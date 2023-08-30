@@ -50,7 +50,7 @@ const ResponsiveNav = () => {
         <span className='notification_alert_user'></span>
         </Link>
         <Link className='cart-link-url-route' to="/cart"><MDBIcon fas icon="shopping-cart" /> <p className='cart-length-item'>{0}</p> </Link>
-        <Link className='login_link_nav'>Login</Link>
+        <Link className='login_link_nav' to="/login">Login</Link>
       </div>
     </nav>
   );

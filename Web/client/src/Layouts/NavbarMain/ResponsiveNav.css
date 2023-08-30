@@ -94,7 +94,13 @@
 
   background-color: #24cc63;
 }
-
+.login_link_nav{
+  background-color: rgb(19,16,57);
+  color: #4BB497;
+  font-weight: 600;
+  padding: 3px 20px;
+  border-radius: 5px;
+}
 /* Adjust any other styles as needed */
 @media (min-width: 300px) and (max-width: 660px) {
   .search_dropdown {
