@@ -21,11 +21,11 @@ const Footer = () => {
       <div className='footer_child'>
         <p className='footer_heading'>DOWNLOAD OUR APP</p>
         <div className='image_flex_footer'>
-          <img className='appStore_img'  alt='googlePlay' src='https://www.clicky.pk/_nuxt/img/googleplay.3eb27f7.png'/>
-          <img className='appStore_img' alt='appleStore' src='https://www.clicky.pk/_nuxt/img/appstore.91f0e59.png'/>
+          <img className='appStore_img' alt='googlePlay' src='https://www.clicky.pk/_nuxt/img/googleplay.3eb27f7.png' />
+          <img className='appStore_img' alt='appleStore' src='https://www.clicky.pk/_nuxt/img/appstore.91f0e59.png' />
         </div>
         <p className='footer_heading'>KEEP IN TOUCH!</p>
-      
+
       </div>
       {/* 3 */}
       <div className='footer_child'>
@@ -33,7 +33,7 @@ const Footer = () => {
         <p>Sell on Design</p>
         <p>Buissness Pathners</p>
       </div>
-{/* 4 */}
+      {/* 4 */}
       <div className='footer_child'>
         <p className='footer_heading'>SHOPPING FROM</p>
         <p>You're in Pakistan </p>
