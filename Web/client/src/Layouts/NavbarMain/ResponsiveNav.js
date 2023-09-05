@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import './ResponsiveNav.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MDBCol, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
-import { useSelector,useDispatch } from 'react-redux';
-import { addtoCart } from '../../redux/CartReducer/action';
+
 
 const ResponsiveNav = () => {
-  const navigate=useNavigate()
-  const dispatch=useDispatch();
-  const {cartItems}=useSelector((store)=>store.cartReducer)
+
   const [searchResults, setSearchResults] = useState([]);
   const handleSearch = (query) => {
     // Perform your search logic here and update the searchResults state
