@@ -17,7 +17,7 @@ const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: '@gmail.com',
+      email: '',
       password: '',
     },
     validateOnBlur: true,
@@ -77,7 +77,7 @@ const Login = () => {
   });
 
   useEffect(() => {
-document.title="LOGIN"
+    document.title = "LOGIN"
     sessionStorage.clear();
   }, []);
 
@@ -115,17 +115,20 @@ document.title="LOGIN"
               <div className="error">{formik.errors.password}</div>
             )}
 
-            <MDBBtn type="submit"  style={{backgroundColor:"#4BB497",border:"0px"}}  className="otp-submit" disabled={isSubmitting}>
+            <MDBBtn type="submit" style={{ backgroundColor: "#4BB497", border: "0px" }} className="otp-submit" disabled={isSubmitting}>
               {isSubmitting ? 'Logging in...' : 'Login'}
-         
+
             </MDBBtn>
           </form>
-          <Link className='forgot-link' to="/password/forgot">Forgot Password</Link>
-          <p className="or">or</p>
-          <Link to="/signup" className="register">
-            Create Account Instead
-          </Link>
+          <div className='login_flex'>     
           
+          <Link className='forgot-link' to="/password/forgot">Forgot Password</Link>
+            <p className="or">or</p>
+            <Link to="/signup" className="register">
+              Create Account Instead
+            </Link></div>
+
+
         </div>
       </section>
       <Footer />

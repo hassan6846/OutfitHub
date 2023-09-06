@@ -1,14 +1,15 @@
 .footer_main{
     display: flex;
     flex-wrap: wrap;
+    padding: 2rem;
     width: 100%;
-    height: 34vh;
+  height: fit-content;
     flex-direction: row;
 align-items: center;
 justify-content: space-evenly;
 }
 .footer_heading{
-color: rgb(45, 45, 45);
+color: #eee;
 font-weight: 600;
 }
 .footer_child{
@@ -17,9 +18,24 @@ font-weight: 600;
 }
 .image_flex_footer{
     display: flex;
+   
 }
 .appStore_img{
     width: 100px;
     margin-right: 5px;
     
+}
+.footer_link_style{
+    color: #4BB497;
+    font-weight: 400;
+}
+@media (min-width:300px) and (max-width:600px) {
+   .footer_main{
+ 
+    align-items: center;
+   }.appStore_img{
+    width: 80px;
+    margin-left: 0px;
+   }
+  
 }

@@ -18,7 +18,7 @@ function Alertbar() {
       <div className='alerted_wrapper'>
         {/* 1 */}
         <div className='Alert__phone'>
-          <p style={{marginBottom:"0px",color:"white"}}>+1 408 666 7812</p>
+          <Link  to="tel:924086667812" style={{marginBottom:"0px",color:"white"}}>+92 408 666 7812</Link>
         </div>
         {/* 1 */}
 

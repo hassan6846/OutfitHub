@@ -16,6 +16,12 @@
     row-gap: 0.4rem;
 
 }
+.login_flex{
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+flex-direction: column;
+}
 .login-container{
     width: 25%;
     justify-content:space-evenly;
@@ -45,7 +51,7 @@
     margin-bottom: 0;
     margin-top: 0;
     font-weight: bold;
-    text-align: center;
+ 
 }
 
 .login-heading{
@@ -64,9 +70,8 @@
     height: 2.9rem;
     padding: 0.4rem 1rem;
 }
-.or{
-    text-align: center;
-}
+
+
 @media (min-width:300px) and (max-width:600px) {
     .login-container{
         width: 85%;
