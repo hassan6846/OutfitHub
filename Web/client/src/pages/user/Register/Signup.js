@@ -10,8 +10,6 @@ import { useFormik } from 'formik'
 import {
   MDBInput,
   MDBBtn
-
-
 } from "mdb-react-ui-kit"
 // css
 import "./Signup.css"
@@ -115,7 +113,7 @@ const Signup = () => {
           <MDBInput {...formik.getFieldProps("email")} className='signup_email' type="text" placeholder='Email'   label=" Email" />
           <MDBInput   {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder='Password'  label="Password" />
           <MDBInput  {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder="Repeat Repeat"  label="Repeat Password"  />
-          <MDBBtn block type='submit'  size="lg" className='register_FORM_BTN'onClick={formik.handleSubmit} >Register</MDBBtn>
+          <MDBBtn  style={{ backgroundColor: "#4BB497", border: "0px" }} block type='submit'  size="lg" className='register_FORM_BTN'onClick={formik.handleSubmit} >Register</MDBBtn>
           <Link to="/login">Login Instead....</Link>
         </form>
       </div>

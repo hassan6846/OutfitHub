@@ -6,7 +6,7 @@ import SignupPage from './pages/user/Register/Signup';
 import ErrorPage from './pages/user/404/ErrorPage';
 import ForgotPassword from './pages/user/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/user/ResetPassword/ResetPassword';
-// import Products from './pages/user/Shop/Products';
+import Products from './pages/user/Shop/Products';
 // import Singleproduct from './pages/user/ProductDetails/Singleproduct';
 import Cart from './pages/user/Cart/Cart';
 
@@ -26,7 +26,7 @@ const AllRoutes = () => (
       <Route path="*" element={<ErrorPage />} />
 
       {/* User Routes */}
-      {/* <Route path="/shop" element={<Products />} /> */}
+      <Route path="/shop" element={<Products />} />
       <Route path="/cart" element={<Cart/>} />
       {/* <Route path="/shop/product/:title" element={<Singleproduct />}/> */}
   

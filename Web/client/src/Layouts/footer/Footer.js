@@ -37,7 +37,7 @@ const Footer = () => {
       {/* 4 */}
       <div className='footer_child'>
         <p className='footer_heading'>SHOPPING FROM</p>
-        <p>You're in Pakistan  </p>
+        <p>You're in <span className='footer_link_style' >Pakistan</span>  </p>
 
       </div>
     </footer>

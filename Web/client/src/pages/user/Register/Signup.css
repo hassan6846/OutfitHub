@@ -38,14 +38,10 @@
     padding: 0px 1rem;
 }
 .register_FORM_BTN{
-    background-color: #131039;
-    color: rgb(75,180,151);
+
     font-weight: 600;
 }
-.register_FORM_BTN:hover{
-    background-color: #131039;
-    color: rgb(75,180,151);    font-weight: 600;
-}
+
 .registerBtn {
     width: 90%;
     padding: 0.8rem;

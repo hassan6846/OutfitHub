@@ -189,10 +189,9 @@ function Cart() {
   
                     <div className="mb-4 pb-2">
                       <select className="select p-2 rounded bg-grey" style={{ width: "100%" }}>
-                        <option value="1">Standard-Delivery- €5.00</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
+                        <option value="1">1 Day Air Cargo Shipping -20$</option>
+                        <option value="2">Two Days Standard Shipping -5$</option>
+              
                       </select>
                     </div>
   
