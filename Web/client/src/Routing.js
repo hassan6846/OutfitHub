@@ -29,6 +29,7 @@ const AllRoutes = () => (
       <Route path="/shop" element={<Products />} />
       <Route path="/cart" element={<Cart/>} />
       {/* <Route path="/shop/product/:title" element={<Singleproduct />}/> */}
+  {/* Private Routes */}
   
     </Routes>
   </Router>
