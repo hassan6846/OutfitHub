@@ -1,61 +1,63 @@
-import React, { useState } from 'react';
-import './ResponsiveNav.css';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { MDBCol, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
-
+import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
+import { FiSearch } from "react-icons/fi"
+import { BsFillCartFill } from "react-icons/bs"
+import { RiMenu3Line } from "react-icons/ri"
+// CSS import
+import './ResponsiveNav.css';
 
 const ResponsiveNav = () => {
+  const SvgUrl = "https://svgshare.com/i/xRe.svg"; // Corrected URL
+  const ALT = "DESIGN";
 
-  const [searchResults, setSearchResults] = useState([]);
-  const handleSearch = (query) => {
-    // Perform your search logic here and update the searchResults state
-    // For now, let's use a mock array of search results
-    const mockResults = ['Result 1', 'Result 2', 'Result 3', "Result 4 ", "Billy Jeans Underwear", "walter", "sdadas", "sdas", "DSDDS", "SDSADS", "SSDSADDS"];
-    setSearchResults(query ? mockResults : []);
+  // Define a function for form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    // Add your logic here for handling form submission (e.g., making an API request)
   };
 
   return (
-    <nav className='navbar_container'>
-      <Link to="/">
-        <img className='logo_nav_Link' alt='Company' src='./logo.svg' />
-      </Link>
+    <>
+      <div className='mobile_nav_link'>
 
-      <MDBCol style={{ display: "flex", columnGap: "0.3rem" }} md="4">
-        <input
-          className="form-control"
-          type="text"
-
-          placeholder="Search"
-          aria-label="Search"
-          onBlur={() => setSearchResults([])}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-        <MDBBtn style={{ padding: "10px 22px", backgroundColor: "#4BB497" }}>
-          <MDBIcon fas icon="search" />
-        </MDBBtn>
-      </MDBCol>
-
-      {searchResults.length > 0 && (
-        <div className="search_dropdown" >
-          <div style={{ rowGap: "0.5rem" }} className="flex-column-search">
-            {searchResults.map((result, index) => (
-              <div style={{ cursor: "pointer", border: "1px solid black" }} key={index}>{result}</div>
-            ))}
-          </div>
+     <div> <Link to='/' style={{ backgroundColor: '#eee', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '5px' }}>
+          <img src={SvgUrl} alt={ALT} />
+        </Link></div>
+        <div className='mobile_links_divs'>
+          <div className='hamburger_menu'><RiMenu3Line /></div>
+          <Link to="/cart" ><span style={{ position: "relative" }}><BsFillCartFill className='cart-icon' /><span className='cart_length' style={{ position: "absolute" }}>1</span></span></Link>
         </div>
-      )}
-
-      <div className='optional_links' style={{ display: "flex" }}>
-        <Link>
-          <img style={{ cursor: "pointer" }} className='userImage_linked' src='https://tinyurl.com/y3p4rhbs' alt='img' />
-          <span className='notification_alert_user'></span>
-        </Link>
-        {/* map cart items length  😭😭😭*/}
-        <Link className='cart-link-url-route' to="/cart"></Link>
-        <Link className='login_link_nav' to="/login">Login</Link>
       </div>
-    </nav>
+      <nav className='navbar_container'>
+        <Link className='nav_link_company' to='/' style={{ backgroundColor: '#eee', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '5px' }}>
+          <img src={SvgUrl} alt={ALT} />
+        </Link>
+        <form style={{ position: "relative" }} onSubmit={handleSubmit} className='Searchfield_form_nav'>
+          <MDBInput style={{ position: "relative" }} className='mdb_input_search' size='lg' label="Search" placeholder='Search Anything' />
+          <MDBBtn style={{ backgroundColor: "#4BB497", border: "0px", marginLeft: "0.2rem" }} type='submit'><FiSearch style={{ scale: "1.6" }} /></MDBBtn>
+          <div style={{ position: "absolute" }} className='search-results_dropdown'>Hello</div>
+        </form>
+        {/* Actions Nav If user is logged in or not 
+      also not made by chatgpt it is me ok
+      */}
+        <div className='buttons_Nav_profile'>
+
+          <Link to="/cart" ><span style={{ position: "relative" }}><BsFillCartFill className='cart-icon' /><span className='cart_length' style={{ position: "absolute" }}>1</span></span></Link>
+
+          {/* use terinary operators instead */}
+          <div className='profile_Dropdown_nav'>
+            <Link className='User_profile_dropdown'><img style={{ borderRadius: "5px" }} height="40px" alt='alt' src="https://shorturl.at/rBGO1" />
+              <div className='dropdown_results_nav'>Hello</div>
+            </Link>
+          </div>
+          {/* resposive toggle nav */}
+          <div className='hamburger_menu'><RiMenu3Line /></div>
+        </div>
+      </nav>
+
+    </>
   );
-}
+};
 
 export default ResponsiveNav;
