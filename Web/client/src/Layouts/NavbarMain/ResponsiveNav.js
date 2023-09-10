@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import { FiSearch } from "react-icons/fi"
-import { BsFillCartFill } from "react-icons/bs"
+import { BsFillCartFill,BsChevronDown } from "react-icons/bs"
 import { RiMenu3Line } from "react-icons/ri"
 import {AiOutlineHeart,AiOutlineShoppingCart,AiOutlineMessage,AiOutlineUserAdd} from "react-icons/ai"
 import {FaUserCircle} from "react-icons/fa"
@@ -52,7 +52,7 @@ const ResponsiveNav = () => {
 
           {/* use terinary operators instead */}
           <div className='profile_Dropdown_nav'>
-            <Link className='User_profile_dropdown'><img style={{ borderRadius: "5px" }} height="40px" alt='alt' src="https://shorturl.at/rBGO1" />
+            <Link to="/profile" className='User_profile_dropdown'>   <img  className='nav_img' height="40px" alt='alt' src="https://shorturl.at/rBGO1" /> <BsChevronDown className='profile_icon_dropdown'/>
               <div className='dropdown_results_nav'>
                 <Link className='dropdown_items_nav'><AiOutlineUserAdd/>LOGIN/SIGNUP</Link>
                 {/* if he is logged in then */}

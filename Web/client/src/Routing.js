@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+// components 
 import Home from './pages/user/Home/Home';
 import LoginPage from './pages/user/Login/Login';
 import SignupPage from './pages/user/Register/Signup';
@@ -9,11 +11,19 @@ import ResetPassword from './pages/user/ResetPassword/ResetPassword';
 import Products from './pages/user/Shop/Products';
 // import Singleproduct from './pages/user/ProductDetails/Singleproduct';
 import Cart from './pages/user/Cart/Cart';
-
-
 import Otp from "./pages/user/Otp/Otp"
-const AllRoutes = () => (
-  <Router>
+import UserProfile from "./pages/user/UserProfile/UserProfile"
+import toast from 'react-hot-toast';
+// hooks
+
+
+const Routing = () => {
+  useEffect(()=>{
+    toast.error("hello")
+  })
+  return (
+      <Router>
+
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<Home />} />
@@ -30,8 +40,11 @@ const AllRoutes = () => (
       <Route path="/cart" element={<Cart/>} />
       {/* <Route path="/shop/product/:title" element={<Singleproduct />}/> */}
   {/* Private Routes */}
-  
+  <Route path="/user" element={<UserProfile/>}/>
     </Routes>
   </Router>
-);
-export default AllRoutes;
+  
+  )
+}
+
+export default Routing

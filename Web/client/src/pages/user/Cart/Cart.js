@@ -14,7 +14,7 @@ import {
   import React from "react";
 import ResponsiveNav from "../../../Layouts/NavbarMain/ResponsiveNav";
 import { Link } from "react-router-dom";
-  
+import Footer from '../../../Layouts/footer/Footer';
 function Cart() {
   return (
    
@@ -223,6 +223,7 @@ function Cart() {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+    <Footer/>
   </section>
   );
   }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Alert.css';
 import { Link } from 'react-router-dom';
-
+import {BsTelephoneFill} from "react-icons/bs"
 function Alertbar() {
   const [showAlert, setShowAlert] = useState(true);
 
@@ -18,7 +18,7 @@ function Alertbar() {
       <div className='alerted_wrapper'>
         {/* 1 */}
         <div className='Alert__phone'>
-          <Link  to="tel:924086667812" style={{marginBottom:"0px",color:"white"}}>+92 408 666 7812</Link>
+          <Link  to="tel:924086667812" style={{marginBottom:"0px",color:"white",display:"flex",justifyContent:"center",alignItems:"center",columnGap:"0.6rem"}}> <BsTelephoneFill/> +92 408 666 7812</Link>
         </div>
         {/* 1 */}
 

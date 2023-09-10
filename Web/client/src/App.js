@@ -4,7 +4,6 @@ import AllRoutes from './Routing';
 // main
 function App() {
   return (
-
       <AllRoutes />
   );
 }
