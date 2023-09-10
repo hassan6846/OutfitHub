@@ -26,12 +26,16 @@ border-radius: 5px;
   width: 100%;
   background-color: red;
   top: 100%;
+  border-radius: 3px;
   margin-top: 0.3rem;
   z-index: 99;
-  height: 3rem;
+  height: fit-content;
+  overflow-y: scroll;
 }
-.mdb_input_search{
-  width: 5000px;
+.desktop_nav_input{
+  position: relative;
+ width: 350px;
+
 }
 .cart_length{
   background-color:#4BB497;
@@ -62,9 +66,34 @@ fill:#131039;;
   display: none;
   position: absolute;
 }
+.dropdown_items_nav{
+  background-color:white;
+  color: #131039;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  column-gap:0.6rem;
+font-size: 13px;
+  padding: 3px;
+  border-radius: 3px;
+}
+.dropdown_items_nav:hover{
+background-color: #4BB497;color: #131039;
+}
 .User_profile_dropdown:hover{
   .dropdown_results_nav{
+background-color:white;
     display: block;
+    right: 50%;
+    border-radius: 5px;
+    padding: 3px;
+height: fit-content;
+width: max-content;
+
+row-gap: 0.09rem;
+display: flex;
+flex-direction: column;
+    z-index: 999;
   }
 }
 .hamburger_menu{
