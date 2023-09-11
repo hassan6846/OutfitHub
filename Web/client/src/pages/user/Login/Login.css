@@ -66,8 +66,18 @@ flex-direction: column;
 .forgot-link{
     text-align: right;
     font-size: 13px;
-color:#131039;
+
+position: relative;
 font-weight: 500;
+}
+.forgot-link::before{
+    content: "";
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 90px;
+    background-color: #66666669;
 }
 
 .login_page_tag_line{
@@ -87,8 +97,10 @@ font-weight: 500;
         height: fit-content;
     }
     .forgot-link{
+
         margin-top: 0.5rem;
     }
+
  .login-input{
     height: 2.5rem;
  }   
