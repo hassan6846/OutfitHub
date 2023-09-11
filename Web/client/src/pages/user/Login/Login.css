@@ -64,11 +64,12 @@ flex-direction: column;
 
 }
 .forgot-link{
+
     text-align: right;
     font-size: 13px;
-
-position: relative;
-font-weight: 500;
+    position: relative;
+    font-weight: 500;
+    
 }
 .forgot-link::before{
     content: "";
