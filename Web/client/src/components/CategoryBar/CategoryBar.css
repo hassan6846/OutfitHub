@@ -6,6 +6,9 @@
     justify-content: center;
     column-gap: 1rem;
 }
+.tab-selector{
+    background-color: white;
+}
 
 .nav_category_flex {
     display: flex;
