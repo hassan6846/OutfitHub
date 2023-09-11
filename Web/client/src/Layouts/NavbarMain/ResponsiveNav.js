@@ -7,7 +7,7 @@ import { RiMenu3Line } from "react-icons/ri"
 import {AiOutlineHeart,AiOutlineShoppingCart,AiOutlineMessage,AiOutlineUserAdd} from "react-icons/ai"
 import {FaUserCircle} from "react-icons/fa"
 import {TbLogout2} from "react-icons/tb"
-import InfiniteScroll from 'react-infinite-scroll-component';
+
 // CSS import
 import './ResponsiveNav.css';
 
@@ -39,7 +39,7 @@ const ResponsiveNav = () => {
           <img src={SvgUrl} alt={ALT} />
         </Link>
         <form style={{ position: "relative" }} onSubmit={handleSubmit} className='Searchfield_form_nav'>
-          <MDBInput style={{width:"380px"}}  className='desktop_nav_input' size='lg' label="Search" placeholder='Search Anything' />
+          <MDBInput   className='desktop_nav_input' size='lg' label="Search" placeholder='Search Anything' />
           <MDBBtn style={{ backgroundColor: "#4BB497",display:"flex",justifyContent:"center",alignItems:"center", border: "0px", marginLeft: "0.2rem" }} type='submit'><FiSearch style={{ scale: "1.6" }} /></MDBBtn>
           <div style={{ position: "absolute" }} className='search-results_dropdown'>Hello</div>
         </form>

@@ -114,7 +114,11 @@ flex-direction: column;
   column-gap: 1rem;
   justify-content: space-between;
 }
+
 @media (min-width:300px) and (max-width:660px) {
+  .form-control{
+    width: 260px;
+  }
   .hamburger_menu{
     display: block;
     font-size: 24px;

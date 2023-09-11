@@ -119,12 +119,17 @@
 
 @media (min-width:300px) and (max-width:600px) {
   .card_wrapper {
-    width: 295px;
+    width: 182px;
+  }.product_card_image_view{
+    height: 320px;
   }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   .card_wrapper {
-    width: 300px;
+    width: 240px;
+  }
+  .product_card_image_view{
+    height: 400px;
   }
 }
