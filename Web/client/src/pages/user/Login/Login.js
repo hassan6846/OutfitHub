@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import './Login.css';
 import Footer from '../../../Layouts/footer/Footer';
 import toast, { Toaster } from 'react-hot-toast';
+import Loginbtns from '../../../components/IconBtns/LoginPageBtns.js';
 import axios from "axios";
 import {
   MDBInput,
@@ -92,6 +93,8 @@ const Login = () => {
         </Link>
         <div className="login-container">
           <p className="login-heading">Login Account</p>
+<Loginbtns/>
+<p className='orline_login'>OR CONTINUE WITH</p>
           <form onSubmit={formik.handleSubmit} className="login-form">
             <MDBInput
               {...formik.getFieldProps('email')}
@@ -114,18 +117,16 @@ const Login = () => {
             {formik.touched.password && formik.errors.password && (
               <div className="error">{formik.errors.password}</div>
             )}
-
+<Link className='forgot-link' to="/password/forgot">Forgot Password?</Link>
             <MDBBtn type="submit" style={{ backgroundColor: "#4BB497", border: "0px" }} className="otp-submit" disabled={isSubmitting}>
               {isSubmitting ? 'Logging in...' : 'Login'}
 
             </MDBBtn>
           </form>
           <div className='login_flex'>     
-          
-          <Link className='forgot-link' to="/password/forgot">Forgot Password</Link>
-            <p className="or">or</p>
+          <p className='login_page_tag_line'>DON'T HAVE ACCOUNT?</p>
             <Link to="/signup" className="register">
-              Create Account Instead
+              Create Account Instead 
             </Link></div>
 
 

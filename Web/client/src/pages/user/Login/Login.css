@@ -16,6 +16,9 @@
     row-gap: 0.4rem;
 
 }
+
+
+
 .login_flex{
     margin-top: 1rem;
     display: flex;
@@ -61,10 +64,16 @@ flex-direction: column;
 
 }
 .forgot-link{
-    text-align: center;
+    text-align: right;
+    font-size: 13px;
+color:#131039;
+font-weight: 500;
 }
 
-
+.login_page_tag_line{
+    color: #666;
+    font-size: 13px;
+}
 .login-input{
     width: 100%;
     height: 2.9rem;

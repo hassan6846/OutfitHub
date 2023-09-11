@@ -25,13 +25,22 @@
     font-weight: 500;
 
 }
-
+.register_or_btns{
+    font-size: 12px;
+    text-align: center;
+}
 .signup-form {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-
+.register_login_tag{
+    text-align: center;
+    font-weight: 300;
+    color: #666;
+    font-size: 14px;
+    line-height: 2rem;
+}
 .signup_email {
     width: 90%;
     height: 3rem;
@@ -41,7 +50,9 @@
 
     font-weight: 600;
 }
-
+.regsiter_login_link{
+    line-height: 1px;
+}
 .registerBtn {
     width: 90%;
     padding: 0.8rem;

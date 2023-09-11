@@ -16,6 +16,7 @@ import "./Signup.css"
 // layouts or components
 import Footer from '../../../Layouts/footer/Footer'
 import axios from 'axios'
+import Loginbtns from '../../../components/IconBtns/LoginPageBtns'
 
 
 const Signup = () => {
@@ -101,10 +102,11 @@ const Signup = () => {
         <Link to="/" className="login-logo">
           <img alt="company" src="./logo.svg" />
         </Link>
+       
         <form onSubmit={formik.handleSubmit} method='post' className='form_wrapper'>
           <p className='signup_txt'>Create Account</p>
-
-
+          <Loginbtns/>
+<p className='register_or_btns'>OR CONTINUE WITH</p>
 
 
 
@@ -114,7 +116,8 @@ const Signup = () => {
           <MDBInput   {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder='Password'  label="Password" />
           <MDBInput  {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder="Repeat Repeat"  label="Repeat Password"  />
           <MDBBtn  style={{ backgroundColor: "#4BB497", border: "0px" }} block type='submit'  size="lg" className='register_FORM_BTN'onClick={formik.handleSubmit} >Register</MDBBtn>
-          <Link to="/login">Login Instead....</Link>
+        <p className='register_login_tag'>Already Have Account</p>
+          <Link className='regsiter_login_link' to="/login">Login Instead....</Link>
         </form>
       </div>
       <Footer MarginTop="0vmax" />
