@@ -21,17 +21,22 @@ const ResponsiveNav = () => {
     e.preventDefault(); // Prevent the default form submission behavior
     // Add your logic here for handling form submission (e.g., making an API request)
   };
-
+// navbar state toggle
+const [isActive,setIsActive]=useState(true)
+const toggleClass=isActive?"Toggle_menu_sidebar_navbar":"Toggle_menu_sidebar_navbar_clicked"
+const handleClick=()=>{
+  setIsActive(!isActive)
+}
   return (
     <div>
-    <div className='Toggle_menu_sidebar_navbar'></div>
+    <div  className={toggleClass}></div>
       <div className='mobile_nav_link'>
 
      <div> <Link to='/' style={{ backgroundColor: '#eee', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '5px' }}>
           <img src={SvgUrl} alt={ALT} />
         </Link></div>
         <div  className='mobile_links_divs'>
-          <div style={{cursor:"pointer"}} className='hamburger_menu'><RiMenu3Line /></div>
+          <div onClick={handleClick} style={{cursor:"pointer"}} className='hamburger_menu'><RiMenu3Line /></div>
           <Link to="/cart" ><span style={{ position: "relative" }}><BsFillCartFill className='cart-icon' /><span className='cart_length' style={{ position: "absolute" }}>1</span></span></Link>
         </div>
       </div>
