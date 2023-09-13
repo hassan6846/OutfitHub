@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import { FiSearch } from "react-icons/fi"
@@ -23,7 +23,8 @@ const ResponsiveNav = () => {
   };
 
   return (
-    <>
+    <div>
+    <div className='Toggle_menu_sidebar_navbar'></div>
       <div className='mobile_nav_link'>
 
      <div> <Link to='/' style={{ backgroundColor: '#eee', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '5px' }}>
@@ -69,7 +70,7 @@ const ResponsiveNav = () => {
         </div>
       </nav>
 
-    </>
+    </div>
   );
 };
 

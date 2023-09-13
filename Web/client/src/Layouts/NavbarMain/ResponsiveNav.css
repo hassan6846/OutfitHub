@@ -115,7 +115,39 @@ flex-direction: column;
   justify-content: space-between;
 }
 
+.Toggle_menu_sidebar_navbar{
+  position: absolute;
+display: none;
+  z-index: 99999;
+  right: 0;
+  width: 0%;
+  top: 0;
+  height: 100%;
+  position: fixed;
+}
+.Toggle_menu_sidebar_navbar_clicked{
+  width: 50%;
+  position: absolute;
+  background-color: #eee;
+  z-index: 99999;
+  right: 0;
+  display: block;
+  width: 50%;
+  height: 100%;
+  position: fixed;
+}
 @media (min-width:300px) and (max-width:660px) {
+
+  .Toggle_menu_sidebar_navbar{
+    position: absolute;
+    background-color: #eee;
+    z-index: 99999;
+    right: 0;
+    display: block;
+    width: 50%;
+    height: 100%;
+    position: fixed;
+  }
   .form-control{
     width: 260px;
   }
