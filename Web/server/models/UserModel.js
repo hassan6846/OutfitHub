@@ -37,7 +37,7 @@ avatar: {
     url: {
       type: String,
       required: false,
-default:"https://randomuser.me/api/"
+     default:"https://randomuser.me/api/"
     }
   },
 
