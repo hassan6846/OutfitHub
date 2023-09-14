@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import toast from 'react-hot-toast';
 // components 
 import Home from './pages/user/Home/Home';
 import LoginPage from './pages/user/Login/Login';
@@ -13,7 +13,7 @@ import Singleproduct from './pages/user/ProductDetails/Singleproduct';
 import Cart from './pages/user/Cart/Cart';
 import Otp from "./pages/user/Otp/Otp"
 import UserProfile from "./pages/user/UserProfile/UserProfile"
-import toast from 'react-hot-toast';
+import Faq from "./pages/user/Faqs/Faq"
 // hooks
 
 
@@ -30,6 +30,7 @@ const Routing = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/password/forgot" element={<ForgotPassword />} />
+      {/* session */}
       <Route path="/password/reset/:id" element={<ResetPassword />} />
       <Route path='/otp' element={<Otp/>}/>
       {/* 404 page */}
@@ -39,6 +40,7 @@ const Routing = () => {
       <Route path="/shop" element={<Products />} />
       <Route path="/cart" element={<Cart/>} />
       <Route path="/shop/product" element={<Singleproduct />}/>
+      <Route path='/faqs' element={<Faq/>} />
   {/* Private Routes */}
   <Route path="/user" element={<UserProfile/>}/>
     </Routes>

@@ -126,6 +126,7 @@
     display: block;
     width: 0%;
     height: 100%;
+ 
     position: fixed;
   }
   .Toggle_menu_sidebar_navbar_clicked {
@@ -137,7 +138,7 @@
     display: block;
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     height: 100%;
-    position: fixed;
+    position: fixed;   
   }
   .form-control {
     width: 260px;

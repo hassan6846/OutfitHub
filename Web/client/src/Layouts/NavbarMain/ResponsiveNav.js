@@ -7,7 +7,7 @@ import { RiMenu3Line } from "react-icons/ri"
 import {AiOutlineHeart,AiOutlineShoppingCart,AiOutlineMessage,AiOutlineUserAdd} from "react-icons/ai"
 import {FaUserCircle} from "react-icons/fa"
 import {TbLogout2} from "react-icons/tb"
-
+import {FaQuestion} from "react-icons/fa6"
 // CSS import
 import './ResponsiveNav.css';
 
@@ -61,12 +61,14 @@ const handleClick=()=>{
             <Link to="/profile" className='User_profile_dropdown'>   <img  className='nav_img' height="40px" alt='alt' src="https://shorturl.at/rBGO1" /> <BsChevronDown className='profile_icon_dropdown'/>
               <div className='dropdown_results_nav'>
                 <Link className='dropdown_items_nav'><AiOutlineUserAdd/>LOGIN/SIGNUP</Link>
+                
                 {/* if he is logged in then */}
                 <Link to="/private" className='dropdown_items_nav'><FaUserCircle/>Your Profile</Link>
                 <Link to="/cart" className='dropdown_items_nav'><AiOutlineShoppingCart/> Cart</Link>
                 <Link to="/liked" className='dropdown_items_nav'><AiOutlineHeart/> Liked Items </Link>
                 <Link to="/messages" className='dropdown_items_nav'><AiOutlineMessage/>Messages</Link>
                 <Link  to="/logout"  className='dropdown_items_nav'><TbLogout2/>LOGOUT</Link>
+                <Link to="/faqs" className='dropdown_items_nav'><FaQuestion/>FAQ'S</Link>
               </div>
             </Link>
           </div>

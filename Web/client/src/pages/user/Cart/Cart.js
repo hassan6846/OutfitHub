@@ -11,13 +11,12 @@ import {
   MDBRow,
   MDBTypography,
   } from "mdb-react-ui-kit";
-  import React from "react";
+import React from "react";
 import ResponsiveNav from "../../../Layouts/NavbarMain/ResponsiveNav";
 import { Link } from "react-router-dom";
 import Footer from '../../../Layouts/footer/Footer';
 function Cart() {
-  return (
-   
+  return ( 
   <section className="h-100 h-custom" style={{ backgroundColor: "white" }}>
     <ResponsiveNav/>
     <MDBContainer className="py-5 h-100" >
@@ -196,7 +195,7 @@ function Cart() {
                     </div>
   
                     <MDBTypography tag="h5" className="text-uppercase mb-3">
-                      Give code
+                      Coupon Code
                     </MDBTypography>
   
                     <div className="mb-5">
