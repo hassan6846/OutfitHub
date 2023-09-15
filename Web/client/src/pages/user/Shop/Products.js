@@ -13,6 +13,7 @@ const Products = () => {
 
   return (
     <div className='product-page-wrapper'>
+ 
       <Nav />
       <CategoryBar />
       <ShopFilteration />

@@ -13,7 +13,7 @@ import Singleproduct from './pages/user/ProductDetails/Singleproduct';
 import Cart from './pages/user/Cart/Cart';
 import Otp from "./pages/user/Otp/Otp"
 import UserProfile from "./pages/user/UserProfile/UserProfile"
-import Faq from "./pages/user/Faqs/Faq"
+import FaqPage from "./pages/user/Faqs/Faq"
 // hooks
 
 
@@ -40,7 +40,7 @@ const Routing = () => {
       <Route path="/shop" element={<Products />} />
       <Route path="/cart" element={<Cart/>} />
       <Route path="/shop/product" element={<Singleproduct />}/>
-      <Route path='/faqs' element={<Faq/>} />
+      <Route path='/faqs' element={<FaqPage/>} />
   {/* Private Routes */}
   <Route path="/user" element={<UserProfile/>}/>
     </Routes>
