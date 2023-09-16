@@ -8,18 +8,14 @@ import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineMessage, AiOutlineUserA
 import { FaUserCircle } from "react-icons/fa"
 import { TbLogout2 } from "react-icons/tb"
 import { FaQuestion } from "react-icons/fa6"
-// CSS import
+
+// CSS importd
 import './ResponsiveNav.css';
-
-
+import { CompanyLogo, defaultUserImg } from '../../helpers/GlobalVariables';
 const ResponsiveNav = () => {
-  const SvgUrl = "https://svgshare.com/i/xRe.svg"; // Corrected URL
-  const ALT = "DESIGN";
-
-  // Define a function for form submission
+const ALT="DESIGN"
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    // Add your logic here for handling form submission (e.g., making an API request)
+    e.preventDefault(); 
   };
   // navbar state toggle
   const [isActive, setIsActive] = useState(true)
@@ -33,7 +29,7 @@ const ResponsiveNav = () => {
       <div className='mobile_nav_link'>
 
         <div> <Link to='/' style={{ backgroundColor: '#eee', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '5px' }}>
-          <img src={SvgUrl} alt={ALT} />
+          <img src={CompanyLogo} alt={ALT} />
         </Link></div>
         <div className='mobile_links_divs'>
           <div onClick={handleClick} style={{ cursor: "pointer" }} className='hamburger_menu'><RiMenu3Line /></div>
@@ -42,7 +38,7 @@ const ResponsiveNav = () => {
       </div>
       <nav className='navbar_container'>
         <Link className='nav_link_company' to='/' style={{ backgroundColor: '#eee', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)', padding: '6px', borderRadius: '5px' }}>
-          <img src={SvgUrl} alt={ALT} />
+          <img src={CompanyLogo} alt={ALT} />
         </Link>
         <form style={{ position: "relative" }} onSubmit={handleSubmit} className='Searchfield_form_nav'>
           <MDBInput className='desktop_nav_input' size='lg' label="Search" placeholder='Search Anything' />
@@ -58,7 +54,7 @@ const ResponsiveNav = () => {
 
           {/* use terinary operators instead */}
           <div className='profile_Dropdown_nav'>
-            <Link to="/profile" className='User_profile_dropdown'>   <img className='nav_img' height="40px" alt='alt' src="https://shorturl.at/rBGO1" /> <BsChevronDown className='profile_icon_dropdown' />
+            <Link to="/profile" className='User_profile_dropdown'>   <img className='nav_img' height="40px" alt='alt' src={defaultUserImg} /> <BsChevronDown className='profile_icon_dropdown' />
               <div className='dropdown_results_nav'>
                 <Link to="/signup" className='dropdown_items_nav'><AiOutlineUserAdd />LOGIN/SIGNUP</Link>
 
