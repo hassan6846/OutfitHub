@@ -4,13 +4,18 @@ const UserModel = require("../models/UserModel");
 const ErrorHandler = require("../utils/errorhandler");
 const router = require("../Routes/UserRoutes");
 const { isAuthenticated } = require("../middlewares/Auth");
-// registerUser
-async function registerUser(req, res) {
+
+/**
+ * 
+ * REGISTER 
+ * 
+ * 
+ */
+  async function registerUser(req, res) {
   // Getting username, email, and password
   const { username, email, password } = req.body;
-
   // If any field is empty
-  if (!username || !email || !password) {
+  if (!(username || email || password)) {
     return res.status(400).json({
       success: false,
       msg: "Kindly fill all fields",
@@ -40,15 +45,21 @@ async function registerUser(req, res) {
 
     // Save the user to the database
     const savedUser = await user.save();
-
     // Generate token for the user
-    const token = generateToken(savedUser._id);
-
-    res.status(201).json({
+    const token = generateToken(savedUser._id,savedUser.email);
+    res.status(201)
+    .cookie("AccessToken",token,{
+      httpOnly:true,
+      path:"/",
+      expiresIn:new Date(Date.now()*24*60*1000)
+    })
+    .json({
       success: true,
       msg: "User created successfully",
       token,
     })
+ 
+
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -59,32 +70,30 @@ async function registerUser(req, res) {
 }
 
 // Generate token
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
+const generateToken = (payload) => {
+  return jwt.sign({ payload  }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
 };
+
 /**
- * LOGIN FUNCTION
+ * LOGIN CONTROLLER
  * 
  *
  */
 const loginUser = async (req, res) => {
   // Getting email and password
   const { email, password } = req.body;
-
   // If email or password is missing
-  if (!email || !password) {
+  if (!(email || password)) {
     return res.status(400).json({
       success: false,
       msg: "Kindly fill all required fields",
     });
   }
-
   try {
     // Find user by email
     const findUser = await UserModel.findOne({ email });
-
     const SALT_ROUNDS = 10
     const salt = await bcrypt.genSalt(SALT_ROUNDS);
     const hash = await bcrypt.hash(password, salt);
@@ -122,7 +131,6 @@ const loginUser = async (req, res) => {
  * logout 
  */
 const Userlogout = async (req, res, next) => {
-
   // Set the cookie with an expiration time of 12 seconds
   res.cookie('token', null, {
     expires: new Date(Date.now()), // Add 12000 milliseconds (12 seconds) to the current time
@@ -136,7 +144,6 @@ const Userlogout = async (req, res, next) => {
 };
 /**
  * forgot password 
- *
  * method post
  * requires email only
  * type user
@@ -192,7 +199,6 @@ const getAllUser=async(req,res,next)=>{
   user
 })}
  
-
 /**
  * get a single user
  * type-admin
