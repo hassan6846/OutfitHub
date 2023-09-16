@@ -100,7 +100,7 @@ const Signup = () => {
       <Toaster position='top-center' reverseOrder={false}></Toaster>
       <div className="main_wrapper">
         <Link to="/" className="login-logo">
-          <img alt="company" src="./logo.svg" />
+          <img alt="company" src="https://svgshare.com/i/xRe.svg" />
         </Link>
        
         <form onSubmit={formik.handleSubmit} method='post' className='form_wrapper'>
