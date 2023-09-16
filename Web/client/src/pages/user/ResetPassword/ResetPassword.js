@@ -26,7 +26,7 @@ const ResetPassword = () => {
  <form className='reset_form_inp'>
     <MDBInput  icon={<FaLockOpen/>}  type="password"  label="Password" className='reset-password'/>
         <MDBInput  icon={<FaLockOpen/>} type="password"  label="Confirm password" className='reset-password_confirm'/>
-        <MDBBtn type="submit" className='reset-btn_form'block  size='lg'>Reset password</MDBBtn>
+        <MDBBtn type="submit" className='reset-btn_form' style={{backgroundColor:"#4BB497"}} block  size='lg'>Reset password</MDBBtn>
         <Link to="/login" style={{textAlign:"center",marginTop:"1rem"}}> <i class="fas fa-arrow-left"></i> Back to login</Link>
  </form>
       </div>

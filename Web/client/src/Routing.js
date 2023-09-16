@@ -27,11 +27,13 @@ const Routing = () => {
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<Home />} />
+      {/* don't be visited after user logged in */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/password/forgot" element={<ForgotPassword />} />
-      {/* session */}
+      {/* sessions*/}
       <Route path="/password/reset/:id" element={<ResetPassword />} />
+      <Route path="/password/reset/*" element={<ErrorPage/>}/>
       <Route path='/otp' element={<Otp/>}/>
       {/* 404 page */}
       <Route path="*" element={<ErrorPage />} />

@@ -16,8 +16,10 @@ const ErrorPage = () => {
     document.title = 404
   })
   return (
+    <>
+    <Link style={{top:"3.5%",left:"8%" ,position:"absolute"}} to="/"><img alt="company" src="https://svgshare.com/i/xRe.svg"/></Link>
     <div>
-    <Link style={{top:"3.5%",left:"8%" ,position:"absolute"}} to="/"><img alt="company" src="./logo.svg"/></Link>
+  
 
       <div id="notfound">
         <div class="notfound">
@@ -31,6 +33,7 @@ const ErrorPage = () => {
       </div>
       <Footer />
     </div>
+    </>
   )
 }
 

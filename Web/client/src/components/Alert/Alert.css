@@ -30,7 +30,9 @@
     align-items: center;
   }
   .close_alert_svg{
-    height: 18px;
+  font-size: 18px;
+    color: white;
+    
   }
   .alert_msg{
     margin-bottom: 0px;

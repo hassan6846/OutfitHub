@@ -1,12 +1,12 @@
 import React from 'react'
 import "./Footer.css"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 const Footer = () => {
   return (
     <footer className='footer_main' style={{ backgroundColor: "#131039" }}>
       <div className='footer_child'>
         <p className='footer_heading'>HELP & INFORMATION</p>
-        <Link  to="tel:92316049019" className='footer_link_style' >Request a Call Back!</Link>
+        <Link to="tel:92316049019" className='footer_link_style' >Request a Call Back!</Link>
         <Link className='footer_link_style' >Contact Us</Link>
         <Link className='footer_link_style' >FAQ & Help Center</Link>
       </div>
@@ -20,10 +20,11 @@ const Footer = () => {
       </div>
       {/* app Link */}
       <div className='footer_child'>
+
         <p className='footer_heading'>DOWNLOAD OUR APP</p>
         <div className='image_flex_footer'>
-       <Link className='footer_link_style'> <img className='appStore_img' alt='googlePlay' src='https://www.clicky.pk/_nuxt/img/googleplay.3eb27f7.png' /></Link>  
-        <Link className='footer_link_style'> <img className='appStore_img' alt='appleStore' src='https://www.clicky.pk/_nuxt/img/appstore.91f0e59.png' /></Link> 
+          <Link className='footer_link_style'> <img className='appStore_img' alt='googlePlay' src='https://www.clicky.pk/_nuxt/img/googleplay.3eb27f7.png' /></Link>
+          <Link className='footer_link_style'> <img className='appStore_img' alt='appleStore' src='https://www.clicky.pk/_nuxt/img/appstore.91f0e59.png' /></Link>
         </div>
         <p className='footer_heading'>KEEP IN TOUCH!</p>
 
