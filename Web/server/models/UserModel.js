@@ -1,16 +1,12 @@
-//mongoose for creating a model e.g new user
+
 const mongoose=require("mongoose");
-//json web token for idk
 const jwt =require("jsonwebtoken");
-//bycrypt for salting  and hashing the password
 const bycrypt=require("bcrypt")
-//crypto for creating crytographic hash
 const crypto =require("crypto")
-//validator helps to validate the post and input fields
 const validator=require("validator")
 
 const UserSchema=new mongoose.Schema({
-// name
+
 username:{
     type:String,
     require:[true,"Please  Enter  your name"],
@@ -40,12 +36,14 @@ avatar: {
      default:"https://randomuser.me/api/"
     }
   },
-
   role: {
     type: String,
     default: "user",
   },
+  phone:{
+    type:Number,
 
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -60,17 +58,19 @@ avatar: {
 
 
 })
-// what is after this
-// after this i had to made oop based or funcitonal based methods
-module.exports = mongoose.model("User", UserSchema);
-//generating reset password token
-UserSchema.methods.getResetPasswordToken=function(){
-//token
-const resetToken=crypto.randomBytes(20).toString("hex")
-this.resetPasswordToken=crypto
-.createHash("sha256")
-.update(resetToken)
-.digest("hex");
-this.resetPasswordExpire=Data.now()+15*60*1000
-return resetToken
-}
+
+
+//HASHING PASSWORD BEFORE SAFE METHOD.. 
+UserSchema.pre('save', async function (next) {
+  if (this.isModified("password")) {
+    this.password = await bycrypt.hash(this.password, 10); 
+  }
+  next();
+});
+// HASH COMPARE
+
+UserSchema.methods.comparePassword = async function (password) {
+  return await bycrypt.compare(password, this.password);
+};
+const User=mongoose.model("User",UserSchema)
+module.exports=User
