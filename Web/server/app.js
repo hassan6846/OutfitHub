@@ -6,9 +6,6 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
-
-
-
 // Importing all routes
 const user=require("./Routes/UserRoutes")
 const product=require("./Routes/ProductRoutes")
@@ -27,6 +24,7 @@ require("dotenv").config();
 app.use(fileUpload())
 app.disable('x-powered-by')
 /////
+
 //routes
 app.use("/api/v1",user)
 // app.use("/api/v1",payment)
