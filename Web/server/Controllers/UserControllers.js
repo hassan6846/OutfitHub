@@ -50,10 +50,9 @@ async function registerUser(req, res) {
         name: savedUser.username,
         email: savedUser.email,
         role: savedUser.role,
-        exp: Math.floor(Date.now() / 1000) + 7200
-      }, process.env.JWT_SECRET);
+      }, process.env.JWT_SECRET,{expiresIn:"15m"});
     res
-      .status(201)
+    
       .cookie("token", token, {
         httpOnly: true,
         path: "/",
@@ -61,6 +60,7 @@ async function registerUser(req, res) {
         secure: true,
         expiresIn: new Date(Date.now() * 24 * 60 * 1000)
       })
+      .status(201)
       .json({
         success: true,
         msg: "User created successfully",
@@ -107,14 +107,31 @@ const loginUser = async (req, res) => {
     }
     // MATCH HASH
     const isPasswordMatched = await FindUser.comparePassword(password)
+
     if (!isPasswordMatched) {
       return res.status(400).json({
-        "MSG": "PASSWORD didn't matched"
+       success:false,
+       msg: "PASSWORD didn't matched"
       })
     }
+
+    const LOGIN_Token=jwt.sign({
+      id:FindUser._id,
+      name: FindUser.username,
+      email: FindUser.email,
+      role: FindUser.role,
+    },process.env.JWT_SECRET,{expiresIn:"15m"})
+    // generate TOKEN is password is matched
+   
     if (isPasswordMatched) {
-      res.status(200).json({
-        msg: "HELLO FROM INSIDE"
+
+       return res
+       .cookie("Token",LOGIN_Token)
+      .status(200)
+      .json({
+        Success:true,
+        Msg: "HELLO FROM INSIDE",
+        Token:LOGIN_Token
       })
     }
   } catch (error) {

@@ -6,7 +6,6 @@ const crypto =require("crypto")
 const validator=require("validator")
 
 const UserSchema=new mongoose.Schema({
-
 username:{
     type:String,
     require:[true,"Please  Enter  your name"],
@@ -67,7 +66,8 @@ UserSchema.pre('save', async function (next) {
   }
   next();
 });
-// HASH COMPARE
+
+// HASH COMPARE METHOD
 
 UserSchema.methods.comparePassword = async function (password) {
   return await bycrypt.compare(password, this.password);
