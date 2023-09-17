@@ -1,11 +1,18 @@
-// store template for redux_toolkit
-const { configureStore } = require("@reduxjs/toolkit");
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-export const store=configureStore({
-    initialState:{
+// Import your reducer files here
+// import userReducer from "./userReducer";
+// import productReducer from "./productReducer";
 
-    },
-    reducer:{
+const rootReducer = combineReducers({
+//   user: userReducer,
+//   products: productReducer,
+  // Add more reducers if you have them
+});
 
-    }
-})
+export const store = configureStore({
+  reducer: rootReducer,
+  // Add middleware or other store configurations as needed
+});
+
+export default store;
