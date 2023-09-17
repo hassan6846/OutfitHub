@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const RequestLimits=require("express-rate-limit")
 const UserModel = require("../models/UserModel");
 const ErrorHandler = require("../utils/errorhandler");
 const router = require("../Routes/UserRoutes");
