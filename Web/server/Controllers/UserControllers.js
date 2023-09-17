@@ -5,17 +5,14 @@ const ErrorHandler = require("../utils/errorhandler");
 const router = require("../Routes/UserRoutes");
 const { isAuthenticated } = require("../middlewares/Auth");
 
-/**
- * 
- * REGISTER 
- * 
- * 
- */
+/*
+* REGISTER 
+*/
   async function registerUser(req, res) {
   // Getting username, email, and password
   const { username, email, password } = req.body;
-  // If any field is empty
-  if (!(username || email || password)) {
+      // If any field is empty
+     if (!(username || email || password)) {
     return res.status(400).json({
       success: false,
       msg: "Kindly fill all fields",
@@ -47,10 +44,12 @@ const { isAuthenticated } = require("../middlewares/Auth");
     const savedUser = await user.save();
     // Generate token for the user
     const token = generateToken(savedUser._id,savedUser.email);
-    res.status(201)
-    .cookie("AccessToken",token,{
+     res.status(201)
+    .cookie("token",token,{
       httpOnly:true,
       path:"/",
+      httpOnly: true,
+      secure:true,
       expiresIn:new Date(Date.now()*24*60*1000)
     })
     .json({
@@ -76,10 +75,8 @@ const generateToken = (payload) => {
   });
 };
 
-/**
+/*
  * LOGIN CONTROLLER
- * 
- *
  */
 const loginUser = async (req, res) => {
   // Getting email and password
@@ -101,7 +98,7 @@ const loginUser = async (req, res) => {
    await bcrypt.compare(password,hash,async function(err,result1){
       if(result1){
         res.status(201)
-        .json({
+         .json({
           success:true,
           "type":"Login",
           "Msg":"User Logged in Sucessfully",
@@ -112,7 +109,7 @@ const loginUser = async (req, res) => {
     })
    }
    else{
-    res.status(404).json({
+     res.status(404).json({
      success:true,
      "Msg":"Invaild Credentials."
     })}
@@ -153,20 +150,19 @@ const ForgotPassword=async (req,res,next)=>{
  try{
 //find email exists or not
 const user=await UserModel.findOne({email:req.body.email})
-if(!user){
-  return
-  next(new ErrorHandler("User doesn't exists",404))
-}
- } catch(error){
+   if(!user){
+   res.status(400).json({
+     "Success":false,
+     "MSG":"Incorrect Email or User doesn't exists"
+})
+}} catch(error){
   res.send(error)
   console.log(error)
- }
-}
+ }}
 
-/**
+/*
  * get all users
  * type-admin
- * 
  */
 const getAllUser=async(req,res,next)=>{
   try{
