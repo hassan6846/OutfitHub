@@ -16,7 +16,8 @@ const {
     loginUser,
     Userlogout,
     getAllUser,
-    GetUsersDetails
+    GetUsersDetails,
+    ForgotPassword
 } = require("../Controllers/UserControllers")
 
 //simple actions
@@ -28,7 +29,7 @@ router.route("/logout").get(Userlogout);
 router.route("/me").get()
 router.route("/me/update").put();
 //password actions
-router.route("/password/forgot").post();
+router.route("/password/forgot").post(ForgotPassword);
 router.route("/password/reset/:token").put();
 router.route("/password/update").put();
 

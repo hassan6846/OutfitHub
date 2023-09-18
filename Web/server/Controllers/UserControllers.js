@@ -29,13 +29,9 @@ async function registerUser(req, res) {
     if (duplicateEmail) {
       return res.status(409).json({
         success: false,
-        msg: "Email is already registered",
-      });
+        msg: "User Already Exists try login instead",
+      }).redirect("/");
     }
-
-    // Hash the password
-
-
     const user = new UserModel({
       username,
       email,
@@ -50,10 +46,10 @@ async function registerUser(req, res) {
         name: savedUser.username,
         email: savedUser.email,
         role: savedUser.role,
-      }, process.env.JWT_SECRET,{expiresIn:"15m"});
+      }, process.env.JWT_SECRET, { expiresIn: "15m" });
+    // --sending cookie
     res
-    
-      .cookie("token", token, {
+      .cookie("AccessToken", token, {
         httpOnly: true,
         path: "/",
         httpOnly: true,
@@ -66,8 +62,6 @@ async function registerUser(req, res) {
         msg: "User created successfully",
         token,
       })
-
-
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -105,34 +99,31 @@ const loginUser = async (req, res) => {
         msg: "Invalid Credentials",
       })
     }
-    // MATCH HASH
+    // MATCH PASSWORD HASH
     const isPasswordMatched = await FindUser.comparePassword(password)
-
     if (!isPasswordMatched) {
       return res.status(400).json({
-       success:false,
-       msg: "PASSWORD didn't matched"
+        success: false,
+        msg: "Invalid Credentials"
       })
     }
 
-    const LOGIN_Token=jwt.sign({
-      id:FindUser._id,
+    const LOGIN_Token = jwt.sign({
+      id: FindUser._id,
       name: FindUser.username,
       email: FindUser.email,
       role: FindUser.role,
-    },process.env.JWT_SECRET,{expiresIn:"15m"})
-    // generate TOKEN is password is matched
-   
-    if (isPasswordMatched) {
+    }, process.env.JWT_SECRET, { expiresIn: "15m" })
 
-       return res
-       .cookie("Token",LOGIN_Token)
-      .status(200)
-      .json({
-        Success:true,
-        Msg: "HELLO FROM INSIDE",
-        Token:LOGIN_Token
-      })
+      if (isPasswordMatched) {
+      return res
+        .cookie("AccessToken", LOGIN_Token)
+        .status(200)
+        .json({
+          Success: true,
+          Msg: "HELLO FROM INSIDE",
+          Token: LOGIN_Token
+        })
     }
   } catch (error) {
     console.error("Login Error:", error);
@@ -148,14 +139,15 @@ const loginUser = async (req, res) => {
  */
 const Userlogout = async (req, res, next) => {
   // Set the cookie with an expiration time of 12 seconds
-  res.cookie('token', null, {
+  res.cookie('AccessToken', null, {
     expires: new Date(Date.now()), // Add 12000 milliseconds (12 seconds) to the current time
     httpOnly: true,
-    secure: true
+    secure: true,
+    path:"/"
   });
   res.status(200).json({
     success: true,
-    message: 'Logged Out',
+    message: 'Logged Out Sucessfully',
   });
 };
 /**
@@ -164,23 +156,48 @@ const Userlogout = async (req, res, next) => {
  * requires email only
  * type user
  */
-
-const ForgotPassword = async (req, res, next) => {
-  try {
-    //find email exists or not
-    const user = await UserModel.findOne({ email: req.body.email })
-    if (!user) {
-      res.status(400).json({
-        "Success": false,
-        "MSG": "Incorrect Email or User doesn't exists"
-      })
+const ForgotPassword=async(req,res,next)=>{
+  // Requirng Email
+  const {email}=req.body
+  try{
+    // if EMPTY FIELD
+    if(!(email)){
+     return res
+     .status(404)
+     .json({
+    Success:false,
+    "MSG":"Kindly fill all the fields"
+     })
     }
-  } catch (error) {
-    res.send(error)
-    console.log(error)
+    // VALIDATE EMAIL
+    if(!validator.isEmail(email)){
+      return res.
+      status(400).
+      json({   
+        success: false,
+        msg: "Invalid Email Format. Please enter a valid email address.",})
+    }
+    // finding user QUERY
+     const FindUserByEmail=await UserModel.findOne({email})
+    //  if not find REGISTERED
+     if(!FindUserByEmail){
+      return res
+      .status(404)
+      .json({
+        success:false,
+        msg:"Invalid Credientials"
+      })
+     }
+   if(FindUserByEmail){
+    res.status(201)
+    .json({success:true,"Reset_Link":"Link will be in your email","MSG":`Reset Link is sended to ${email}`})
+   }
+  }
+  catch(err){
+    console.log(err)
+    res.json({"ERRORS":err})
   }
 }
-
 /*
  * get all users
  * type-admin
@@ -227,4 +244,4 @@ const GetUsersDetails = async (req, res, next) => {
  * delete user -admin
  * type -admin
  */
-module.exports = { registerUser, loginUser, Userlogout, getAllUser, GetUsersDetails };
+module.exports = { registerUser, loginUser, Userlogout,ForgotPassword, getAllUser, GetUsersDetails };
