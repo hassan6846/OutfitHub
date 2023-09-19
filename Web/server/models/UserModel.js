@@ -41,7 +41,7 @@ avatar: {
   },
   phone:{
     type:Number,
-
+   default:""
   },
   createdAt: {
     type: Date,
@@ -54,7 +54,7 @@ avatar: {
 
   resetPasswordToken: String,
   resetPasswordExpire: Date,
-
+  lastPasswordUpdate:Date
 
 })
 
@@ -73,4 +73,6 @@ UserSchema.methods.comparePassword = async function (password) {
   return await bycrypt.compare(password, this.password);
 };
 const User=mongoose.model("User",UserSchema)
+// Reset password TOKEN
+
 module.exports=User
