@@ -1,15 +1,69 @@
-.img-hover-zoom {
-    height: 500px; /* [1.1] Set it as per your need */
-    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
-  }
-  
-  /* [2] Transition property for smooth transformation of images */
-  .hoverimage {
-    transition: transform 0.5s ease;
-  }
-  
-  /* [3] Finally, transforming the image when container gets hovered */
-  .img-hover-zoom:hover img {
-    transform: scale(1.11);
-  }
-  
+.single_product_page_container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+.single_wrapper_80 {
+  width: 80%;
+  display: flex;
+}
+.images_overflow_single {
+  height: fit-content;
+  display: flex;
+  row-gap: 0.3rem;
+  column-gap: 0.3rem;
+  overflow: hidden;
+  height: max-content;
+  width: 50%;
+  position: sticky;
+  flex-wrap: wrap;
+  /* set row and column gap according to  */
+}
+.single_images_shop {
+  width: 48%;
+  box-shadow: rgba(0, 0, 0, 0.068) 0.3px 1px 0.3px;
+  border-radius: 2px;
+}
+.single_images_shop:hover {
+  cursor: zoom-in;
+}
+.Single_product_details {
+  height: fit-content;
+  padding: 1rem;
+  width: 50%;
+}
+.product_name_single {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #131039;
+}
+.product_full_single {
+  color: #848484;
+}
+.product_id_single {
+  font-weight: 500;
+  color: #848484;
+  font-size: 13px;
+}
+.single_price_page{
+  font-size: 25px;
+}
+.price_before_single{
+  color: #848484;
+  font-weight: 300;
+  text-decoration: line-through;
+}
+.price_after_single{
+color: #D01345;
+margin-left: 0.5rem;
+font-weight: 600;
+}
+
+
+
+
+.button_flex_single{
+  display: flex;
+  column-gap: 0.3rem;
+}

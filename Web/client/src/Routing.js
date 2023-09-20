@@ -23,8 +23,7 @@ const Routing = () => {
   })
   return (
       <Router>
-
-    <Routes>
+      <Routes>
       {/* Public Routes */}
       <Route path="/" element={<Home />} />
       {/* don't be visited after user logged in */}
@@ -37,14 +36,14 @@ const Routing = () => {
       <Route path='/otp' element={<Otp/>}/>
       {/* 404 page */}
       <Route path="*" element={<ErrorPage />} />
-
       {/* User Routes */}
       <Route path="/shop" element={<Products />} />
       <Route path="/cart" element={<Cart/>} />
-      <Route path="/shop/product" element={<Singleproduct />}/>
+      <Route path="/shop/product/:id" element={<Singleproduct />}/>
       <Route path='/faqs' element={<FaqPage/>} />
-  {/* Private Routes */}
-  <Route path="/user" element={<UserProfile/>}/>
+     {/* Private Routes */}
+     <Route path="/user" element={<UserProfile/>}/>
+     {/* ADMIN PRIVATE ROUTE */}
     </Routes>
   </Router>
   

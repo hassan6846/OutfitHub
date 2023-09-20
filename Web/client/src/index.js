@@ -12,10 +12,8 @@ import { Provider } from 'react-redux';
 import { store } from "./store/Store"
 const root = ReactDOM.createRoot(document.getElementById('$2y$10$/AxPzoEC96Ldhel1jdTvrO4q6ZU2GBFmLvaG3/00ynZKWnUqVmgWS'));
 root.render(
-  <React.StrictMode>
     <Provider store={store}>
     <App />
     </Provider>
-  </React.StrictMode>
 );
 reportWebVitals();

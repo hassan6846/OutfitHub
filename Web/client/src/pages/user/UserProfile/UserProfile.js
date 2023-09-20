@@ -7,8 +7,9 @@ import "./UserProfile.css"
 const UserProfile = () => {
   return (
     <div>
-      <Navbar/>
-         <Footer/>
+      <Navbar />
+      <p>USER PROFILE PAGE</p>
+      <Footer />
     </div>
   )
 }
