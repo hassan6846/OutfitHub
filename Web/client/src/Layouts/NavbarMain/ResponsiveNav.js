@@ -3,19 +3,21 @@ import { Link } from 'react-router-dom';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import { FiSearch } from "react-icons/fi"
 import { BsFillCartFill, BsChevronDown } from "react-icons/bs"
-import { RiMenu3Line } from "react-icons/ri"
+import UseAnimation from "react-useanimations"
+import menu3 from "react-useanimations/lib/menu3"
 import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineMessage, AiOutlineUserAdd } from "react-icons/ai"
 import { FaUserCircle } from "react-icons/fa"
 import { TbLogout2 } from "react-icons/tb"
 import { FaQuestion } from "react-icons/fa6"
+import { RiMenu3Line } from "react-icons/ri"
 
 // CSS importd
 import './ResponsiveNav.css';
 import { CompanyLogo, defaultUserImg } from '../../helpers/GlobalVariables';
 const ResponsiveNav = () => {
-const ALT="DESIGN"
+  const ALT = "DESIGN"
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
   };
   // navbar state toggle
   const [isActive, setIsActive] = useState(true)
@@ -32,7 +34,7 @@ const ALT="DESIGN"
           <img src={CompanyLogo} alt={ALT} />
         </Link></div>
         <div className='mobile_links_divs'>
-          <div onClick={handleClick} style={{ cursor: "pointer" }} className='hamburger_menu'><RiMenu3Line /></div>
+          <div onClick={handleClick} style={{ cursor: "pointer" }} className='hamburger_menu'><UseAnimation size={35} animation={menu3} /></div>
           <Link to="/cart" ><span style={{ position: "relative" }}><BsFillCartFill className='cart-icon' /><span className='cart_length' style={{ position: "absolute" }}>1</span></span></Link>
         </div>
       </div>

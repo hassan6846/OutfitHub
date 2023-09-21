@@ -128,3 +128,13 @@
 .single_button_tag:hover{
   color: #d01345;
 }
+.flash_Text_p_yellow_span{
+  width: auto;
+  color: #131039;
+  font-weight:bolder;
+}
+.flash_Text_p_yellow{
+  background-color: #F1DE0A; color: #131039;
+  width: max-content;
+  padding: 0.4rem 1.3rem;
+}

@@ -5,7 +5,7 @@ import BreadCrumb from '../BreadCrumb/BreadCrumb'
 const ProductContainer = () => {
   return (
     <div className='product-view'>
-      <BreadCrumb/>
+      <BreadCrumb />
     </div>
   )
 }
