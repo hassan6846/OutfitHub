@@ -11,7 +11,7 @@ import { TbLogout2 } from "react-icons/tb"
 import { FaQuestion } from "react-icons/fa6"
 import { RiMenu3Line } from "react-icons/ri"
 
-// CSS importd
+// CSS imported
 import './ResponsiveNav.css';
 import { CompanyLogo, defaultUserImg } from '../../helpers/GlobalVariables';
 const ResponsiveNav = () => {
