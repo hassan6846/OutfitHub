@@ -3,12 +3,13 @@ import React from 'react';
 import ResponsiveNav from '../../../Layouts/NavbarMain/ResponsiveNav';
 import Footer from '../../../Layouts/footer/Footer';
 import Faq from "react-faq-component"
-
+import Breadcrumb from "../../../Layouts/BreadCrumb/BreadCrumb"
 // css
 import './Singleproduct.css';
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import { blinkSVG } from '../../../helpers/GlobalVariables';
+
 const Singleproduct = () => {
   const mockImages = [
     'https://shorturl.at/mJKR1',
@@ -32,13 +33,19 @@ const Singleproduct = () => {
   }
   return (
     <>
+    
       <ResponsiveNav />
+      <Breadcrumb/>
       <section className='single_product_page_container'>
+        
         <div className='single_wrapper_80'>
+      
           <div className='images_overflow_single'>
+       
             {/* add the shitty breadcrumb here here */}
             {mockImages.map((imageUrl, index) => (
-              <img className='single_images_shop' key={index} src={imageUrl} alt="product_imgs" />
+            
+            <img className='single_images_shop' key={index} src={imageUrl} alt="product_imgs" />
             ))}
           </div>
           {/* Flexbox for product details */}
@@ -71,6 +78,7 @@ const Singleproduct = () => {
                 <Link className='single_button_tag'>Pumps</Link>
                 <Link className='single_button_tag'>Kelly</Link>
               </div>
+            
             </div>
           </div>
         </div>

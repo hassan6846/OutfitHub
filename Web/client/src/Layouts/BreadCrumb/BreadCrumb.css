@@ -1,5 +1,17 @@
-.breadCrumb_Wrapper-100{
-width:40%;
-height: 40px;
-background-color: cyan;
+.breadCrumb_Wrapper-100 {
+  margin-bottom: 0.3rem;
+
+  padding: 1rem;
+  width: fit-content;
+ 
+  
+}
+.bread_crumb_link{
+    color: #848484;
+    font-size: 16px;
+    font-weight: 400;
+
+}
+.bread_crumb_link:hover{
+    color: #D01345;
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import "./BreadCrumb.css"
 import { useLocation,Link } from 'react-router-dom'
+import {MdNavigateNext} from "react-icons/md"
 const BreadCrumb = () => {
   const location = useLocation();
   const { pathname } = location;
@@ -10,8 +11,8 @@ const BreadCrumb = () => {
     {/* Render breadcrumb links */}
     {pathParts.map((part, index) => (
       <React.Fragment key={index}>
-        <Link to={`/${pathParts.slice(0, index + 1).join('/')}`}>{part}</Link>
-        {index < pathParts.length - 1 && <span className='breadcrumb-separator'> / </span>}
+        <Link className='bread_crumb_link' to={`/${pathParts.slice(0, index + 1).join('/')}`}>{part}</Link>
+        {index < pathParts.length - 1 && <span className='breadcrumb-separator'> <MdNavigateNext/> </span>}
       </React.Fragment>
     ))}
   </div>
