@@ -99,3 +99,8 @@ border-radius: 5px;
 transform: scale(1.02);
 transition: all .5s;
 }
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation:portrait) {
+ .width_33_1{
+    background-position: center;
+ }
+  }

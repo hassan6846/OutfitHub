@@ -64,8 +64,13 @@
 
 @media (min-width:300px) and (max-width:600px) {
     .form_wrapper {
-        width: 76%;
+        width: 82%;
+        height: 83%;
         margin-top: 2rem;
+    }.swiper-button-next{
+        display: none;
+    }.swiper-button-prev{
+        display: none;
     }
 }
 
@@ -74,5 +79,9 @@
     .form_wrapper {
         width: 55%;
         height: 65%;
+    }.swiper-button-next{
+        display: none;
+    }.swiper-button-prev{
+        display: none;
     }
 }

@@ -25,34 +25,58 @@ export default function TrendingCarsoul() {
   return (
     <>
       <Swiper
+
 breakpoints={{
-  375:{
-
-   
-        slidesPerView:2
+ 
+  300:{
+    slidesPerView:2,
+    spaceBetween:160,
+  },
+  360:{
+    slidesPerView:2,
+    spaceBetween:270,
   },
 
-  1100:{
-        slidesPerView:5,
-
+  390:{
+    slidesPerView:2,
+    spaceBetween:250,
   },
-  1280:{
-    slidesPerView:5,
-
+412:{
+  slidesPerView:2,
+  spaceBetween:225,
+},
+414:{
+  slidesPerView:2,
+  spaceBetween:230,
+},
+  640:{
+    slidesPerView:2,
+    spaceBetween:20,
+  },
+  1024:{
+    slidesPerView:4,
+    spaceBetween:290,
   },
   768:{
-slidesPerView:3,
-
-  },
-
-  820:{
     slidesPerView:3,
-
+    spaceBetween:30,
   },
-  912:{
+  540:{
+    slidesPerView:2,
+    spaceBetween:120
+  },
+  789:{
     slidesPerView:3,
+    spaceBetween:200,
+  },
+912:{
+  slidesPerView:3,
+  spaceBetween:90,
+},
+  1280:{
+    slidesPerView:5,
+    spaceBetween:30,
   }
-
 }}
         navigation={true} modules={[Navigation]} className="mySwiper"
 

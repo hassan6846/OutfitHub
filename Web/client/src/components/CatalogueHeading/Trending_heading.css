@@ -26,6 +26,14 @@
 
     
 }
+@media screen and (min-width:300px) and (max-width:660px) {
+    .cat_heading_text{
+        margin-bottom: 0;
+        font-size: 1rem;
+    }.Nav_link{
+        font-size: 0.9rem;
+    }
+}
 
 .Nav_link {
     color: #4BB497;
