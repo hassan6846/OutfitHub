@@ -1,10 +1,8 @@
 // Modules and Library
-import React from 'react';
-import AllRoutes from './Routing';
+import React from "react";
+import AllRoutes from "./Routing";
 // main
 function App() {
-  return (
-      <AllRoutes />
-  );
+  return <AllRoutes />;
 }
 export default App;

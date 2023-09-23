@@ -2,38 +2,34 @@
 .tab-selector {
   border-color: transparent;
   font-weight: 700;
-  color:#999;
-  border-bottom: 2px solid black; /* Add transparent bottom border */
-
+  color: #999;
+  border-bottom: 2px solid black;
+  /* Add transparent bottom border */
   font-size: 16px;
 }
 
 .tab-selector.active {
-
   border-color: 1px black;
   font-weight: 700;
-  color:#000;
-
+  color: #000;
   font-size: 16px;
-
-
-
 }
 
 .tab-selector.inactive {
   border-color: transparent;
   font-weight: 700;
-  color:#999;
+  color: #999;
   font-size: 16px;
 }
 
 .tab-selector.inactive:hover {
-  color: #000000;  outline: none;
+  color: #000000;
+  outline: none;
   border-bottom: 2px solid #000;
 }
 
 .tab-selector.inactive:focus {
   color: #000000;
- border-bottom: 2px solid #000;
+  border-bottom: 2px solid #000;
   outline: none;
 }
