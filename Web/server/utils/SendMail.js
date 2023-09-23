@@ -265,7 +265,7 @@ const sendEmail = async (req, res) => {
       <span style=font-size:14px;line-height:19.6px;color:#ecf0f1>69 &nbsp;A ficional Palace</span>
       </p>
       <p style=font-size:14px;line-height:140%>
-      <span style=font-size:14px;line-height:19.6px;color:#ecf0f1>+111 222 333 | Info@DESIGN.com</span>
+      <span style=font-size:14px;line-height:19.6px;color:#ecf0f1>+92 408 666 7812| Info@DESIGN.com</span>
       </p>
       </div>
       </td>
