@@ -15,8 +15,6 @@ import Otp from "./pages/user/Otp/Otp"
 import UserProfile from "./pages/user/UserProfile/UserProfile"
 import FaqPage from "./pages/user/Faqs/Faq"
 // hooks
-
-
 const Routing = () => {
   useEffect(()=>{
     toast.error("hello")
@@ -30,16 +28,17 @@ const Routing = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/password/forgot" element={<ForgotPassword />} />
-      {/* sessions*/}
+      {/* sessions can also not be visited until you make request*/}
       <Route path="/password/reset/:id" element={<ResetPassword />} />
       <Route path="/password/reset/*" element={<ErrorPage/>}/>
-      <Route path='/otp' element={<Otp/>}/>
+      <Route path='/otp/:token' element={<Otp/>}/>
       {/* 404 page */}
       <Route path="*" element={<ErrorPage />} />
       {/* User Routes */}
       <Route path="/shop" element={<Products />} />
       <Route path="/cart" element={<Cart/>} />
       <Route path="/shop/product/:id" element={<Singleproduct />}/>
+      <Route path='/search/:query' element={"this is query search from field page"}/>
       <Route path='/faqs' element={<FaqPage/>} />
      {/* Private Routes */}
      <Route path="/user" element={<UserProfile/>}/>

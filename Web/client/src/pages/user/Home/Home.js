@@ -1,5 +1,5 @@
 // library
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul'
 
 // style sheets
@@ -22,29 +22,29 @@ import CategoryBar from '../../../components/CategoryBar/CategoryBar'
 const Home = () => {
   // for changing title
   useEffect(() => {
-    document.title = "Home";  
+    document.title = "Home";
   }, []);
   return (
-  <div>
-      
-    <Alertbar/>
+    <div>
 
-    <Nav/>
+      <Alertbar />
 
-    <LandingCarsoul/>
-    {/* trending carsoul div */}
-   <div>
-   {/* <TrendingHead/> */}
-   <Cathead heading="Trending Products" LinkPage="/shop/trending"  LinkText="See more items" />
-   < TrendingCarsoul />
-   </div>
+      <Nav />
 
-   {/* trending carsoul ends  div*/}
-  <Cathead heading="Browse Category " LinkPage="/shop"  LinkText="See more" />
-<Catalogue/>
-<CategoryBar/>
-<Footer/>
-  </div>
+      <LandingCarsoul />
+      {/* trending carsoul div */}
+      <div>
+        {/* <TrendingHead/> */}
+        <Cathead heading="Trending Products" LinkPage="/shop/trending" LinkText="See more items" />
+        < TrendingCarsoul />
+      </div>
+
+      {/* trending carsoul ends  div*/}
+      <Cathead heading="Browse Category " LinkPage="/shop" LinkText="See more" />
+      <Catalogue />
+      <CategoryBar />
+      <Footer />
+    </div>
   )
 }
 
