@@ -1,22 +1,21 @@
-const nodemailer=require("nodemailer")
-
+const nodemailer = require("nodemailer");
 const sendEmail = async (req, res) => {
   try {
     const transporter = nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
+      host: "smtp.ethereal.email",
       port: 587,
       auth: {
-        user: 'cheyenne.reilly@ethereal.email',
-        pass: 'GVvung9jKD2KACud6V',
+        user: "cheyenne.reilly@ethereal.email",
+        pass: "GVvung9jKD2KACud6V",
       },
     });
 
     const mailOptions = {
       from: process.env.SMPT_MAIL,
-      to: 'ha6817331@gmail.com',
-      subject: 'Reset Password',
-      text: 'This is the text content.',
-      html:`<!doctype html>
+      to: "ha6817331@gmail.com",
+      subject: "Reset Password",
+      text: "This is the text content.",
+      html: `<!doctype html>
       <html xmlns=http://www.w3.org/1999/xhtml xmlns:v=urn:schemas-microsoft-com:vml xmlns:o=urn:schemas-microsoft-com:office:office>
       <head>
       <!--[if gte mso 9]>
@@ -442,15 +441,15 @@ const sendEmail = async (req, res) => {
       <!--[if mso]></div><![endif]-->
       <!--[if IE]></div><![endif]-->
       </body>
-      </html>`
+      </html>`,
     };
 
     await transporter.sendMail(mailOptions);
 
-    res.status(200).json({ message: 'Email sent successfully' });
+    res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error sending email:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
-module.exports={sendEmail}
+module.exports = { sendEmail };
