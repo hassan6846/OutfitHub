@@ -1,6 +1,6 @@
 import React from "react";
 
-const useAuth=()=>{
-const findToken=windo
+const useAuth = () => {
+    const findToken = windo
 }
 export default useAuth

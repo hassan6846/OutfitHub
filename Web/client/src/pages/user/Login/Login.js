@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, json } from 'react-router-dom';
 
 import { useFormik } from 'formik';
 import './Login.css';
@@ -40,22 +40,26 @@ const Login = () => {
     },
     onSubmit: async (values) => {
       if (!formik.isValid) {
-        return;
+        return 
       }
-
+    
       setIsSubmitting(true); // Start login submission
 
       const api = axios.create({
         baseURL: "http://localhost:3001"
       });
 
+     
       try {
+        const stringedVal=JSON.stringify(values)
+        console.log(JSON.parse(stringedVal))
         const response = await api.post("/api/v1/login", {
           email: values.email,
           password: values.password
         });
-
-        console.log(response);
+     
+          
+   
 
         // Handle successful login
         toast.success('Successfully logged in');
@@ -111,6 +115,7 @@ const Login = () => {
               type="password"
               placeholder="Enter Password"
               label="Password"
+              autoComplete="true"
             />
             {formik.touched.password && formik.errors.password && (
               <div className="error">{formik.errors.password}</div>

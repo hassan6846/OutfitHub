@@ -6,11 +6,10 @@ import Navbar from "../../../Layouts/NavbarMain/ResponsiveNav"
 import "./UserProfile.css"
 const UserProfile = () => {
   return (
-    <div>
+    <>
       <Navbar />
-      <p>USER PROFILE PAGE</p>
       <Footer />
-    </div>
+    </>
   )
 }
 

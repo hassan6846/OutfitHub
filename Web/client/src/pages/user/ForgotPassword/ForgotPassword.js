@@ -7,10 +7,9 @@ import toast, { Toaster } from 'react-hot-toast';
 import {
   MDBInput,
   MDBBtn
-
-
 } from "mdb-react-ui-kit"
 const ForgotPassword = () => {
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -20,9 +19,8 @@ const ForgotPassword = () => {
     onSubmit: (values) => {
       if (!isValidEmail(values.email)) {
         toast.error('Kindly fill all the fields');
-      } else {
-
-      }
+      } 
+  
     },
   });
 
