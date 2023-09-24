@@ -1,0 +1,9 @@
+.user_profile_aside {
+  width: 20%;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  position: sticky;
+  top: 0; /* Stick to the top of the parent */
+  background-color: cadetblue;
+  height: 100vh; /* Adjust the height to your preference */
+  overflow-y: scroll; /* Enable scrolling if content overflows */
+}
