@@ -1,9 +1,80 @@
 .user_profile_aside {
-  width: 20%;
+  width: 18%;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   position: sticky;
   top: 0; /* Stick to the top of the parent */
   background-color: cadetblue;
   height: 100vh; /* Adjust the height to your preference */
-  overflow-y: scroll; /* Enable scrolling if content overflows */
+ 
+  overflow-x: hidden; /* Enable scrolling if content overflows */
+  padding: 1rem;
+}
+.aside_links{
+  display: flex;
+  align-items: center;
+  column-gap: 0.3rem;
+}
+.aside_heading_sidebar{
+  font-size: 16px;
+margin-bottom: 0.3rem;
+}
+.aside_link_flex{
+  display: flex;
+  flex-direction: column;
+}
+.image_cover_side{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.aside_profiel_image_cover{
+  display: flex;
+  justify-content: flex-start;
+position: relative;
+  align-items: center;
+  width: fit-content;
+cursor: pointer;
+  height: fit-content;
+}
+.aside_user_profile_img{
+  height: 80px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 100%;
+}
+
+.aside_profiel_image_cover:hover{
+  .upload_icon_aside{
+    display: block;
+   
+  }
+  .aside_user_profile_img{
+    opacity: 0.8;
+  }
+}
+.upload_icon_aside{
+position: absolute;
+left: 40%;
+display: none;
+color: #848484;
+font-size: 1.3rem;
+}
+
+/* toglglle */
+.aside_icon_toggle{
+  font-size: 25px;
+}
+.aside_user_toggle{
+  position: absolute;
+  right: 3%;
+
+  display: flex;
+  cursor: pointer;
+  bottom: 20%;
+  justify-content: center;
+  border: 1px solid #848484;
+  padding: 0.4rem;
+  border-radius: 50%;
+  align-items: center;
 }
