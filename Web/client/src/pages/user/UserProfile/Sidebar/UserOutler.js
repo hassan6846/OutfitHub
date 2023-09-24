@@ -22,8 +22,8 @@ const UserOutler = () => {
             {/* IMAGE DIV ENDS HERE */}
             <div className='aside_link_flex'>
                 <p className='aside_heading_sidebar'>Manage My Account</p>
-                <Link className='aside_links'> <BiUser /> My Profile</Link>
-                <Link className='aside_links'><AiOutlineMessage />Messages</Link>
+                <Link to="/user" className='aside_links'> <BiUser /> My Profile</Link>
+                <Link to="/user/messages" className='aside_links'><AiOutlineMessage />Messages</Link>
                 <Link className='aside_links'><BiMapAlt />Address Book</Link>
             </div>
             {/* ORDER */}
@@ -62,7 +62,7 @@ const UserOutler = () => {
 
             <div className='aside_link_flex'>
                 <p className='aside_heading_sidebar'>Actions</p>
-                <Link className='aside_links'> <BiLogOutCircle /> Logout </Link>
+                <Link to="/logout" className='aside_links'> <BiLogOutCircle /> Logout </Link>
             </div>
 
 

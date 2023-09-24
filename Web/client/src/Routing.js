@@ -14,6 +14,8 @@ import Cart from './pages/user/Cart/Cart';
 import Otp from "./pages/user/Otp/Otp"
 import UserProfile from "./pages/user/UserProfile/UserProfile"
 import FaqPage from "./pages/user/Faqs/Faq"
+import ProfileOverView from "./pages/user/UserProfile/ProfileOverView"
+import UserMessages from './pages/user/UserProfile/UserMessages';
 // hooks
 const Routing = () => {
   useEffect(() => {
@@ -41,7 +43,10 @@ const Routing = () => {
         <Route path='/search/:query' element={"this is query search from field page"} />
         <Route path='/faqs' element={<FaqPage />} />
         {/* Private Routes */}
-        <Route path="/user" element={<UserProfile />} />
+        <Route path="/user" element={<UserProfile />} >
+        <Route path='/user' element={<ProfileOverView/>}/>
+         <Route path='messages' element={<UserMessages/>}/>
+        </Route>
         {/* ADMIN PRIVATE ROUTE */}
       </Routes>
     </Router>
