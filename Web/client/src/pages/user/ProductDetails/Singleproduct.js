@@ -57,10 +57,9 @@ const Singleproduct = () => {
             <p className='flash_few'>Only few left in Stock!</p>
             <p className='flash_Text_p_yellow'>Sale is <span className='flash_Text_p_yellow_span'>Live <img style={{ height: "10px" }} alt='blink_img' src={blinkSVG} /></span></p>
             <div className='button_flex_single'>
-              <MDBBtn className='single_cart_btn' style={{ backgroundColor: "#4BB497", padding: "10px 70px" }}>ADD TO CART</MDBBtn>    <MDBBtn className='wishlist_single' style={{ backgroundColor: "white", color: "#131039", fontWeight: "bolder" }}>ADD TO WISHLIST</MDBBtn>
+              <MDBBtn className='single_cart_btn' style={{ backgroundColor: "#4BB497", padding: "10px 70px" }}>ADD TO CART</MDBBtn>    <MDBBtn className='wishlist_single' style={{ backgroundColor: "#d01345", color: "white", fontWeight: "bolder" }}>ADD TO WISHLIST</MDBBtn>
             </div>
             {/* flex */}
-
             <div className='icon_delivery_time'>
               <p className='delivery_time_heading'>Delivery Time:</p>
               <p className='delivery_estimate'>Lahore, Rawalpindi, Islamabad: 1-2 days</p>
