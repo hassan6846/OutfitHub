@@ -1,0 +1,12 @@
+.user_vendor_p{
+    font-size: 2rem;
+    text-align: center;
+    color: white;
+    background-color: #4BB497;
+    padding: 1.3rem;
+}
+.vendor_note{
+    text-align: center;
+    font-size: 13px;
+    color: #131039;
+}

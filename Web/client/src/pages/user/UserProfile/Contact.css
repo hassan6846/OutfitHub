@@ -2,14 +2,21 @@
   text-align: left;
   font-size: 2.5rem;
   margin-bottom: 0;
+  color: white;
+  background-color: #4BB497;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
 }
-.contact_us_sub{
-    font-size: 13px;
+.contact_us_sub {
+  font-size: 13px;
+  color: #131039;
 }
 .contact_inputs_form {
   display: flex;
   justify-content: center;
-  width: 40%;padding: 1rem;
+  width: 40%;
+  padding: 1rem;
   border-radius: 4px;
   flex-direction: column;
   row-gap: 0.5rem;
@@ -17,7 +24,7 @@
 }
 .container_CONTACT {
   width: 100%;
-  height: 100%;
+  height: 75%;
   justify-content: center;
   display: flex;
   align-items: center;
