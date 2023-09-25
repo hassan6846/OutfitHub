@@ -9,8 +9,9 @@ const Contact = () => {
     <div className='contact_inputs_form'>
     <MDBInput label='Name'  type='text' size='lg' />
     <MDBInput label='Email'  type='text' size='lg' />
-    <MDBTextArea label='Message' id='textAreaExample' rows={10} />
-    <MDBBtn>Submit</MDBBtn>
+    <MDBInput label='Subject' placeholder='Title/Subject'  type='text' size='lg' />
+    <MDBTextArea placeholder='Please Dont Enter Links Here Just Reason or Problem You are facing' label='Message' id='textAreaExample' rows={10} />
+    <MDBBtn style={{backgroundColor:"#4BB497",color:"white"}}>Submit</MDBBtn>
     </div>
     </div>
   )
