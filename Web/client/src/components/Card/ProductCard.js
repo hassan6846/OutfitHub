@@ -5,14 +5,16 @@ import heart from "react-useanimations/lib/heart";
 import "./ProductCard.css";
 
 export default function ProductCard(props) {
+
   return (
-    <div className="card-container">
+    
+    <div  className="card-container">
       <div className="card_wrapper">
         <div className="image-container">
           <div className="sale_intro">-{props.saved}%</div>
           <div className="like_item_card">
             {" "}
-            <UseAnimations animation={heart} size={32} />
+            <UseAnimations  animation={heart} size={32} />
           </div>
           <Link to="sa">
             <img

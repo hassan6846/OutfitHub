@@ -24,7 +24,7 @@ const UserOutler = () => {
                 <p className='aside_heading_sidebar'>Manage My Account</p>
                 <Link to="/user" className='aside_links'> <BiUser /> My Profile</Link>
                 <Link to="/user/messages" className='aside_links'><AiOutlineMessage />Messages</Link>
-                <Link className='aside_links'><BiMapAlt />Address Book</Link>
+                <Link to="/user/address" className='aside_links'><BiMapAlt />Address Book</Link>
             </div>
             {/* ORDER */}
             <div className='aside_link_flex'>
@@ -36,8 +36,8 @@ const UserOutler = () => {
             {/* WISHLISTS */}
             <div className='aside_link_flex'>
                 <p className='aside_heading_sidebar'>My Wishlists</p>
-                <Link className='aside_links'> <TbHeartPlus />Wishlists</Link>
-                <Link className='aside_links'> <BsPersonHearts />Liked Items</Link>
+                <Link  to="/user/wishlists" className='aside_links'> <TbHeartPlus />Wishlists</Link>
+                <Link to="/user/liked" className='aside_links'> <BsPersonHearts />Liked Items</Link>
             </div>
             {/* payment BOOK */}
             <div className='aside_link_flex'>
@@ -52,12 +52,12 @@ const UserOutler = () => {
             {/* vender OPTION REQUEST */}
             <div className='aside_link_flex'>
                 <p className='aside_heading_sidebar'>Sell On Design</p>
-                <Link className='aside_links'> <GiGrowth /> Become A Vendor </Link>
+                <Link to="/user/vendor" className='aside_links'> <GiGrowth /> Become A Vendor </Link>
             </div>
             {/* Contact US */}
             <div className='aside_link_flex'>
                 <p className='aside_heading_sidebar'>Need Help!</p>
-                <Link className='aside_links'> <BiLogOutCircle /> Contact Us </Link>
+                <Link to="/user/contact" className='aside_links'> <BiLogOutCircle /> Contact Us </Link>
             </div>
 
             <div className='aside_link_flex'>

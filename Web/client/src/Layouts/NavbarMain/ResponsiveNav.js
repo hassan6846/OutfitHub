@@ -56,14 +56,14 @@ const ResponsiveNav = () => {
 
           {/* use terinary operators instead */}
           <div className='profile_Dropdown_nav'>
-            <Link to="/profile" className='User_profile_dropdown'>   <img className='nav_img' height="40px" alt='alt' src={defaultUserImg} /> <BsChevronDown className='profile_icon_dropdown' />
+            <Link to="/user" className='User_profile_dropdown'>   <img className='nav_img' height="40px" alt='alt' src={defaultUserImg} /> <BsChevronDown className='profile_icon_dropdown' />
               <div className='dropdown_results_nav'>
                 <Link to="/signup" className='dropdown_items_nav'><AiOutlineUserAdd />LOGIN/SIGNUP</Link>
 
                 {/* if he is logged in then */}
-                <Link to="/private" className='dropdown_items_nav'><FaUserCircle />Your Profile</Link>
+                <Link to="/user" className='dropdown_items_nav'><FaUserCircle />Your Profile</Link>
                 <Link to="/cart" className='dropdown_items_nav'><AiOutlineShoppingCart /> Cart</Link>
-                <Link to="/liked" className='dropdown_items_nav'><AiOutlineHeart /> Liked Items </Link>
+                <Link to="/user/liked" className='dropdown_items_nav'><AiOutlineHeart /> Liked Items </Link>
                 <Link to="/messages" className='dropdown_items_nav'><AiOutlineMessage />Messages</Link>
                 <Link to="/logout" className='dropdown_items_nav'><TbLogout2 />LOGOUT</Link>
                 <Link to="/faqs" className='dropdown_items_nav'><FaQuestion />FAQ'S</Link>

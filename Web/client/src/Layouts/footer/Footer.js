@@ -7,8 +7,8 @@ const Footer = () => {
       <div className='footer_child'>
         <p className='footer_heading'>HELP & INFORMATION</p>
         <Link to="tel:92316049019" className='footer_link_style' >Request a Call Back!</Link>
-        <Link className='footer_link_style' >Contact Us</Link>
-        <Link className='footer_link_style' >FAQ & Help Center</Link>
+        <Link to="/user/contact" className='footer_link_style' >Contact Us</Link>
+        <Link to="/faqs" className='footer_link_style' >FAQ & Help Center</Link>
       </div>
       {/* 2 */}
       <div className='footer_child'>
@@ -16,7 +16,7 @@ const Footer = () => {
         <Link className='footer_link_style' >About Us</Link>
         <Link className='footer_link_style' >Privacy Statement</Link>
         <Link className='footer_link_style' >Terms & Conditions</Link>
-        <Link className='footer_link_style' >Returns & Refunds</Link>
+        <Link to="/faqs" className='footer_link_style' >Returns & Refunds</Link>
       </div>
       {/* app Link */}
       <div className='footer_child'>
@@ -32,7 +32,7 @@ const Footer = () => {
       {/* 3 */}
       <div className='footer_child'>
         <p className='footer_heading'>MORE FROM DESIGN</p>
-        <Link className='footer_link_style'>Sell on Design</Link>
+        <Link to="/user/vendor" className='footer_link_style'>Sell on Design</Link>
         <Link className='footer_link_style'>Buissness Pathners</Link>
       </div>
       {/* 4 */}

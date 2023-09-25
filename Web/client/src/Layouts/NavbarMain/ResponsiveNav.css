@@ -89,6 +89,7 @@
 .User_profile_dropdown:hover {
   .dropdown_results_nav {
     background-color: white;
+box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     display: block;
     right: 50%;
     border-radius: 5px;
