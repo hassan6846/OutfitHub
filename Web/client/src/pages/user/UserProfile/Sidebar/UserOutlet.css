@@ -9,8 +9,8 @@
   overflow-x: hidden; /* Enable scrolling if content overflows */
   padding: 1rem;
 }
-.user_profile_aside_toggle{
-  width:5%;
+.user_profile_aside_toggle {
+  width: 5%;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   position: sticky;
   top: 0; /* Stick to the top of the parent */
@@ -21,101 +21,97 @@
   padding: 0.6rem;
   border-radius: 5px;
 }
-.aside_heading_sidebar_toggled{
+.aside_heading_sidebar_toggled {
   display: none;
 }
 /* span text for toggle links */
-.icon_text_aside{
- font-weight: 500;
+.icon_text_aside {
+  font-weight: 500;
 }
-.icon_text_aside_toggled{
+.icon_text_aside_toggled {
   display: none;
 }
 
-
-.aside_links{
-  color: rgb(19,16,57);
+.aside_links {
+  color: rgb(19, 16, 57);
   padding: 0.5rem;
   border-radius: 0.4rem;
   display: flex;
   align-items: center;
   column-gap: 0.3rem;
 }
-.aside_links:hover{
-  background-color: #4BB497;
-  color: rgb(19,16,57);
+.aside_links:hover {
+  background-color: #4bb497;
+  color: rgb(19, 16, 57);
 }
 
-.aside_links_toggled{
+.aside_links_toggled {
   justify-content: center;
   display: flex;
 }
-.aside_heading_sidebar{
+.aside_heading_sidebar {
   font-size: 16px;
-margin-bottom: 0.3rem;
+  margin-bottom: 0.3rem;
 }
-.aside_link_flex{
+.aside_link_flex {
   display: flex;
   flex-direction: column;
 }
-.image_cover_side{
+.image_cover_side {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
 }
-.aside_profiel_image_cover{
+.aside_profiel_image_cover {
   display: flex;
   justify-content: flex-start;
-position: relative;
+  position: relative;
   align-items: center;
   width: fit-content;
-cursor: pointer;
+  cursor: pointer;
   height: fit-content;
 }
-.aside_user_profile_img{
+.aside_user_profile_img {
   height: 80px;
   object-fit: cover;
   margin-bottom: 1rem;
   border-radius: 100%;
 }
-.aside_user_profile_img_toggle{
+.aside_user_profile_img_toggle {
   display: none;
 }
 
-.aside_profiel_image_cover:hover{
-  .upload_icon_aside{
+.aside_profiel_image_cover:hover {
+  .upload_icon_aside {
     display: block;
-   
   }
-  .aside_user_profile_img{
+  .aside_user_profile_img {
     opacity: 0.8;
   }
 }
-.upload_icon_aside{
-position: absolute;
-left: 40%;
-display: none;
-color: #848484;
-font-size: 1.3rem;
+.upload_icon_aside {
+  position: absolute;
+  left: 40%;
+  display: none;
+  color: #848484;
+  font-size: 1.3rem;
 }
-.aside_icon_state_toggled{
-font-size: 30px;
-
+.aside_icon_state_toggled {
+  font-size: 30px;
 }
-.aside_icon_state{
+.aside_icon_state {
   display: block;
 }
 /* toglglle */
-.aside_icon_toggle{
+.aside_icon_toggle {
   font-size: 25px;
-
 }
-.aside_icon_toggle_toggled{
+.aside_icon_toggle_toggled {
   font-size: 50px;
   font-weight: 400;
 }
-.aside_user_toggle{
+.aside_user_toggle {
   position: absolute;
   right: 3%;
 
@@ -128,7 +124,8 @@ font-size: 30px;
   border-radius: 50%;
   align-items: center;
 }
-.aside_user_toggle:hover{
-scale: 1.1; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-transition:  all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+.aside_user_toggle:hover {
+  scale: 1.1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
