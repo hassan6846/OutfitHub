@@ -26,3 +26,8 @@ flex-direction: column;
 .text_area_heading{
     margin-bottom: 0.4rem;
 }
+.vendor_sucess{
+    color: #848484;
+ background-color: #D6F0E0;
+ padding: 1rem;
+}

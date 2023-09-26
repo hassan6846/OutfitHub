@@ -1,8 +1,8 @@
 import React from 'react'
-
+import "./Wishlists.css"
 const Wishlists = () => {
   return (
-    <div>Wishlists</div>
+    <>Wishlists</>
   )
 }
 

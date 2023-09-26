@@ -1,8 +1,10 @@
 import React from 'react'
-
+import "./UserAdressBook.css"
 const UserAdressBook = () => {
   return (
-    <div>UserAdressBook</div>
+    <>
+    <p className='user_address_head'>Address Book</p>
+    </>
   )
 }
 
