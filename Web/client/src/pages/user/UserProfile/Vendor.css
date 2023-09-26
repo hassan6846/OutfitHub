@@ -10,3 +10,19 @@
     font-size: 13px;
     color: #131039;
 }
+.vendor_wrapper{
+    display: flex;
+    width: 100%;
+   padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.vendor_form{
+display: flex;row-gap: 0.5rem;
+width: 30%;
+flex-direction: column;
+}
+.text_area_heading{
+    margin-bottom: 0.4rem;
+}
