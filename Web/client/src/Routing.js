@@ -17,7 +17,7 @@ import FaqPage from "./pages/user/Faqs/Faq"
 import ProfileOverView from "./pages/user/UserProfile/ProfileOverView"
 import UserMessages from './pages/user/UserProfile/UserMessages';
 import UserAdressBook from './pages/user/UserProfile/UserAdressBook';
-import Liked from "./pages/user/UserProfile/Liked"
+
 import Contact from './pages/user/UserProfile/Contact';
 import Wishlists from './pages/user/UserProfile/Wishlists';
 import Vendor from './pages/user/UserProfile/Vendor';
@@ -51,7 +51,7 @@ const Routing = () => {
         {/* Private Routes CANNOT BE VISITED AFTER LOGGED IN */}
         <Route path="/user" element={<UserProfile />} >
           <Route path='/user' element={<ProfileOverView />} />
-          <Route path="liked" element={<Liked/>}/>
+        
           <Route path='messages' element={<UserMessages />} />
           <Route path="address" element={<UserAdressBook />} />
           <Route path="contact" element={<Contact />} />
