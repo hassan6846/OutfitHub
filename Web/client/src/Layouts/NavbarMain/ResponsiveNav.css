@@ -9,7 +9,9 @@
   z-index: 9999;
   background-color: white;
 }
-
+.conditional_btn{
+  display: none;
+}
 * {
   list-style: none;
 }
@@ -130,6 +132,9 @@ box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     height: 100%;
  
     position: fixed;
+  }
+  .conditional_btn{
+    display: none;
   }
   .Toggle_menu_sidebar_navbar_clicked {
     width: 65%;
