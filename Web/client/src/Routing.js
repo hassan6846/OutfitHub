@@ -22,6 +22,8 @@ import Contact from './pages/user/UserProfile/Contact';
 import Wishlists from './pages/user/UserProfile/Wishlists';
 import Vendor from './pages/user/UserProfile/Vendor';
 import Order from './pages/user/UserProfile/Order';
+import EditUserProfile from './pages/user/UserProfile/EditUserProfile';
+import AddNewAdress from './pages/user/UserProfile/AddNewAdress';
 
 // hooks
 const Routing = () => {
@@ -53,8 +55,10 @@ const Routing = () => {
         <Route path="/user" element={<UserProfile />} >
           <Route path='/user' element={<ProfileOverView />} />
            <Route path='order' element={<Order/>}/>
+           <Route path='edit' element={<EditUserProfile/>}/>
           <Route path='messages' element={<UserMessages />} />
           <Route path="address" element={<UserAdressBook />} />
+          <Route path='address/new' element={<AddNewAdress/>}/>
           <Route path="contact" element={<Contact />} />
           <Route path="wishlists" element={<Wishlists />} />
           <Route path="vendor" element={<Vendor />} />

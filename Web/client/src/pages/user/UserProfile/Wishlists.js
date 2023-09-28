@@ -32,7 +32,7 @@ export default function Wishlists() {
                 />
                 <div className='ms-3'>
                   <p className='fw-bold mb-1'>John Doe</p>
-                  <p className='text-muted mb-0'>john.doe@gmail.com</p>
+                  <p className='text-muted mb-0'><MDBBadge  className='text-dark' color='secondary'>Men</MDBBadge> <MDBBadge  className='text-dark' color='light'>T-shirt</MDBBadge></p>
                 </div>
               </div>
             </td>

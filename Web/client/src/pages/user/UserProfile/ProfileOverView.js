@@ -13,7 +13,7 @@ const ProfileOverView = () => {
    <div className='img_flex'> <img style={{height:"80px",marginBottom:"1rem",borderRadius:"60%"}} src={defaultUserImg} alt="user_img" /> <input placeholder='upload' type="file" id="file" title='Select Image maxiumum 2mb' className='image_upload_ui'/>  </div>
       <div className='user_detail_wrapper'>
         <div>
-          <h3 className='user_name'>Full Name |<span><Link>Edit</Link></span> </h3>
+          <h3 className='user_name'>Full Name |<span><Link to="/user/edit">Edit</Link></span> </h3>
           <p className='user_name_ans'>HassanAli</p>
         </div>
         {/* Email */}
@@ -48,7 +48,7 @@ const ProfileOverView = () => {
         </div>
      
       </div>
-   <div className='user_action_container'>   <Link className='wishlistLink' style={{display:"flex",alignItems:"center",width:"fit-content",columnGap:'0.3rem'}}>Edit Profile <FiEdit2/></Link> 
+   <div className='user_action_container'>   <Link to="/user/edit" className='wishlistLink' style={{display:"flex",alignItems:"center",width:"fit-content",columnGap:'0.3rem'}}>Edit Profile <FiEdit2/></Link> 
       <Link to="/password/forgot" className='wishlistLink' style={{display:"flex",alignItems:"center",width:"fit-content",columnGap:'0.3rem'}}>Update Password </Link></div>
     </div></>
   )
