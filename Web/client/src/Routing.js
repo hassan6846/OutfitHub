@@ -21,6 +21,7 @@ import UserAdressBook from './pages/user/UserProfile/UserAdressBook';
 import Contact from './pages/user/UserProfile/Contact';
 import Wishlists from './pages/user/UserProfile/Wishlists';
 import Vendor from './pages/user/UserProfile/Vendor';
+import Order from './pages/user/UserProfile/Order';
 
 // hooks
 const Routing = () => {
@@ -51,7 +52,7 @@ const Routing = () => {
         {/* Private Routes CANNOT BE VISITED AFTER LOGGED IN */}
         <Route path="/user" element={<UserProfile />} >
           <Route path='/user' element={<ProfileOverView />} />
-        
+           <Route path='order' element={<Order/>}/>
           <Route path='messages' element={<UserMessages />} />
           <Route path="address" element={<UserAdressBook />} />
           <Route path="contact" element={<Contact />} />

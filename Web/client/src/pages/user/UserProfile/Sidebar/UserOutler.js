@@ -1,8 +1,8 @@
 import { React, useState } from 'react'
 import { Link } from "react-router-dom"
 import { BiUser, BiMapAlt, BiUpload, BiLogOutCircle } from "react-icons/bi"
-import { GiCancel } from "react-icons/gi"
-import { MdOutlinePendingActions, MdKeyboardReturn, MdOutlineKeyboardArrowLeft } from "react-icons/md"
+
+import { MdOutlinePendingActions, MdOutlineKeyboardArrowLeft } from "react-icons/md"
 import { TbHeartPlus } from "react-icons/tb"
 import { AiOutlineMessage } from "react-icons/ai"
 
@@ -39,9 +39,9 @@ const UserOutler = () => {
             {/* ORDER */}
             <div className='aside_link_flex'>
                 <p className={Asideheading}>Orders</p>
-                <Link className='aside_links'> <MdOutlinePendingActions className={aside_icon_state} /><span className={Asidespan}> My Orders</span></Link>
-             
-           
+                <Link className='aside_links' to="/user/order"> <MdOutlinePendingActions className={aside_icon_state} /><span className={Asidespan}> My Orders</span></Link>
+
+
             </div>
             {/* WISHLISTS */}
             <div className='aside_link_flex'>
@@ -49,9 +49,9 @@ const UserOutler = () => {
                 <Link to="/user/wishlists" className='aside_links'> <TbHeartPlus className={aside_icon_state} /><span className={Asidespan}>Wishlists</span></Link>
 
             </div>
-        
+
             {/* SETTINGS */}
-        
+
             {/* vender OPTION REQUEST */}
             <div className='aside_link_flex'>
                 <p className={Asideheading}>Sell On Design</p>
