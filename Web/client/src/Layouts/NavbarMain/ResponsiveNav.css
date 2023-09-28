@@ -120,8 +120,9 @@ box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 @media (min-width: 300px) and (max-width: 660px) {
   .Toggle_menu_sidebar_navbar {
     position: absolute;
-    background-color: #eee;
+    background-color:white;
     z-index: 99999;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     right: 0;
     display: block;

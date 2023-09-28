@@ -31,3 +31,8 @@ flex-direction: column;
  background-color: #D6F0E0;
  padding: 1rem;
 }
+@media screen and (min-width:300px) and (max-width:660px) {
+    .vendor_form{
+        width: 100%;
+    }
+}

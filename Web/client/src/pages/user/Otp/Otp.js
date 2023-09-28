@@ -6,9 +6,9 @@ import "./Otp.css"
 const Otp = () => {
   return (
     <section>
-<Nav/>
+      <Nav />
 
-      <Footer/>
+      <Footer />
     </section>
   )
 }

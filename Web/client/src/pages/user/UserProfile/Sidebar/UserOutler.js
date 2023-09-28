@@ -13,10 +13,11 @@ import { defaultUserImg } from '../../../../helpers/GlobalVariables'
 import "./UserOutlet.css"
 
 const UserOutler = () => {
-    const [toggled, setToggled] = useState(false)
+    const [toggled, setToggled] = useState(true)
     function SidebarTOGGLE() {
         setToggled(!toggled)
     }
+    
     // classes
     const divClassName = toggled ? "user_profile_aside_toggle" : "user_profile_aside"
     const Asideheading = toggled ? "aside_heading_sidebar_toggled" : "aside_heading_sidebar"

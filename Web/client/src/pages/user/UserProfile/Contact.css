@@ -30,3 +30,9 @@
   align-items: center;
   flex-direction: column;
 }
+@media screen and (min-width:300px) and (max-width:660px) {
+  .contact_inputs_form{
+    width: 100%;
+    align-items: normal;
+  }
+}
