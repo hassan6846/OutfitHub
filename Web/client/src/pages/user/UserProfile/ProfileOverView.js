@@ -3,13 +3,14 @@ import { Link } from "react-router-dom"
 import "./ProfileOverView.css"
 import {FiEdit2} from "react-icons/fi"
 import {defaultUserImg} from "../../../helpers/GlobalVariables"
+
 const ProfileOverView = () => {
   return (
     <> 
    
     <p className='wishlist_page_head'>Manage Your Account,</p>
     <div className='user_profile_container'>
-   <div className='img_flex'> <img style={{height:"60px",marginBottom:"1rem",borderRadius:"30px"}} src={defaultUserImg} alt="user_img" /></div>
+   <div className='img_flex'> <img style={{height:"80px",marginBottom:"1rem",borderRadius:"60%"}} src={defaultUserImg} alt="user_img" /> <input placeholder='upload' type="file" id="file" title='Select Image maxiumum 2mb' className='image_upload_ui'/>  </div>
       <div className='user_detail_wrapper'>
         <div>
           <h3 className='user_name'>Full Name |<span><Link>Edit</Link></span> </h3>

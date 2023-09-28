@@ -31,3 +31,12 @@
     column-gap: 0.3rem;
     display: flex;
   }
+  .img_flex{
+    display: flex;
+    column-gap: 0.3rem;
+    align-items: center;
+  }
+  .image_upload_ui{
+    font-size: 10px;
+    color: #131039;
+  }
