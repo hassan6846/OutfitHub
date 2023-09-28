@@ -9,12 +9,20 @@
   z-index: 9999;
   background-color: white;
 }
-.conditional_btn{
+.conditional_btn {
   display: none;
 }
 * {
   list-style: none;
 }
+/* Add your CSS or SCSS file */
+@media (max-width: 767px) {
+  /* You can adjust the max-width as needed for your mobile view */
+  .my-custom-button {
+    display: none;
+  }
+}
+
 .nav_logo_link {
   background-color: #eee;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -91,7 +99,7 @@
 .User_profile_dropdown:hover {
   .dropdown_results_nav {
     background-color: white;
-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     display: block;
     right: 50%;
     border-radius: 5px;
@@ -122,7 +130,7 @@ box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 @media (min-width: 300px) and (max-width: 660px) {
   .Toggle_menu_sidebar_navbar {
     position: absolute;
-    background-color:white;
+    background-color: white;
     z-index: 99999;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -130,10 +138,10 @@ box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     display: block;
     width: 0%;
     height: 100%;
- 
+
     position: fixed;
   }
-  .conditional_btn{
+  .conditional_btn {
     display: none;
   }
   .Toggle_menu_sidebar_navbar_clicked {
@@ -145,7 +153,7 @@ box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     display: block;
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     height: 100%;
-    position: fixed;   
+    position: fixed;
   }
   .form-control {
     width: 260px;
