@@ -16,13 +16,8 @@ const Vendor = () => {
           <p className='text_area_heading'>Explain Your Selling Strategy</p>
           <MDBTextArea label="Please Links to the products you might sell." rows={6} />
           <MDBBtn style={{ backgroundColor: "#4BB497" }}>Submit</MDBBtn>
-
-
           <div className='vendor_sucess'>You've Successfully applied for Membership We'll Contact you soon as possible after some Approval and Verification</div>
-       
-      
         </div>
-        
       </div>
       
     </>

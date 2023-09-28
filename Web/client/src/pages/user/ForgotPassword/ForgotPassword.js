@@ -37,11 +37,11 @@ const ForgotPassword = () => {
           <img alt='mainlogo' src='https://svgshare.com/i/vGt.svg' title='logo' />
         </Link>
         <form onSubmit={formik.handleSubmit} className='forgor-form'>
-          <h3 className='forgor-head'>Forgot Password</h3>
+          <h3 className='forgor-head'>Update Password</h3>
 
           <div className='alert_wrapper_change_event'>
             <p className='forgor-tag'>No Worries,We'll send you instructions in your email</p>
-
+<p style={{color:"#848484", fontWeight:"bold", fontSize:'13px',textAlign:"center"}}>Note You cannot Change Password Again After 20 Days.</p>
             <MDBInput  {...formik.getFieldProps("email")}
               type='email'
               placeholder='Email'

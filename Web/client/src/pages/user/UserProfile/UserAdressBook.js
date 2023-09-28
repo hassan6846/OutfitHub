@@ -3,7 +3,7 @@ import "./UserAdressBook.css"
 const UserAdressBook = () => {
   return (
     <>
-    <p className='user_address_head'>Address Book</p>
+    <p className='wishlist_page_head'>Address Book</p>
     </>
   )
 }

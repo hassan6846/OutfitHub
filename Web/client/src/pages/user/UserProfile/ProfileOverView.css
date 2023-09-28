@@ -1,0 +1,33 @@
+.user_address_head {
+    font-size: 2rem;
+    color: #131039;
+    padding: 1rem;
+  }
+  .user_detail_wrapper {
+  
+    display: grid;
+    border-radius: 5px;
+    flex-wrap: wrap;
+  
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    align-items: flex-start;
+    justify-content: flex-start;
+    justify-content: center;
+    flex-direction: row; /* Add this line to arrange children in a column */
+  }
+  .details_wrapper {
+    padding: 1rem;
+  }
+  .user_name {
+    font-size: 12px;
+  }
+  .user_profile_container{
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.158) 0px 3px 8px;
+  }
+  .user_action_container{
+    align-items: center;
+    column-gap: 0.3rem;
+    display: flex;
+  }
