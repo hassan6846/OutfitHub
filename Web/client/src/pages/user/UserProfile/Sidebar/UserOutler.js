@@ -4,7 +4,7 @@ import { BiUser, BiMapAlt, BiUpload, BiLogOutCircle } from "react-icons/bi"
 
 import { MdOutlinePendingActions, MdOutlineKeyboardArrowLeft } from "react-icons/md"
 import { TbHeartPlus } from "react-icons/tb"
-import { AiOutlineMessage } from "react-icons/ai"
+
 
 import { LuContact } from "react-icons/lu"
 import { GiGrowth } from "react-icons/gi"
@@ -33,7 +33,6 @@ const UserOutler = () => {
             <div className='aside_link_flex'>
                 <p className={Asideheading}>Manage My Account</p>
                 <Link to="/user" className='aside_links'> <BiUser className={aside_icon_state} /> <span className={Asidespan}>My Profile</span> </Link>
-                <Link to="/user/messages" className='aside_links'><AiOutlineMessage className={aside_icon_state} /><span className={Asidespan}>Messages</span></Link>
                 <Link to="/user/address" className='aside_links'><BiMapAlt className={aside_icon_state} /><span className={Asidespan}>Address Book</span></Link>
             </div>
             {/* ORDER */}

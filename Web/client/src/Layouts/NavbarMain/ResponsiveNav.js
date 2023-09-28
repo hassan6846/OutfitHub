@@ -63,7 +63,7 @@ const ResponsiveNav = () => {
                 {/* if he is logged in then */}
                 <Link to="/user" className='dropdown_items_nav'><FaUserCircle />Your Profile</Link>
                 <Link to="/cart" className='dropdown_items_nav'><AiOutlineShoppingCart /> Cart</Link>
-                <Link to="/user/liked" className='dropdown_items_nav'><AiOutlineHeart /> Liked Items </Link>
+                <Link to="/user/wishlists" className='dropdown_items_nav'><AiOutlineHeart /> Wishlists </Link>
                 <Link to="/user/messages" className='dropdown_items_nav'><AiOutlineMessage />Messages</Link>
                 <Link to="/logout" className='dropdown_items_nav'><TbLogout2 />LOGOUT</Link>
                 <Link to="/faqs" className='dropdown_items_nav'><FaQuestion />FAQ'S</Link>

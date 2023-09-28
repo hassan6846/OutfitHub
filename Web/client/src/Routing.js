@@ -15,7 +15,6 @@ import Otp from "./pages/user/Otp/Otp"
 import UserProfile from "./pages/user/UserProfile/UserProfile"
 import FaqPage from "./pages/user/Faqs/Faq"
 import ProfileOverView from "./pages/user/UserProfile/ProfileOverView"
-import UserMessages from './pages/user/UserProfile/UserMessages';
 import UserAdressBook from './pages/user/UserProfile/UserAdressBook';
 
 import Contact from './pages/user/UserProfile/Contact';
@@ -56,7 +55,7 @@ const Routing = () => {
           <Route path='/user' element={<ProfileOverView />} />
            <Route path='order' element={<Order/>}/>
            <Route path='edit' element={<EditUserProfile/>}/>
-          <Route path='messages' element={<UserMessages />} />
+       
           <Route path="address" element={<UserAdressBook />} />
           <Route path='address/new' element={<AddNewAdress/>}/>
           <Route path="contact" element={<Contact />} />
