@@ -2,7 +2,9 @@ import React from 'react'
 
 const AddNewAdress = () => {
   return (
-    <div>AddNewAdress</div>
+    <div>
+      <p className='wishlist_page_head'>AddNewAdress</p>
+    </div>
   )
 }
 
