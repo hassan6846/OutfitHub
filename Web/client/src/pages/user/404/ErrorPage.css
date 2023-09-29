@@ -105,6 +105,7 @@ body {
     }
 
     .notfound h2 {
-        font-size: 16px
+        font-size: 16px;
+        padding: 1rem;
     }
 }

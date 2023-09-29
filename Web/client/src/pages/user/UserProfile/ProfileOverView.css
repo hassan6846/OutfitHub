@@ -40,3 +40,13 @@
     font-size: 10px;
     color: #131039;
   }
+  @media screen and (min-width:300px) and (max-width:600px) {
+    .user_profile_container{
+      padding: 0.3rem;
+    }
+    .user_detail_wrapper{
+      width: fit-content;
+grid-template-columns: repeat(2,1fr);
+grid-template-rows: repeat(3,1fr);
+    }
+  }
