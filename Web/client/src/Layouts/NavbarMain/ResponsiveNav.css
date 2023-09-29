@@ -44,8 +44,7 @@
 }
 .desktop_nav_input {
   position: relative;
-  width:360px;
-
+  width: 360px;
 }
 .cart_length {
   background-color: #4bb497;
@@ -128,24 +127,22 @@
   justify-content: space-between;
 }
 
-
 /* main */
-.navbar_input_btn{
-  display:"flex";
+.navbar_input_btn {
+  display: "flex";
   background-color: #4bb497;
   justify-content: center;
   align-items: center;
   margin-left: 0.2rem;
   outline: none;
-  border:none;
+  border: none;
   padding: 0.5rem 1.1rem;
   border-radius: 2px;
 }
 @media screen and (min-width: 300px) and (max-width: 660px) {
-
-.desktop_nav_input{
-  width:400px;
-}
+  .desktop_nav_input {
+    width: 400px;
+  }
 
   .navbar_input_btn {
     display: none;
@@ -163,7 +160,7 @@
 
     position: fixed;
   }
-  
+
   .Toggle_menu_sidebar_navbar_clicked {
     width: 65%;
     position: absolute;
