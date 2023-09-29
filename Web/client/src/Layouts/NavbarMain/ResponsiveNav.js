@@ -43,8 +43,8 @@ const ResponsiveNav = () => {
           <img src={CompanyLogo} alt={ALT} />
         </Link>
         <form style={{ position: "relative", }} onSubmit={handleSubmit} className='Searchfield_form_nav'>
-          <MDBInput style={{ width: "350px" }} className='desktop_nav_input' label="Search" size='lg' placeholder='Search Anything' />
-          <MDBBtn className='conditional_btn my-custom-button' style={{ backgroundColor: "#4BB497", display: "flex", justifyContent: "center", alignItems: "center", border: "0px", marginLeft: "0.2rem" }} type='submit'><FiSearch style={{ scale: "1.6" }} /></MDBBtn>
+          <input style={{ width: "300px", padding:"0.3rem 1rem" }} className='desktop_nav_input' label="Search" placeholder='Search Anything' />
+          <button className='navbar_input_btn'><FiSearch style={{ fontSize:"20px" }} /></button>
           <div style={{ position: "absolute" }} className='search-results_dropdown'>Hello</div>
         </form>
         {/* Actions Nav If user is logged in or not 
