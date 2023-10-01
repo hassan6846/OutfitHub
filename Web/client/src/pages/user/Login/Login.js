@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Link, json } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, json } from "react-router-dom";
 
-import { useFormik } from 'formik';
-import './Login.css';
-import Footer from '../../../Layouts/footer/Footer';
-import toast, { Toaster } from 'react-hot-toast';
-import Loginbtns from '../../../components/IconBtns/LoginPageBtns.js';
+import { useFormik } from "formik";
+import "./Login.css";
+import Footer from "../../../Layouts/footer/Footer";
+import toast, { Toaster } from "react-hot-toast";
+import Loginbtns from "../../../components/IconBtns/LoginPageBtns.js";
 import axios from "axios";
-import {
-  MDBInput,
-  MDBBtn
-} from "mdb-react-ui-kit"
+import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
 const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false); // Track login submission
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validateOnBlur: true,
     validateOnChange: true,
@@ -25,44 +22,40 @@ const Login = () => {
       const errors = {};
 
       if (!values.email) {
-        errors.email = 'Please fill the email field';
+        errors.email = "Please fill the email field";
       }
 
       if (!values.password) {
-        errors.password = 'Please fill the password field';
+        errors.password = "Please fill the password field";
       }
 
       if (values.password.length < 7) {
-        errors.password = 'Please valid Password You might be joking';
+        errors.password = "Please valid Password You might be joking";
       }
 
       return errors;
     },
     onSubmit: async (values) => {
       if (!formik.isValid) {
-        return 
+        return;
       }
-    
+
       setIsSubmitting(true); // Start login submission
 
       const api = axios.create({
-        baseURL: "http://localhost:3001"
+        baseURL: "http://localhost:3001",
       });
 
-     
       try {
-        const stringedVal=JSON.stringify(values)
-        console.log(JSON.parse(stringedVal))
+        const stringedVal = JSON.stringify(values);
+        console.log(JSON.parse(stringedVal));
         const response = await api.post("/api/v1/login", {
           email: values.email,
-          password: values.password
+          password: values.password,
         });
-     
-          
-   
 
         // Handle successful login
-        toast.success('Successfully logged in');
+        toast.success("Successfully logged in");
       } catch (error) {
         console.log(error);
 
@@ -71,7 +64,7 @@ const Login = () => {
         } else if (error.message) {
           toast.error(error.response.data.Msg);
         } else {
-          toast.error('Error when logging in');
+          toast.error("Error when logging in");
         }
       } finally {
         setIsSubmitting(false); // End login submission
@@ -80,7 +73,7 @@ const Login = () => {
   });
 
   useEffect(() => {
-    document.title = "LOGIN"
+    document.title = "LOGIN";
     sessionStorage.clear();
   }, []);
 
@@ -96,10 +89,10 @@ const Login = () => {
         <div className="login-container">
           <p className="login-heading">Login Account</p>
           <Loginbtns />
-          <p className='orline_login'>OR CONTINUE WITH</p>
+          <p className="orline_login">OR CONTINUE WITH</p>
           <form onSubmit={formik.handleSubmit} className="login-form">
             <MDBInput
-              {...formik.getFieldProps('email')}
+              {...formik.getFieldProps("email")}
               className="login-input"
               type="email"
               placeholder="Enter Email"
@@ -110,7 +103,7 @@ const Login = () => {
             )}
 
             <MDBInput
-              {...formik.getFieldProps('password')}
+              {...formik.getFieldProps("password")}
               className="login-input"
               type="password"
               placeholder="Enter Password"
@@ -120,19 +113,24 @@ const Login = () => {
             {formik.touched.password && formik.errors.password && (
               <div className="error">{formik.errors.password}</div>
             )}
-            <Link className='forgot-link' to="/password/forgot">Forgot Password?</Link>
-            <MDBBtn type="submit" style={{ backgroundColor: "#4BB497", border: "0px" }} className="otp-submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Logging in...' : 'Login'}
-
+            <Link className="forgot-link" to="/password/forgot">
+              Forgot Password?
+            </Link>
+            <MDBBtn
+              type="submit"
+              style={{ backgroundColor: "#4BB497", border: "0px" }}
+              className="otp-submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Logging in..." : "Login"}
             </MDBBtn>
           </form>
-          <div className='login_flex'>
-            <p className='login_page_tag_line'>DON'T HAVE ACCOUNT?</p>
+          <div className="login_flex">
+            <p className="login_page_tag_line">DON'T HAVE ACCOUNT?</p>
             <Link to="/signup" className="register">
               Create Account Instead
-            </Link></div>
-
-
+            </Link>
+          </div>
         </div>
       </section>
       <Footer />
