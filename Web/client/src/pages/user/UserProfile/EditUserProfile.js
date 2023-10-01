@@ -10,7 +10,7 @@ import { defaultUserImg } from '../../../helpers/GlobalVariables';
 
 const EditUserProfile = () => {
   return (
-    <div className='user_profile_container'>
+    <div className='edit_page_Container'>
 
       <p className='wishlist_page_head'>EditUserProfile</p>
       <div className='img_flex'> <img style={{ height: "80px", marginBottom: "1rem", borderRadius: "60%" }} src={defaultUserImg} alt="user_img" />  </div>
