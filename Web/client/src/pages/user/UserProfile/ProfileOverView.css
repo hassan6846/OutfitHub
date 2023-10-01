@@ -46,7 +46,8 @@
     }
     .user_detail_wrapper{
       width: fit-content;
-grid-template-columns: repeat(2,1fr);
+      padding: 1rem;
+grid-template-columns: repeat(1,1fr);
 grid-template-rows: repeat(3,1fr);
     }
   }
