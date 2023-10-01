@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useFormik } from "formik";
 import "./Login.css";
@@ -49,7 +49,7 @@ const Login = () => {
       try {
         const stringedVal = JSON.stringify(values);
         console.log(JSON.parse(stringedVal));
-        const response = await api.post("/api/v1/login", {
+            await api.post("/api/v1/login", {
           email: values.email,
           password: values.password,
         });
