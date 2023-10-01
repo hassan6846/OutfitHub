@@ -1,73 +1,70 @@
 // modules and Liabrary
-import { React, useEffect } from 'react'
+import { React, useEffect } from "react";
 //for changing page
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 //for validation messages or error toasts
-import toast, { Toaster } from "react-hot-toast"
+import toast, { Toaster } from "react-hot-toast";
 //input get and validation
-import { useFormik } from 'formik'
+import { useFormik } from "formik";
 //mdb kit
-import {
-  MDBInput,
-  MDBBtn
-} from "mdb-react-ui-kit"
+import { MDBInputGroup, MDBInput, MDBBtn } from "mdb-react-ui-kit";
 // css
-import "./Signup.css"
+import "./Signup.css";
 // layouts or components
-import Footer from '../../../Layouts/footer/Footer'
-import axios from 'axios'
-import Loginbtns from '../../../components/IconBtns/LoginPageBtns'
-
+import Footer from "../../../Layouts/footer/Footer";
+import axios from "axios";
+import Loginbtns from "../../../components/IconBtns/LoginPageBtns";
 
 const Signup = () => {
-  const specialChar = "12312"
+  const specialChar = "12312";
   const uppercaseRegex = /[A-Z]/;
   const lowercaseRegex = /[a-z]/;
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      username: '',
-      password: ''
+      email: "",
+      username: "",
+      password: "",
     },
 
     validateOnBlur: false,
     validateOnChange: true,
     onSubmit: async (values) => {
-      //making sure if password length is greater than 
+      //making sure if password length is greater than
       if (values.password.length < 8) {
-        toast.error('Password must be 8 chracter long');
+        toast.error("Password must be 8 chracter long");
         return;
       }
       //special character
       else if (!specialChar.test(values.password)) {
-        toast.error('Password must contain at least one special character');
+        toast.error("Password must contain at least one special character");
       }
 
       //atleat one lowercase
       else if (!uppercaseRegex.test(values.password)) {
-        toast.error('Password must contain at least one uppercase and one lowercase character');
+        toast.error(
+          "Password must contain at least one uppercase and one lowercase character"
+        );
         return;
-      }
-      else if (!lowercaseRegex.test(values.password)) {
-        toast.error('Password must contain at least one uppercase and one lowercase character');
+      } else if (!lowercaseRegex.test(values.password)) {
+        toast.error(
+          "Password must contain at least one uppercase and one lowercase character"
+        );
         return;
       }
       ///email field
       else if (values.email === "") {
-        toast.error('kindly fill the email field');
-      }
-      else if (values.username === "") {
-        toast.error('Kindly fill the Username field');
-      }
-      else if (values.username.length < 5) {
+        toast.error("kindly fill the email field");
+      } else if (values.username === "") {
+        toast.error("Kindly fill the Username field");
+      } else if (values.username.length < 5) {
         toast.error("Username must be at least 6 characters long ");
         return;
       }
 
       const api = axios.create({
-        baseURL: "http://localhost:3001"
-      })
+        baseURL: "http://localhost:3001",
+      });
       // register promise pending
       const Register = async () => {
         try {
@@ -75,54 +72,101 @@ const Signup = () => {
             username: values.username,
             email: values.email,
             password: values.password,
-
-          })
-          return response.data
+          });
+          return response.data;
+        } catch (err) {
+          throw err;
         }
-        catch (err) {
-          throw (err)
-        }
-      }
+      };
       toast.promise(Register(), {
         loading: "Creating Account",
         success: <b>Account Created Successfully</b>,
         error: <b>Error While creating account</b>,
-
-      })
-
-    }
-  })
+      });
+    },
+  });
   useEffect(() => {
-    document.title = "SIGN UP"
-  })
+    document.title = "SIGN UP";
+  });
   return (
     <div>
-      <Toaster position='top-center' reverseOrder={false}></Toaster>
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div className="main_wrapper">
         <Link to="/" className="login-logo">
           <img alt="company" src="https://svgshare.com/i/xRe.svg" />
         </Link>
-       
-        <form onSubmit={formik.handleSubmit} method='post' className='form_wrapper'>
-          <p className='signup_txt'>Create Account</p>
-          <Loginbtns/>
-<p className='register_or_btns'>OR CONTINUE WITH</p>
 
-
-
-
-          <MDBInput {...formik.getFieldProps('username')} className='signup_email' type="text" placeholder='Name'   label=" Name" />
-          <MDBInput {...formik.getFieldProps("email")} className='signup_email' type="text" placeholder='Email'   label=" Email" />
-          <MDBInput   {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder='Password'  label="Password" />
-          <MDBInput  {...formik.getFieldProps('password')} className='signup_email' type="password" placeholder="Repeat Repeat"  label="Repeat Password"  />
-          <MDBBtn  style={{ backgroundColor: "#4BB497", border: "0px" }} block type='submit'  size="lg" className='register_FORM_BTN'onClick={formik.handleSubmit} >Register</MDBBtn>
-        <p className='register_login_tag'>Already Have Account</p>
-          <Link className='regsiter_login_link' to="/login">Login Instead....</Link>
+        <form
+          onSubmit={formik.handleSubmit}
+          method="post"
+          className="form_wrapper"
+        >
+          <p className="signup_txt">Create Account</p>
+          <Loginbtns />
+          <p className="register_or_btns">OR CONTINUE WITH</p>
+          <MDBInput
+            {...formik.getFieldProps("username")}
+            className="signup_email"
+            type="text"
+            placeholder="Name"
+            label=" Name"
+          />
+          <MDBInput
+            {...formik.getFieldProps("email")}
+            className="signup_email"
+            type="text"
+            placeholder="Email"
+            label=" Email"
+          />
+          {/* OTP FIELD */}
+          <MDBInputGroup>
+            <MDBInput
+              className="signup_email"
+              placeholder="Phone Number"
+              type="number"
+              label="Phone Number"
+            />
+            <MDBBtn outline>OTP</MDBBtn>
+          </MDBInputGroup>
+          <MDBInput
+            className="signup_email"
+            placeholder="OTP From Number"
+            type="text"
+            label="OTP"
+          />
+          <MDBInput
+            {...formik.getFieldProps("password")}
+            className="signup_email"
+            type="password"
+            placeholder="Password"
+            label="Password"
+          />
+          <MDBInput
+            {...formik.getFieldProps("password")}
+            className="signup_email"
+            type="password"
+            placeholder="Repeat Repeat"
+            label="Repeat Password"
+          />
+          <MDBBtn
+            style={{ backgroundColor: "#4BB497", border: "0px" }}
+            block
+            type="submit"
+            size="lg"
+            className="register_FORM_BTN"
+            onClick={formik.handleSubmit}
+          >
+            Register
+          </MDBBtn>
+          <p className="register_login_tag">Already Have Account</p>
+          <Link className="regsiter_login_link" to="/login">
+            Login Instead....
+          </Link>
         </form>
       </div>
       <Footer MarginTop="0vmax" />
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;

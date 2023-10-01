@@ -1,49 +1,51 @@
-.button_flex_login{
-    display: flex;
-    width: 100%;
-    align-items: center;
-margin-bottom: 0.3rem;
-    justify-content: center;
-    column-gap: 1rem;
+.button_flex_login {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 0.3rem;
+  justify-content: center;
+  column-gap: 1rem;
 }
-.company_Link_login{
-    color: rgb(19,16,57);
-    display: flex;
-    padding: 0.5rem 2rem;    border-radius: 0.5rem;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-    align-items: center;
-    border: 0.1px solid #66666654;
-    font-weight: bold;
+.company_Link_login {
+  color: rgb(19, 16, 57);
+  display: flex;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  align-items: center;
+  border: 0.1px solid #66666654;
+  font-weight: bold;
 }
-.icons_link_login{
-    font-size: 25px;
+.icons_link_login {
+  font-size: 25px;
 }
-.company_Link_login:hover{
-    background-color: #4BB497;
-    color: white;
+.company_Link_login:hover {
+  background-color: #4bb497;
+  color: white;
 }
-.orline_login{
-    text-align: center;
-    font-size: 13px;
-    color: #666;
-    position: relative;
+.orline_login {
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  position: relative;
 }
-.orline_login::after{
-    content: "";
-    display: block;
-width: 33%;
-position: absolute;
-height: 1px;
-top: 50%;
-background-color: #666666a4;
+.orline_login::after {
+  content: "";
+  display: block;
+  width: 33%;
+  position: absolute;
+  height: 1px;
+  top: 50%;
+  background-color: #666666a4;
 }
-.orline_login::before{
-    content: "";
-    display: block;
-width: 33%;
-position: absolute;
-height: 0.2px;
-top: 50%;
-right: 0;
-background-color: #666666a4;
+.orline_login::before {
+  content: "";
+  display: block;
+  width: 33%;
+  position: absolute;
+  height: 0.2px;
+  top: 50%;
+  right: 0;
+  background-color: #666666a4;
 }

@@ -1,4 +1,10 @@
 import React from 'react';
+
+// SWIPPER
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination } from 'swiper/modules';
 // components
 import ResponsiveNav from '../../../Layouts/NavbarMain/ResponsiveNav';
 import Footer from '../../../Layouts/footer/Footer';
@@ -33,20 +39,26 @@ const Singleproduct = () => {
   }
   return (
     <>
-    
+
       <ResponsiveNav />
-      <Breadcrumb/>
+      <Breadcrumb />
       <section className='single_product_page_container'>
-        
+
         <div className='single_wrapper_80'>
-      
+
           <div className='images_overflow_single'>
-       
-            {/* add the shitty breadcrumb here here */}
-            {mockImages.map((imageUrl, index) => (
-            
-            <img className='single_images_shop' key={index} src={imageUrl} alt="product_imgs" />
-            ))}
+            <div className='container_desktop_images_preview'>
+              {mockImages.map((imageUrl, index) => (
+
+                <img className='single_images_shop' key={index} src={imageUrl} alt="product_imgs" />
+              ))}
+            </div>
+            {/* MOBILE PREVIEW SLIDES PRODUCT NEEDED TO ADD LOADER */}
+            <Swiper pagination={true} modules={[Pagination]} className='swiper_main_all' >
+              {mockImages.map((imageUrl,index)=>(
+              <SwiperSlide className='Slide_shop'>   <img className='single_images_shop' key={index} src={imageUrl} alt="Product_img"/></SwiperSlide>
+              ))}
+            </Swiper>
           </div>
           {/* Flexbox for product details */}
           <div className='Single_product_details'>
@@ -57,7 +69,7 @@ const Singleproduct = () => {
             <p className='flash_few'>Only few left in Stock!</p>
             <p className='flash_Text_p_yellow'>Sale is <span className='flash_Text_p_yellow_span'>Live <img style={{ height: "10px" }} alt='blink_img' src={blinkSVG} /></span></p>
             <div className='button_flex_single'>
-              <MDBBtn className='single_cart_btn' style={{ backgroundColor: "#4BB497", padding: "10px 70px" }}>ADD TO CART</MDBBtn>    <MDBBtn className='wishlist_single' style={{ backgroundColor: "#d01345", color: "white", fontWeight: "bolder" }}>ADD TO WISHLIST</MDBBtn>
+              <MDBBtn className='single_cart_btn' style={{ backgroundColor: "#4BB497", }}>ADD TO CART</MDBBtn>    <MDBBtn className='wishlist_single' style={{ backgroundColor: "#d01345", color: "white", fontWeight: "bolder" }}>ADD TO WISHLIST</MDBBtn>
             </div>
             {/* flex */}
             <div className='icon_delivery_time'>
@@ -77,7 +89,7 @@ const Singleproduct = () => {
                 <Link className='single_button_tag'>Pumps</Link>
                 <Link className='single_button_tag'>Kelly</Link>
               </div>
-            
+
             </div>
           </div>
         </div>
