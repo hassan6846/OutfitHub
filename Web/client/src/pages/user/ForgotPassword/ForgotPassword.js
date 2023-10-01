@@ -48,7 +48,7 @@ const ForgotPassword = () => {
               className='forgor-inp' size="lg" label="Enter your Email" />
           </div>
 {/*  add this bootsrap element inside */}
-<div class="alert alert-success" role="alert">
+<div className='padding_alert' role="alert">
                         We've sent Link to your email {formik.values.email} </div>
           <MDBBtn  style={{ backgroundColor: "#4BB497", border: "0px" }} className='recover_btn custom-button-color'   type="submit" block size="lg">
             Recover Password
