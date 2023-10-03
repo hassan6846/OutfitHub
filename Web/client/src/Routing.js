@@ -22,7 +22,6 @@ import Vendor from "./pages/user/UserProfile/Vendor";
 import Order from "./pages/user/UserProfile/Order";
 import EditUserProfile from "./pages/user/UserProfile/EditUserProfile";
 import AddNewAdress from "./pages/user/UserProfile/AddNewAdress";
-
 // hooks
 const Routing = () => {
   useEffect(() => {

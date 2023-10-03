@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { useFormik } from "formik";
 import "./Login.css";
 import Footer from "../../../Layouts/footer/Footer";
@@ -10,7 +9,6 @@ import axios from "axios";
 import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
 const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false); // Track login submission
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -49,7 +47,7 @@ const Login = () => {
       try {
         const stringedVal = JSON.stringify(values);
         console.log(JSON.parse(stringedVal));
-            await api.post("/api/v1/login", {
+        await api.post("/api/v1/login", {
           email: values.email,
           password: values.password,
         });
