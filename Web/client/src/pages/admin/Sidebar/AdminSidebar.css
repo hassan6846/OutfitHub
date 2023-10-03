@@ -57,6 +57,11 @@
     display: flex;
     flex-direction: column;
   }
+  .aside_link_flex_toggled{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #8484842c;
+  }
   .image_cover_side {
     display: flex;
     align-items: center;
