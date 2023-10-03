@@ -25,7 +25,7 @@ import AddNewAdress from "./pages/user/UserProfile/AddNewAdress";
 
 // ADMIN
 import AdminOutlet from "./pages/admin/Sidebar/AdminOutlet";
-
+import AdminOverview from "./pages/admin/Components/Overview"
 const Routing = () => {
   useEffect(() => {
     toast.error("hello");
@@ -66,7 +66,9 @@ const Routing = () => {
           <Route path="vendor" element={<Vendor />} />
         </Route>
         {/* ADMIN PRIVATE ROUTE */}
-        <Route path="/admin" element={<AdminOutlet/>}></Route>
+        <Route path="/admin" element={<AdminOutlet/>}>
+          <Route path="/admin" element={<AdminOverview/>}/>
+        </Route>
       </Routes>
     </Router>
   );
