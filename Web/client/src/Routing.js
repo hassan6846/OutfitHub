@@ -22,7 +22,10 @@ import Vendor from "./pages/user/UserProfile/Vendor";
 import Order from "./pages/user/UserProfile/Order";
 import EditUserProfile from "./pages/user/UserProfile/EditUserProfile";
 import AddNewAdress from "./pages/user/UserProfile/AddNewAdress";
-// hooks
+
+// ADMIN
+import AdminOutlet from "./pages/admin/Sidebar/AdminOutlet";
+
 const Routing = () => {
   useEffect(() => {
     toast.error("hello");
@@ -63,6 +66,7 @@ const Routing = () => {
           <Route path="vendor" element={<Vendor />} />
         </Route>
         {/* ADMIN PRIVATE ROUTE */}
+        <Route path="/admin" element={<AdminOutlet/>}></Route>
       </Routes>
     </Router>
   );

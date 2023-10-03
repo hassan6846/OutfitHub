@@ -7,7 +7,12 @@ const initialState={
 }
 const CartSlice=createSlice({
 reducers:{
-   AddToCart:(state,actions)=>{
+    //ADD
+   ADD_CART_ITEM:(state,actions)=>{
+
+   },
+// REMOVE
+   REMOVE_CART_ITEM:()=>{
 
    }
 }
