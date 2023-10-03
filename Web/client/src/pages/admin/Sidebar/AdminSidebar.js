@@ -1,13 +1,13 @@
 import { React, useState } from 'react'
 import { Link } from "react-router-dom"
-import {  BiUpload, BiLogOutCircle,} from "react-icons/bi"
-import {BsBox2,BsFillCartFill} from "react-icons/bs"
-import {BiSolidUser,BiSolidMessageSquareDetail} from "react-icons/bi"
-import {TfiStatsUp} from "react-icons/tfi"
-import {  MdOutlineKeyboardArrowLeft } from "react-icons/md"
+import { BiUpload, BiLogOutCircle, } from "react-icons/bi"
+import { BsBox2, BsFillCartFill } from "react-icons/bs"
+import { BiSolidUser, BiSolidMessageSquareDetail } from "react-icons/bi"
+import { TfiStatsUp } from "react-icons/tfi"
+import { MdOutlineKeyboardArrowLeft } from "react-icons/md"
 import { defaultUserImg } from '../../../helpers/GlobalVariables'
-import {AiOutlineAppstoreAdd} from "react-icons/ai"
-import {FaHandsHelping} from "react-icons/fa"
+import { AiOutlineAppstoreAdd } from "react-icons/ai"
+import { FaHandsHelping } from "react-icons/fa"
 // css
 import "./AdminSidebar.css"
 
@@ -24,7 +24,7 @@ const AdminSidebar = () => {
     const Asidespan = toggled ? "icon_text_aside_toggled" : "icon_text_aside"
     const Aside_img = toggled ? "aside_user_profile_img_toggle" : "aside_user_profile_img"
     const aside_icon_state = toggled ? "aside_icon_state_toggled" : "aside_icon_state"
-    const aside_link_flex=toggled?"aside_link_flex_toggled":"aside_link_flex"
+    const aside_link_flex = toggled ? "aside_link_flex_toggled" : "aside_link_flex"
 
     return (
         <aside className={divClassName}>
@@ -53,17 +53,17 @@ const AdminSidebar = () => {
                 <Link to="/admin/users" className='aside_links'> <BiSolidUser className={aside_icon_state} /> <span className={Asidespan}>All Users</span> </Link>
             </div>
             {/* WISHLISTS */}
-          
+
             {/* vender OPTION REQUEST */}
             <div className={aside_link_flex}>
-             <p className={Asideheading}>Messages</p>
-             <Link to="/logout" className='aside_links'> <BiSolidMessageSquareDetail className={aside_icon_state} /> <span className={Asidespan}>Messages</span> </Link>
-             <Link to="/logout" className='aside_links'> <FaHandsHelping className={aside_icon_state} /> <span className={Asidespan}>Vendor Requests</span> </Link>
+                <p className={Asideheading}>Messages</p>
+                <Link to="/logout" className='aside_links'> <BiSolidMessageSquareDetail className={aside_icon_state} /> <span className={Asidespan}>Messages</span> </Link>
+                <Link to="/logout" className='aside_links'> <FaHandsHelping className={aside_icon_state} /> <span className={Asidespan}>Vendor Requests</span> </Link>
             </div>
-        {/* ALL */}
+            {/* ALL */}
             <div className={aside_link_flex}>
-             <p className={Asideheading}>Actions</p>
-             <Link to="/logout" className='aside_links'> <BiLogOutCircle className={aside_icon_state} /> <span className={Asidespan}>Logout</span> </Link>
+                <p className={Asideheading}>Actions</p>
+                <Link to="/logout" className='aside_links'> <BiLogOutCircle className={aside_icon_state} /> <span className={Asidespan}>Logout</span> </Link>
             </div>
 
 

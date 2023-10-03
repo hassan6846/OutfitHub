@@ -60,7 +60,7 @@
   .aside_link_flex_toggled{
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid #8484842c;
+    border-bottom: 1px solid #84848444;
   }
   .image_cover_side {
     display: flex;
