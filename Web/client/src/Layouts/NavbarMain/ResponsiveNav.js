@@ -33,7 +33,12 @@ const ResponsiveNav = () => {
   };
   return (
     <div>
-      <div className={toggleClass}></div>
+      <div className={toggleClass}> <div style={{width:"100%",height:"100%",backgroundColor:"red",display:"flex",flexDirection:"column"}} >
+        
+        <Link>Hello</Link>
+        <Link>Hello</Link>
+        <Link>Hello</Link>
+         </div></div>
       <div className="mobile_nav_link">
         <div>
           {" "}

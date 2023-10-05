@@ -113,6 +113,9 @@
     z-index: 999;
   }
 }
+.Toggle_menu_sidebar_navbar{
+  display: none;
+}
 .hamburger_menu {
   display: none;
 }
@@ -163,7 +166,8 @@
 
   .Toggle_menu_sidebar_navbar_clicked {
     width: 65%;
-    position: absolute;
+    top: 0;
+    position: sticky;
     background-color: #eee;
     z-index: 99999;
     right: 0;
