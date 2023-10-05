@@ -26,16 +26,23 @@ import AddNewAdress from "./pages/user/UserProfile/AddNewAdress";
 // ADMIN
 import AdminOutlet from "./pages/admin/Sidebar/AdminOutlet";
 import AdminOverview from "./pages/admin/Components/Overview"
+import AddProduct from "./pages/admin/Components/AddProduct";
+import AllProducts from './pages/admin/Components/AllProducts'
+import Orders from "./pages/admin/Components/Orders"
+import AllUsers from "./pages/admin/Components/AllUsers";
+import VendorRequests from "./pages/admin/Components/VendorRequests"
+import Messages from "./pages/admin/Components/Messages"
+import Stats from "./pages/admin/Components/Stats"
 const Routing = () => {
   useEffect(() => {
     toast.error("hello");
   });
   return (
-    
+
     <Router>
-      
+
       <Routes>
-        
+
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         {/* don't be visited after user logged in */}
@@ -69,8 +76,16 @@ const Routing = () => {
           <Route path="vendor" element={<Vendor />} />
         </Route>
         {/* ADMIN PRIVATE ROUTE */}
-        <Route path="/admin" element={<AdminOutlet/>}>
-          <Route path="/admin" element={<AdminOverview/>}/>
+        <Route path="/admin" element={<AdminOutlet />}>
+          <Route path="/admin" element={<AdminOverview />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="stats" element={<Stats/>}/>
+          <Route path="products" element={<AllProducts />} />
+          <Route path="products/add" element={<AddProduct />} />
+          <Route path="users" element={<AllUsers />} />
+          <Route path="messages" element={<Messages/>}/>
+          <Route path="messages/vendorrequest" element={<VendorRequests/>}/>
+        
         </Route>
       </Routes>
     </Router>

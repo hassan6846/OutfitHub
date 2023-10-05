@@ -1,7 +1,7 @@
 import { React, useState } from 'react'
 import { Link } from "react-router-dom"
 import { BiUpload, BiLogOutCircle, } from "react-icons/bi"
-import { BsBox2, BsFillCartFill } from "react-icons/bs"
+import { BsBox2, BsFillCartFill,BsFillMapFill} from "react-icons/bs"
 import { BiSolidUser, BiSolidMessageSquareDetail } from "react-icons/bi"
 import { TfiStatsUp } from "react-icons/tfi"
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md"
@@ -35,6 +35,7 @@ const AdminSidebar = () => {
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Overview</p>
                 <Link to="/admin" className='aside_links'> <TfiStatsUp className={aside_icon_state} /> <span className={Asidespan}>Overview</span> </Link>
+                <Link to="/admin/stats" className='aside_links'> <BsFillMapFill className={aside_icon_state} /> <span className={Asidespan}>Stats</span> </Link>
             </div>
             {/* ORDER */}
             <div className={aside_link_flex}>
@@ -45,7 +46,7 @@ const AdminSidebar = () => {
             {/* uSers */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Orders</p>
-                <Link to="/admin/users" className='aside_links'> <BsFillCartFill className={aside_icon_state} /> <span className={Asidespan}>All Orders</span> </Link>
+                <Link to="/admin/orders" className='aside_links'> <BsFillCartFill className={aside_icon_state} /> <span className={Asidespan}>All Orders</span> </Link>
 
             </div>
             <div className={aside_link_flex}>
@@ -57,8 +58,8 @@ const AdminSidebar = () => {
             {/* vender OPTION REQUEST */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Messages</p>
-                <Link to="/logout" className='aside_links'> <BiSolidMessageSquareDetail className={aside_icon_state} /> <span className={Asidespan}>Messages</span> </Link>
-                <Link to="/logout" className='aside_links'> <FaHandsHelping className={aside_icon_state} /> <span className={Asidespan}>Vendor Requests</span> </Link>
+                <Link to="/admin/messages" className='aside_links'> <BiSolidMessageSquareDetail className={aside_icon_state} /> <span className={Asidespan}>Messages</span> </Link>
+                <Link to="/admin/messages/vendorrequest" className='aside_links'> <FaHandsHelping className={aside_icon_state} /> <span className={Asidespan}>Vendor Requests</span> </Link>
             </div>
             {/* ALL */}
             <div className={aside_link_flex}>
