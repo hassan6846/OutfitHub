@@ -3,7 +3,7 @@
 // OTHER SUB REDUCERS
 import { createSlice } from "@reduxjs/toolkit";
 const initialState={
-    message:""
+   
 }
 const CartSlice=createSlice({
 reducers:{

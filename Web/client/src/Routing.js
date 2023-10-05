@@ -31,8 +31,11 @@ const Routing = () => {
     toast.error("hello");
   });
   return (
+    
     <Router>
+      
       <Routes>
+        
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         {/* don't be visited after user logged in */}
