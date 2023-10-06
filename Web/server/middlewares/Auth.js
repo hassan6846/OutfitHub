@@ -12,6 +12,7 @@ exports.isAuthenticated = catchAsyncError(async (req, res, next) => {
   }
   //add env Secret to decode
   const decodeData = jwt.verify(token, process.env.JWT_SECRET);
+
 });
 //checking weather person is admin or not
 //giving auth
