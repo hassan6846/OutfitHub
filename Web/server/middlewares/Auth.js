@@ -24,9 +24,9 @@ exports.isAuthenticated = async (req, res, next) => {
 };
 
 // Middleware for checking user roles and authorizing access
-exports.authorizeRoles = (...roles) => {
+exports.authorizeRoles = (...roles) => {a
   return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
+    if (!roles.includes(req.cookies.AccessToken.role)) {
       return next(new ErrorHandler(`Role: ${req.user.role} is not allowed to access this resource`, 403));
     }
     next();
