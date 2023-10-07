@@ -9,7 +9,7 @@
 const express = require("express")
 const router = express.Router();
 //middlewares
-const { isAuthenticated, authorizeRoles } = require("../middlewares/Auth")
+const  {isAuthenticated}  = require("../middlewares/Auth")
 //controllers
 const {
     registerUser,
@@ -38,9 +38,8 @@ router.route("/password/update").put();
  */
 
 //get all users --admin
-router
-    .route("/admin/users")
-    .get(isAuthenticated, authorizeRoles("admin"), getAllUser)
+router.route("/admin/users").get(isAuthenticated,getAllUser);
+
 
 //Admin actions on user for doing cruds on users
 router
