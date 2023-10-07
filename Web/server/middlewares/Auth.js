@@ -5,13 +5,13 @@ const { ErrorHandler } = require("../utils/errorhandler");
 // Middleware for user authentication
 exports.isAuthenticated = async (req, res, next) => {
   try {
-    const token = req.cookies.Token;
+    const token = req.cookies.AccessToken;
 
     if (!token) {
-  res.status(404).json({
-    sucess:"false",
-    MSG:"YOU NEED TO Login/register for view this Content"
-  })
+      res.status(404).json({
+        sucess: "false",
+        MSG: "YOU NEED TO /Login/register for view this Content"
+      })
     }
 
     const decodedData = jwt.verify(token, process.env.JWT_SECRET);
