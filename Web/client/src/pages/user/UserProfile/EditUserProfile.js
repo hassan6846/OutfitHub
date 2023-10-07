@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./EditUserProfile.css";
 import { MDBInput } from "mdb-react-ui-kit";
 import Form from "react-bootstrap/Form";
