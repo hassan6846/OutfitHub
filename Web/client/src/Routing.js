@@ -11,7 +11,7 @@ import ResetPassword from "./pages/user/ResetPassword/ResetPassword";
 import Products from "./pages/user/Shop/Products";
 import Singleproduct from "./pages/user/ProductDetails/Singleproduct";
 import Cart from "./pages/user/Cart/Cart";
-import Otp from "./pages/user/Otp/Otp";
+
 import UserProfile from "./pages/user/UserProfile/UserProfile";
 import FaqPage from "./pages/user/Faqs/Faq";
 import ProfileOverView from "./pages/user/UserProfile/ProfileOverView";
@@ -49,7 +49,6 @@ const Routing = () => {
         {/* sessions can also not be visited until you make request*/}
         <Route path="/password/reset/:id" element={<ResetPassword />} />
         <Route path="/password/reset/*" element={<ErrorPage />} />
-        <Route path="/otp/:token" element={<Otp />} />
         {/* 404 page */}
         <Route path="*" element={<ErrorPage />} />
         {/* User Routes */}
