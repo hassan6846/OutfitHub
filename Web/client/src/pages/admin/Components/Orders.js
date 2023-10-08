@@ -2,7 +2,8 @@ import React from 'react'
 
 const Orders = () => {
   return (
-    <div>Orders</div>
+    <div>
+      <p style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }} className='wishlist_page_head'>Orders <span></span> </p>    </div>
   )
 }
 
