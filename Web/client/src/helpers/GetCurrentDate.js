@@ -1,5 +1,5 @@
 // Define your custom helper function to get the formatted date and time
-function GetTime() {
+ async function GetTime() {
   const date = new Date();
   const day = date.getDate();
   const month = date.getMonth();
