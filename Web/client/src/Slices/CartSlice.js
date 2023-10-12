@@ -1,22 +1,30 @@
-// createSlice
-//InitialState
-// OTHER SUB REDUCERS
-import { createSlice } from "@reduxjs/toolkit";
-const initialState={
-   
-}
-const CartSlice=createSlice({
-reducers:{
-    //ADD
-   ADD_CART_ITEM:(state,actions)=>{
+import { createSlice } from "@reduxjs/toolkit"
+const initialState = {
+   Productname: "",
+   id: "",
+   Quanitity: 1,
+   price: undefined,
+   ProductCategory: "",
 
-   },
-// REMOVE
-   REMOVE_CART_ITEM:()=>{
+}
+const cartSlice = createSlice({
+   name: "cart",
+   initialState,
+   reducers: {
+      addToCart: (state, actions) => {
+
+      },
+      RemoveFromCart: (state, actions) => {
+
+      },
+     IncrementProduct:(state,actions)=>{
+
+     },
+     DecrementProduct:(state,actions)=>{
+
+     }
 
    }
-}
-})
-
-export const {AddToCart}=CartSlice.actions
-export default CartSlice.reducer
+}) 
+export const {addToCart,RemoveFromCart,IncrementProduct,DecrementProduct}=cartSlice.actions
+export default cartSlice.reducer
