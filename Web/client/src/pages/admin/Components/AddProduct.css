@@ -1,0 +1,24 @@
+.add_product_card_main {
+  width: 100%;
+  color: #131039; 
+  /* color: rgb(3,94,207); */
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.123) 0px 7px 20px 0px;
+  /* flex work */
+  display: flex;
+  padding: 1rem;
+}
+.product_setting_head {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.images_upload_grid{
+  display: flex;
+}
+.add_product_2_flex{
+  width: 70%;
+}
+.add_product_1_flex{
+  width: 30%;
+}
