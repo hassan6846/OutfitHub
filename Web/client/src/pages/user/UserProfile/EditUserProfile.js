@@ -18,6 +18,7 @@ const EditUserProfile = () => {
           src={defaultUserImg}
           alt="user_img"
         />{" "}
+
       </div>
       <div style={{ columnGap: "1rem" }} className="user_detail_wrapper">
         {/* Childs of Grid Elements */}

@@ -91,7 +91,7 @@ const ResponsiveNav = () => {
           className="Searchfield_form_nav"
         >
           <input
-            style={{ width: "300px", padding: "0.3rem 1rem" }}
+            style={{ width: "100%", padding: "0.3rem 1rem" }}
             className="desktop_nav_input"
             label="Search"
             placeholder="Search Anything"
