@@ -19,6 +19,13 @@ import { RiMenu3Line } from "react-icons/ri";
 import "./ResponsiveNav.css";
 import { CompanyLogo, defaultUserImg } from "../../helpers/GlobalVariables";
 const ResponsiveNav = () => {
+  const [showResults, SetshowResults] = useState(false)
+  const handleInputClick = () => {
+    SetshowResults(true)
+  }
+  const handleBlur = () => {
+    SetshowResults(false)
+  }
   const ALT = "DESIGN";
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,12 +40,12 @@ const ResponsiveNav = () => {
   };
   return (
     <div>
-      <div className={toggleClass}> <div style={{width:"100%",height:"100%",backgroundColor:"red",display:"flex",flexDirection:"column"}} >
-        
+      <div className={toggleClass}> <div style={{ width: "100%", height: "100%", backgroundColor: "red", display: "flex", flexDirection: "column" }} >
+
         <Link>Hello</Link>
         <Link>Hello</Link>
         <Link>Hello</Link>
-         </div></div>
+      </div></div>
       <div className="mobile_nav_link">
         <div>
           {" "}
@@ -94,17 +101,24 @@ const ResponsiveNav = () => {
             style={{ width: "100%", padding: "0.3rem 1rem" }}
             className="desktop_nav_input"
             label="Search"
+            onClick={handleInputClick}
+            spellCheck="false"
+            onBlur={handleBlur}
             placeholder="Search Anything"
           />
           <button className="navbar_input_btn">
             <FiSearch style={{ fontSize: "20px" }} />
           </button>
-          <div
-            style={{ position: "absolute" }}
-            className="search-results_dropdown"
-          >
-            Hello
-          </div>
+          {/* maps results below HASSAn */}
+          {showResults && (
+            <div
+              style={{ position: "absolute",transition:"all" }}
+              className="search-results_dropdown"
+            >
+              Hello
+            </div>
+          )}
+
         </form>
         {/* Actions Nav If user is logged in or not 
       also not made by chatgpt it is me ok

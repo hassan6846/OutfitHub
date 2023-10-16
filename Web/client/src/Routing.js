@@ -33,6 +33,7 @@ import AllUsers from "./pages/admin/Components/AllUsers";
 import VendorRequests from "./pages/admin/Components/VendorRequests";
 import Messages from "./pages/admin/Components/Messages";
 import Stats from "./pages/admin/Components/Stats";
+import Logout from "./pages/admin/Components/logout"
 const Routing = () => {
   useEffect(() => {
     toast.error("hello");
@@ -74,6 +75,7 @@ const Routing = () => {
         {/* ADMIN PRIVATE ROUTE */}
         <Route path="/admin" element={<AdminOutlet />}>
           <Route path="/admin" element={<AdminOverview />} />
+          <Route path="logout" element={<Logout/>}/>
           <Route path="orders" element={<Orders />} />
           <Route path="stats" element={<Stats />} />
           <Route path="products" element={<AllProducts />} />

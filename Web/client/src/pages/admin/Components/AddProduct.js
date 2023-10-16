@@ -63,13 +63,13 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">Regular Price. </h3>
               <p className="user_name_ans">
-                <MDBInput size="lg" placeholder="Regular Market Price." />
+                <MDBInput type="number" size="lg" placeholder="Regular Market Price." />
               </p>
             </div>
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">Sale Price </h3>
               <p className="user_name_ans">
-                <MDBInput size="lg" placeholder="Sale Price" />
+                <MDBInput type="number" size="lg" placeholder="Sale Price" />
               </p>
             </div>
           </div>
@@ -92,7 +92,7 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">SubCategory </h3>
               <p className="user_name_ans">
-                <MDBInput size="lg" placeholder="SubCategory" />
+              <TagsInput  />
               </p>
             </div>
           </div>

@@ -64,7 +64,7 @@ const AdminSidebar = () => {
             {/* ALL */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Actions</p>
-                <Link to="/logout" className='aside_links'> <BiLogOutCircle className={aside_icon_state} /> <span className={Asidespan}>Logout</span> </Link>
+                <Link to="/admin/logout" className='aside_links'> <BiLogOutCircle className={aside_icon_state} /> <span className={Asidespan}>Logout</span> </Link>
             </div>
 
 

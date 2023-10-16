@@ -41,6 +41,7 @@
   border-radius: 3px;
   margin-top: 0.3rem;
   z-index: 99;
+  transition: all 0.5s ease-in;
   height: fit-content;
   overflow-y: scroll;
 }

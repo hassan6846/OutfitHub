@@ -1,0 +1,11 @@
+.row_user_data_cards {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
+}
+.user_manegment_card {
+  width: 33.33%;
+  padding: 1rem;
+  min-height: 20rem;
+  box-shadow: rgba(0, 0, 0, 0.13) 0px 3px 8px;
+}

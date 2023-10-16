@@ -6,7 +6,6 @@ import  Alert from "../../../components/Alert/Alert"
 // css
 import './products.css';
 import ProductContainer from '../../../components/Infinite-Container_products/ProductContainer';
-import ShopFilteration from '../../../components/ProductPageFilter/ShopFilteration';
 import Footer from "../../../Layouts/footer/Footer"
 import Pagination from "../../../components/Pagination/Pagination"
 const Products = () => {
@@ -17,7 +16,6 @@ const Products = () => {
       <Alert/>
       <Nav />
       <CategoryBar />
-      <ShopFilteration />
       <ProductContainer />
       <Pagination />
       <Footer />
