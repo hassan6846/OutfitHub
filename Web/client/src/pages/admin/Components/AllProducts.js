@@ -14,10 +14,6 @@ const AllProducts = () => {
 <div className="products_grid">
 
 </div>
-
-
-
-
     </div>
   );
 };
