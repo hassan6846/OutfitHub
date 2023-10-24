@@ -34,7 +34,7 @@ export default function ProductCard(props) {
                 textAlign: "start",
                 color: "#666678",
                 fontWeight: "500",
-                fontSize: "16px",
+             
               }}
             >
               {props.name}

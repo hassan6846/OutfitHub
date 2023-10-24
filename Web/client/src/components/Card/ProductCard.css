@@ -58,6 +58,7 @@
 .product-name_card {
   font-family: "Outfit", sans-serif;
   font-style: normal;
+  font-size: 15px;
 }
 .original-price {
   text-decoration: line-through;
@@ -111,4 +112,16 @@
 .category_buttons_wrapper {
   display: flex;
   column-gap: 0.4rem;
+}
+@media screen and (min-width: 300px) and (max-width: 660px) {
+  .product_card_image_view {
+    height: 280px;
+  }
+  .card_wrapper {
+    width: 201px;
+  }.product-name_card{
+    font-size: 13px;
+  }.tag-links{
+    padding: 2px 4px;
+  }
 }
