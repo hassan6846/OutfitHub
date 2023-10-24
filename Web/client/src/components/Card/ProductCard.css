@@ -125,3 +125,10 @@
     padding: 2px 4px;
   }
 }
+@media only screen and (min-device-width: 661px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .card_wrapper {
+    width: 240px;
+  }.product_card_image_view{
+height: 290px;
+  }
+}
