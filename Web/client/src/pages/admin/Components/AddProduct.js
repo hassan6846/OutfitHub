@@ -7,6 +7,7 @@ import { BsBoxSeamFill, BsImages } from "react-icons/bs"
 import Form from "react-bootstrap/Form"
 import {TagsInput} from "react-tag-input-component"
 const AddProduct = () => {
+
   return (
     <div className='addproduct-wrapper'>
 

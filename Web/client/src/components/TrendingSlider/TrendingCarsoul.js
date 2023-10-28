@@ -1,7 +1,7 @@
 import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from 'swiper/modules';
+
 // Import Swiper styles
 import "swiper/css";
 import 'swiper/css/navigation';
@@ -27,7 +27,7 @@ export default function TrendingCarsoul() {
       <Swiper
 spaceBetween={5}
 slidesPerView={'auto'}
-        navigation={true} modules={[Navigation]} className="mySwiper"
+     className="mySwiper"
 
       >
         {

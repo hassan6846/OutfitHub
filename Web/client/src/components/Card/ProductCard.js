@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import UseAnimations from "react-useanimations";
 import heart from "react-useanimations/lib/heart";
 import "./ProductCard.css";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 export default function ProductCard(props) {
 
   return (
@@ -17,10 +18,13 @@ export default function ProductCard(props) {
             <UseAnimations  animation={heart} size={32} />
           </div>
           <Link to="sa">
-            <img
+            <LazyLoadImage
+           
               className="product_card_image_view"
               src={props.image}
               alt="ProductImage"
+                 
+              effect="blur"
             />
           </Link>
           <div></div>

@@ -8,7 +8,8 @@ import "swiper/css/navigation";
 import "./LandingCarsoul.css";
 // --swiper modules
 import { Pagination, Autoplay } from "swiper/modules";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 //Assets
 const SliderImages = [
   "./SliderImage1.jpg",
@@ -35,7 +36,8 @@ const LandingCarsoul = () => {
     >
       {SliderImages.map((imagePath, index) => (
         <SwiperSlide className="Swiper_slider_Land" key={index}>
-          <img
+          <LazyLoadImage
+          effect='blur'
             className="Landing_carsoul_image"
             src={imagePath}
             alt={`slider ${index}`}
