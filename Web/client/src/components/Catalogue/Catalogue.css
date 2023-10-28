@@ -1,108 +1,104 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.width_33_1 .width_33_2 .width_33_3{
-    background-position: center;
+.width_33_1 .width_33_2 .width_33_3 {
+  background-position: center;
 }
-.Catlogue_wrapper{
-    width: 100%;
-    height: 230px;
-    /* background-color: rgb(190, 190, 192); */
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: row;
-justify-content: center;
-    
+.Catlogue_wrapper {
+  width: 100%;
+  height: 230px;
+  /* background-color: rgb(190, 190, 192); */
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
-.Catalogue_row{
-    width: 90%;
-    height: 100%;
-    /* background-color:rgb(185, 45, 45); */
-    /* flex:  */
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
+.Catalogue_row {
+  width: 90%;
+  height: 100%;
+  /* background-color:rgb(185, 45, 45); */
+  /* flex:  */
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }
-.width_33_1{
+.width_33_1 {
+  width: 33.33%;
+  /* background-color: #e5e5e5; */
+  height: 100%;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.width_33_2 {
+  width: 33.33%;
+  /* background-color: #e5e5e5; */
+  height: 100%;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+}
+.width_33_3 {
+  width: 33.33%;
+  /* background-color: #e5e5e5; */
+  height: 100%;
+  border-radius: 5px;
 
-    width: 33.33%;
-    /* background-color: #e5e5e5; */
-    height: 100%;
-    border-radius: 5px;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.width_33_2{
- 
-    width: 33.33%;
-    /* background-color: #e5e5e5; */
-    height: 100%;
-    border-radius: 5px;
-    background-repeat: no-repeat;
+.middle_column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
 }
-.width_33_3{
-    width: 33.33%;
-    /* background-color: #e5e5e5; */
-    height: 100%;
-    border-radius: 5px;
-   
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.middle_column{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: space-between;
-}
-.middle_child{
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-height: 50%;
-border-radius: 5px;
-
+.middle_child {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 50%;
+  border-radius: 5px;
 }
 /* media query here */
-@media (min-width:300px) and (max-width:600px) {
-    .Catlogue_wrapper{
-        height: 300px;
-    }
-    .Catalogue_row{
-        flex-direction: column;
-    }
-    .width_33_1{
+@media (min-width: 300px) and (max-width: 600px) {
+  .Catlogue_wrapper {
+    height: 300px;
+  }
+  .Catalogue_row {
+    flex-direction: column;
+  }
+  .width_33_1 {
     width: 100%;
     background-size: cover;
     background-position-x: left;
     background-position-y: center;
-    }
-    .width_33_2{
-        flex-direction: row;
-        width: 100%;
-    
-    }
-    .width_33_3{
-        width: 100%;
-        background-size: cover;
-    }
-    .middle_child{
-    height: 100%;
-    }
-    
-    }
-    /* animations */
-.width_33_1:hover, .middle_child:hover,.width_33_3:hover{
-transform: scale(1.02);
-transition: all .5s;
-}
-@media all and (min-width: 768px) and (max-width: 1024px) and (orientation:portrait) {
- .width_33_1{
-    background-position: center;
- }
   }
+  .width_33_2 {
+    flex-direction: row;
+    width: 100%;
+  }
+  .width_33_3 {
+    width: 100%;
+    background-size: cover;
+  }
+  .middle_child {
+    height: 100%;
+  }
+}
+/* animations */
+.width_33_1:hover,
+.middle_child:hover,
+.width_33_3:hover {
+  transform: scale(1.02);
+  transition: all 0.5s;
+}
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .width_33_1 {
+    background-position: center;
+  }
+}
