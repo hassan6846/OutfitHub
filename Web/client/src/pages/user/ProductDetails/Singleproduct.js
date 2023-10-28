@@ -15,7 +15,9 @@ import './Singleproduct.css';
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import { blinkSVG } from '../../../helpers/GlobalVariables';
-
+// 
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 const Singleproduct = () => {
   const mockImages = [
     'https://shorturl.at/mJKR1',
@@ -55,8 +57,8 @@ const Singleproduct = () => {
             </div>
             {/* MOBILE PREVIEW SLIDES PRODUCT NEEDED TO ADD LOADER */}
             <Swiper pagination={true} modules={[Pagination]} className='swiper_main_all' >
-              {mockImages.map((imageUrl,index)=>(
-              <SwiperSlide className='Slide_shop'>   <img className='single_images_shop' key={index} src={imageUrl} alt="Product_img"/></SwiperSlide>
+              {mockImages.map((imageUrl, index) => (
+                <SwiperSlide className='Slide_shop'>   <LazyLoadImage effect='blur' className='single_images_shop' key={index} src={imageUrl} alt="Product_img" /></SwiperSlide>
               ))}
             </Swiper>
           </div>

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import UseAnimations from "react-useanimations";
 import heart from "react-useanimations/lib/heart";
 import "./ProductCardShop.css";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 export default function ProductCard(props) {
   // Truncate the product name to 42 characters
   const truncatedName = props.name.length > 42 ? props.name.substring(0, 42) + "..." : props.name;
@@ -16,7 +17,7 @@ export default function ProductCard(props) {
           <div className="like_item_card_shop">
             <UseAnimations animation={heart} size={32} />
           </div>
-          <img className="product_card_image_view_shop" src={props.image} alt="ProductImage_shop" />
+          <LazyLoadImage effect='blur' className="product_card_image_view_shop" src={props.image} alt="ProductImage_shop" />
           <div></div>
         </div>
         <div className="product-info_shop">
