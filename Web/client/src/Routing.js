@@ -63,7 +63,7 @@ const Routing = () => {
         <Route path="/faqs" element={<FaqPage />} />
         {/* Private Routes CANNOT BE VISITED AFTER LOGGED IN */}
         <Route path="/user" element={<UserProfile />}>
-          <Route path="/user" element={<ProfileOverView />} />
+          <Route path="user" element={<ProfileOverView />} />
           <Route path="order" element={<Order />} />
           <Route path="edit" element={<EditUserProfile />} />
           <Route path="address" element={<UserAdressBook />} />

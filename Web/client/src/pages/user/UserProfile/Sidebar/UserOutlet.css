@@ -50,14 +50,7 @@
   align-items: center;
   column-gap: 0.3rem;
 }
-.aside_links:hover {
-  background-color: #b4b4b4;
-  color: rgb(19, 16, 57);
-}
-.aside_links.active{
-  background-color: #4bb497;
-  color: rgb(19, 16, 57);
-}
+
 
 .aside_links_toggled {
   justify-content: center;

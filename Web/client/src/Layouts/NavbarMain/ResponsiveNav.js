@@ -40,11 +40,17 @@ const ResponsiveNav = () => {
   };
   return (
     <div>
-      <div className={toggleClass}> <div style={{ width: "100%", height: "100%", backgroundColor: "red", display: "flex", flexDirection: "column" }} >
+      <div className={toggleClass}> <div className="mobile_sidebar" style={{ width: "100%", height: "100%", backgroundColor: "#eee", display: "flex", flexDirection: "column" }} >
+        <div className="Links_container">
+          <Link>Hello</Link>
+          <Link>Hello</Link>
 
-        <Link>Hello</Link>
-        <Link>Hello</Link>
-        <Link>Hello</Link>
+          <Link>Hello</Link>
+          <Link>Hello</Link>
+
+          <Link>Hello</Link>
+          <Link>Hello</Link>
+        </div>
       </div></div>
       <div className="mobile_nav_link">
         <div>
@@ -112,7 +118,7 @@ const ResponsiveNav = () => {
           {/* maps results below HASSAn */}
           {showResults && (
             <div
-              style={{ position: "absolute",transition:"all" }}
+              style={{ position: "absolute", transition: "all" }}
               className="search-results_dropdown"
             >
               Hello
