@@ -115,7 +115,7 @@
 
 @media (min-width: 300px) and (max-width: 667px) {
   .card_wrapper_shop {
-    width: 160px;
+    width: 185px;
   }
   .tag-links_shop {
     font-weight: 500;
@@ -123,7 +123,7 @@ padding: 2px 4px ;
     font-size: 9px;
   }
   .product_card_image_view_shop {
-    height: 210px;
+    height: 289px;
   }
   .product-name_card_shop {
     font-size: 14px;

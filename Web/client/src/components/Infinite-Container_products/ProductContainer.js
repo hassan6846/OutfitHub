@@ -3,7 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import "./ProductContainer.css";
 import ProductCard from "../ProductCard_Shop/ProductCard";
 import axios from 'axios';
-
+import CircularProgress from '@mui/material/CircularProgress';
 const ProductContainer = () => {
   const [products, setProducts] = useState([]);
   const [hasMore, setHasMore] = useState(true);
@@ -15,7 +15,7 @@ const ProductContainer = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`https://lifestyle-mock-server-api.onrender.com/women?_limit=12&_page=${page}`);
+      const response = await axios.get(`https://lifestyle-mock-server-api.onrender.com/women?_limit=10&_page=${page}`);
       const newProducts = response.data;
 
       if (newProducts.length === 0) {
@@ -35,10 +35,12 @@ const ProductContainer = () => {
   return (
     <section className='product_container_flex'>
       <InfiniteScroll 
+    
+      style={{width:"100%"}}
         dataLength={products.length}
         next={fetchProducts}
         hasMore={hasMore}
-        loader={<h4 style={{overflow:"hidden"}}>Loading..</h4> }
+        loader={<CircularProgress/>}
         className='Product_container_results'
       >
 

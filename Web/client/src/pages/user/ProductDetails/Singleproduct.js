@@ -52,7 +52,7 @@ const Singleproduct = () => {
             <div className='container_desktop_images_preview'>
               {mockImages.map((imageUrl, index) => (
 
-                <img className='single_images_shop' key={index} src={imageUrl} alt="product_imgs" />
+                <img loading="lazy" effect="blur" className='single_images_shop' key={index} src={imageUrl} alt="product_imgs" />
               ))}
             </div>
             {/* MOBILE PREVIEW SLIDES PRODUCT NEEDED TO ADD LOADER */}
