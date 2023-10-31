@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({
-  origin:true
+  origin: true
 }));
 app.use(morgan('dev'));
 app.use(bodyParser.json({
