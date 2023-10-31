@@ -23,7 +23,7 @@ const {
 
 
 //simple actions
-router.route("/register").post(registerUser)
+router.route("/register").post(CreateAccountLimits,registerUser)
 router.route("/login").post(CreateAccountLimits,loginUser)
 router.route("/logout").get(Userlogout);
 

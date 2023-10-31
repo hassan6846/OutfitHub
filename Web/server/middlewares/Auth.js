@@ -9,7 +9,7 @@ exports.isAuthenticated = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({
         success: false,
-        message: "Authentication required to view this content Create Account from  or Login",
+        message: "Authentication required to view this content Create Account  or Login",
       });
     }
 
