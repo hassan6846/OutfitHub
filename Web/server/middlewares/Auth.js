@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/UserModel");
 const { ErrorHandler } = require("../utils/errorhandler");
 
 // Middleware for user authentication
@@ -8,27 +7,40 @@ exports.isAuthenticated = async (req, res, next) => {
     const token = req.cookies.AccessToken;
 
     if (!token) {
-      res.status(404).json({
-        sucess: "false",
-        MSG: "YOU NEED TO /Login/register for view this Content"
-      })
+      return res.status(401).json({
+        success: false,
+        message: "Authentication required to view this content Create Account from  or Login",
+      });
     }
 
     const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decodedData._id);
-    console.log(req.cookies.AccessToken)
+    req.user = decodedData; // Add user data to the request object for later use
     next();
   } catch (err) {
     next(err);
   }
 };
 
-// Middleware for checking user roles and authorizing access
-exports.authorizeRoles = (...roles) => {a
+
+exports.authorizeRoles = (allowedRoles) => {
   return (req, res, next) => {
-    if (!roles.includes(req.cookies.AccessToken.role)) {
-      return next(new ErrorHandler(`Role: ${req.user.role} is not allowed to access this resource`, 403));
+    if (!req.user) {
+      return res.status(401).json({
+        success: false,
+        message: "Authentication required to view this content",
+      });
     }
-    next();
+
+    const userRole = req.user.role;
+
+    if (allowedRoles.includes(userRole)) {
+      // User is authorized for the specified roles
+      next();
+    } else {
+      return res.status(403).json({
+        success: false,
+        message: "You are not authorized to access this resource",
+      });
+    }
   };
 };

@@ -40,7 +40,7 @@ router.route("/password/update").put();
  */
 
 //get all users --admin
-router.route("/admin/users").get(isAuthenticated,authorizeRoles,getAllUser);
+router.route("/admin/users").get(isAuthenticated,authorizeRoles(['admin']),getAllUser);
 
 
 //Admin actions on user for doing cruds on users
