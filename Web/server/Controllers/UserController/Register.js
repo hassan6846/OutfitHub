@@ -12,7 +12,7 @@ async function registerUser(req, res) {
       msg: "Kindly fill all fields",
     });
   }
-
+  
   try {
     // Check if email already exists
     const duplicateEmail = await UserModel.findOne({ email });
@@ -41,7 +41,7 @@ async function registerUser(req, res) {
         role: savedUser.role,
       },
       process.env.JWT_SECRET,
-      { expiresIn: "15m" }
+      { expiresIn: "1d" }
     );
     // --sending cookie
     res

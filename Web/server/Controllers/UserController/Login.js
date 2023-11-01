@@ -42,7 +42,7 @@ const loginUser = async (req, res) => {
             name: FindUser.username,
             email: FindUser.email,
             role: FindUser.role,
-        }, process.env.JWT_SECRET, { expiresIn: "0.2m" })
+        }, process.env.JWT_SECRET, { expiresIn: "1d" })
 
         if (isPasswordMatched) {
             return res
