@@ -56,8 +56,10 @@ const Routing = () => {
         <Route path="/shop" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/shop/:id" element={<Singleproduct />} />
+        
+        <Route path="/search?:query" />
         <Route
-          path="/search/:query"
+          path="/search/:q"
           element={"this is query search from field page"}
         />
         <Route path="/faqs" element={<FaqPage />} />

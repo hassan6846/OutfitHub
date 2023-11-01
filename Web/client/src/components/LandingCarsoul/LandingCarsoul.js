@@ -12,12 +12,12 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 //Assets
 const SliderImages = [
-  "./SliderImage1.jpg",
-  "./SliderImage2.gif",
-  "./SliderImage3.jpg",
-  "./SliderImage4.gif",
-  "./SliderImage5.jpg",
-  "./SliderImage6.jpg",
+  "https://res.cloudinary.com/diml3oeaw/image/upload/v1694869173/Ecommerce/HomeSlider/csroyrooohsvkjv9zkt2.jpg",
+  "https://res.cloudinary.com/diml3oeaw/image/upload/v1694869173/Ecommerce/HomeSlider/vm1nmeqftma1qqeccemi.jpg",
+  "https://res.cloudinary.com/diml3oeaw/image/upload/v1694869173/Ecommerce/HomeSlider/nd2i36gvbywat7zrmjut.jpg",
+  "https://res.cloudinary.com/diml3oeaw/image/upload/v1694869173/Ecommerce/HomeSlider/ydbsk4x2vf8dum9fvq84.jpg",
+  "https://res.cloudinary.com/diml3oeaw/image/upload/v1694869173/Ecommerce/HomeSlider/gjnvxcbpei38k26hnifn.jpg",
+  "https://res.cloudinary.com/diml3oeaw/image/upload/v1694869173/Ecommerce/HomeSlider/wlobnafva9cyy91cqnkg.jpg",
 ];
 
 const LandingCarsoul = () => {
