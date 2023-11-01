@@ -4,7 +4,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { Pagination } from 'swiper/modules';
+import {  Pagination } from 'swiper/modules';
 // components
 import ResponsiveNav from '../../../Layouts/NavbarMain/ResponsiveNav';
 import Footer from '../../../Layouts/footer/Footer';
@@ -15,18 +15,20 @@ import './Singleproduct.css';
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import { blinkSVG } from '../../../helpers/GlobalVariables';
-// 
+
+
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul';
+import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
 const Singleproduct = () => {
   const mockImages = [
     'https://shorturl.at/mJKR1',
     'https://shorturl.at/mJKR1',
     'https://shorturl.at/mJKR1',
     'https://shorturl.at/mJKR1',
-    'https://shorturl.at/mJKR1',
-    'https://shorturl.at/mJKR1',
-    'https://shorturl.at/mJKR1',
+
+   
   ];
   const faqdata = {
     title: "",
@@ -52,7 +54,7 @@ const Singleproduct = () => {
             <div className='container_desktop_images_preview'>
               {mockImages.map((imageUrl, index) => (
 
-                <img loading="lazy" effect="blur" className='single_images_shop' key={index} src={imageUrl} alt="product_imgs" />
+                <LazyLoadImage delayTime="1" width="48%" loading="lazy" effect="blur" className='single_images_shop' key={index} src={imageUrl} alt="product_imgs" />
               ))}
             </div>
             {/* MOBILE PREVIEW SLIDES PRODUCT NEEDED TO ADD LOADER */}
@@ -96,6 +98,8 @@ const Singleproduct = () => {
           </div>
         </div>
       </section>
+      <Cathead   display="none" heading="Recomendations &bull;"/>
+      <TrendingCarsoul margin="20px"/>
       <Footer />
     </>
   );
