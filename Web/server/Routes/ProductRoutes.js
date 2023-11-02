@@ -16,7 +16,7 @@ const router = express.Router();
  */
 router.route("/products").get()
 router.route("/product/:id").get()
-
+router.route("/product/trending").get()
 
 /**
  *Admin Routes 

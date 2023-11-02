@@ -47,6 +47,10 @@ const createProduct = async (req, res) => {
   }
 };
 
+// fetch All Trending Products..
+
+
+
 module.exports = {
   createProduct,
 };
