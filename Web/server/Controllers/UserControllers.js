@@ -1,5 +1,4 @@
 const UserModel = require("../models/UserModel");
-const validator = require("validator");
 // Controllers.
 const { registerUser } = require("./UserController/Register");
 const { loginUser } = require("./UserController/Login");
@@ -12,18 +11,36 @@ const { ForgotPassword } = require("./UserController/ForgotPassword");
  * type-admin
  */
 const getAllUser = async (req, res, next) => {
+  const page = Number(req.query.page) || 1;
+  const limit = 8;
+  const skip = (page - 1) * limit;
+
   try {
+    const totalUsers = await UserModel.countDocuments(); // Get the total number of users.
+
     const AllUsers = await UserModel.find()
-    res
-      .status(200)
-      .json({
-        success: true,
-        AllUsers
-      })
+      .skip(skip)
+      .limit(limit);
+
+    res.status(200).json({
+      success: true,
+      Pagination: {
+        total: totalUsers,
+        page,
+        limit,
+        users: AllUsers,
+      },
+    });
   } catch (error) {
-    console.log(error)
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal Server Error',
+    });
   }
-}
+};
+
+
 /**
   get single user
   -- type :user
