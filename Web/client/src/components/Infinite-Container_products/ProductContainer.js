@@ -40,7 +40,7 @@ const ProductContainer = () => {
         dataLength={products.length}
         next={fetchProducts}
         hasMore={hasMore}
-        loader={<CircularProgress/>}
+        loader={<div style={{width:"100%",height:"90vh",display:'flex',justifyContent:'center',alignItems:"center",padding:"1rem"}}><CircularProgress/></div>}
         className='Product_container_results'
       >
 
