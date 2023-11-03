@@ -17,11 +17,10 @@ const getAllUser = async (req, res, next) => {
 
   try {
     const totalUsers = await UserModel.countDocuments(); // Get the total number of users.
-
+ 
     const AllUsers = await UserModel.find()
       .skip(skip)
       .limit(limit);
-
     res.status(200).json({
       success: true,
       Pagination: {
