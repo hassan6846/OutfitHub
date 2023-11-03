@@ -1,5 +1,5 @@
 const express = require("express");
-const { createProduct } = require("../Controllers/ProductController");
+const { createProduct,FetchTrendingProducts } = require("../Controllers/ProductController");
 const router = express.Router();
 const {isAuthenticated,authorizeRoles} =require("../middlewares/Auth")
 // middleware
@@ -16,7 +16,7 @@ const {isAuthenticated,authorizeRoles} =require("../middlewares/Auth")
  */
 router.route("/products").get()
 router.route("/product/:id").get()
-router.route("/product/trending").get()
+router.route("/product/trending").get(FetchTrendingProducts)
 
 /**
  *Admin Routes 

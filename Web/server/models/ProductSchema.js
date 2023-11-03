@@ -7,6 +7,10 @@ const ProductSchema = new mongoose.Schema({
     required: [true, "Please Enter product Name"],
     trim: true,
   },
+  istrending: {
+    type: Boolean,
+    default: false
+  },
   images: {
     type: Array,
     required: [, "Kindly Add Some Images to Preview lowest limit is 3 "],
@@ -44,9 +48,7 @@ const ProductSchema = new mongoose.Schema({
       maxLength: [4, "Stock cannot exceed 4 characters"],
       default: 1,
     },
-    IsTrending: {
-      default: false
-    },
+  
     Tags: {
       required: [true, "kindly Enter Tags it Helps to Filter"],
       maxlength: [20, "Please dont add too much Tags"],
