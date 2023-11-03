@@ -1,6 +1,6 @@
 const validator = require("validator");
-const UserModel=require("../../models/UserModel")
-const jwt=require("jsonwebtoken")
+const UserModel = require("../../models/UserModel")
+const jwt = require("jsonwebtoken")
 
 // LOGIN
 const loginUser = async (req, res) => {

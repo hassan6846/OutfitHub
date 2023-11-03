@@ -1,6 +1,13 @@
 const mongoose = require("mongoose");
 const User = require("./UserModel")
 const ProductSchema = new mongoose.Schema({
+  tags: {
+    type:Array,
+    default:["pants","jean","underwear"],
+    required: [true, "kindly Enter Tags it Helps to Filter"],
+    maxlength: [20, "Please dont add too much Tags"],
+    minlength: [2, "please Enter Few Tags this Helps to filteration"]
+  },
   //name Or title of the product
   name: {
     type: String,
@@ -49,11 +56,7 @@ const ProductSchema = new mongoose.Schema({
       default: 1,
     },
   
-    Tags: {
-      required: [true, "kindly Enter Tags it Helps to Filter"],
-      maxlength: [20, "Please dont add too much Tags"],
-      minlength: [2, "please Enter Few Tags this Helps to filteration"]
-    },
+  
     // user reviews
     Review: [
       {

@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app"
 import { getAnalytics } from "firebase/analytics"
-import {getAuth,GoogleAuthProvider,signInWithPopup} from "firebase/auth"
+import {getAuth,GoogleAuthProvider,signInWithPopup,PhoneAuthProvider} from "firebase/auth"
 // Keys 
 const firebaseConfig = {
     apiKey:"AIzaSyA26rm_4VBUQmfwpFw5zheNaMIi41jZPK8",
