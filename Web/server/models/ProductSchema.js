@@ -7,9 +7,9 @@ const ProductSchema = new mongoose.Schema({
     required: [true, "Please Enter product Name"],
     trim: true,
   },
-  Images: {
-    type: String,
-    required: [true, "Kindly Add Some Images to Preview lowest limit is 3 "],
+  images: {
+    type: Array,
+    required: [, "Kindly Add Some Images to Preview lowest limit is 3 "],
     minLength: [3, "Price cannot exceed 8 characters"],
     maxLength: [9, "Image limits Exceds."]
   },
@@ -29,7 +29,7 @@ const ProductSchema = new mongoose.Schema({
     required: [true, "Please Enter product Price"],
     maxLength: [8, "Price cannot exceed 8 characters"],
   },
-  Category: {
+  category: {
     type: String,
     required: [true, "Please Enter Category"],
     default: "undefined",

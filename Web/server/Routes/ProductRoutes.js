@@ -1,7 +1,7 @@
 const express = require("express");
 const { createProduct } = require("../Controllers/ProductController");
 const router = express.Router();
-
+const {isAuthenticated,authorizeRoles} =require("../middlewares/Auth")
 // middleware
 
 //controllers
@@ -23,6 +23,6 @@ router.route("/product/trending").get()
  */
 router.route("/admin/products").get()
 // create a new product
-router.route("/admin/products/new").post(createProduct)
+router.route("/admin/products/new").post(isAuthenticated,authorizeRoles('admin'),createProduct)
 router.route("/admin/product/:id").get()
 module.exports = router

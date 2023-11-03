@@ -1,4 +1,5 @@
 const Product = require("../models/ProductSchema");
+const User = require("../models/UserModel");
 const { cloudinary } = require("../utils/Cloudinary");
 
 // Controller function to create a new product
@@ -9,26 +10,28 @@ const createProduct = async (req, res) => {
       description,
       price,
       ratings,
+      beforePrice,
       category,
       Stock,
       numOfReviews,
-      user,
-    } = req.body;
+      user,} = req.body;
 
     // If you are handling image upload elsewhere and passing an empty array for images:
-    const images = [];
+    const Images = ["https://images.pexels.com/photos/18626019/pexels-photo-18626019/free-photo-of-perito-moreno.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",'https://images.pexels.com/photos/18626019/pexels-photo-18626019/free-photo-of-perito-moreno.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/18626019/pexels-photo-18626019/free-photo-of-perito-moreno.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'];
 
     // Create the new product
     const product = await Product.create({
       name,
+      images:Images,
       description,
       price,
+      beforePrice,
       ratings,
-      images,
+
       category,
       Stock,
       numOfReviews,
-      user,
+     
     });
 
     res.status(201).json({ success: true, data: product });

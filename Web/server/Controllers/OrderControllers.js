@@ -6,6 +6,23 @@ const cloudinary=require("cloudinary")
  * 
  * create product Admin
  */
+/**
+ * Images At Least 1 Or 2
+ * Description.
+ * Title
+ * Brand Name
+ * Regular Price
+ * Sale Price
+ * Category
+ * SubCategory
+ * Status
+ * Promotions
+ * Quanitity
+ *Units 
+ *Weight in Kgs.
+  Tags 
+  Dimensions
+ */
 const CreateProduct=async(req,res,next)=>{
     let images=[];
     //if the user had uploaded or added a single more url of images then he will push to array
