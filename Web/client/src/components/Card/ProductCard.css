@@ -95,7 +95,7 @@
   top: 3%;
   font-size: 12px;
 
-  left: 0%;
+  left: 0%;z-index: 999;
   color: #d01345;
   font-weight: bolder;
 

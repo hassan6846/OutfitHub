@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
 import "./ProductContainer.css";
-import ProductCard from "../ProductCard_Shop/ProductCard";
+
+import ProductCard from '../Card/ProductCard';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 const ProductContainer = () => {

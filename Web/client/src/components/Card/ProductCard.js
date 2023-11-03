@@ -19,11 +19,11 @@ export default function ProductCard(props) {
           </div>
           <Link to="sa">
             <LazyLoadImage
-           
+             
               className="product_card_image_view"
               src={props.image}
               alt="ProductImage"
-                 
+              ba
               effect="blur"
             />
           </Link>
