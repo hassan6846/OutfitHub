@@ -1,0 +1,28 @@
+.orderDatagrid{
+    border-radius: 5px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    color: #131039;
+    cursor: pointer;
+    align-items: center;
+ justify-content: space-between;
+    padding: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.Image_description{
+    column-gap: 1rem;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.product_imageMain{
+    object-fit: cover;
+    width: auto;
+    height: 4rem;
+   border-radius: 5px;
+}
+.action_Wrapper{
+    display: flex;
+column-gap: 1rem;
+}

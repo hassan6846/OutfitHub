@@ -27,6 +27,9 @@ const AllUsers = () => {
 <div className=''> </div>
 <p style={{fontSize:"1.1rem",marginBottom:"0.4rem",color:"#131039",padding:"0.4rem",fontWeight:"500"}}>All Users.</p>
 {/* div For all users... */}
+<div className='all_users_datagrid'>
+  
+</div>
  </div>
   )
 }
