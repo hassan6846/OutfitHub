@@ -37,6 +37,7 @@ const LandingCarsoul = () => {
       {SliderImages.map((imagePath, index) => (
         <SwiperSlide className="Swiper_slider_Land" key={index}>
           <LazyLoadImage
+          wrapperClassName="LandingCarsoul_span"
           effect='blur'
             className="Landing_carsoul_image"
             src={imagePath}

@@ -5,8 +5,8 @@ import heart from "react-useanimations/lib/heart";
 import "./ProductCard.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
-export default function ProductCard(props) {
 
+export default function ProductCard(props) {
 
   return (
     <div  className="card-container">
@@ -19,11 +19,12 @@ export default function ProductCard(props) {
           </div>
           <Link to="sa">
             <LazyLoadImage
-             
+              
               className="product_card_image_view"
+              wrapperClassName="card_main_context"
               src={props.image}
               alt="ProductImage"
-              ba
+           
               effect="blur"
             />
           </Link>

@@ -3,7 +3,9 @@
     height: 100%;
     cursor: pointer;
 }
-
+.LandingCarsoul_span{
+    width: 100%;
+}
 /* swiper-slide */
 
 .Swiper_slider_Land {
