@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
  const ImageAddress = "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 const Orders = () => {
   return (
+    <div className='dropdown_wrapper_datagrid'>
     <div>
       <p style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }} className='wishlist_page_head'>Orders <span></span> </p>
 
@@ -41,6 +42,8 @@ const Orders = () => {
         </div>
       </div>
 
+    </div>
+    <div className='dropdown_view'></div>
     </div>
 
   )
