@@ -6,6 +6,12 @@ const { cloudinary } = require("../utils/Cloudinary");
 // Controller function to create a new product
 const createProduct = async (req, res) => {
   try {
+    const CloudUpload=cloudinary.uploader.upload(image,{
+      folder:products,
+      width:1080,
+
+      crop:'scale'
+    })
     const {
       name,
       description,
