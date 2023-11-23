@@ -23,7 +23,7 @@ router.route("/product/:id").get()
 /**
  *Admin Routes 
  */
-router.route("/admin/products").get()
+router.route("/admin/products").get(isAuthenticated,authorizeRoles('admin'))
 // create a new product
 router.route("/admin/products/new").post(isAuthenticated,authorizeRoles('admin'),createProduct)
 router.route("/admin/product/:id").get()

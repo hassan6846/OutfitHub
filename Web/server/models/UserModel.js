@@ -21,12 +21,12 @@ const UserSchema = new mongoose.Schema({
     lat:{
     required:true,
     type:Number,
-    validate: [validator.isNumber, "Please Enter a Number "],
+
     },
     lng:{
       required:true,
       type:Number,
-      validate: [validator.isNumber, "Please Enter a Number "],
+
     }
   },
   password: {
