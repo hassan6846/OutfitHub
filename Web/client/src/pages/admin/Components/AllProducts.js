@@ -3,7 +3,7 @@ import "./AllProducts.css";
 import { MDBBtn } from "mdb-react-ui-kit"
 import { Link } from "react-router-dom"
 import { IoAddCircle } from "react-icons/io5"
-import {DataGrid} from "@mui/x-data-grid"
+
 const AllProducts = () => {
   return (
     <div>

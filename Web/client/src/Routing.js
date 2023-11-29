@@ -34,11 +34,18 @@ import VendorRequests from "./pages/admin/Components/VendorRequests";
 import Messages from "./pages/admin/Components/Messages";
 import Stats from "./pages/admin/Components/Stats";
 import Logout from "./pages/admin/Components/logout"
+// Auth
+import { AuthProvider } from "react-auth-kit"
 const Routing = () => {
   useEffect(() => {
     toast.error("hello");
   });
   return (
+    <AuthProvider authType={'cookie'}
+    authName={'_auth'}
+    cookieDomain={window.location.hostname}
+    cookieSecure={false}
+  >
     <Router>
       <Routes>
         {/* Public Routes */}
@@ -88,6 +95,8 @@ const Routing = () => {
         </Route>
       </Routes>
     </Router>
+
+    </AuthProvider>
   );
 };
 
