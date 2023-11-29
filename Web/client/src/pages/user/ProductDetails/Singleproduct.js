@@ -22,13 +22,6 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul';
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
 const Singleproduct = () => {
-
-// faq configs
-const faqConfigs={
-  animate:true,
-  openOnload:0,
-}
-
   const mockImages = [
     'https://shorturl.at/mJKR1',
     'https://shorturl.at/mJKR1',
@@ -89,7 +82,7 @@ const faqConfigs={
               <p className='delivery_estimate'>Other cities: 1-4 days</p>
             </div>
 
-            <Faq config={faqConfigs} data={faqdata} />
+            <Faq data={faqdata} />
             {/* links */}
             <div className='category_links_single_page'>
               <p className='delivery_time_heading'>#Tags</p>
