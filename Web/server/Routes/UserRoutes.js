@@ -30,7 +30,6 @@ router.route("/me/update").put();
 //password actions
 router.route("/password/forgot").post(ForgotPasswordLimit, ForgotPassword);
 router.route("/password/reset/:token").put();
-router.route("/password/update").put();
 
 /**
  * add all admin routes below
