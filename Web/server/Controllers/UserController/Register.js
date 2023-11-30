@@ -2,7 +2,7 @@ const UserModel = require("../../models/UserModel");
 const jwt = require("jsonwebtoken");
 
 // module
-async function registerUser(req, res) {
+async function registerUser(req, res, next) {
   // Getting username, email, and password
   const { username, email, password } = req.body;
   // If any field is empty
@@ -12,7 +12,7 @@ async function registerUser(req, res) {
       msg: "Kindly fill all fields",
     });
   }
-  
+
   try {
     // Check if email already exists
     const duplicateEmail = await UserModel.findOne({ email });
@@ -21,9 +21,8 @@ async function registerUser(req, res) {
         .status(409)
         .json({
           success: false,
-          msg: "User Already Exists try login instead",
+          msg: "Email Already Exists.",
         })
-        .redirect("/");
     }
     const user = new UserModel({
       username,
@@ -55,8 +54,9 @@ async function registerUser(req, res) {
       .status(201)
       .json({
         success: true,
-        msg: "User created successfully",
+        msg: "Registered successfully",
         token,
+        
       });
   } catch (error) {
     return res.status(500).json({
@@ -65,5 +65,6 @@ async function registerUser(req, res) {
       error: error.message,
     });
   }
+  next()
 }
 module.exports = { registerUser };

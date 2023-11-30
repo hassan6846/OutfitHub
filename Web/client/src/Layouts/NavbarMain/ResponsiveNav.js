@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
-import { BsFillCartFill, BsChevronDown,BsGraphUp} from "react-icons/bs";
+import { BsFillCartFill, BsChevronDown, BsGraphUp } from "react-icons/bs";
 import UseAnimation from "react-useanimations";
 import menu3 from "react-useanimations/lib/menu3";
 import {
@@ -14,11 +14,12 @@ import { FaUserCircle } from "react-icons/fa";
 import { TbLogout2 } from "react-icons/tb";
 import { FaQuestion } from "react-icons/fa6";
 import { RiMenu3Line } from "react-icons/ri";
-
+import { useSignOut } from "react-auth-kit"
 // CSS imported
 import "./ResponsiveNav.css";
 import { CompanyLogo, defaultUserImg } from "../../helpers/GlobalVariables";
 const ResponsiveNav = () => {
+  const signOut = useSignOut()
   const [showResults, SetshowResults] = useState(false)
   const handleInputClick = () => {
     SetshowResults(true)
@@ -118,12 +119,12 @@ const ResponsiveNav = () => {
           {/* maps results below HASSAn */}
           {showResults && (
             <div
-              style={{ position: "absolute", transition: "all"}}
-              className="search-results_dropdown" 
-              
+              style={{ position: "absolute", transition: "all" }}
+              className="search-results_dropdown"
+
             >
-              <div style={{padding:"1rem",cursor:'pointer'}}>SearchRecomendations Will be <br/> Map Here</div>
-<button style={{width:"100%",color:"#131039", backgroundColor:"#4BB497",outline:"none",border:"none",padding:"0.5rem",borderRadius:"5px"}}>See All Result <BsGraphUp style={{marginLeft:"0.2rem"}} size={14}/></button>
+              <div style={{ padding: "1rem", cursor: 'pointer' }}>SearchRecomendations Will be <br /> Map Here</div>
+              <button style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
             </div>
           )}
 
@@ -173,7 +174,7 @@ const ResponsiveNav = () => {
                   <AiOutlineMessage />
                   Messages
                 </Link>
-                <Link to="/logout" className="dropdown_items_nav">
+                <Link onClick={() => signOut()} className="dropdown_items_nav">
                   <TbLogout2 />
                   LOGOUT
                 </Link>

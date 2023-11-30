@@ -8,7 +8,7 @@ const ForgotPassword = async (req, res, next) => {
     if (!email) {
       return res.status(404).json({
         Success: false,
-        MSG: "Kindly fill all the fields",
+        MSG: "Kindly fill all fields",
       });
     }
     // VALIDATE EMAIL
@@ -18,20 +18,21 @@ const ForgotPassword = async (req, res, next) => {
         msg: "Invalid Email Format. Please enter a valid email address.",
       });
     }
-    // finding user QUERY
+    // finding user 
     const FindUserByEmail = await UserModel.findOne({ email });
     //  if not find REGISTERED
     if (!FindUserByEmail) {
       return res.status(404).json({
         success: false,
-        msg: "Invalid Credientials",
+        //Sucess is false but we dont want to brute force a random Email. Because User can check Weather  email is registered or not. on app.
+        msg: "Kindly Check Your gmail inbox",
+
       });
     }
     if (FindUserByEmail) {
       res.status(201).json({
         success: true,
-        Reset_Link: "Link will be in your email",
-        MSG: `Reset Link is sended to ${email}`,
+        msg: "Kindly Check Your gmail inbox",
       });
     }
   } catch (err) {

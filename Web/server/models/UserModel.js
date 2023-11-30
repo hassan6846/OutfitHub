@@ -17,18 +17,7 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     validate: [validator.isEmail, "Please Enter a valid Email"],
   },
-  geo:{
-    lat:{
-    required:true,
-    type:Number,
-    validate: [validator.isNumber, "Please Enter a Number "],
-    },
-    lng:{
-      required:true,
-      type:Number,
-      validate: [validator.isNumber, "Please Enter a Number "],
-    }
-  },
+
   password: {
     type: String,
     required: [true, "Please Enter Your Password"],

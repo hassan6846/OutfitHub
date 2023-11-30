@@ -10,11 +10,11 @@ const express = require("express")
 const router = express.Router();
 //middlewares
 const  {isAuthenticated,authorizeRoles}  = require("../middlewares/Auth")
-const { CreateAccountLimits } = require("../middlewares/RequestRateLimit");
+const { LoginRequestLimits,ForgotPasswordLimit} = require("../middlewares/RequestRateLimit");
 //controllers
 const {
-    registerUser,
     loginUser,
+    registerUser,
     Userlogout,
     getAllUser,
     GetUsersDetails,
@@ -23,15 +23,15 @@ const {
 
 
 //simple actions
-router.route("/register").post(CreateAccountLimits,registerUser)
-router.route("/login").post(CreateAccountLimits,loginUser)
+router.route("/register").post(registerUser)
+router.route("/login").post(LoginRequestLimits,loginUser)
 router.route("/logout").get(Userlogout);
 
 //user details and update profile
 router.route("/me").get()
 router.route("/me/update").put();
 //password actions
-router.route("/password/forgot").post(ForgotPassword);
+router.route("/password/forgot").post(ForgotPasswordLimit,ForgotPassword);
 router.route("/password/reset/:token").put();
 router.route("/password/update").put();
 

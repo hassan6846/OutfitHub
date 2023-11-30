@@ -9,14 +9,10 @@ import Alertbar from '../../../components/Alert/Alert'
 import Nav from "../../../Layouts/NavbarMain/ResponsiveNav"
 import LandingCarsoul from '../../../components/LandingCarsoul/LandingCarsoul'
 // import TrendingHead from "../../components/CatalogueHeading/"
-
 import Catalogue from '../../../components/Catalogue/Catalogue'
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading'
 import Footer from "../../../Layouts/footer/Footer"
 import CategoryBar from '../../../components/CategoryBar/CategoryBar'
-
-
-
 // ////////////////
 
 const Home = () => {
@@ -28,9 +24,7 @@ const Home = () => {
     <div>
 
       <Alertbar />
-
       <Nav />
-
       <LandingCarsoul />
       {/* trending carsoul div */}
       <div>
