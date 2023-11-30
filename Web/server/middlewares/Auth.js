@@ -21,7 +21,6 @@ exports.isAuthenticated = async (req, res, next) => {
   }
 };
 
-
 exports.authorizeRoles = (allowedRoles) => {
   return (req, res, next) => {
     if (!req.user) {

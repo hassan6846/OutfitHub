@@ -3,10 +3,8 @@ const { createProduct,FetchTrendingProducts,FilterTags} = require("../Controller
 const router = express.Router();
 const {isAuthenticated,authorizeRoles} =require("../middlewares/Auth")
 // middleware
-
 //controllers
 //neeeded a admin sidebar with different routes 
-
 /**
  * type:User
  * Path:host:/product
@@ -19,8 +17,7 @@ router.route("/product/trending").get(FetchTrendingProducts)
 router.route("/product/tags/:tag").get(FilterTags)
 router.route("/product/:id").get()
 
-
-/**
+/*
  *Admin Routes 
  */
 router.route("/admin/products").get()
