@@ -32,11 +32,14 @@ const ForgotPassword = async (req, res, next) => {
       return res.status(404).json({
         success: false,
         //Sucess is false but we dont want to brute force a random Email. Because User can check Weather  email is registered or not. on app.
-        msg: "Kindly Check Your inbox or in spam Tab",
+        msg: "User Not existed",
       });
     }
     //if founded send node mailer hash url in his gmail box.
     if (FindUserByEmail) {
+      const secret=process.env.JWT_SECRET+FindUserByEmail.password
+    //  sending
+    res.send(secret)
       res.status(201).json({
         success: true,
         msg: "Kindly Check Your inbox or in spam Tab",

@@ -29,8 +29,9 @@ router.route("/me").get()
 router.route("/me/update").put();
 //password actions
 router.route("/password/forgot").post(ForgotPasswordLimit, ForgotPassword);
-router.route("/password/reset/:id/:token").put();
 
+router.route("/password/reset/:id/:token").put();
+router.route("/password/reset/:id/:token").post();
 /**
  * add all admin routes below
  */
