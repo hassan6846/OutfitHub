@@ -10,7 +10,7 @@ const loginUser = async (req, res,next) => {
   if (!validator.isEmail(email)) {
     return res.status(400).json({
       success: false,
-      msg: "Invalid Email Format. enter a valid email address.",
+      msg: "Invalid Email Format.",
     });
   }
 

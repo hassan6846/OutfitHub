@@ -8,22 +8,10 @@ const { cloudinary } = require("../utils/Cloudinary");
 
 // Controller function to create a new product
 const createProduct = async (req, res,next) => {
-  async function fileUploads(){
-    const localimage='../public/cloudtest.jpg'
-   const result=await cloudinary.uploader.upload(localimage)
- console.log(result)
-  }
 
-try{
-fileUploads()
-res.json({
-  msg:"five figures is nothing"
-})
-}
-catch(error){
-  console.log(error)
-}
-next()
+ 
+
+
 
 }
 // fetch All Trending Products..
