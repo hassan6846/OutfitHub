@@ -88,7 +88,7 @@ const Login = () => {
           <img alt="company" src="https://svgshare.com/i/xRe.svg" />
         </Link>
         <div className="login-container">
-          <p className="login-heading">Login Account</p>
+          <h1 className="login-heading">Login account</h1>
           <Loginbtns />
           <p className="orline_login">OR CONTINUE WITH</p>
           <form onSubmit={formik.handleSubmit} className="login-form">

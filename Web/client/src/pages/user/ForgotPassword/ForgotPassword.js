@@ -19,8 +19,8 @@ const ForgotPassword = () => {
     onSubmit: (values) => {
       if (!isValidEmail(values.email)) {
         toast.error('Kindly fill all the fields');
-      } 
-  
+      }
+
     },
   });
 
@@ -41,16 +41,16 @@ const ForgotPassword = () => {
 
           <div className='alert_wrapper_change_event'>
             <p className='forgor-tag'>No Worries,We'll send you instructions in your email</p>
-<p style={{color:"#848484", fontWeight:"bold", fontSize:'13px',textAlign:"center"}}>Note You cannot Change Password Again After 20 Days.</p>
+            <p style={{ color: "#848484", fontWeight: "bold", fontSize: '13px', textAlign: "center" }}>Note You cannot Change Password Again After 20 Days.</p>
             <MDBInput  {...formik.getFieldProps("email")}
               type='email'
               placeholder='Email'
               className='forgor-inp' size="lg" label="Enter your Email" />
           </div>
-{/*  add this bootsrap element inside */}
-<div className='padding_alert' role="alert">
-                        We've sent Link to your email {formik.values.email} </div>
-          <MDBBtn  style={{ backgroundColor: "#4BB497", border: "0px" }} className='recover_btn custom-button-color'   type="submit" block size="lg">
+          {/*  add this bootsrap element inside */}
+          <div className='padding_alert' role="alert">
+            We've sent Link to your email {formik.values.email} </div>
+          <MDBBtn style={{ backgroundColor: "#4BB497", border: "0px" }} className='recover_btn custom-button-color' type="submit" block size="lg">
             Recover Password
           </MDBBtn>
 

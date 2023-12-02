@@ -1,7 +1,37 @@
 .signup_container{
-  height: 90vh;
+  height: 80vh;
   width: 100%;
   /* flex */
   display: flex;
   justify-content: center;
+}
+.signup_form_wrapper{
+  width: fit-content;
+  padding: 1rem;
+
+}
+.signup_head{
+  text-align: center;
+  color: rgb(13, 13, 13)  ;
+font-size: 2rem;
+}
+.Link_login{
+  color: rgb(75,180,151);
+  font-weight: bold;
+  text-decoration: underline;
+  margin-left: 0.5rem;
+}
+.para_signup{
+  font-size: 15px;
+}
+.input_flex_signup{
+  display: flex;
+  column-gap: 0.4rem;
+}
+.btn_next{
+  width: 100%;
+  align-items: center;
+  margin-top: 1rem;
+  justify-content: left;
+  display: flex;
 }

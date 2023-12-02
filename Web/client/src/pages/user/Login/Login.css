@@ -60,6 +60,7 @@
 .login-heading {
   text-align: center;
   font-size: 1.8rem;
+  color: rgb(13, 13, 13)  ;
   font-weight: 500;
 }
 .forgot-link {
