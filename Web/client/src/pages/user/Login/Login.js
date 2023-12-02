@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import "./Login.css";
-import Footer from "../../../Layouts/footer/Footer";
-import toast, { Toaster } from "react-hot-toast";
-import Loginbtns from "../../../components/IconBtns/LoginPageBtns.js";
 import axios from "axios";
 import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
+import toast, { Toaster } from "react-hot-toast";
+// Css
+import "./Login.css";
+// components and Library.
+import Footer from "../../../Layouts/footer/Footer";
+import Loginbtns from "../../../components/IconBtns/LoginPageBtns.js";
+
+
 const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false); // Track login submission
   const formik = useFormik({
@@ -71,7 +75,6 @@ const Login = () => {
   });
 
   useEffect(() => {
-    document.title = "LOGIN";
     sessionStorage.clear();
   }, []);
 

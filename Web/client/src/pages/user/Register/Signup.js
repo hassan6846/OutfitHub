@@ -1,35 +1,36 @@
 // modules and Liabrary
-import { React, useEffect } from "react";
-//for changing page
+import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-//for validation messages or error toasts
-import toast, { Toaster } from "react-hot-toast";
-//input get and validation
+import toast from "react-hot-toast";
 import { useFormik } from "formik";
-//mdb kit
-import { MDBInputGroup, MDBInput, MDBBtn } from "mdb-react-ui-kit";
+import axios from "axios";
 // css
 import "./Signup.css";
-// layouts or components
+//  Components
 import Footer from "../../../Layouts/footer/Footer";
-import axios from "axios";
 import Loginbtns from "../../../components/IconBtns/LoginPageBtns";
-
+import { MDBInputGroup, MDBInput, MDBBtn } from "mdb-react-ui-kit";
 const Signup = () => {
-  const specialChar = "12312";
+  const [isSubmitting, setIsSubmitting] = useState(true); // Track login/SignUP submission
+  // Regex.
+  const specialChar = /[12348]/;
   const uppercaseRegex = /[A-Z]/;
   const lowercaseRegex = /[a-z]/;
 
+
   const formik = useFormik({
     initialValues: {
-      email: "",
       username: "",
+      email: "",
+      PhoneNumber: "",
       password: "",
     },
 
     validateOnBlur: false,
     validateOnChange: true,
     onSubmit: async (values) => {
+
+      setIsSubmitting(false)
       //making sure if password length is greater than
       if (values.password.length < 8) {
         toast.error("Password must be 8 chracter long");
@@ -90,7 +91,6 @@ const Signup = () => {
   });
   return (
     <div>
-      <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div className="main_wrapper">
         <Link to="/" className="login-logo">
           <img alt="company" src="https://svgshare.com/i/xRe.svg" />
@@ -125,14 +125,19 @@ const Signup = () => {
               placeholder="Phone Number"
               type="number"
               label="Phone Number"
+
             />
-            <MDBBtn outline>OTP</MDBBtn>
+            <MDBBtn outline>Send</MDBBtn>
           </MDBInputGroup>
           <MDBInput
             className="signup_email"
             placeholder="OTP From Number"
-            type="text"
+            type="number"
             label="OTP"
+            inputMode="numeric"
+            pattern="\d{6}"
+            autoComplete="one-time-code"
+            required
           />
           <MDBInput
             {...formik.getFieldProps("password")}
@@ -156,7 +161,7 @@ const Signup = () => {
             className="register_FORM_BTN"
             onClick={formik.handleSubmit}
           >
-            Register
+            {isSubmitting ? "Register" : "Creating account please wait..."}
           </MDBBtn>
           <p className="register_login_tag">Already Have Account</p>
           <Link className="regsiter_login_link" to="/login">
