@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import  { React } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import toast from "react-hot-toast";
+
 // components
 import Home from "./pages/user/Home/Home";
 import LoginPage from "./pages/user/Login/Login";
@@ -11,7 +11,8 @@ import ResetPassword from "./pages/user/ResetPassword/ResetPassword";
 import Products from "./pages/user/Shop/Products";
 import Singleproduct from "./pages/user/ProductDetails/Singleproduct";
 import Cart from "./pages/user/Cart/Cart";
-
+import Search from "./pages/user/SearchPage/Search";
+// users Profile Private Routes.
 import UserProfile from "./pages/user/UserProfile/UserProfile";
 import FaqPage from "./pages/user/Faqs/Faq";
 import ProfileOverView from "./pages/user/UserProfile/ProfileOverView";
@@ -36,10 +37,9 @@ import Stats from "./pages/admin/Components/Stats";
 import Logout from "./pages/admin/Components/logout"
 // Auth
 import { AuthProvider } from "react-auth-kit"
+
 const Routing = () => {
-  useEffect(() => {
-    toast.error("hello");
-  });
+  
   return (
     <AuthProvider authType={'cookie'}
     authName={'_auth'}
@@ -47,6 +47,7 @@ const Routing = () => {
     cookieSecure={false}
   >
     <Router>
+
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
@@ -54,6 +55,7 @@ const Routing = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />
+   
         {/* sessions can also not be visited until you make request*/}
         <Route path="/password/reset/:id" element={<ResetPassword />} />
         <Route path="/password/reset/*" element={<ErrorPage />} />
@@ -62,14 +64,9 @@ const Routing = () => {
         {/* User Routes */}
         <Route path="/shop" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/shop/:id" element={<Singleproduct />} />
-        
-        <Route path="/search?:query" />
-        <Route
-          path="/search/:q"
-          element={"this is query search from field page"}
-        />
         <Route path="/faqs" element={<FaqPage />} />
+        <Route path="/shop/:id" element={<Singleproduct />} />
+        <Route path="/search/:query" element={<Search/>} />
         {/* Private Routes CANNOT BE VISITED AFTER LOGGED IN */}
         <Route path="/user" element={<UserProfile />}>
           <Route path="/user" element={<ProfileOverView />} />
