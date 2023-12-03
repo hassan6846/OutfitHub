@@ -1,5 +1,6 @@
 .signup_container {
-  height: 90vh;
+  padding: 1rem;
+  height: 80vh;
   width: 100%;
   align-items: center;
   /* flex */
@@ -10,8 +11,7 @@
 .signup_form_wrapper {
 
   padding: 1rem;
-
-height: fit-content;
+  height: fit-content;
 }
 
 .signup_head {
@@ -29,6 +29,8 @@ height: fit-content;
 
 .para_signup {
   font-size: 15px;
+  cursor: pointer;
+text-align: center;
 }
 
 .input_flex_signup {
@@ -44,6 +46,64 @@ height: fit-content;
   display: flex;
 }
 
-.para_signup {
+
+.email_head{
   text-align: center;
+  font-size: 1.4rem;
+  color: #666666;
+  font-weight: 400;
+}
+.email_bold{
+  font-weight: 500;
+
+}
+.email_verify_tag{
+  text-align: center;
+font-weight: 400;
+  font-size: 15px;
+  color: rgb(13, 13, 13);
+}
+.instruction_mail{
+   background-color: #F2F2F2;
+   border-radius: 5px;
+   display: flex;
+width: 100%;
+padding: 1rem;
+   justify-content: center;
+   align-items: flex-start;
+    min-height: 100px;
+   color: rgb(13, 13, 13);
+   font-size: 15px;
+   flex-direction: column;
+}
+.icon_flex_mail{
+  display: flex;
+  width: 100%;
+  padding: 0.3rem;
+  justify-content: center;
+  align-items: center;
+}
+.signup_otp_verify{
+  width:50%;
+
+  margin-bottom: 1rem;
+}
+.otp_justify{
+  width: 100%;
+  display: flex;
+  justify-content:  center;
+}
+.otp_verify_submit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.otp_verify_btn{
+  width: 50%;
+}
+.animation_frame{
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

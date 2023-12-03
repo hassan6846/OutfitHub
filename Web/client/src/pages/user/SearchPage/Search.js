@@ -15,6 +15,7 @@ const Search = () => {
   return (
     <>
     <ResponsiveNav/>
+  
     <BreadCrumb/>
     <Footer/>
     </>
