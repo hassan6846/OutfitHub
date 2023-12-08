@@ -1,44 +1,51 @@
-import React, { useState } from "react";
+//modules and library.
+import  { React,useState } from "react";
 import { Link } from "react-router-dom";
+import UseAnimation from "react-useanimations";
+import { useSignOut } from "react-auth-kit"
+// icons
 import { FiSearch } from "react-icons/fi";
 import { BsFillCartFill, BsChevronDown, BsGraphUp } from "react-icons/bs";
-import UseAnimation from "react-useanimations";
-import menu3 from "react-useanimations/lib/menu3";
-import {
-  AiOutlineHeart,
-  AiOutlineShoppingCart,
-  AiOutlineMessage,
-  AiOutlineUserAdd,
-} from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineShoppingCart,AiOutlineMessage,AiOutlineUserAdd,} from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { TbLogout2 } from "react-icons/tb";
 import { FaQuestion } from "react-icons/fa6";
 import { RiMenu3Line } from "react-icons/ri";
-import { useSignOut } from "react-auth-kit"
+import menu3 from "react-useanimations/lib/menu3";
+// Constants
+import { CompanyLogo, defaultUserImg,ALT } from "../../helpers/GlobalVariables";
 // CSS imported
 import "./ResponsiveNav.css";
-import { CompanyLogo, defaultUserImg } from "../../helpers/GlobalVariables";
+// Main NavComponent.
 const ResponsiveNav = () => {
   const signOut = useSignOut()
-  const [showResults, SetshowResults] = useState(false)
+  const [showResults, SetshowResults] = useState(false);
+  const [isActive, setIsActive] = useState(true);
+  //Handle Click input (show)
   const handleInputClick = () => {
     SetshowResults(true)
   }
+  //Hide On Blur
   const handleBlur = () => {
     SetshowResults(false)
   }
-  const ALT = "DESIGN";
+  //prevent Submition.
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  // navbar state toggle
-  const [isActive, setIsActive] = useState(true);
-  const toggleClass = isActive
-    ? "Toggle_menu_sidebar_navbar"
-    : "Toggle_menu_sidebar_navbar_clicked";
+  //handle Navbar Class Toggle.
   const handleClick = () => {
     setIsActive(!isActive);
   };
+  // navbar state toggle Clase Open And Close.
+  const toggleClass = isActive
+    ? "Toggle_menu_sidebar_navbar"
+    : "Toggle_menu_sidebar_navbar_clicked";
+
+//Search Recomendation Handle Change
+function HandleChange(){
+  
+}
   return (
     <div>
       <div className={toggleClass}> <div className="mobile_sidebar" style={{ width: "100%", height: "100%", backgroundColor: "#eee", display: "flex", flexDirection: "column" }} >
@@ -111,6 +118,7 @@ const ResponsiveNav = () => {
             onClick={handleInputClick}
             spellCheck="false"
             onBlur={handleBlur}
+            onChange={HandleChange}
             placeholder="Search Anything"
           />
           <button className="navbar_input_btn">
