@@ -1,5 +1,5 @@
 //modules and library.
-import  { React,useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import UseAnimation from "react-useanimations";
 import { useSignOut } from "react-auth-kit"
@@ -7,16 +7,19 @@ import axios from "axios";
 // icons
 import { FiSearch } from "react-icons/fi";
 import { BsFillCartFill, BsChevronDown, BsGraphUp } from "react-icons/bs";
-import { AiOutlineHeart, AiOutlineShoppingCart,AiOutlineMessage,AiOutlineUserAdd,} from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineMessage, AiOutlineUserAdd, } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { TbLogout2 } from "react-icons/tb";
 import { FaQuestion } from "react-icons/fa6";
 import { RiMenu3Line } from "react-icons/ri";
 import menu3 from "react-useanimations/lib/menu3";
 // Constants
-import { CompanyLogo, defaultUserImg,ALT } from "../../helpers/GlobalVariables";
+import { CompanyLogo, defaultUserImg, ALT } from "../../helpers/GlobalVariables";
 // CSS imported
 import "./ResponsiveNav.css";
+//
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 
@@ -26,16 +29,18 @@ import "./ResponsiveNav.css";
 const ResponsiveNav = () => {
   const signOut = useSignOut()
   const [showResults, SetshowResults] = useState(false);
-  const [searchValue,setSearchValue]=useState("")
+  const [searchValue, setSearchValue] = useState("")
   const [isActive, setIsActive] = useState(true);
- 
+  const [searchResults, SetsearchResults] = useState([])
   //Handle Click input (show)
   const handleInputClick = () => {
+    SetsearchResults([])
     SetshowResults(true)
   }
   //Hide On Blur
   const handleBlur = () => {
-    SetshowResults(false)
+    SetsearchResults()
+ 
   }
   //prevent Submition.
   const handleSubmit = (e) => {
@@ -50,22 +55,40 @@ const ResponsiveNav = () => {
     ? "Toggle_menu_sidebar_navbar"
     : "Toggle_menu_sidebar_navbar_clicked";
 
-//Search Recomendation Handle Change
-const HandleChange=async(e)=>{
-  const value = e.target.value.toLowerCase();
-   setSearchValue(value);
-   console.log(value)
-  //  Search Results ..
-  try{
-    const response = await axios.get(`https://dummyjson.com/products/search?q=${searchValue}`);
-    const data = response.data;
-    console.log(data)
-  }catch(error){
-    console.log(error)
+  // Handle Change to Set UseState.
+  const HandleChange = (e) => {
+
+    console.log("SearchValue" + searchValue)
+    setSearchValue(e.target.value)
+   
   }
 
-}
+  //fetch products Function
 
+
+  ///useEffect api Fetch
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://dummyjson.com/products/search?q=${searchValue}`);
+        const data = response.data;
+        console.log(data);
+        SetsearchResults(data.products)
+  
+      
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    // main
+    
+    if (searchValue !== "") {
+      fetchData()
+    }
+  }, [searchValue])
+
+  //////////////////
   return (
     <div>
       <div className={toggleClass}> <div className="mobile_sidebar" style={{ width: "100%", height: "100%", backgroundColor: "#eee", display: "flex", flexDirection: "column" }} >
@@ -152,8 +175,33 @@ const HandleChange=async(e)=>{
               className="search-results_dropdown"
 
             >
-              <div style={{ padding: "1rem", cursor: 'pointer' }}>SearchRecomendations Will be <br /> Map Here</div>
-              <button style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
+              {/* search Results Will mapped here */}
+              <div style={{ padding: "0.5rem", cursor: 'pointer' }}>{searchResults.map((item, index) => (
+
+                <div className='dropdown_card_nav'>
+                  {/* Title & Price */}
+
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <LazyLoadImage
+                      effect='blur'
+                      wrapperClassName="Dropdown_image"
+                      alt={`slider ${index}`}
+                      className="dropdown_image_results"
+                      src={item.thumbnail}
+                    />
+                  <div style={{display:"flex",flexDirection:"column",marginLeft:"0.4rem"}}>
+                    <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.title}</p>
+                    <p className="dropdown_text_nav" style={{ marginBottom: "0",color:"#848484",fontSize:"14px",fontWeight:'bold' }}>${item.price}</p>
+                  </div>
+                  
+                 
+                  </div>
+                  {/*MAIN Category and pricing  */}
+                 
+                  {/*END*/}
+                </div>
+              ))}</div>
+              <button className="stickey_btn_nav" style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
             </div>
           )}
 
