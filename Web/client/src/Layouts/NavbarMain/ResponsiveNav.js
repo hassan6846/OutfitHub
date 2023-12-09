@@ -3,6 +3,7 @@ import  { React,useState } from "react";
 import { Link } from "react-router-dom";
 import UseAnimation from "react-useanimations";
 import { useSignOut } from "react-auth-kit"
+import axios from "axios";
 // icons
 import { FiSearch } from "react-icons/fi";
 import { BsFillCartFill, BsChevronDown, BsGraphUp } from "react-icons/bs";
@@ -16,11 +17,18 @@ import menu3 from "react-useanimations/lib/menu3";
 import { CompanyLogo, defaultUserImg,ALT } from "../../helpers/GlobalVariables";
 // CSS imported
 import "./ResponsiveNav.css";
+
+
+
+
+
 // Main NavComponent.
 const ResponsiveNav = () => {
   const signOut = useSignOut()
   const [showResults, SetshowResults] = useState(false);
+  const [searchValue,setSearchValue]=useState("")
   const [isActive, setIsActive] = useState(true);
+ 
   //Handle Click input (show)
   const handleInputClick = () => {
     SetshowResults(true)
@@ -43,9 +51,21 @@ const ResponsiveNav = () => {
     : "Toggle_menu_sidebar_navbar_clicked";
 
 //Search Recomendation Handle Change
-function HandleChange(){
-  
+const HandleChange=async(e)=>{
+  const value = e.target.value.toLowerCase();
+   setSearchValue(value);
+   console.log(value)
+  //  Search Results ..
+  try{
+    const response = await axios.get(`https://dummyjson.com/products/search?q=${searchValue}`);
+    const data = response.data;
+    console.log(data)
+  }catch(error){
+    console.log(error)
+  }
+
 }
+
   return (
     <div>
       <div className={toggleClass}> <div className="mobile_sidebar" style={{ width: "100%", height: "100%", backgroundColor: "#eee", display: "flex", flexDirection: "column" }} >
@@ -119,6 +139,7 @@ function HandleChange(){
             spellCheck="false"
             onBlur={handleBlur}
             onChange={HandleChange}
+            value={searchValue}
             placeholder="Search Anything"
           />
           <button className="navbar_input_btn">
