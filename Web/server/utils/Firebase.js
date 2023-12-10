@@ -1,2 +1,1 @@
-const firebase=require("firebase")
-const { initializeApp } = require('firebase-admin/app');
+const firebase=require("firebase/auth")
