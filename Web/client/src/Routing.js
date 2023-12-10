@@ -1,6 +1,5 @@
 import { React } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 // components
 import Home from "./pages/user/Home/Home";
 import LoginPage from "./pages/user/Login/Login";
@@ -63,11 +62,11 @@ const Routing = () => {
           <Route path="*" element={<ErrorPage />} />
           {/* User Routes */}
           <Route path="/shop" element={<Products />} />
+          <Route path="/shop/:id" element={<Singleproduct />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/faqs" element={<FaqPage />} />
-          <Route path="/shop/:id" element={<Singleproduct />} />
           <Route path="/search/:query" element={<Search />} />
-          {/* Private Routes CANNOT BE VISITED AFTER LOGGED IN */}
+          {/* Private Routes CANNOT BE VISITED Without LOGIN */}
           <Route path="/user" element={<UserProfile />}>
             <Route path="/user" element={<ProfileOverView />} />
             <Route path="order" element={<Order />} />
@@ -92,7 +91,6 @@ const Routing = () => {
           </Route>
         </Routes>
       </Router>
-
     </AuthProvider>
   );
 };

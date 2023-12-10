@@ -3,7 +3,7 @@ import React from "react";
 import AllRoutes from "./Routing";
 // Auth
 import { AuthProvider } from "react-auth-kit"
-import {Toaster} from "react-hot-toast"
+import { Toaster } from "react-hot-toast"
 // main
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       cookieDomain={window.location.hostname}
       cookieSecure={false}
     >
-      <Toaster/>
+      <Toaster />
       <AllRoutes />
     </AuthProvider>
   );

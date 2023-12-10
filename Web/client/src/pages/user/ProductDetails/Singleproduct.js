@@ -1,26 +1,24 @@
 import React from 'react';
-
+import { Link, useParams } from 'react-router-dom';
 // SWIPPER
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'
 import 'swiper/css/pagination'
-import {  Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 // components
 import ResponsiveNav from '../../../Layouts/NavbarMain/ResponsiveNav';
 import Footer from '../../../Layouts/footer/Footer';
+import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul';
+import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
 import Faq from "react-faq-component"
 import Breadcrumb from "../../../Layouts/BreadCrumb/BreadCrumb"
 // css
 import './Singleproduct.css';
 import { MDBBtn } from 'mdb-react-ui-kit';
-import { Link } from 'react-router-dom';
 import { blinkSVG } from '../../../helpers/GlobalVariables';
-
-
+//lazy loading component
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul';
-import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
 const Singleproduct = () => {
   const mockImages = [
     'https://shorturl.at/mJKR1',
@@ -28,7 +26,7 @@ const Singleproduct = () => {
     'https://shorturl.at/mJKR1',
     'https://shorturl.at/mJKR1',
 
-   
+
   ];
   const faqdata = {
     title: "",
@@ -41,19 +39,18 @@ const Singleproduct = () => {
      <li> The Shoe Features A Classic Round-Toe Design For A Simple Yet Gorgeous Look</li> </ol>`
       },]
   }
+  //params
+     const {id} =useParams()
   return (
     <>
 
       <ResponsiveNav />
       <Breadcrumb />
       <section className='single_product_page_container'>
-
         <div className='single_wrapper_80'>
-
           <div className='images_overflow_single'>
             <div className='container_desktop_images_preview'>
               {mockImages.map((imageUrl, index) => (
-
                 <LazyLoadImage delayTime="1" width="48%" loading="lazy" effect="blur" className='single_images_shop' key={index} src={imageUrl} alt="product_imgs" />
               ))}
             </div>
@@ -98,8 +95,8 @@ const Singleproduct = () => {
           </div>
         </div>
       </section>
-      <Cathead   display="none" heading="Recomendations &bull;"/>
-      <TrendingCarsoul margin="20px"/>
+      <Cathead display="none" heading="Recomendations &bull;" />
+      <TrendingCarsoul margin="20px" />
       <Footer />
     </>
   );
