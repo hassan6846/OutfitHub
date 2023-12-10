@@ -45,7 +45,7 @@
   background-color: rgb(255, 250, 250);
   top: 100%;
   height: max-content;
-  max-height: 30vh ;
+  max-height: 30vh;
   box-shadow: rgba(100, 100, 111, 0.123) 0px 7px 20px 0px;
   border-radius: 3px;
   margin-top: 0.3rem;
@@ -53,9 +53,10 @@
   transition: all 0.5s ease-in;
 
   overflow-y: scroll;
- 
+
 }
-.stickey_btn_nav{
+
+.stickey_btn_nav {
   position: sticky;
   bottom: 0;
 }
@@ -281,12 +282,14 @@
   border-bottom: 0.4px solid #e9e9e9;
   margin-bottom: 0.4rem;
   justify-content: space-between;
-  
+
   border-radius: 5px;
 }
-.dropdown_card_nav:hover{
+
+.dropdown_card_nav:hover {
   background-color: rgba(233, 233, 233, 0.527)
 }
+
 .dropdown_text_nav {
   margin-left: 0.4rem;
 }
