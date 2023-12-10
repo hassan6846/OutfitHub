@@ -13,6 +13,7 @@ import { TbLogout2 } from "react-icons/tb";
 import { FaQuestion } from "react-icons/fa6";
 import { RiMenu3Line } from "react-icons/ri";
 import menu3 from "react-useanimations/lib/menu3";
+import { LuSearch } from "react-icons/lu";
 // Constants
 import { CompanyLogo, defaultUserImg, ALT } from "../../helpers/GlobalVariables";
 // CSS imported
@@ -32,15 +33,19 @@ const ResponsiveNav = () => {
   const [searchValue, setSearchValue] = useState("")
   const [isActive, setIsActive] = useState(true);
   const [searchResults, SetsearchResults] = useState([])
+  // message for start searching
+  const [startSearch, SetstartSearch] = useState(false)
   //Handle Click input (show)
   const handleInputClick = () => {
-    SetsearchResults([])
+    SetstartSearch(true)
     SetshowResults(true)
   }
   //Hide On Blur
   const handleBlur = () => {
-    SetsearchResults()
- 
+    SetstartSearch(false)
+    SetshowResults(false)
+  
+
   }
   //prevent Submition.
   const handleSubmit = (e) => {
@@ -60,6 +65,7 @@ const ResponsiveNav = () => {
 
     console.log("SearchValue" + searchValue)
     setSearchValue(e.target.value)
+    SetstartSearch(false)
    
   }
 
@@ -75,14 +81,14 @@ const ResponsiveNav = () => {
         const data = response.data;
         console.log(data);
         SetsearchResults(data.products)
-  
-      
+
+
       } catch (error) {
         console.log(error);
       }
     };
     // main
-    
+
     if (searchValue !== "") {
       fetchData()
     }
@@ -175,8 +181,17 @@ const ResponsiveNav = () => {
               className="search-results_dropdown"
 
             >
+              {/* Conditonal */}
+              {startSearch ? (
+                <p style={{ margin: 0, display: "flex", alignItems: "center", fontSize: "16px", columnGap: "0.2rem", padding: "0.5rem", color: "#848484" }} ><LuSearch size={20} /> Start Searching</p>
+              ) : (
+                null
+              )}
+
+
               {/* search Results Will mapped here */}
               <div style={{ padding: "0.5rem", cursor: 'pointer' }}>{searchResults.map((item, index) => (
+
 
                 <div className='dropdown_card_nav'>
                   {/* Title & Price */}
@@ -189,15 +204,15 @@ const ResponsiveNav = () => {
                       className="dropdown_image_results"
                       src={item.thumbnail}
                     />
-                  <div style={{display:"flex",flexDirection:"column",marginLeft:"0.4rem"}}>
-                    <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.title}</p>
-                    <p className="dropdown_text_nav" style={{ marginBottom: "0",color:"#848484",fontSize:"14px",fontWeight:'bold' }}>${item.price}</p>
-                  </div>
-                  
-                 
+                    <div style={{ display: "flex", flexDirection: "column", marginLeft: "0.4rem" }}>
+                      <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.title}</p>
+                      <p className="dropdown_text_nav" style={{ marginBottom: "0", color: "#848484", fontSize: "14px", fontWeight: 'bold' }}>${item.price}</p>
+                    </div>
+
+
                   </div>
                   {/*MAIN Category and pricing  */}
-                 
+
                   {/*END*/}
                 </div>
               ))}</div>
