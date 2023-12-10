@@ -21,11 +21,6 @@ import "./ResponsiveNav.css";
 //
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
-
-
-
-
 // Main NavComponent.
 const ResponsiveNav = () => {
   const signOut = useSignOut()
@@ -44,7 +39,7 @@ const ResponsiveNav = () => {
   const handleBlur = () => {
     SetstartSearch(false)
     SetshowResults(false)
-  
+
 
   }
   //prevent Submition.
@@ -66,7 +61,7 @@ const ResponsiveNav = () => {
     console.log("SearchValue" + searchValue)
     setSearchValue(e.target.value)
     SetstartSearch(false)
-   
+
   }
 
   //fetch products Function
