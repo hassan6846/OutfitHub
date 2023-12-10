@@ -281,8 +281,12 @@
   border-bottom: 0.4px solid #e9e9e9;
   margin-bottom: 0.4rem;
   justify-content: space-between;
+  
+  border-radius: 5px;
 }
-
+.dropdown_card_nav:hover{
+  background-color: rgba(233, 233, 233, 0.527)
+}
 .dropdown_text_nav {
   margin-left: 0.4rem;
 }
