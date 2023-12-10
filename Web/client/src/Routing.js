@@ -1,4 +1,4 @@
-import  { React } from "react";
+import { React } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // components
@@ -39,59 +39,59 @@ import Logout from "./pages/admin/Components/logout"
 import { AuthProvider } from "react-auth-kit"
 
 const Routing = () => {
-  
+
   return (
     <AuthProvider authType={'cookie'}
-    authName={'_auth'}
-    cookieDomain={window.location.hostname}
-    cookieSecure={false}
-  >
-    <Router>
+      authName={'_auth'}
+      cookieDomain={window.location.hostname}
+      cookieSecure={false}
+    >
+      <Router>
 
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<Home />} />
-        {/* don't be visited after user logged in */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/password/forgot" element={<ForgotPassword />} />
-   
-        {/* sessions can also not be visited until you make request*/}
-        <Route path="/password/reset/:id" element={<ResetPassword />} />
-        <Route path="/password/reset/*" element={<ErrorPage />} />
-        {/* 404 page */}
-        <Route path="*" element={<ErrorPage />} />
-        {/* User Routes */}
-        <Route path="/shop" element={<Products />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/faqs" element={<FaqPage />} />
-        <Route path="/shop/:id" element={<Singleproduct />} />
-        <Route path="/search/:query" element={<Search/>} />
-        {/* Private Routes CANNOT BE VISITED AFTER LOGGED IN */}
-        <Route path="/user" element={<UserProfile />}>
-          <Route path="/user" element={<ProfileOverView />} />
-          <Route path="order" element={<Order />} />
-          <Route path="edit" element={<EditUserProfile />} />
-          <Route path="address" element={<UserAdressBook />} />
-          <Route path="address/new" element={<AddNewAdress />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="wishlists" element={<Wishlists />} />
-          <Route path="vendor" element={<Vendor />} />
-        </Route>
-        {/* ADMIN PRIVATE ROUTE */}
-        <Route path="/admin" element={<AdminOutlet />}>
-          <Route path="/admin" element={<AdminOverview />} />
-          <Route path="logout" element={<Logout/>}/>
-          <Route path="orders" element={<Orders />} />
-          <Route path="stats" element={<Stats />} />
-          <Route path="products" element={<AllProducts />} />
-          <Route path="products/add" element={<AddProduct />} />
-          <Route path="users" element={<AllUsers />} />
-          <Route path="messages" element={<Messages />} />
-          <Route path="messages/vendorrequest" element={<VendorRequests />} />
-        </Route>
-      </Routes>
-    </Router>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} />
+          {/* don't be visited after user logged in */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/password/forgot" element={<ForgotPassword />} />
+
+          {/* sessions can also not be visited until you make request*/}
+          <Route path="/password/reset/:id" element={<ResetPassword />} />
+          <Route path="/password/reset/*" element={<ErrorPage />} />
+          {/* 404 page */}
+          <Route path="*" element={<ErrorPage />} />
+          {/* User Routes */}
+          <Route path="/shop" element={<Products />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/faqs" element={<FaqPage />} />
+          <Route path="/shop/:id" element={<Singleproduct />} />
+          <Route path="/search/:query" element={<Search />} />
+          {/* Private Routes CANNOT BE VISITED AFTER LOGGED IN */}
+          <Route path="/user" element={<UserProfile />}>
+            <Route path="/user" element={<ProfileOverView />} />
+            <Route path="order" element={<Order />} />
+            <Route path="edit" element={<EditUserProfile />} />
+            <Route path="address" element={<UserAdressBook />} />
+            <Route path="address/new" element={<AddNewAdress />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="wishlists" element={<Wishlists />} />
+            <Route path="vendor" element={<Vendor />} />
+          </Route>
+          {/* ADMIN PRIVATE ROUTE */}
+          <Route path="/admin" element={<AdminOutlet />}>
+            <Route path="/admin" element={<AdminOverview />} />
+            <Route path="logout" element={<Logout />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="stats" element={<Stats />} />
+            <Route path="products" element={<AllProducts />} />
+            <Route path="products/add" element={<AddProduct />} />
+            <Route path="users" element={<AllUsers />} />
+            <Route path="messages" element={<Messages />} />
+            <Route path="messages/vendorrequest" element={<VendorRequests />} />
+          </Route>
+        </Routes>
+      </Router>
 
     </AuthProvider>
   );

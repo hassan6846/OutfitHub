@@ -42,10 +42,5 @@ app.use("/api/v1", product)
 // app.use("/api/v1", payment);
 
 // Listen for upload Images.
-const url='https://images.pexels.com/photos/18626019/pexels-photo-18626019/free-photo-of-perito-moreno.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-async  function main(){
-  const result=await cloudinary.uploader.upload(url)
-  console.log(result.secure_url)
-}
-main()
+
 module.exports = app
