@@ -50,6 +50,11 @@ const Routing = () => {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Products />} />
+          <Route path="/shop/:id" element={<Singleproduct />} />
+          <Route path="/faqs" element={<FaqPage />} />
+          <Route path="/cart" element={<Cart />} />
+
           {/* don't be visited after user logged in */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
@@ -61,10 +66,9 @@ const Routing = () => {
           {/* 404 page */}
           <Route path="*" element={<ErrorPage />} />
           {/* User Routes */}
-          <Route path="/shop" element={<Products />} />
-          <Route path="/shop/:id" element={<Singleproduct />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/faqs" element={<FaqPage />} />
+  
+    
+
           <Route path="/search/:query" element={<Search />} />
           {/* Private Routes CANNOT BE VISITED Without LOGIN */}
           <Route path="/user" element={<UserProfile />}>

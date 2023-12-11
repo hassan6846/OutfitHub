@@ -21,6 +21,7 @@ import "./ResponsiveNav.css";
 //
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Slug from "../../helpers/Slugify";
 // Main NavComponent.
 const ResponsiveNav = () => {
   const signOut = useSignOut()
@@ -38,10 +39,11 @@ const ResponsiveNav = () => {
   //Hide On Blur
   const handleBlur = () => {
     SetstartSearch(false)
-    SetshowResults(false)
+    SetshowResults(true)
 
 
   }
+
   //prevent Submition.
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -188,7 +190,7 @@ const ResponsiveNav = () => {
               <div style={{ padding: "0.5rem", cursor: 'pointer' }}>{searchResults.map((item, index) => (
 
 
-                <div className='dropdown_card_nav'>
+                <Link key={index} to={`/shop/${Slug(item.title)}`} className='dropdown_card_nav'>
                   {/* Title & Price */}
 
                   <div style={{ display: "flex", alignItems: "center" }}>
@@ -209,7 +211,7 @@ const ResponsiveNav = () => {
                   {/*MAIN Category and pricing  */}
 
                   {/*END*/}
-                </div>
+                </Link>
               ))}</div>
               <button className="stickey_btn_nav" style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
             </div>
