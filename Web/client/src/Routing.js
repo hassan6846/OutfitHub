@@ -51,7 +51,7 @@ const Routing = () => {
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Products />} />
-          <Route path="/shop/:id" element={<Singleproduct />} />
+          <Route path="/shop/:title" element={<Singleproduct />} />
           <Route path="/faqs" element={<FaqPage />} />
           <Route path="/cart" element={<Cart />} />
 

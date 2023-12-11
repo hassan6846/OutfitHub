@@ -27,7 +27,7 @@ function App() {
     location="bottom"
         buttonText="Accept."
         cookieName="consent"
-        buttonStyle={{ color: "#4e503b", fontSize: "13px",padding:"0.2rem 1rem" }}
+        buttonStyle={{ color: "#4e503b", fontSize: "13px",padding:"0.2rem 1rem",right:"0"}}
         expires={150}
         style={{right:'5px'}}
       >

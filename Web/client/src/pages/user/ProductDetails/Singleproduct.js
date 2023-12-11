@@ -40,7 +40,7 @@ const Singleproduct = () => {
       },]
   }
   //params
-     const {id} =useParams()
+     const {title} =useParams()
   return (
     <>
 
@@ -63,7 +63,7 @@ const Singleproduct = () => {
           </div>
           {/* Flexbox for product details */}
           <div className='Single_product_details'>
-            <p className='product_name_single'>Kelly</p>
+            <p className='product_name_single'>{title}</p>
             <p className='product_full_single'>Kelly Women Premium Beige Pump</p>
             <p className='product_id_single'>ID : SH0061-KLY-BEIGE</p>
             <p className='single_price_page'><span className='price_before_single'>Rs 4000</span> <span className='price_after_single'>Rs 2349</span><span className='discount_percentage_single'>(-32%)</span></p>
