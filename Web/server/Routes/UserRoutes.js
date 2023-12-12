@@ -17,13 +17,15 @@ const {
     GetUsersDetails,
     ForgotPassword
 } = require("../Controllers/UserControllers");
+const { SendFirebaseOTP } = require("../Controllers/UserController/SendFirebaseOTP");
 
 
 //simple actions
 router.route("/register").post(registerUser)
 router.route("/login").post(LoginRequestLimits, loginUser)
 router.route("/logout").get(Userlogout);
-
+//auth route
+router.route('/otp').post(SendFirebaseOTP)
 //user details and update profile
 router.route("/me").get()
 router.route("/me/update").put();
