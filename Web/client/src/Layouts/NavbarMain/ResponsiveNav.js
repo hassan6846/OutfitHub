@@ -22,6 +22,9 @@ import "./ResponsiveNav.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slug from "../../helpers/Slugify";
+import { useQuery } from "@tanstack/react-query";
+//spinner
+import CircularProgress from "@mui/material/CircularProgress"
 // Main NavComponent.
 const ResponsiveNav = () => {
   const signOut = useSignOut()
@@ -40,8 +43,6 @@ const ResponsiveNav = () => {
   const handleBlur = () => {
     SetstartSearch(false)
     SetshowResults(true)
-
-
   }
 
   //prevent Submition.
@@ -59,20 +60,21 @@ const ResponsiveNav = () => {
 
   // Handle Change to Set UseState.
   const HandleChange = (e) => {
-
     console.log("SearchValue" + searchValue)
     setSearchValue(e.target.value)
     SetstartSearch(false)
 
   }
 
-  //fetch products Function
+  //Spinner.
+
 
 
   ///useEffect api Fetch
   useEffect(() => {
 
     const fetchData = async () => {
+   
       try {
         const response = await axios.get(`https://dummyjson.com/products/search?q=${searchValue}`);
         const data = response.data;
