@@ -27,15 +27,12 @@
 
 ## 1. Introduction
 A Multi-vendor national Shippment app 
-
 ## 2. Technologies Used
 Express
 React 
 React tan query.
 Mongoose.
 mongodb
-
-
 ## 3. Authentication
 
 ### 4.1 JWT
@@ -45,8 +42,6 @@ Briefly describe the use of JSON Web Tokens (JWT) for secure user authentication
 Explain how React-Auth-Kit is utilized as an authentication manager in the React frontend.
 
 ## 5. Authorization
-
-
 ## 6. Roles
 #### 6.1 Avaliable Roles.
 ###### -admin (for crud posting)..
