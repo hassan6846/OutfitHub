@@ -1,7 +1,7 @@
 import React from 'react';
 import "./ForgotPassword.css";
 import { useFormik } from 'formik';
-import Footer from "../../../Layouts/footer/Footer";
+
 import toast, { Toaster } from 'react-hot-toast';
 import {
   MDBInput,
@@ -52,7 +52,7 @@ const ForgotPassword = () => {
 
         </form>
       </section>
-      <Footer />
+
       <Toaster /> {/* React-hot-toast component */}
     </div>
   );

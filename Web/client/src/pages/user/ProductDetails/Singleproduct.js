@@ -6,8 +6,6 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules';
 // components
-
-import Footer from '../../../Layouts/footer/Footer';
 import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul';
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
 import Faq from "react-faq-component"
@@ -38,6 +36,11 @@ const Singleproduct = () => {
       <li>  Made With Good Quality Synthetic Material Which Gives Them Durability </li>
      <li> The Shoe Features A Classic Round-Toe Design For A Simple Yet Gorgeous Look</li> </ol>`
       },]
+  }
+  const OpenConfig={
+    animate: true,
+    tabFocus: true,
+    openOnload: 0
   }
   //params
      const {title} =useParams()
@@ -79,7 +82,7 @@ const Singleproduct = () => {
               <p className='delivery_estimate'>Other cities: 1-4 days</p>
             </div>
 
-            <Faq data={faqdata} />
+            <Faq config={OpenConfig} data={faqdata} />
             {/* links */}
             <div className='category_links_single_page'>
               <p className='delivery_time_heading'>#Tags</p>
@@ -97,7 +100,7 @@ const Singleproduct = () => {
       </section>
       <Cathead display="none" heading="Recomendations &bull;" />
       <TrendingCarsoul margin="20px" />
-      <Footer />
+
     </>
   );
 };

@@ -10,7 +10,6 @@ import LandingCarsoul from '../../../components/LandingCarsoul/LandingCarsoul'
 // import TrendingHead from "../../components/CatalogueHeading/"
 import Catalogue from '../../../components/Catalogue/Catalogue'
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading'
-import Footer from "../../../Layouts/footer/Footer"
 import CategoryBar from '../../../components/CategoryBar/CategoryBar'
 // ////////////////
 
@@ -33,7 +32,6 @@ const Home = () => {
       trend="https://res.cloudinary.com/diml3oeaw/image/upload/v1701513461/Ecommerce/HomeSlider/irxasvfmz19imdxk0dyj.jpg"
       />
       <CategoryBar />
-      <Footer />
     </div>
   )
 }

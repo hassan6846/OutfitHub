@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { BiLeftArrowAlt } from "react-icons/bi"
 // components
-import Footer from "../../../Layouts/footer/Footer"
+
 // css
 import "./ErrorPage.css"
 const ErrorPage = () => {
@@ -23,7 +23,7 @@ const ErrorPage = () => {
             <Link to="/" className='HomeLink'> <BiLeftArrowAlt />Go BackHome</Link>
           </div>
         </div>
-        <Footer />
+   
       </div>
     </>
   )

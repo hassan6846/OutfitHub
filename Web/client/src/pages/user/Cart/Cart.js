@@ -13,7 +13,6 @@ import {
 } from "mdb-react-ui-kit";
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../../Layouts/footer/Footer";
 import "./Cart.css";
 function Cart() {
   return (
@@ -297,7 +296,6 @@ function Cart() {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
-      <Footer />
     </section>
   );
 }

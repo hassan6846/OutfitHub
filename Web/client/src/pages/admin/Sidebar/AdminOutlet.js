@@ -1,6 +1,5 @@
 import React from "react";
 // components
-import Footer from "../../../Layouts/footer/Footer";
 // css
 import "./AdminOutlet.css";
 import AdminSidebar from "./AdminSidebar";
@@ -17,8 +16,8 @@ const AdminOutlet = () => {
           <Outlet />
         </div>
       </div>
-      {/* HERE IS JABBA THE HUTT */}
-      <Footer />
+
+
     </>
   );
 };

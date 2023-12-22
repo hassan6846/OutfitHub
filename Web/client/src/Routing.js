@@ -37,6 +37,7 @@ import Logout from "./pages/admin/Components/logout"
 // Auth
 import { AuthProvider } from "react-auth-kit"
 import ResponsiveNav from './Layouts/NavbarMain/ResponsiveNav'
+import Footer from "./Layouts/footer/Footer";
 const Routing = () => {
 
   return (
@@ -45,9 +46,9 @@ const Routing = () => {
       cookieDomain={window.location.hostname}
       cookieSecure={false}
     >
-     
+
       <Router>
-      <ResponsiveNav/>
+        <ResponsiveNav />
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
@@ -55,21 +56,16 @@ const Routing = () => {
           <Route path="/shop/:title" element={<Singleproduct />} />
           <Route path="/faqs" element={<FaqPage />} />
           <Route path="/cart" element={<Cart />} />
-
           {/* don't be visited after user logged in */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/password/forgot" element={<ForgotPassword />} />
-
           {/* sessions can also not be visited until you make request*/}
           <Route path="/password/reset/:id" element={<ResetPassword />} />
           <Route path="/password/reset/*" element={<ErrorPage />} />
           {/* 404 page */}
           <Route path="*" element={<ErrorPage />} />
           {/* User Routes */}
-  
-    
-
           <Route path="/search/:query" element={<Search />} />
           {/* Private Routes CANNOT BE VISITED Without LOGIN */}
           <Route path="/user" element={<UserProfile />}>
@@ -95,6 +91,7 @@ const Routing = () => {
             <Route path="messages/vendorrequest" element={<VendorRequests />} />
           </Route>
         </Routes>
+        <Footer />
       </Router>
     </AuthProvider>
   );

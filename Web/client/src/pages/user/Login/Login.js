@@ -7,7 +7,6 @@ import toast, { Toaster } from "react-hot-toast";
 // Css
 import "./Login.css";
 // components and Library.
-import Footer from "../../../Layouts/footer/Footer";
 import Loginbtns from "../../../components/IconBtns/LoginPageBtns.js";
 
 
@@ -131,7 +130,6 @@ const Login = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 };

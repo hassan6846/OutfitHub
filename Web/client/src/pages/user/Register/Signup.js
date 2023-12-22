@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 // css
 import "./Signup.css";
 // Local Components
-import Footer from "../../../Layouts/footer/Footer";
+
 import { MDBBtn } from "mdb-react-ui-kit";
 import InputProps from "../../../components/inputprops/InputProps";
 
@@ -122,7 +122,7 @@ const Signup = () => {
 
                 </div>
             </section>
-            <Footer />
+         
         </>
     )
 };

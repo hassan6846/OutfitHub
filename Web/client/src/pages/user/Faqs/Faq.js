@@ -4,8 +4,6 @@ import Faq from "react-faq-component"
 import "./Faq.css"
 //components
 
-import Footer from '../../../Layouts/footer/Footer'
-
 const FaqPage = () => {
   const faqConfigs = {
     animate: true,
@@ -76,7 +74,6 @@ const FaqPage = () => {
           config={faqConfigs}
         />
       </div>
-      <Footer />
     </>
   )
 }

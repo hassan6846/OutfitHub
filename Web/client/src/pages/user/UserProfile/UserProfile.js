@@ -1,6 +1,6 @@
 import React from 'react'
 // components
-import Footer from "../../../Layouts/footer/Footer"
+
 // css
 import "./UserProfile.css"
 import UserOutler from './Sidebar/UserOutler'
@@ -17,8 +17,8 @@ const UserProfile = () => {
           <Outlet />
         </div>
       </div>
-      {/* HERE IS JABBA THE HUTT */}
-      <Footer />
+  
+   
     </>
   )
 }
