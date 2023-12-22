@@ -33,9 +33,6 @@ const ForgotPassword = () => {
   return (
     <div>
       <section className='Forgot_wrapper'>
-        <Link className='logo_link' to="/">
-          <img alt='mainlogo' src='https://svgshare.com/i/vGt.svg' title='logo' />
-        </Link>
         <form onSubmit={formik.handleSubmit} className='forgor-form'>
           <h3 className='forgor-head'>Update Password</h3>
 

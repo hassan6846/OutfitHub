@@ -5,8 +5,7 @@ import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul'
 // style sheets
 import "./Home.css"
 // components
-import Alertbar from '../../../components/Alert/Alert'
-import Nav from "../../../Layouts/NavbarMain/ResponsiveNav"
+// import Alertbar from '../../../components/Alert/Alert'
 import LandingCarsoul from '../../../components/LandingCarsoul/LandingCarsoul'
 // import TrendingHead from "../../components/CatalogueHeading/"
 import Catalogue from '../../../components/Catalogue/Catalogue'
@@ -20,8 +19,7 @@ const Home = () => {
   return (
     <div>
 
-      <Alertbar />
-      <Nav />
+    
       <LandingCarsoul />
       <div>
         <Cathead heading="Trending Products" LinkPage="/shop/trending" LinkText="See more items" />

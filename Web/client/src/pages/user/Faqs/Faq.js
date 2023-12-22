@@ -3,7 +3,7 @@ import Faq from "react-faq-component"
 // css
 import "./Faq.css"
 //components
-import ResponsiveNav from "../../../Layouts/NavbarMain/ResponsiveNav"
+
 import Footer from '../../../Layouts/footer/Footer'
 
 const FaqPage = () => {
@@ -62,7 +62,6 @@ const FaqPage = () => {
   }
   return (
     <>
-      <ResponsiveNav />
 
       <div className='faqs_div_container' >
         <p className='faqs_head'>Frequently asked questions</p>

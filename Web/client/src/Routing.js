@@ -36,7 +36,7 @@ import Stats from "./pages/admin/Components/Stats";
 import Logout from "./pages/admin/Components/logout"
 // Auth
 import { AuthProvider } from "react-auth-kit"
-
+import ResponsiveNav from './Layouts/NavbarMain/ResponsiveNav'
 const Routing = () => {
 
   return (
@@ -45,8 +45,9 @@ const Routing = () => {
       cookieDomain={window.location.hostname}
       cookieSecure={false}
     >
+     
       <Router>
-
+      <ResponsiveNav/>
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />

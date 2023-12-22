@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import "./Signup.css";
 // Local Components
 import Footer from "../../../Layouts/footer/Footer";
-import ResponsiveNav from '../../../Layouts/NavbarMain/ResponsiveNav'
 import { MDBBtn } from "mdb-react-ui-kit";
 import InputProps from "../../../components/inputprops/InputProps";
 
@@ -43,7 +42,7 @@ const Signup = () => {
 
     return (
         <>
-            <ResponsiveNav />
+          
             <section className="signup_container">
 
                 <div className="signup_form_wrapper">

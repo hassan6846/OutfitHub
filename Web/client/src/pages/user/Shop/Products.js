@@ -1,6 +1,5 @@
 import React from 'react';
 // components
-import Nav from '../../../Layouts/NavbarMain/ResponsiveNav';
 import CategoryBar from '../../../components/CategoryBar/CategoryBar';
 import  Alert from "../../../components/Alert/Alert"
 // css
@@ -12,14 +11,15 @@ const Products = () => {
 
 
   return (
+    <>
+  
     <div className='product-page-wrapper'>
-      <Alert/>
-      <Nav />
       <CategoryBar />
       <ProductContainer />
 
       <Footer />
     </div>
+    </>
   );
 };
 

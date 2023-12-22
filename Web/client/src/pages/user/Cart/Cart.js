@@ -12,14 +12,13 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 import React from "react";
-import ResponsiveNav from "../../../Layouts/NavbarMain/ResponsiveNav";
 import { Link } from "react-router-dom";
 import Footer from "../../../Layouts/footer/Footer";
 import "./Cart.css";
 function Cart() {
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "white" }}>
-      <ResponsiveNav />
+    
       <MDBContainer className="py-5 h-100">
         <MDBRow className="justify-content-center align-items-center h-100">
           <MDBCol className="d-flex justify-content-center" size="13">

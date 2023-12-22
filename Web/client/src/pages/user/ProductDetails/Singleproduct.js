@@ -6,7 +6,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules';
 // components
-import ResponsiveNav from '../../../Layouts/NavbarMain/ResponsiveNav';
+
 import Footer from '../../../Layouts/footer/Footer';
 import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul';
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
@@ -44,7 +44,7 @@ const Singleproduct = () => {
   return (
     <>
 
-      <ResponsiveNav />
+    
       <Breadcrumb />
       <section className='single_product_page_container'>
         <div className='single_wrapper_80'>

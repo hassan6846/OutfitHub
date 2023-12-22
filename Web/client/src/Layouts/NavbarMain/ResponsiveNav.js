@@ -25,6 +25,7 @@ import Slug from "../../helpers/Slugify";
 import { useQuery } from "@tanstack/react-query";
 //spinner
 import CircularProgress from "@mui/material/CircularProgress"
+import Alertbar from "../../components/Alert/Alert";
 // Main NavComponent.
 const ResponsiveNav = () => {
   const signOut = useSignOut()
@@ -74,7 +75,7 @@ const ResponsiveNav = () => {
   useEffect(() => {
 
     const fetchData = async () => {
-   
+
       try {
         const response = await axios.get(`https://dummyjson.com/products/search?q=${searchValue}`);
         const data = response.data;
@@ -95,23 +96,57 @@ const ResponsiveNav = () => {
 
   //////////////////
   return (
-    <div>
-      <div className={toggleClass}> <div className="mobile_sidebar" style={{ width: "100%", height: "100%", backgroundColor: "#eee", display: "flex", flexDirection: "column" }} >
-        <div className="Links_container">
-          <Link>Hello</Link>
-          <Link>Hello</Link>
+    <>
+      <Alertbar />
+      <div>
+        <div className={toggleClass}> <div className="mobile_sidebar" style={{ width: "100%", height: "100%", backgroundColor: "#eee", display: "flex", flexDirection: "column" }} >
+          <div className="Links_container">
+            <Link>Hello</Link>
+            <Link>Hello</Link>
 
-          <Link>Hello</Link>
-          <Link>Hello</Link>
+            <Link>Hello</Link>
+            <Link>Hello</Link>
 
-          <Link>Hello</Link>
-          <Link>Hello</Link>
+            <Link>Hello</Link>
+            <Link>Hello</Link>
+          </div>
+        </div></div>
+        <div className="mobile_nav_link">
+          <div>
+            {" "}
+            <Link
+              to="/"
+              style={{
+                backgroundColor: "#eee",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+                padding: "6px",
+                borderRadius: "5px",
+              }}
+            >
+              <img src={CompanyLogo} alt={ALT} />
+            </Link>
+          </div>
+          <div className="mobile_links_divs">
+            <div
+              onClick={handleClick}
+              style={{ cursor: "pointer" }}
+              className="hamburger_menu"
+            >
+              <UseAnimation size={35} animation={menu3} />
+            </div>
+            <Link to="/cart">
+              <span style={{ position: "relative" }}>
+                <BsFillCartFill className="cart-icon" />
+                <span className="cart_length" style={{ position: "absolute" }}>
+                  1
+                </span>
+              </span>
+            </Link>
+          </div>
         </div>
-      </div></div>
-      <div className="mobile_nav_link">
-        <div>
-          {" "}
+        <nav className="navbar_container">
           <Link
+            className="nav_link_company"
             to="/"
             style={{
               backgroundColor: "#eee",
@@ -122,167 +157,136 @@ const ResponsiveNav = () => {
           >
             <img src={CompanyLogo} alt={ALT} />
           </Link>
-        </div>
-        <div className="mobile_links_divs">
-          <div
-            onClick={handleClick}
-            style={{ cursor: "pointer" }}
-            className="hamburger_menu"
+          <form
+            style={{ position: "relative" }}
+            onSubmit={handleSubmit}
+            className="Searchfield_form_nav"
           >
-            <UseAnimation size={35} animation={menu3} />
-          </div>
-          <Link to="/cart">
-            <span style={{ position: "relative" }}>
-              <BsFillCartFill className="cart-icon" />
-              <span className="cart_length" style={{ position: "absolute" }}>
-                1
-              </span>
-            </span>
-          </Link>
-        </div>
-      </div>
-      <nav className="navbar_container">
-        <Link
-          className="nav_link_company"
-          to="/"
-          style={{
-            backgroundColor: "#eee",
-            boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
-            padding: "6px",
-            borderRadius: "5px",
-          }}
-        >
-          <img src={CompanyLogo} alt={ALT} />
-        </Link>
-        <form
-          style={{ position: "relative" }}
-          onSubmit={handleSubmit}
-          className="Searchfield_form_nav"
-        >
-          <input
-            style={{ width: "100%", padding: "0.3rem 1rem" }}
-            className="desktop_nav_input"
-            label="Search"
-            onClick={handleInputClick}
-            spellCheck="false"
-            onBlur={handleBlur}
-            onChange={HandleChange}
-            value={searchValue}
-            placeholder="Search Anything"
-          />
-          <button className="navbar_input_btn">
-            <FiSearch style={{ fontSize: "20px" }} />
-          </button>
-          {/* maps results below HASSAn */}
-          {showResults && (
-            <div
-              style={{ position: "absolute", transition: "all" }}
-              className="search-results_dropdown"
+            <input
+              style={{ width: "100%", padding: "0.3rem 1rem" }}
+              className="desktop_nav_input"
+              label="Search"
+              onClick={handleInputClick}
+              spellCheck="false"
+              onBlur={handleBlur}
+              onChange={HandleChange}
+              value={searchValue}
+              placeholder="Search Anything"
+            />
+            <button className="navbar_input_btn">
+              <FiSearch style={{ fontSize: "20px" }} />
+            </button>
+            {/* maps results below HASSAn */}
+            {showResults && (
+              <div
+                style={{ position: "absolute", transition: "all" }}
+                className="search-results_dropdown"
 
-            >
-              {/* Conditonal */}
-              {startSearch ? (
-                <p style={{ margin: 0, display: "flex", alignItems: "center", fontSize: "16px", columnGap: "0.2rem", padding: "0.5rem", color: "#848484" }} ><LuSearch size={20} /> Start Searching</p>
-              ) : (
-                null
-              )}
+              >
+                {/* Conditonal */}
+                {startSearch ? (
+                  <p style={{ margin: 0, display: "flex", alignItems: "center", fontSize: "16px", columnGap: "0.2rem", padding: "0.5rem", color: "#848484" }} ><LuSearch size={20} /> Start Searching</p>
+                ) : (
+                  null
+                )}
 
 
-              {/* search Results Will mapped here */}
-              <div style={{ padding: "0.5rem", cursor: 'pointer' }}>{searchResults.map((item, index) => (
+                {/* search Results Will mapped here */}
+                <div style={{ padding: "0.5rem", cursor: 'pointer' }}>{searchResults.map((item, index) => (
 
 
-                <Link key={index} to={`/shop/${Slug(item.title)}`} className='dropdown_card_nav'>
-                  {/* Title & Price */}
+                  <Link key={index} to={`/shop/${Slug(item.title)}`} className='dropdown_card_nav'>
+                    {/* Title & Price */}
 
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <LazyLoadImage
-                      effect='blur'
-                      wrapperClassName="Dropdown_image"
-                      alt={`slider ${index}`}
-                      className="dropdown_image_results"
-                      src={item.thumbnail}
-                    />
-                    <div style={{ display: "flex", flexDirection: "column", marginLeft: "0.4rem" }}>
-                      <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.title}</p>
-                      <p className="dropdown_text_nav" style={{ marginBottom: "0", color: "#848484", fontSize: "14px", fontWeight: 'bold' }}>${item.price}</p>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <LazyLoadImage
+                        effect='blur'
+                        wrapperClassName="Dropdown_image"
+                        alt={`slider ${index}`}
+                        className="dropdown_image_results"
+                        src={item.thumbnail}
+                      />
+                      <div style={{ display: "flex", flexDirection: "column", marginLeft: "0.4rem" }}>
+                        <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.title}</p>
+                        <p className="dropdown_text_nav" style={{ marginBottom: "0", color: "#848484", fontSize: "14px", fontWeight: 'bold' }}>${item.price}</p>
+                      </div>
+
+
                     </div>
+                    {/*MAIN Category and pricing  */}
 
+                    {/*END*/}
+                  </Link>
+                ))}</div>
+                <button className="stickey_btn_nav" style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
+              </div>
+            )}
 
-                  </div>
-                  {/*MAIN Category and pricing  */}
-
-                  {/*END*/}
-                </Link>
-              ))}</div>
-              <button className="stickey_btn_nav" style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
-            </div>
-          )}
-
-        </form>
-        {/* Actions Nav If user is logged in or not 
+          </form>
+          {/* Actions Nav If user is logged in or not 
       also not made by chatgpt it is me ok
       */}
-        <div className="buttons_Nav_profile">
-          <Link to="/cart">
-            <span style={{ position: "relative" }}>
-              <BsFillCartFill className="cart-icon" />
-              <span className="cart_length" style={{ position: "absolute" }}>
-                1
+          <div className="buttons_Nav_profile">
+            <Link to="/cart">
+              <span style={{ position: "relative" }}>
+                <BsFillCartFill className="cart-icon" />
+                <span className="cart_length" style={{ position: "absolute" }}>
+                  1
+                </span>
               </span>
-            </span>
-          </Link>
-
-          {/* use terinary operators instead */}
-          <div className="profile_Dropdown_nav">
-            <Link to="/user" className="User_profile_dropdown">
-              {" "}
-              <img
-                className="nav_img"
-                height="40px"
-                alt="alt"
-                src={defaultUserImg}
-              />{" "}
-              <BsChevronDown className="profile_icon_dropdown" />
-              <div className="dropdown_results_nav">
-                <Link to="/signup" className="dropdown_items_nav">
-                  <AiOutlineUserAdd />
-                  LOGIN/SIGNUP
-                </Link>
-
-                {/* if he is logged in then */}
-                <Link to="/user" className="dropdown_items_nav">
-                  <FaUserCircle />
-                  Your Profile
-                </Link>
-                <Link to="/cart" className="dropdown_items_nav">
-                  <AiOutlineShoppingCart /> Cart
-                </Link>
-                <Link to="/user/wishlists" className="dropdown_items_nav">
-                  <AiOutlineHeart /> Wishlists{" "}
-                </Link>
-                <Link to="/user/messages" className="dropdown_items_nav">
-                  <AiOutlineMessage />
-                  Messages
-                </Link>
-                <Link onClick={() => signOut()} className="dropdown_items_nav">
-                  <TbLogout2 />
-                  LOGOUT
-                </Link>
-                <Link to="/faqs" className="dropdown_items_nav">
-                  <FaQuestion />
-                  FAQ'S
-                </Link>
-              </div>
             </Link>
+
+            {/* use terinary operators instead */}
+            <div className="profile_Dropdown_nav">
+              <Link to="/user" className="User_profile_dropdown">
+                {" "}
+                <img
+                  className="nav_img"
+                  height="40px"
+                  alt="alt"
+                  src={defaultUserImg}
+                />{" "}
+                <BsChevronDown className="profile_icon_dropdown" />
+                <div className="dropdown_results_nav">
+                  <Link to="/signup" className="dropdown_items_nav">
+                    <AiOutlineUserAdd />
+                    LOGIN/SIGNUP
+                  </Link>
+
+                  {/* if he is logged in then */}
+                  <Link to="/user" className="dropdown_items_nav">
+                    <FaUserCircle />
+                    Your Profile
+                  </Link>
+                  <Link to="/cart" className="dropdown_items_nav">
+                    <AiOutlineShoppingCart /> Cart
+                  </Link>
+                  <Link to="/user/wishlists" className="dropdown_items_nav">
+                    <AiOutlineHeart /> Wishlists{" "}
+                  </Link>
+                  <Link to="/user/messages" className="dropdown_items_nav">
+                    <AiOutlineMessage />
+                    Messages
+                  </Link>
+                  <Link onClick={() => signOut()} className="dropdown_items_nav">
+                    <TbLogout2 />
+                    LOGOUT
+                  </Link>
+                  <Link to="/faqs" className="dropdown_items_nav">
+                    <FaQuestion />
+                    FAQ'S
+                  </Link>
+                </div>
+              </Link>
+            </div>
+            {/* resposive toggle nav */}
+            <div className="hamburger_menu">
+              <RiMenu3Line />
+            </div>
           </div>
-          {/* resposive toggle nav */}
-          <div className="hamburger_menu">
-            <RiMenu3Line />
-          </div>
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
+    </>
   );
 };
 

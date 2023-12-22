@@ -14,7 +14,6 @@ const ErrorPage = () => {
     <>
       <div>
         <div id="notfound">
-          <Link to="/" style={{ top: "3.5%", left: "8%", position: "absolute" }} ><img alt="company" src="https://svgshare.com/i/xRe.svg" /></Link>
           <div class="notfound">
             <div class="notfound-404">
               <h3>Oops! Page not found</h3>
