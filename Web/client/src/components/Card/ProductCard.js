@@ -1,13 +1,14 @@
 import React    from "react";
 import { Link } from "react-router-dom";
-import UseAnimations from "react-useanimations";
-import heart from "react-useanimations/lib/heart";
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
 import "./ProductCard.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default function ProductCard(props) {
-
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   return (
     <div  className="card-container">
       <div className="card_wrapper">
@@ -64,7 +65,19 @@ export default function ProductCard(props) {
   
           </div>
           {/* Add Icon State Here */}
-          <div className="card_icons_like">  <UseAnimations animation={heart} size={25} /></div>
+          <div className="card_icons_like"> 
+          
+           <Checkbox
+sx={
+  {
+    color:"black",
+    '&.Mui-checked':{
+      color:"black"
+    }
+  }
+}
+
+        {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /> </div>
         </div>
       </div>
     </div>
