@@ -172,7 +172,7 @@ const ResponsiveNav = () => {
             className="Searchfield_form_nav"
           >
             <TextField
-              style={{ width: "100%", padding: "0.2rem" }}
+              style={{ width: "100%",}}
               className="desktop_nav_input"
               fullWidth
               onClick={handleInputClick}
