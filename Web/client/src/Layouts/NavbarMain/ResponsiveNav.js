@@ -29,8 +29,19 @@ import Alertbar from "../../components/Alert/Alert";
 //clickAway
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import TextField from "@mui/material/TextField";
+
+import {useSelector} from "react-redux"
+
+
+
+
+
+
+//main component...
+
 const ResponsiveNav = () => {
   const signOut = useSignOut()
+    const cart = useSelector((state) => state.cart);
   const [showResults, SetshowResults] = useState(false);
   const [searchValue, setSearchValue] = useState("")
   const [isActive, setIsActive] = useState(true);
@@ -241,7 +252,7 @@ const ResponsiveNav = () => {
               <span style={{ position: "relative" }}>
                 <BsFillCartFill className="cart-icon" />
                 <span className="cart_length" style={{ position: "absolute" }}>
-                  1
+                  {cart.quantity}
                 </span>
               </span>
             </Link>
