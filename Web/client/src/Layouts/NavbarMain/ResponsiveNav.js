@@ -24,7 +24,6 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slug from "../../helpers/Slugify";
 import { useQuery } from "@tanstack/react-query";
 //spinner
-import CircularProgress from "@mui/material/CircularProgress"
 import Alertbar from "../../components/Alert/Alert";
 // Main NavComponent.
 //clickAway
@@ -287,6 +286,7 @@ const ResponsiveNav = () => {
                     <FaQuestion />
                     FAQ'S
                   </Link>
+                 
                 </div>
               </Link>
             </div>

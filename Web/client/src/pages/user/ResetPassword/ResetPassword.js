@@ -1,5 +1,5 @@
 import { React, useEffect } from 'react'
-import { Toaster, toast } from "react-hot-toast"
+import { toast } from "react-hot-toast"
 import { FaLockOpen } from "react-icons/fa";
 import {
   MDBBtn,
@@ -15,9 +15,6 @@ const ResetPassword = () => {
   })
   return (
     <div className='reset_section'>
-
-
-      <Toaster />
       <div className='form_wrapper_reset-password'>
         <p className='reset-password_head'>Set new password</p>
         <p className='reset-password_lenin'>Must be at least 8 chracter long</p>

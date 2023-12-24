@@ -38,6 +38,8 @@ import Logout from "./pages/admin/Components/logout"
 import { AuthProvider } from "react-auth-kit"
 import ResponsiveNav from './Layouts/NavbarMain/ResponsiveNav'
 import Footer from "./Layouts/footer/Footer";
+import { Toaster } from "react-hot-toast"
+import { CookieConsent } from "react-cookie-consent"
 const Routing = () => {
 
   return (
@@ -91,8 +93,25 @@ const Routing = () => {
             <Route path="messages/vendorrequest" element={<VendorRequests />} />
           </Route>
         </Routes>
+        <Toaster />
         <Footer />
       </Router>
+      <CookieConsent
+        acceptOnScroll={true}
+        acceptOnScrollPercentage={5}
+
+        buttonText="Accept."
+        cookieName="consent"
+        buttonStyle={{ color: "#4e503b", fontSize: "13px", padding: "0.2rem 1rem", }}
+        expires={150}
+        debug={true}
+
+        style={{ right: "5px" }}
+      >
+        This website uses cookies to ensure you get best experience at out webiste{" "}
+        <span style={{ fontSize: "10px", textDecoration: "underline", marginLeft: "0.3rem", color: "#4BB497", fontWeight: "bold", cursor: "pointer" }}>learn more about privacy policiy.</span>
+
+      </CookieConsent>
     </AuthProvider>
   );
 };
