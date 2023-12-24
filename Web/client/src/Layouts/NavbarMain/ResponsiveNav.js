@@ -27,6 +27,9 @@ import { useQuery } from "@tanstack/react-query";
 import CircularProgress from "@mui/material/CircularProgress"
 import Alertbar from "../../components/Alert/Alert";
 // Main NavComponent.
+//clickAway
+import { ClickAwayListener } from "@mui/base/ClickAwayListener";
+import TextField from "@mui/material/TextField";
 const ResponsiveNav = () => {
   const signOut = useSignOut()
   const [showResults, SetshowResults] = useState(false);
@@ -38,12 +41,12 @@ const ResponsiveNav = () => {
   //Handle Click input (show)
   const handleInputClick = () => {
     SetstartSearch(true)
-    SetshowResults(true)
+
   }
   //Hide On Blur
   const handleBlur = () => {
+
     SetstartSearch(false)
-    SetshowResults(true)
   }
 
   //prevent Submition.
@@ -64,11 +67,17 @@ const ResponsiveNav = () => {
     console.log("SearchValue" + searchValue)
     setSearchValue(e.target.value)
     SetstartSearch(false)
+    SetshowResults(true)
 
   }
 
+  const handleClickAway = () => {
+    SetshowResults(false);
+  };
   //Spinner.
-
+  const HandleCardClick = () => {
+    SetshowResults(false)
+  }
 
 
   ///useEffect api Fetch
@@ -162,10 +171,10 @@ const ResponsiveNav = () => {
             onSubmit={handleSubmit}
             className="Searchfield_form_nav"
           >
-            <input
-              style={{ width: "100%", padding: "0.3rem 1rem" }}
+            <TextField
+              style={{ width: "100%", padding: "0.2rem" }}
               className="desktop_nav_input"
-              label="Search"
+              fullWidth
               onClick={handleInputClick}
               spellCheck="false"
               onBlur={handleBlur}
@@ -178,48 +187,50 @@ const ResponsiveNav = () => {
             </button>
             {/* maps results below HASSAn */}
             {showResults && (
-              <div
-                style={{ position: "absolute", transition: "all" }}
-                className="search-results_dropdown"
+              <ClickAwayListener onClickAway={handleClickAway}>
+                <div
+                  style={{ position: "absolute", transition: "all" }}
+                  className="search-results_dropdown"
 
-              >
-                {/* Conditonal */}
-                {startSearch ? (
-                  <p style={{ margin: 0, display: "flex", alignItems: "center", fontSize: "16px", columnGap: "0.2rem", padding: "0.5rem", color: "#848484" }} ><LuSearch size={20} /> Start Searching</p>
-                ) : (
-                  null
-                )}
-
-
-                {/* search Results Will mapped here */}
-                <div style={{ padding: "0.5rem", cursor: 'pointer' }}>{searchResults.map((item, index) => (
+                >
+                  {/* Conditonal */}
+                  {startSearch ? (
+                    <p style={{ margin: 0, display: "flex", alignItems: "center", fontSize: "16px", columnGap: "0.2rem", padding: "0.5rem", color: "#848484" }} ><LuSearch size={20} /> Start Searching</p>
+                  ) : (
+                    null
+                  )}
 
 
-                  <Link key={index} to={`/shop/${Slug(item.title)}`} className='dropdown_card_nav'>
-                    {/* Title & Price */}
+                  {/* search Results Will mapped here */}
+                  <div style={{ padding: "0.5rem", cursor: 'pointer' }}>{searchResults.map((item, index) => (
 
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                      <LazyLoadImage
-                        effect='blur'
-                        wrapperClassName="Dropdown_image"
-                        alt={`slider ${index}`}
-                        className="dropdown_image_results"
-                        src={item.thumbnail}
-                      />
-                      <div style={{ display: "flex", flexDirection: "column", marginLeft: "0.4rem" }}>
-                        <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.title}</p>
-                        <p className="dropdown_text_nav" style={{ marginBottom: "0", color: "#848484", fontSize: "14px", fontWeight: 'bold' }}>${item.price}</p>
+
+                    <Link onClick={HandleCardClick} key={index} to={`/shop/${Slug(item.title)}`} className='dropdown_card_nav'>
+                      {/* Title & Price */}
+
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <LazyLoadImage
+                          effect='blur'
+                          wrapperClassName="Dropdown_image"
+                          alt={`slider ${index}`}
+                          className="dropdown_image_results"
+                          src={item.thumbnail}
+                        />
+                        <div style={{ display: "flex", flexDirection: "column", marginLeft: "0.4rem" }}>
+                          <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.title}</p>
+                          <p className="dropdown_text_nav" style={{ marginBottom: "0", color: "#848484", fontSize: "14px", fontWeight: 'bold' }}>${item.price}</p>
+                        </div>
+
+
                       </div>
+                      {/*MAIN Category and pricing  */}
 
-
-                    </div>
-                    {/*MAIN Category and pricing  */}
-
-                    {/*END*/}
-                  </Link>
-                ))}</div>
-                <button className="stickey_btn_nav" style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
-              </div>
+                      {/*END*/}
+                    </Link>
+                  ))}</div>
+                  <button className="stickey_btn_nav" style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
+                </div>
+              </ClickAwayListener>
             )}
 
           </form>
