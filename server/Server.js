@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/test');
+const app = require("./app");
+const { connectDb } = require("./config/dbConnect");
 
-const Cat = mongoose.model('Cat', { name: String });
-
-const kitty = new Cat({ name: 'Zildjian' });
-kitty.save().then(() => console.log('meow'));
+app.listen(process.env.PORT,()=>{
+    console.log(`Server is Running on ${process.env.PORT}`)
+})
