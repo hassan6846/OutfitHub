@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./AddProduct.css"
 import { MDBInput, MDBBtn, MDBTextArea } from "mdb-react-ui-kit"
 import { ImPriceTag } from "react-icons/im"
@@ -6,8 +6,9 @@ import { RxDimensions } from "react-icons/rx"
 import { BsBoxSeamFill, BsImages } from "react-icons/bs"
 import Form from "react-bootstrap/Form"
 import {TagsInput} from "react-tag-input-component"
-const AddProduct = () => {
 
+const AddProduct = () => {
+const [Images,setImages]=useState([])
   return (
     <div className='addproduct-wrapper'>
 
@@ -22,12 +23,12 @@ const AddProduct = () => {
           <p style={{ color: '#848484', fontSize: "0.8rem", fontWeight: "500" ,display:"flex",columnGap:"1rem",alignItems:"center"}}>Product Images <input type="file" multiple="true" /></p>
           {/* Image Preview GRid */}
           <div className='images_upload_grid'>
-            <div className='upload_prview_card'><BsImages /> <p>Browse Images</p> </div>
-            <div className='upload_prview_card'><BsImages /> <p>Browse Images</p> </div>
+            <div className='upload_prview_card ' style={{position:"relative"}}>  <img  style={{width:"100%",height:"100%",position:"absolute",objectFit:"cover"}} src="https://res.cloudinary.com/diml3oeaw/image/upload/v1698854628/trendImg2_jik4zs.jpg" alt="product-image-upload"/> <BsImages /> <p>Browse Images</p> </div>
+            <div className='upload_prview_card' style={{position:"relative"}}>   <img  style={{width:"100%",height:"100%",position:"absolute",objectFit:"cover"}} src="https://res.cloudinary.com/diml3oeaw/image/upload/v1698854628/trendImg2_jik4zs.jpg" alt="product-image-upload"/>  <BsImages /> <p>Browse Images</p> </div>
             <div className='upload_prview_card_column' style={{ display: "flex", flexDirection: "column", rowGap: "1rem" }}>
 
-              <div style={{ display: "flex", flexDirection: "column", rowGap: "1rem", alignItems: "center", width: "100%", height: "50%", justifyContent: "center", backgroundColor: "#F9F9F9", border: '1px dashed gray' }}><BsImages /> <p>Browse Images</p> </div>
-              <div style={{ display: "flex", flexDirection: "column", rowGap: "1rem", alignItems: "center", width: "100%", height: "50%", justifyContent: "center", backgroundColor: "#F9F9F9", border: '1px dashed gray' }}><BsImages /> <p>Browse Images</p> </div>
+              <div style={{ display: "flex", position:"relative", flexDirection: "column", rowGap: "1rem", alignItems: "center", width: "100%", height: "50%", justifyContent: "center", backgroundColor: "#F9F9F9", border: '1px dashed gray' }}>  <img  style={{width:"100%",height:"100%",position:"absolute",objectFit:"cover"}} src="https://res.cloudinary.com/diml3oeaw/image/upload/v1698854628/trendImg2_jik4zs.jpg" alt="product-image-upload"/>  <BsImages /> <p>Browse Images</p> </div>
+              <div style={{ display: "flex", position:"relative", flexDirection: "column", rowGap: "1rem", alignItems: "center", width: "100%", height: "50%", justifyContent: "center", backgroundColor: "#F9F9F9", border: '1px dashed gray' }}>  <img  style={{width:"100%",height:"100%",position:"absolute",objectFit:"cover"}} src="https://res.cloudinary.com/diml3oeaw/image/upload/v1698854628/trendImg2_jik4zs.jpg" alt="product-image-upload"/>  <BsImages /> <p>Browse Images</p> </div>
             </div>
           </div>
           {/* Descriptions Container */}
