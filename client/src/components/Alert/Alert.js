@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
-import "./Alert.css";
 import { Link } from "react-router-dom";
 import { BsTelephoneFill } from "react-icons/bs";
 import { MdOutlineClose } from "react-icons/md";
-
+import  "./Alert.css";
 function Alertbar() {
+  
   const [showAlert, setShowAlert] = useState(true);
+
   const closeAlert = () => {
     setShowAlert(false);
   };
+      // Check the scroll position and hide the alert if needed
   useEffect(() => {
     const handleScroll = () => {
-      // Check the scroll position and hide the alert if needed
+
       if (window.scrollY > 150) {
         setShowAlert(false);
       }
