@@ -1,8 +1,8 @@
 const  mongoose  = require("mongoose");
 //main DBConnnect Function..
-function connectDb(){
+async function connectDb(){
     try {
-        mongoose.connect('mongodb://127.0.0.1:27017/Ecommerce', {
+    await mongoose.connect('mongodb://127.0.0.1:27017/Ecommerce', {
           useNewUrlParser: true,
           useUnifiedTopology: true,
         })
