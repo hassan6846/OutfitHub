@@ -31,18 +31,18 @@ async function registerUser(req, res, next) {
     });
     // Save the user to the database
     const savedUser = await user.save();
+
+    //payload
+    const payload = {
+      user_id: savedUser._id,
+      name: savedUser.username,
+      email: savedUser.email,
+      role: savedUser.role,
+    }
     // Generate token for the user
-    const token = jwt.sign(
-      {
-        user_id: savedUser._id,
-        name: savedUser.username,
-        email: savedUser.email,
-        role: savedUser.role,
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: "1d" }
-    );
-    // --sending cookie
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1d" });
+
+    // --sending cookie Response
     res
       .cookie("AccessToken", token, {
         httpOnly: true,
@@ -55,13 +55,14 @@ async function registerUser(req, res, next) {
       .json({
         success: true,
         msg: "Registered successfully",
-        token,
-        
+        token: token,
+
       });
   } catch (error) {
+    console.log(error.message)
     return res.status(500).json({
       success: false,
-      msg: "Internal server error",
+      msg: `Register Error:Internal server error${error.message}`,
       error: error.message,
     });
   }

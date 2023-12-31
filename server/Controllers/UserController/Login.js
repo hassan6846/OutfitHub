@@ -1,11 +1,9 @@
-const validator = require("validator");
 const UserModel = require("../../models/UserModel");
 const jwt = require("jsonwebtoken");
 
-// LOGIN
-const loginUser = async (req, res,next) => {
+// LOGIN MODULE...
+const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
-
   // Validate email format
   if (!validator.isEmail(email)) {
     return res.status(400).json({
@@ -14,7 +12,7 @@ const loginUser = async (req, res,next) => {
     });
   }
 
-  // Checking Email format
+  // Checking and Password Exist
   if (!email || !password) {
     return res.status(400).json({
       success: false,
@@ -25,6 +23,7 @@ const loginUser = async (req, res,next) => {
   try {
     // FINDING USER BY EMAIL
     const FindUser = await UserModel.findOne({ email }).select("+password");
+//  if not find user
     if (!FindUser) {
       return res.status(404).json({
         success: false,
@@ -41,32 +40,31 @@ const loginUser = async (req, res,next) => {
       });
     }
 
-    const LOGIN_Token = jwt.sign(
-      {
-        id: FindUser._id,
-        name: FindUser.username,
-        email: FindUser.email,
-        role: FindUser.role,
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: "1d" }
-    );
-
+    //generate Token
+    const payload = {
+      id: FindUser._id,
+      name: FindUser.username,
+      email: FindUser.email,
+      role: FindUser.role,
+    }
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1d" });
+// if request matched send sucesss
     if (isPasswordMatched) {
       return res
-        .cookie("AccessToken", LOGIN_Token)
+        .cookie("AccessToken", token)
         .status(200)
         .json({
-          Success: true,
-          Msg: "HELLO FROM INSIDE",
-          Token: LOGIN_Token,
+          sucess: true,
+          msg: "Sucessfully Logged In",
+          token: token,
         });
     }
   } catch (error) {
-    console.error("Login Error:", error);
+    console.error("Login Error:", error.message);
     return res.status(500).json({
       success: false,
       msg: "Internal server error",
+      error: error.message
     });
   }
   next()
