@@ -1,4 +1,7 @@
 const UserModel = require("../../models/UserModel")
+
+
+
 // GET ALL USERS ADMIM 
 const getAllUser = async (req, res, next) => {
   try {
