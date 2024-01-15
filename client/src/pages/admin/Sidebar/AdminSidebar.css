@@ -33,7 +33,7 @@
   }
   
   .aside_links {
-    color: rgb(19, 16, 57);
+    
     padding: 0.5rem;
     border-radius: 0.4rem;
     display: flex;
@@ -41,8 +41,11 @@
     column-gap: 0.3rem;
   }
   .aside_links:hover {
-    background-color: #4bb497;
-    color: rgb(19, 16, 57);
+   background-color: rgb(57, 57, 238);
+    color: white;
+  }
+  .aside_links a.active{
+    background-color: rgb(57, 57, 238);
   }
   
   .aside_links_toggled {
