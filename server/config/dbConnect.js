@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 //main DBConnnect Function..
 async function connectDb() {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/Ecommerce', {
+    await mongoose.connect(process.env.MONGODB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
