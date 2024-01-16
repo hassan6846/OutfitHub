@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 const bycrypt = require("bcrypt");
-const crypto = require("crypto");
 const validator = require("validator");
 
 const UserSchema = new mongoose.Schema({
@@ -17,7 +15,17 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     validate: [validator.isEmail, "Please Enter a valid Email"],
   },
-
+  phone: {
+    type: Number,
+    required: [true, "Kindly Enter the Contact Number"],
+    validate: {
+      validator: function (value) {
+        // Assuming you want the phone number to be exactly 10 digits
+        return String(value).length === 10;
+      },
+      message: "Phone number must be exactly 10 digits",
+    },
+  },
   password: {
     type: String,
     required: [true, "Please Enter Your Password"],
@@ -46,8 +54,8 @@ const UserSchema = new mongoose.Schema({
   },
   IsVerifiedEmail: {
     type: Boolean,
-    default:false,
-  
+    default: false,
+
   },
 
   resetPasswordToken: String,
@@ -69,6 +77,4 @@ UserSchema.methods.comparePassword = async function (password) {
   return await bycrypt.compare(password, this.password);
 };
 const User = mongoose.model("User", UserSchema);
-// Reset password TOKEN
-
 module.exports = User;
