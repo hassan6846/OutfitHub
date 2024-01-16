@@ -1,0 +1,84 @@
+.consentcontainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: auto;
+    min-height: 2rem;
+    bottom: 0;
+    z-index: 999;
+    background-color: #fff;
+    position: fixed;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 0.8rem;
+    justify-content: space-between;
+}
+
+.consentMsg {
+    display: flex;
+    column-gap: 0.5rem;
+    align-items: flex-end;
+
+}
+
+.consent_span {
+    font-size: 13px;
+}
+
+.consent_Link {
+    text-decoration: underline;
+    font-size: 11px;
+}
+
+.consent_action {
+    display: flex;
+    column-gap: 1.2rem;
+    height: 100%;
+    cursor: pointer;
+    color: white;
+    align-items: center;
+}
+
+.consent_close {
+
+    background-color: rgba(75, 73, 73, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(107, 106, 106, 0.3);
+
+}
+
+.manageConsent {
+    color: #131039;
+    font-size: 12px;
+    content: "";
+
+    &::after {
+        width: 25%;
+        height: 0.12rem;
+        background-color: #131039;
+        display: flex;
+        border-radius: 0.3px;
+        margin-top: 0.3rem;
+        content: "";
+        transition: width 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    &:hover::after{
+        width: 100%;
+    }
+    &:hover{
+        color: #0a0922;
+    }
+}
+
+.declineConsent {
+    color: black;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid #131039;
+}
+
+.allowConsent {
+    padding: 0.2rem 0.5rem;
+    background-color: #131039;
+}

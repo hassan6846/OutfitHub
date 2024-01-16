@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-
+import  { useState, useEffect } from "react";
+//icons
 import { BsTelephoneFill } from "react-icons/bs";
 import { MdOutlineClose } from "react-icons/md";
 import  "./AlertBar.css";
+
 function Alertbar() {
   
   const [showAlert, setShowAlert] = useState(true);
