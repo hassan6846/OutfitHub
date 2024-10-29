@@ -25,7 +25,9 @@ app.disable('x-powered-by')
 //Routes.
 const auth=require("./Routes/AuthRoutes")
 const payment=require('./Routes/PaymentRoute')
+const admin=require('./Routes/AdminRoutes')
 //Endpoints
 app.use("/api/v1", auth) //user
 app.use('/api/v1',payment)
+app.use('/api/v1',admin)
 module.exports = app
