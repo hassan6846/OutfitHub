@@ -22,8 +22,9 @@ app.use(bodyParser.json({
 app.use(fileUpload())
 app.disable('x-powered-by')
 //Routes.
+const auth=require("./Routes/AuthRoutes")
 
 //Endpoints
-
+app.use("/api/v1", auth) //user
 
 module.exports = app

@@ -5,7 +5,7 @@ const validator = require("validator");
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
-    require: [true, "Please  Enter  your name"],
+    required: [true, "Please  Enter  your name"],
     maxLength: [30, "Name cannot exceed 30 characters"],
     minLength: [4, "Name should have more than 4 characters"],
   },
@@ -16,15 +16,9 @@ const UserSchema = new mongoose.Schema({
     validate: [validator.isEmail, "Please Enter a valid Email"],
   },
   phone: {
-    type: Number,
+    type: String,
     required: [true, "Kindly Enter the Contact Number"],
-    validate: {
-      validator: function (value) {
-        // Assuming you want the phone number to be exactly 10 digits
-        return String(value).length === 10;
-      },
-      message: "Phone number must be exactly 10 digits",
-    },
+
   },
   password: {
     type: String,

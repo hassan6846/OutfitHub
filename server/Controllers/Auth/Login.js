@@ -32,7 +32,8 @@ const Login = async (req, res, next) => {
 
         //if password is correct then send token
         const token=Jwt.sign({id:finduser._id},process.env.JWT_SECRET,{
-            expiresIn:5
+            expiresIn:5000,
+            
         })
 
         return res.status(200).json({
