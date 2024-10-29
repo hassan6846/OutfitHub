@@ -22,9 +22,8 @@ app.use(bodyParser.json({
 app.use(fileUpload())
 app.disable('x-powered-by')
 //Routes.
-const user=require("./Routes/UserRoutes")
 
 //Endpoints
-app.use("/api/v1", user) //user
+
 
 module.exports = app

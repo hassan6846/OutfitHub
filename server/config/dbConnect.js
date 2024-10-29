@@ -7,7 +7,7 @@ async function connectDb() {
       useUnifiedTopology: true,
     })
       .then(() => {
-        console.log('DB connected');
+        console.log(`DB connected ${process.env.MONGODB_URL}`);
       })
       .catch((err) => {
         console.error('DB connection error:', err.message);
