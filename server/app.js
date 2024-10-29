@@ -25,5 +25,6 @@ app.disable('x-powered-by')
 const user=require("./Routes/UserRoutes")
 
 //Endpoints
-app.use("/api/v1", user)
+app.use("/api/v1", user) //user
+
 module.exports = app

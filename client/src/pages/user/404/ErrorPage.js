@@ -7,9 +7,7 @@ import { BiLeftArrowAlt } from "react-icons/bi"
 // css
 import "./ErrorPage.css"
 const ErrorPage = () => {
-  useEffect(() => {
-    document.title = 404
-  })
+
   return (
     <>
       <div>

@@ -45,8 +45,9 @@ const UserSchema = new mongoose.Schema({
     },
   },
   role: {
-    type: String,
-    default: "user",
+    type: [String], 
+    // ["user",'vendor','admin']
+    default: ["user"],
   },
   createdAt: {
     type: Date,
@@ -61,7 +62,7 @@ const UserSchema = new mongoose.Schema({
   resetPasswordToken: String,
   resetPasswordExpire: Date,
   lastPasswordUpdate: Date,
-});
+},{timestamps:true});
 
 //HASHING PASSWORD BEFORE SAFE METHOD..
 UserSchema.pre("save", async function (next) {
@@ -72,7 +73,6 @@ UserSchema.pre("save", async function (next) {
 });
 
 // HASH COMPARE METHOD
-
 UserSchema.methods.comparePassword = async function (password) {
   return await bycrypt.compare(password, this.password);
 };
