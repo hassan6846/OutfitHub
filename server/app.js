@@ -15,6 +15,7 @@ app.use(cors({
   origin: true
 }));
 app.use(express.json())
+
 app.use(morgan('dev'));
 app.use(bodyParser.json({
   limit: '100mb'
@@ -23,8 +24,8 @@ app.use(fileUpload())
 app.disable('x-powered-by')
 //Routes.
 const auth=require("./Routes/AuthRoutes")
-
+const payment=require('./Routes/PaymentRoute')
 //Endpoints
 app.use("/api/v1", auth) //user
-
+app.use('/api/v1',payment)
 module.exports = app
