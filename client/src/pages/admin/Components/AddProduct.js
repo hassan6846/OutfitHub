@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./AddProduct.css"
 import { MDBInput, MDBBtn, MDBTextArea } from "mdb-react-ui-kit"
 import { ImPriceTag } from "react-icons/im"
@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form"
 import {TagsInput} from "react-tag-input-component"
 
 const AddProduct = () => {
-const [Images,setImages]=useState([])
+// const [Images,setImages]=useState([])
   return (
     <div className='addproduct-wrapper'>
 

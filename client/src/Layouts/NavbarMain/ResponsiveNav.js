@@ -22,7 +22,7 @@ import "./ResponsiveNav.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slug from "../../helpers/Slugify";
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 //spinner
 import Alertbar from "../../components/Alert/Alert";
 // Main NavComponent.
