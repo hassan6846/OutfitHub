@@ -61,6 +61,10 @@ const ProductSchema = new mongoose.Schema({
     type:String,
     required:true,
   },
+  Quantitiy:{
+    type:String,
+    required:true,
+  },
   SalePrice: {
     type:String,
     required:true,

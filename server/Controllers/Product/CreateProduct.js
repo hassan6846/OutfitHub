@@ -6,7 +6,7 @@ const CreateProduct = async (req, res, next) => {
 
     try {
         //check if fields are typed are valid
-
+        res.send("sucesss")
     } catch (error) {
         console.error(error);
         return res
