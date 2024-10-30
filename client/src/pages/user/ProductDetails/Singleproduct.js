@@ -19,11 +19,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 const Singleproduct = () => {
   const mockImages = [
-    'https://shorturl.at/mJKR1',
-    'https://shorturl.at/mJKR1',
-    'https://shorturl.at/mJKR1',
-    'https://shorturl.at/mJKR1',
-
+"https://charcoal.com.pk/cdn/shop/files/DSC01422.jpg?v=1702534486&width=700",
+"https://charcoal.com.pk/cdn/shop/files/DSC01422.jpg?v=1702534486&width=700",
+"https://charcoal.com.pk/cdn/shop/files/DSC01422.jpg?v=1702534486&width=700",
+"https://charcoal.com.pk/cdn/shop/files/DSC01422.jpg?v=1702534486&width=700",
 
   ];
   const faqdata = {

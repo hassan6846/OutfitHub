@@ -58,24 +58,34 @@ const ProductSchema = new mongoose.Schema({
     required: true
   },
   RegularPrice: {
-
+    type:String,
+    required:true,
   },
   SalePrice: {
-
+    type:String,
+    required:true,
   },
   Unit: {
+    type:String,
+    default:"piece",
     enum: ['piece', 'boxes', 'kg', 'dozen', 'ounce']
   },
   kgWeight: {
+    default:"undefined",
     type: String,
   },
   Dimensions: {
+    default:"0x0x0",
     type: String
   },
   Status: {
+    type:String,
+    default:"instock",
     enum: ['instock', 'outofstock', 'ondemand', 'lowstock', 'unavailable']
   },
   Promotion: {
+    type:String,
+    default:"newarrival",
     enum: ['trending', 'bestseller', 'limited', 'newarrival']
   }
 })
