@@ -12,6 +12,7 @@ import "./app.css"
  */
 import { QueryClient, QueryClientProvider, } from "@tanstack/react-query"
 // main
+//stripe
 function App() {
   const ClientProvider = new  QueryClient()
   return (

@@ -10,6 +10,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // Redux Store 
 import { Provider } from 'react-redux';
 import store from './store/Store'
+//stripe
+
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(

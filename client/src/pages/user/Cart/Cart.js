@@ -282,6 +282,7 @@ function Cart() {
                       </div>
 
                       <MDBBtn
+                      href="/checkout"
                         style={{ backgroundColor: "#4BB497" }}
                         block
                         size="lg"

@@ -25,6 +25,7 @@ import Vendor from "./pages/user/UserProfile/Vendor";
 import Order from "./pages/user/UserProfile/Order";
 import EditUserProfile from "./pages/user/UserProfile/EditUserProfile";
 import AddNewAdress from "./pages/user/UserProfile/AddNewAdress";
+import Checkout from "./pages/user/Checkout/Checkout";
 
 // ADMIN
 import AdminOutlet from "./pages/admin/Sidebar/AdminOutlet";
@@ -61,6 +62,7 @@ const Routing = () => {
           <Route path="/shop/:title" element={<Singleproduct />} />
           <Route path="/faqs" element={<FaqPage />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout/>}/>
           {/* don't be visited after user logged in */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
