@@ -1,10 +1,12 @@
 import React from 'react'
 
 //css
-import styles from "./Catogory.module.css"
+import "./Category.css"
 const CategoryBar = () => {
   return (
-    <div className={styles.CategoryContainer}>CategoryBar</div>
+    <div >
+
+    </div>
   )
 }
 
