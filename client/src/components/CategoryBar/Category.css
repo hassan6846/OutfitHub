@@ -1,0 +1,9 @@
+.Category_Container{
+    width: 100%;
+    background-color: red;
+    display: flex;
+    row-gap: 10px;
+    column-gap: 10px;
+    flex-wrap: wrap;
+
+} 
