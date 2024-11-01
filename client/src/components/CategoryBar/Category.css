@@ -1,9 +1,8 @@
 .Category_Container{
-    width: 100%;
-    background-color: red;
-    display: flex;
-    row-gap: 10px;
-    column-gap: 10px;
-    flex-wrap: wrap;
-
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    padding: 5rem;
+    grid-row-gap: 0px;
 } 
