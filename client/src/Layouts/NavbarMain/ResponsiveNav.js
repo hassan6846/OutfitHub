@@ -30,7 +30,7 @@ import Alertbar from "../../components/Alert/Alert";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import TextField from "@mui/material/TextField";
 
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux"
 
 
 
@@ -41,13 +41,15 @@ import {useSelector} from "react-redux"
 
 const ResponsiveNav = () => {
   const signOut = useSignOut()
-    const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart);
   const [showResults, SetshowResults] = useState(false);
   const [searchValue, setSearchValue] = useState("")
   const [isActive, setIsActive] = useState(true);
   const [searchResults, SetsearchResults] = useState([])
   // message for start searching
   const [startSearch, SetstartSearch] = useState(false)
+  const [isHovered, setIsHovered] = useState(20);
+
   //Handle Click input (show)
   const handleInputClick = () => {
     SetstartSearch(true)
@@ -182,18 +184,22 @@ const ResponsiveNav = () => {
             className="Searchfield_form_nav"
           >
             <TextField
-              style={{ width: "100%",}}
+
+
+              style={{ width: "100%", borderRadius: "50px" }}
               className="desktop_nav_input"
-              fullWidth
+
               onClick={handleInputClick}
               spellCheck="false"
               onBlur={handleBlur}
               onChange={HandleChange}
+
               value={searchValue}
               placeholder="Search Anything"
             />
-            <button className="navbar_input_btn">
-              <FiSearch style={{ fontSize: "20px" }} />
+            <button style={{borderRadius:"50px"}} onMouseEnter={() => setIsHovered(35)}
+              onMouseLeave={() => setIsHovered(20)} className="navbar_input_btn">
+              <FiSearch size={isHovered} color="#fff" style={{ fontSize: "16px" }} />
             </button>
             {/* maps results below HASSAn */}
             {showResults && (
@@ -297,7 +303,7 @@ const ResponsiveNav = () => {
                     <FaQuestion />
                     FAQ'S
                   </Link>
-                 
+
                 </div>
               </Link>
             </div>

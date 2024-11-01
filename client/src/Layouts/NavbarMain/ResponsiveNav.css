@@ -65,7 +65,9 @@
   position: relative;
   width: 360px;
 }
-
+.desktop_nav_input>div{
+  border-radius: 50px;
+}
 .cart_length {
   background-color: #4bb497;
   padding: 1px 9px;
@@ -166,7 +168,10 @@
 .navbar_input_btn {
   display: "flex";
   background-color: #4bb497;
+  border-radius: 50px;
   justify-content: center;
+  transition: all 300ms ease-out all;
+
   align-items: center;
   margin-left: 0.2rem;
   outline: none;
