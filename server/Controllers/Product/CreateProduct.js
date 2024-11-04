@@ -1,21 +1,20 @@
 
 
 
-const getDataUri = require("../../middlewares/DataUri");
-const upload = require("../../middlewares/multer");
+
+
+
+//models
 const Product = require("../../models/ProductSchema");
+//utils
 const cloudinaryInstance = require("../../utils/Cloudinary");
 
 const CreateProduct = async (req, res) => {
- 
+    const file=req.file
     try {
-        const file = req.file;
-        const fileUri=getDataUri(file)
-
-        console.log(fileUri)
-        
    
-        return res.status(200).json({ success: true, message: "Product created successfully!" });
+    
+        return res.status(200).json({ success: true, message: "Product created successfully!" ,file:file});
     } catch (error) {
         console.error(error);
         return res
