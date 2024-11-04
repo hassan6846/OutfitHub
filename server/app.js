@@ -1,5 +1,6 @@
 //imports and modules
 const express = require("express");
+const multer  = require('multer')
 
 
 const fileUpload = require("express-fileupload")
