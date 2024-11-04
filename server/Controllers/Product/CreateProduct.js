@@ -10,11 +10,11 @@ const Product = require("../../models/ProductSchema");
 const cloudinaryInstance = require("../../utils/Cloudinary");
 
 const CreateProduct = async (req, res) => {
-    const file=req.file
+  
     try {
-   
-    
-        return res.status(200).json({ success: true, message: "Product created successfully!" ,file:file});
+    const file=req.file
+   console.log(files)
+        return res.status(200).json({ success: true, message: "Product created successfully!" });
     } catch (error) {
         console.error(error);
         return res

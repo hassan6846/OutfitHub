@@ -1,5 +1,6 @@
 const DataURIParser = require("datauri/parser");
 const path = require("path");
+const upload = require("./multer");
 
 const getDataUri = (file) => {
     const parser = new DataURIParser();

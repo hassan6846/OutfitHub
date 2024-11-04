@@ -1,6 +1,7 @@
 //imports and modules
 const express = require("express");
-const multer  = require('multer')
+var multer = require('multer');
+var upload = multer();
 
 
 const fileUpload = require("express-fileupload")
@@ -12,7 +13,7 @@ const morgan = require("morgan");
 const app=express()
 // MiddleWares Configs
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true  }));
 app.use(cookieParser());
 app.use(cors({
   origin: process.env.CORS_ORIGIN,
@@ -25,8 +26,10 @@ app.use(bodyParser.json({
   limit: '100mb'
 }));
 app.use(fileUpload({
-  
+  useTempFiles:true
 }))
+app.use(upload.array()); 
+app.use(express.static('public'));
 app.disable('x-powered-by')
 //Routes.
 const auth=require("./Routes/AuthRoutes")

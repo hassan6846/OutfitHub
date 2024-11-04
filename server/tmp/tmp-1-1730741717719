@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Error: Unexpected end of form<br> &nbsp; &nbsp;at Multipart._final (D:\Github\Multi-Vendor-Ecommerce\server\node_modules\busboy\lib\types\multipart.js:588:17)<br> &nbsp; &nbsp;at prefinish (node:internal/streams/writable:914:14)<br> &nbsp; &nbsp;at finishMaybe (node:internal/streams/writable:928:5)<br> &nbsp; &nbsp;at Writable.end (node:internal/streams/writable:843:5)<br> &nbsp; &nbsp;at onend (node:internal/streams/readable:946:10)<br> &nbsp; &nbsp;at process.processTicksAndRejections (node:internal/process/task_queues:77:11)</pre>
+</body>
+</html>
