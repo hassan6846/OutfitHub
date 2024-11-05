@@ -34,6 +34,7 @@ const Home = () => {
 
       <h3 className='CategoryHead'>Top Category</h3>
       <CategoryBar />
+
     </div>
   )
 }
