@@ -49,7 +49,7 @@ const ResponsiveNav = () => {
   // message for start searching
   const [startSearch, SetstartSearch] = useState(false)
   const [isHovered, setIsHovered] = useState(20);
-  const [product,setproduct]=useState([])
+  const [product, setproduct] = useState([])
   //Handle Click input (show)
   const handleInputClick = () => {
     SetstartSearch(true)
@@ -96,11 +96,11 @@ const ResponsiveNav = () => {
   useEffect(() => {
 
     // main
-    const fetchProduct=async()=>{
+    const fetchProduct = async () => {
       try {
         const response = await axios.get(`${ENDPOINT}/products/${searchValue}`);
-       setproduct(response.data.products)
-       console.log(product)
+        setproduct(response.data.products)
+        console.log(product)
       } catch (error) {
         console.log(error);
       }
@@ -110,7 +110,7 @@ const ResponsiveNav = () => {
       fetchProduct()
     }
 
-  }, [searchValue])
+  },[searchValue])
 
   //////////////////
   return (
@@ -194,7 +194,7 @@ const ResponsiveNav = () => {
               value={searchValue}
               placeholder="Search Anything"
             />
-            <button style={{borderRadius:"50px"}} onMouseEnter={() => setIsHovered(35)}
+            <button style={{ borderRadius: "50px" }} onMouseEnter={() => setIsHovered(35)}
               onMouseLeave={() => setIsHovered(20)} className="navbar_input_btn">
               <FiSearch size={isHovered} color="#fff" style={{ fontSize: "16px" }} />
             </button>
@@ -219,29 +219,29 @@ const ResponsiveNav = () => {
                     {product.map((item, index) => (
 
 
-                    <Link onClick={HandleCardClick} key={index} to={`/shop/${Slug(item.name)}`} className='dropdown_card_nav'>
-                      {/* Title & Price */}
+                      <Link onClick={HandleCardClick} key={index} to={`/shop/${Slug(item.name)}`} className='dropdown_card_nav'>
+                        {/* Title & Price */}
 
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <LazyLoadImage
-                          effect='blur'
-                          wrapperClassName="Dropdown_image"
-                          alt={`slider ${index}`}
-                          className="dropdown_image_results"
-                          src={item.image[0]}
-                        />
-                        <div style={{ display: "flex", flexDirection: "column", marginLeft: "0.4rem" }}>
-                          <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.name}</p>
-                          <p className="dropdown_text_nav" style={{ marginBottom: "0", color: "#848484", fontSize: "14px", fontWeight: 'bold' }}>${item.SalePrice}</p>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <LazyLoadImage
+                            effect='blur'
+                            wrapperClassName="Dropdown_image"
+                            alt={`slider ${index}`}
+                            className="dropdown_image_results"
+                            src={item.image[0]}
+                          />
+                          <div style={{ display: "flex", flexDirection: "column", marginLeft: "0.4rem" }}>
+                            <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.name}</p>
+                            <p className="dropdown_text_nav" style={{ marginBottom: "0", color: "#848484", fontSize: "14px", fontWeight: 'bold' }}>${item.SalePrice}</p>
+                          </div>
+
+
                         </div>
+                        {/*MAIN Category and pricing  */}
 
-
-                      </div>
-                      {/*MAIN Category and pricing  */}
-
-                      {/*END*/}
-                    </Link>
-                  ))}</div>
+                        {/*END*/}
+                      </Link>
+                    ))}</div>
                   <button className="stickey_btn_nav" style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
                 </div>
               </ClickAwayListener>
