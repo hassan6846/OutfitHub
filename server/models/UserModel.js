@@ -52,7 +52,13 @@ const UserSchema = new mongoose.Schema({
     default: false,
 
   },
-
+  gender:{
+    type:String,
+    required:false,
+    default:"undefined",
+    
+  
+  },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
   lastPasswordUpdate: Date,

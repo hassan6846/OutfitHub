@@ -45,8 +45,8 @@ const UserOutler = () => {
             </div>
             {/* WISHLISTS */}
             <div className={aside_link_flex}>
-                <p className={Asideheading}>My Wishlists</p>
-                <NavLink to="/user/wishlists" className='aside_links'> <TbHeartPlus className={aside_icon_state} /><span className={Asidespan}>Wishlists</span></NavLink>
+                <p className={Asideheading}>My Likes</p>
+                <NavLink to="/user/wishlists" className='aside_links'> <TbHeartPlus className={aside_icon_state} /><span className={Asidespan}>Liked Items</span></NavLink>
 
             </div>
 

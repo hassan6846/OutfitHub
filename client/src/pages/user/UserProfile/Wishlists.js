@@ -15,7 +15,7 @@ import UseAnimations from "react-useanimations";
 export default function Wishlists() {
   return (
     <>
-      <p className="wishlist_page_head">Wishlists</p>
+      <p className="wishlist_page_head">Liked Items</p>
       <MDBTable align="middle">
         <MDBTableHead>
           <tr>
