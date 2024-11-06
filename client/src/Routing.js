@@ -21,7 +21,7 @@ import ProfileOverView from "./pages/user/UserProfile/ProfileOverView";
 import UserAdressBook from "./pages/user/UserProfile/UserAdressBook";
 import Contact from "./pages/user/UserProfile/Contact";
 import Wishlists from "./pages/user/UserProfile/Wishlists";
-import Vendor from "./pages/user/UserProfile/Vendor";
+
 import Order from "./pages/user/UserProfile/Order";
 import EditUserProfile from "./pages/user/UserProfile/EditUserProfile";
 import AddNewAdress from "./pages/user/UserProfile/AddNewAdress";
@@ -84,7 +84,7 @@ const Routing = () => {
             <Route path="address/new" element={<AddNewAdress />} />
             <Route path="contact" element={<Contact />} />
             <Route path="wishlists" element={<Wishlists />} />
-            <Route path="vendor" element={<Vendor />} />
+       
           </Route>
           {/* ADMIN PRIVATE ROUTE */}
           <Route path="/admin" element={<AdminOutlet />}>

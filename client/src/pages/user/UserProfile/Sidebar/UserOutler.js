@@ -52,11 +52,7 @@ const UserOutler = () => {
 
             {/* SETTINGS */}
 
-            {/* vender OPTION REQUEST */}
-            <div className={aside_link_flex}>
-                <p className={Asideheading}>Sell On Design</p>
-                <NavLink to="/user/vendor" className='aside_links'> <GiGrowth className={aside_icon_state} /> <span className={Asidespan}>Become A Vendor</span> </NavLink>
-            </div>
+
             {/* Contact US */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Need Help!</p>
