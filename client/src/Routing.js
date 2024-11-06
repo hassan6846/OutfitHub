@@ -72,6 +72,7 @@ const Routing = () => {
           <Route path="/password/reset/*" element={<ErrorPage />} />
           {/* 404 page */}
           <Route path="*" element={<ErrorPage />} />
+          <Route path="/404" element={<ErrorPage />} />
           {/* User Routes */}
           <Route path="/search/:query" element={<Search />} />
           {/* Private Routes CANNOT BE VISITED Without LOGIN */}

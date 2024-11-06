@@ -1,4 +1,4 @@
-//modules and library.
+// eslint-disable-next-line
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import UseAnimation from "react-useanimations";
@@ -218,7 +218,15 @@ const ResponsiveNav = () => {
                     {product.map((item, index) => (
 
 
-                      <Link onClick={HandleCardClick} key={index} to={`/shop/${Slug(item.name)}`} className='dropdown_card_nav'>
+                      <Link onClick={HandleCardClick} 
+                      key={index} 
+                      
+                      to={{
+                        pathname:`/shop/${Slug(item.name)}`,
+                      
+                      }} 
+                      state={item}
+                      className='dropdown_card_nav'>
                         {/* Title & Price */}
 
                         <div style={{ display: "flex", alignItems: "center" }}>

@@ -18,7 +18,9 @@ export default function ProductCard(props) {
             {" "}
           
           </div>
-          <Link to="sa">
+          <Link 
+          state={props.state}
+          to={props.to}>
             <LazyLoadImage
               
               className="product_card_image_view"
@@ -59,9 +61,9 @@ export default function ProductCard(props) {
 
           <div className="category_buttons_wrapper">
             {/* all category or tags will be map here no using  */}
-            <Link className="tag-links">{props.catgory}</Link>
-            <Link className="tag-links">Women</Link>
-            <Link className="tag-links">Serum</Link></div>
+            <Link className="tag-links">{props.tagone}</Link>
+            <Link className="tag-links">{props.tagtwo}</Link>
+            <Link className="tag-links">{props.tagsthree}</Link></div>
   
           </div>
           {/* Add Icon State Here */}
@@ -77,7 +79,7 @@ sx={
   }
 }
 
-        {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /> </div>
+        {...label} checked={props.isChecked} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /> </div>
         </div>
       </div>
     </div>
