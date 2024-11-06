@@ -31,6 +31,7 @@ import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import TextField from "@mui/material/TextField";
 
 import { useSelector } from "react-redux"
+import { ENDPOINT } from "../../api/Endpoint";
 
 
 
@@ -45,11 +46,10 @@ const ResponsiveNav = () => {
   const [showResults, SetshowResults] = useState(false);
   const [searchValue, setSearchValue] = useState("")
   const [isActive, setIsActive] = useState(true);
-  const [searchResults, SetsearchResults] = useState([])
   // message for start searching
   const [startSearch, SetstartSearch] = useState(false)
   const [isHovered, setIsHovered] = useState(20);
-
+  const [product,setproduct]=useState([])
   //Handle Click input (show)
   const handleInputClick = () => {
     SetstartSearch(true)
@@ -95,24 +95,21 @@ const ResponsiveNav = () => {
   ///useEffect api Fetch
   useEffect(() => {
 
-    const fetchData = async () => {
-
+    // main
+    const fetchProduct=async()=>{
       try {
-        const response = await axios.get(`https://dummyjson.com/products/search?q=${searchValue}`);
-        const data = response.data;
-        console.log(data);
-        SetsearchResults(data.products)
-
-
+        const response = await axios.get(`${ENDPOINT}/products/${searchValue}`);
+       setproduct(response.data.products)
+       console.log(product)
       } catch (error) {
         console.log(error);
       }
-    };
-    // main
-
-    if (searchValue !== "") {
-      fetchData()
     }
+    if (searchValue !== "") {
+
+      fetchProduct()
+    }
+
   }, [searchValue])
 
   //////////////////
@@ -218,10 +215,11 @@ const ResponsiveNav = () => {
 
 
                   {/* search Results Will mapped here */}
-                  <div style={{ padding: "0.5rem", cursor: 'pointer' }}>{searchResults.map((item, index) => (
+                  <div style={{ padding: "0.5rem", cursor: 'pointer' }}>
+                    {product.map((item, index) => (
 
 
-                    <Link onClick={HandleCardClick} key={index} to={`/shop/${Slug(item.title)}`} className='dropdown_card_nav'>
+                    <Link onClick={HandleCardClick} key={index} to={`/shop/${Slug(item.name)}`} className='dropdown_card_nav'>
                       {/* Title & Price */}
 
                       <div style={{ display: "flex", alignItems: "center" }}>
@@ -230,11 +228,11 @@ const ResponsiveNav = () => {
                           wrapperClassName="Dropdown_image"
                           alt={`slider ${index}`}
                           className="dropdown_image_results"
-                          src={item.thumbnail}
+                          src={item.image[0]}
                         />
                         <div style={{ display: "flex", flexDirection: "column", marginLeft: "0.4rem" }}>
-                          <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.title}</p>
-                          <p className="dropdown_text_nav" style={{ marginBottom: "0", color: "#848484", fontSize: "14px", fontWeight: 'bold' }}>${item.price}</p>
+                          <p className="dropdown_text_nav" style={{ marginBottom: "0" }}>{item.name}</p>
+                          <p className="dropdown_text_nav" style={{ marginBottom: "0", color: "#848484", fontSize: "14px", fontWeight: 'bold' }}>${item.SalePrice}</p>
                         </div>
 
 

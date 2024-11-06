@@ -20,7 +20,7 @@ const ProfileOverView = () => {
           {/* Email */}
           <div>
             <h3 className='user_name'>Email</h3>
-            <p style={{ display: "flex", alignItems: "center", columnGap: "1rem" }} className='user_name_ans'>ha6817334@gmail.com <span className='update_email'><Link style={{ color: "white" }}><FiEdit2 /></Link> </span></p>
+            <p style={{ display: "flex", alignItems: "center", columnGap: "1rem" }} className='user_name_ans'>ha6817334@gmail.com </p>
           </div>
           {/* GENDER */}
           <div>
@@ -45,7 +45,7 @@ const ProfileOverView = () => {
           {/* Mobile Number */}
           <div className='details_wrapper'>
             <h3 className='user_name'>Mobile Number</h3>
-            <p style={{ display: "flex", alignItems: 'center', columnGap: "1rem" }} className='user_name_ans'>03160490149 <span style={{ backgroundColor: "rgb(75,180,151)", color: "white", padding: "4px 8px", borderRadius: "50px" }}> <Link style={{ color: "white" }}><FiEdit2 /></Link> </span>  </p>
+            <p style={{ display: "flex", alignItems: 'center', columnGap: "1rem" }} className='user_name_ans'>03160490149  </p>
           </div>
 
         </div>
