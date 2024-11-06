@@ -16,7 +16,7 @@ const AllProducts = () => {
     const fetchData = async () => {
       try {
         const { data: allproducts } = await axios.get(`${ENDPOINT}/admin/product/all`);
-        
+
         setdata(allproducts.data);
         console.log(allproducts.data); // Logs after data is set
 
