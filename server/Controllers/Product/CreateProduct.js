@@ -1,6 +1,4 @@
-// models
 const Product = require("../../models/ProductSchema");
-// utils
 const cloudinary = require("../../utils/Cloudinary");
 
 const CreateProduct = async (req, res) => {
@@ -21,11 +19,10 @@ const CreateProduct = async (req, res) => {
         unit,
         weight,
         dimensions,
-        tags,
     } = req.body;
 
     // Check for missing required fields
-    if (!id || !title || !brand || !img1 || !img2 || !description || !regprice || !saleprice || !category || !subcategory || !promotion || !status || !qty || !unit || !weight || !dimensions || !tags) {
+    if (!id || !title || !brand || !img1 || !img2 || !description || !regprice || !saleprice || !category || !subcategory || !promotion || !status || !qty || !unit || !weight || !dimensions) {
         return res.status(400).json({
             success: false,
             msg: "Please fill all required fields",
@@ -46,33 +43,47 @@ const CreateProduct = async (req, res) => {
             cloudinary.uploader.upload(dataURI, {
                 folder: 'Ecommerce/products',
                 categorization: "imagga_tagging",
-                auto_tagging: 0.4 ,
+                auto_tagging: 0.4, // Ensure Cloudinary attempts to auto-tag the image
                 resource_type: "auto",
             }, (error, result) => {
                 if (error) {
                     console.error("Error uploading image:", error);
                     reject(error);
                 } else {
-                    resolve(result.secure_url);
-                    console.log(result.tags)
+                    // Check if tags are present and valid
+                    if (result.tags && result.tags.length > 0) {
+                        resolve({
+                            url: result.secure_url,
+                            tags: result.tags,  // Tags from Cloudinary
+                        });
+                    } else {
+                        resolve({
+                            url: result.secure_url,
+                            tags: []  // Empty array if no tags
+                        });
+                    }
                 }
             });
         });
     };
 
     try {
-        // Upload all images
-        const images = await Promise.all([img1, img2].map(uploadImageToCloudinary));
+        // Track tags from all images
+        const imagesData = await Promise.all([img1, img2].map(uploadImageToCloudinary));
+        
+        // Extract URLs and tags for each image
+        const imageUrls = imagesData.map(data => data.url);
+        const tagsFromCloudinary = imagesData.flatMap(data => data.tags); // Combine tags from both images
 
-        // Create the product
+        // Create the product with the tags collected
         const newProduct = new Product({
             name: title,
             brand: brand,
             description: description,
-            image: images,
+            image: imageUrls,
             category: category,
             subcategory: subcategory,
-            tags: tags,
+            tags: tagsFromCloudinary,  // Tags from Cloudinary
             PostedBy: id,
             RegularPrice: regprice,
             Quantitiy: qty,
