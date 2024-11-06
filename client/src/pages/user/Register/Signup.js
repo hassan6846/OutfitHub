@@ -23,7 +23,7 @@ import Fade from "@mui/material/Fade";
 import { CiMail } from "react-icons/ci";
 
 const Signup = () => {
-    const steps = ['1. Enter Details', '2. Verify email', '3. Verify phone number']
+    const steps = ['1. Enter Details', '2. Verify email', '3. Complete']
     const [activeStep, setActiveStep] = useState(0);
 
     const [otp, setOtp] = useState('')
@@ -101,11 +101,10 @@ const Signup = () => {
                     {/* 3 */}
                     <Fade in={activeStep === 2}>
                         <div className="stepper_3" style={{ display: activeStep === 2 ? 'block' : 'none' }}>
-                            <p style={{ marginBottom: "0" }} className="email_head">Enter OTP Code.</p>
-                            <p className="para_signup" >We have send Otp To <span className="email_bold"> 03004834152</span></p>
+            
+                         
                             {/* otp */}
-                            <div className="otp_justify"><div className="signup_otp_verify"><MuiOtpInput gap={1} value={otp} onChange={handleChange} /></div></div>
-                            <div className="otp_verify_submit"><MDBBtn className="otp_verify_btn" onClick={handleNext} style={{ backgroundColor: "#4BB497" }}>Verify OTP.</MDBBtn></div>
+                            <div className="otp_verify_submit"><MDBBtn className="otp_verify_btn" onClick={handleNext} style={{ backgroundColor: "#4BB497" }}>Finish Setup.</MDBBtn></div>
 
                         </div>
                     </Fade>
