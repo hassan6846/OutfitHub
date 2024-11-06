@@ -12,7 +12,11 @@ const cors = require("cors");
 const morgan = require("morgan");
 const app=express()
 // MiddleWares Configs
-app.use(bodyParser.json());
+app.use(bodyParser.json(
+  {
+    type: 'application/*+json'
+  }
+));
 app.use(bodyParser.urlencoded({ extended: true  }));
 app.use(cookieParser());
 app.use(cors({
