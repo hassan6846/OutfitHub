@@ -4,7 +4,10 @@ import "./ProfileOverView.css"
 import { FiEdit2 } from "react-icons/fi"
 import { defaultUserImg } from "../../../helpers/GlobalVariables"
 import { MDBBadge } from "mdb-react-ui-kit"
+import { useSelector } from 'react-redux'
+
 const ProfileOverView = () => {
+  const cart = useSelector((state) => state.cart);
   return (
     <>
 
@@ -40,7 +43,7 @@ const ProfileOverView = () => {
           {/* SUS */}
           <div className='details_wrapper'>
             <h3 className='user_name'>Cart | <span><Link to="/cart">Checkout</Link></span></h3>
-            <p className='user_name_ans'> 0</p>
+            <p className='user_name_ans'>      {cart.products.length}</p>
           </div>
           {/* Mobile Number */}
           <div className='details_wrapper'>

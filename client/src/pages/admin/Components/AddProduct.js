@@ -251,7 +251,7 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">#Tags <ImPriceTag /> </h3>
               <p className="user_name_ans">
-                <TagsInput value={tags} onChange={setTags} />
+                <TagsInput disabled={true} placeHolder='The Auto Taging feature is added so dont need to manually add the tags on Products' value={tags} onChange={setTags} />
               </p>
             </div>
           </div>

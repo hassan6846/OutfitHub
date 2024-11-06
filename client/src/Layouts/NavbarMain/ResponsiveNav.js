@@ -32,8 +32,7 @@ import TextField from "@mui/material/TextField";
 
 import { useSelector } from "react-redux"
 import { ENDPOINT } from "../../api/Endpoint";
-
-
+//
 
 
 
@@ -156,7 +155,7 @@ const ResponsiveNav = () => {
               <span style={{ position: "relative" }}>
                 <BsFillCartFill className="cart-icon" />
                 <span className="cart_length" style={{ position: "absolute" }}>
-                  1
+                {cart.products.length}
                 </span>
               </span>
             </Link>
@@ -256,7 +255,7 @@ const ResponsiveNav = () => {
               <span style={{ position: "relative" }}>
                 <BsFillCartFill className="cart-icon" />
                 <span className="cart_length" style={{ position: "absolute" }}>
-                  {cart.quantity}
+                  {cart.products.length}
                 </span>
               </span>
             </Link>
