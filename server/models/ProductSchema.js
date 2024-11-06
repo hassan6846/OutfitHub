@@ -18,17 +18,12 @@ const ProductSchema = new mongoose.Schema({
   image: {
     type: [String],
     required: [true, "Kindly Add Some Images to Preview (minimum limit is 3)"],
-    validate: {
-      validator: function (array) {
-        return array.length >= 1 && array.length <= 9;
-      },
-      message: "Image array should have between 3 and 9 items."
-    }
+
   },
   category: {
     type: String,
     required: [true, "Please Enter Category"],
-    default: "undefined"
+    default: "uncategorized"
   },
   subcategory: {
     type: String,
@@ -42,6 +37,7 @@ const ProductSchema = new mongoose.Schema({
   likes: {
     type: Number,
     required: false,
+    default:0
   },
 
   postedAt: {
@@ -50,7 +46,7 @@ const ProductSchema = new mongoose.Schema({
   },
   isAvailable: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   PostedBy: {
     type: mongoose.Schema.ObjectId,
@@ -72,7 +68,7 @@ const ProductSchema = new mongoose.Schema({
   Unit: {
     type:String,
     default:"piece",
-    enum: ['piece', 'boxes', 'kg', 'dozen', 'ounce']
+
   },
   kgWeight: {
     default:"undefined",
@@ -85,12 +81,12 @@ const ProductSchema = new mongoose.Schema({
   Status: {
     type:String,
     default:"instock",
-    enum: ['instock', 'outofstock', 'ondemand', 'lowstock', 'unavailable']
+  
   },
   Promotion: {
     type:String,
     default:"newarrival",
-    enum: ['trending', 'bestseller', 'limited', 'newarrival']
+
   }
 })
 const Product = mongoose.model("Product", ProductSchema)
