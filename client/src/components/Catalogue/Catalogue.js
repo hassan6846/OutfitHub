@@ -10,7 +10,7 @@ const Catalogue = (props) => {
         <Link className='width_33_1' style={{ backgroundImage: `url(${props.men})` }}></Link>
         <div className='width_33_2  middle_column  ' >
           <Link className='middle_child  middle_1' style={{ backgroundImage: `url(${props.kids})` }} ></Link>
-          <Link className='middle_child middle_2' style={{ backgroundImage: `url(${props.trend})` }} ></Link>
+          <Link to={props.trendurl} className='middle_child middle_2' style={{ backgroundImage: `url(${props.trend})` }} ></Link>
         </div>
         <Link className='width_33_3' style={{ backgroundImage: `url(${props.women})` }}></Link>
       </div>

@@ -43,9 +43,13 @@ export default function TrendingCarsoul(props) {
                 saved={Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}
                 // pathname:`/shop/${Slug(item.name)}`,
                 state={product}
-                tagone={product.tags[Math.floor(Math.random() * product.tags.length)]}
-                tagtwo={product.tags[Math.floor(Math.random() * product.tags.length)]}
-                tagsthree={product.tags[Math.floor(Math.random() * product.tags.length)]}
+                tagoneLink={`/shop/tags/${Slug(product.tags[0] || '')}`}
+
+                tagtwoLink={`/shop/tags/${Slug(product.tags[1] || '')}`}
+                tagthreelink={`/shop/tags/${Slug(product.tags[2] || '')}`}
+                tagone={product.tags[0] || ''}
+                tagtwo={product.tags[1] || ''}
+                tagsthree={product.tags[2] || ''}
                 to={`/shop/${Slug(product.name)}`}
                 name={product.name}
                 image={product.image[0]} />

@@ -44,7 +44,10 @@ import ResponsiveNav from './Layouts/NavbarMain/ResponsiveNav'
 import Footer from "./Layouts/footer/Footer";
 import { Toaster } from "react-hot-toast"
 import { CookieConsent } from "react-cookie-consent"
+
 import Tags from "./pages/user/Tags/Tags";
+import Trending from "./pages/user/Trending/Trending";
+import NewArrival from "./pages/user/NewArrival/NewArrival";
 const Routing = () => {
 
   return (
@@ -61,7 +64,11 @@ const Routing = () => {
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Products />} />
           <Route path="/shop/:title" element={<Singleproduct />} />
-          <Route path="/shop/tags/:tag" element={<Tags/>}/>
+
+
+          <Route path="/shop/tags/:tag" element={<Tags/>}/> 
+          <Route path="/shop/promotions/trendings" element={<Trending/>}/>
+          <Route path="/shop/promotions/new-arrival" element={<NewArrival/>}/>
           <Route path="/faqs" element={<FaqPage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout/>}/>
