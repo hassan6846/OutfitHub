@@ -13,7 +13,7 @@ import ResetPassword from "./pages/user/ResetPassword/ResetPassword";
 import Products from "./pages/user/Shop/Products";
 import Singleproduct from "./pages/user/ProductDetails/Singleproduct";
 import Cart from "./pages/user/Cart/Cart";
-import Search from "./pages/user/SearchPage/Search";
+
 // users Profile Private Routes.
 import UserProfile from "./pages/user/UserProfile/UserProfile";
 import FaqPage from "./pages/user/Faqs/Faq";
@@ -60,6 +60,8 @@ const Routing = () => {
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Products />} />
           <Route path="/shop/:title" element={<Singleproduct />} />
+          {/* <Route path="/shop/category/:category/:subcategory" element={}/>             Get All Products relative to param e.g men or women */}
+
           <Route path="/faqs" element={<FaqPage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout/>}/>
@@ -74,7 +76,7 @@ const Routing = () => {
           <Route path="*" element={<ErrorPage />} />
           <Route path="/404" element={<ErrorPage />} />
           {/* User Routes */}
-          <Route path="/search/:query" element={<Search />} />
+     
           {/* Private Routes CANNOT BE VISITED Without LOGIN */}
           <Route path="/user" element={<UserProfile />}>
             <Route path="/user" element={<ProfileOverView />} />
