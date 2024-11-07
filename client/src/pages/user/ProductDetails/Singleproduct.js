@@ -13,12 +13,14 @@ import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
 import Faq from "react-faq-component"
 import Breadcrumb from "../../../Layouts/BreadCrumb/BreadCrumb"
 // css
+
 import './Singleproduct.css';
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { blinkSVG } from '../../../helpers/GlobalVariables';
 //lazy loading component
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Slug from '../../../helpers/Slugify';
 const Singleproduct = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -103,7 +105,10 @@ const Singleproduct = () => {
                 {
                   product.tags && product.tags.length > 0 ? (
                     product.tags.map((tag, index) => (
-                      <Link key={index} className='single_button_tag'>
+                      <Link 
+           
+                      to={`/shop/tags/${Slug(tag)}`}
+                      key={index} className='single_button_tag'>
                         {tag}
                       </Link>
                     ))

@@ -44,6 +44,7 @@ import ResponsiveNav from './Layouts/NavbarMain/ResponsiveNav'
 import Footer from "./Layouts/footer/Footer";
 import { Toaster } from "react-hot-toast"
 import { CookieConsent } from "react-cookie-consent"
+import Tags from "./pages/user/Tags/Tags";
 const Routing = () => {
 
   return (
@@ -60,8 +61,7 @@ const Routing = () => {
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Products />} />
           <Route path="/shop/:title" element={<Singleproduct />} />
-          {/* <Route path="/shop/category/:category/:subcategory" element={}/>             Get All Products relative to param e.g men or women */}
-
+          <Route path="/shop/tags/:tag" element={<Tags/>}/>
           <Route path="/faqs" element={<FaqPage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout/>}/>

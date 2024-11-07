@@ -5,6 +5,8 @@ import "./ProductContainer.css";
 import ProductCard from '../Card/ProductCard';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
+import { ENDPOINT } from '../../api/Endpoint';
+import Slug from '../../helpers/Slugify';
 const ProductContainer = () => {
   const [products, setProducts] = useState([]);
   const [hasMore, setHasMore] = useState(true);
@@ -12,12 +14,12 @@ const ProductContainer = () => {
 
   useEffect(() => {
     fetchProducts();
-  });
+  },[page,products]);
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`https://lifestyle-mock-server-api.onrender.com/women?_limit=10&_page=${page}`);
-      const newProducts = response.data;
+      const response = await axios.get(`${ENDPOINT}/products?page=${page}&limit=10`);
+      const newProducts = response.data.data;
 
       if (newProducts.length === 0) {
         setHasMore(false);
@@ -47,13 +49,15 @@ const ProductContainer = () => {
 
         {products.map(product => (
           <ProductCard
-            key={product.id}
-            image={product.image} // Replace with the actual property name for image
-            name={product.title}
-            price={product.price}
-            actualPrice={product.actualPrice}
-            catgory={product.category}
-            saved={Math.floor(((product.actualPrice - product.price) / product.price) * 100)}
+          saved={Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}
+          // pathname:`/shop/${Slug(item.name)}`,
+          state={product}
+          tagone={product.tags[Math.floor(Math.random() * product.tags.length)]}
+          tagtwo={product.tags[Math.floor(Math.random() * product.tags.length)]}
+          tagsthree={product.tags[Math.floor(Math.random() * product.tags.length)]}
+          to={`/shop/${Slug(product.name)}`}
+          name={product.name}
+          image={product.image[0]}
           // Replace with the actual property name for name
           />
         ))}
