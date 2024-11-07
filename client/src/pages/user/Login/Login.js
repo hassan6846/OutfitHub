@@ -7,8 +7,14 @@ import toast, { Toaster } from "react-hot-toast";
 import "./Login.css";
 // components and Library.
 import Loginbtns from "../../../components/IconBtns/LoginPageBtns.js";
+import {ENDPOINT} from "../../../api/Endpoint.js"
+
+//state
+import { setId ,setName,setAvatar,SETMAIL ,setGender,setJoinedIn,setRole} from "../../../Slices/UserSlices.js";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const dispatch=useDispatch()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -66,15 +72,21 @@ const Login = () => {
       console.log(`Sending request to: http://localhost:4000/api/v1/login`);
 
       // Make the API call
-      const response = await axios.post('http://localhost:4000/api/v1/login', {
+      const response = await axios.post(`${ENDPOINT}/login`, {
         email,
         password,
       });
 
       // Log the response and its data
-      console.log("Login response:", response);
-      console.log("Response data:", response.data);
-
+    
+      console.log("Response data:", response.data.user);
+      dispatch(()=>setId(response.data.user._id))
+      dispatch(()=>SETMAIL(response.data.user.email))
+      dispatch(()=>setGender(response.data.user.gender))
+      dispatch(()=>setAvatar(response.data.user.avatar.url))
+      dispatch(()=>setName(response.data.user.username))
+      dispatch(()=>setJoinedIn(response.data.user.createdAt))
+      dispatch(()=>setRole(response.data.user.role      ))
       // Handle successful login
       toast.success("Successfully logged in");
     } catch (error) {

@@ -8,12 +8,13 @@ import { useSelector } from 'react-redux'
 
 const ProfileOverView = () => {
   const cart = useSelector((state) => state.cart);
+  const avatar = useSelector((state) => state.user.avatar);
   return (
     <>
 
       <p className='wishlist_page_head'>Manage Your Account,</p>
       <div className='user_profile_container'>
-        <div className='img_flex'> <img style={{ height: "80px", marginBottom: "1rem", borderRadius: "60%" }} src={defaultUserImg} alt="user_img" />    </div>
+        <div className='img_flex'> <img style={{ height: "80px", marginBottom: "1rem", borderRadius: "60%" }} src={avatar} alt="user_img" />    </div>
         {/* MAIN */}
         <div className='user_detail_wrapper'>
           <div>
