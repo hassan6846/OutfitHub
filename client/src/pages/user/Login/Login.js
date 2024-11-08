@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useFormik } from "formik";
 import axios from "axios";
 import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
 import toast, { Toaster } from "react-hot-toast";
@@ -8,79 +7,88 @@ import toast, { Toaster } from "react-hot-toast";
 import "./Login.css";
 // components and Library.
 import Loginbtns from "../../../components/IconBtns/LoginPageBtns.js";
-import { ENDPOINT } from "../../../api/Endpoint.js";
-//state
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false); // Track login submission
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validateOnBlur: true,
-    validateOnChange: true,
-    validate: (values) => {
-      const errors = {};
 
-      if (!values.email) {
-        errors.email = "Please fill the email field";
-      }
+  // Validation functions
+  const validateEmail = (email) => {
+    // Basic email validation
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  };
 
-      if (!values.password) {
-        errors.password = "Please fill the password field";
-      }
+  const validatePassword = (password) => {
+    return password.length >= 7;
+  };
 
-      if (values.password.length < 7) {
-        errors.password = "Password must be at least 7 characters long";
-      }
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
 
-      return errors;
-    },
-    onSubmit: async (values) => {
-      if (!formik.isValid) {
-        return;
-      }
+    if (!value) {
+      setEmailError("Please fill the email field");
+    } else if (!validateEmail(value)) {
+      setEmailError("Please enter a valid email");
+    } else {
+      setEmailError("");
+    }
+  };
 
-      setIsSubmitting(true); // Start login submission
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
 
-      const api = axios.create({
-        baseURL: ENDPOINT,
+    if (!value) {
+      setPasswordError("Please fill the password field");
+    } else if (!validatePassword(value)) {
+      setPasswordError("Password must be at least 7 characters long");
+    } else {
+      setPasswordError("");
+    }
+  };
 
-          headers: {
-            'Content-Type': 'application/json',
-          },
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    // Check if form is valid
+    if (emailError || passwordError || !email || !password) {
+      return;
+    }
+
+    setIsSubmitting(true); // Start login submission
+
+    try {
+      console.log(`Sending request to: http://localhost:4000/api/v1/login`);
+
+      // Make the API call
+      const response = await axios.post('http://localhost:4000/api/v1/login', {
+        email,
+        password,
       });
 
-      try {
-        const response = await api.post("/api/v1/login", {
-          email: values.email,
-          password: values.password,
-          
-        },
-      
-      );
+      // Log the response and its data
+      console.log("Login response:", response);
+      console.log("Response data:", response.data);
 
-        // Handle successful login
-        toast.success("Successfully logged in");
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-
-        // Improved error handling
-        if (error.response && error.response.data && error.response.data.msg) {
-          toast.error(error.response.data.msg);
-        } else if (error.message) {
-          toast.error(error.message); // Adjusted to use error.message
-        } else {
-          toast.error("An error occurred during login.");
-        }
-      } finally {
-        setIsSubmitting(false); // End login submission
+      // Handle successful login
+      toast.success("Successfully logged in");
+    } catch (error) {
+      console.log("Error during login:", error);
+      if (error.response) {
+        console.log("Error response data:", error.response.data.message);
+        toast.error( error.response.data.message)
+      } else {
+        console.log("Error message:", error.message);
       }
-    },
-  });
+    } finally {
+      setIsSubmitting(false); // End login submission
+    }
+  };
 
   useEffect(() => {
     // Optional: Clear session data only when required
@@ -97,37 +105,37 @@ const Login = () => {
           <h1 className="login-heading">Login account</h1>
           <Loginbtns />
           <p className="orline_login">OR CONTINUE WITH</p>
-          <form onSubmit={formik.handleSubmit} className="login-form">
+          <form onSubmit={handleSubmit} className="login-form">
             <MDBInput
-              {...formik.getFieldProps("email")}
+              value={email}
+              onChange={handleEmailChange}
               className="login-input"
               type="email"
               placeholder="Enter Email"
               label="Email"
             />
-            {formik.touched.email && formik.errors.email && (
-              <div className="error">{formik.errors.email}</div>
-            )}
+            {emailError && <div className="error">{emailError}</div>}
 
             <MDBInput
-              {...formik.getFieldProps("password")}
+              value={password}
+              onChange={handlePasswordChange}
               className="login-input"
               type="password"
               placeholder="Enter Password"
               label="Password"
               autoComplete="true"
             />
-            {formik.touched.password && formik.errors.password && (
-              <div className="error">{formik.errors.password}</div>
-            )}
+            {passwordError && <div className="error">{passwordError}</div>}
+
             <Link className="forgot-link" to="/password/forgot">
               Forgot Password?
             </Link>
+
             <MDBBtn
               type="submit"
               style={{ backgroundColor: "#4BB497", border: "0px" }}
               className="otp-submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !email || !password || emailError || passwordError}
             >
               {isSubmitting ? "Logging in..." : "Login"}
             </MDBBtn>
