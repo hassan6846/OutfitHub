@@ -28,9 +28,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json({
   limit: '100mb'
 }));
-app.use(fileUpload({
-  useTempFiles:true
-}))
+
 app.use(upload.array()); 
 app.use(express.static('public'));
 app.disable('x-powered-by')

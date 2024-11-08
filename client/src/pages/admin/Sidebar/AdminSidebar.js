@@ -7,7 +7,7 @@ import { TfiStatsUp } from "react-icons/tfi"
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md"
 import { defaultUserImg } from '../../../helpers/GlobalVariables'
 import { AiOutlineAppstoreAdd } from "react-icons/ai"
-import { FaHandsHelping } from "react-icons/fa"
+
 // css
 import "./AdminSidebar.css"
 
@@ -59,7 +59,6 @@ const AdminSidebar = () => {
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Messages</p>
                 <Link to="/admin/messages" className='aside_links'> <BiSolidMessageSquareDetail className={aside_icon_state} /> <span className={Asidespan}>Messages</span> </Link>
-                <Link to="/admin/messages/vendorrequest" className='aside_links'> <FaHandsHelping className={aside_icon_state} /> <span className={Asidespan}>Vendor Requests</span> </Link>
             </div>
             {/* ALL */}
             <div className={aside_link_flex}>

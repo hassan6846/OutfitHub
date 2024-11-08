@@ -34,7 +34,7 @@ import AddProduct from "./pages/admin/Components/AddProduct";
 import AllProducts from "./pages/admin/Components/AllProducts";
 import Orders from "./pages/admin/Components/Orders";
 import AllUsers from "./pages/admin/Components/AllUsers";
-import VendorRequests from "./pages/admin/Components/VendorRequests";
+
 import Messages from "./pages/admin/Components/Messages";
 import Stats from "./pages/admin/Components/Stats";
 import Logout from "./pages/admin/Components/logout"
@@ -105,7 +105,7 @@ const Routing = () => {
             <Route path="products/add" element={<AddProduct />} />
             <Route path="users" element={<AllUsers />} />
             <Route path="messages" element={<Messages />} />
-            <Route path="messages/vendorrequest" element={<VendorRequests />} />
+
           </Route>
         </Routes>
         <Toaster />

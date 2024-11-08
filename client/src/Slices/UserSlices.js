@@ -8,6 +8,7 @@ const UserSlice = createSlice({
         email: "",
         role: "",
         gender: "",
+        phone:"",
         avatar: "",
         joinedin: "",
     },

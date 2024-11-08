@@ -8,10 +8,9 @@ import Form from "react-bootstrap/Form"
 import { TagsInput } from "react-tag-input-component"
 import CachedIcon from '@mui/icons-material/Cached';
 import IconButton from '@mui/material/IconButton';
-import {toast} from 'react-hot-toast'
-
-
+import { toast } from 'react-hot-toast'
 import { ENDPOINT } from '../../../api/Endpoint'
+import axios from 'axios'
 
 
 
@@ -19,37 +18,46 @@ import { ENDPOINT } from '../../../api/Endpoint'
 
 const AddProduct = () => {
   const [images, setImages] = useState([]);
-  const [description,setdescription]=useState("")
-  const [title,settitle]=useState('')
-  const [brand,setbrand]=useState('')
-  const [regularprice,Setregularprice]=useState('')
-  const [saleprice,setsaleprice]=useState('')
-  const [tags,setTags]=useState([])
-  const [weight,Setweight]=useState("")
-  const [dimensions,setdimensions]=useState('')
-  const [category,Setcategory]=useState('')
-  const [subCategory,setsubCategory]=useState('')
+  const [description, setdescription] = useState("")
+  const [title, settitle] = useState('')
+  const [brand, setbrand] = useState('')
+  const [regularprice, Setregularprice] = useState('')
+  const [saleprice, setsaleprice] = useState('')
+  const [tags, setTags] = useState([])
+  const [weight, Setweight] = useState("")
+  const [dimensions, setdimensions] = useState('')
+  const [category, Setcategory] = useState('')
+  const [subCategory, setsubCategory] = useState('')
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = useState('');
-  const [quantity,setQuantity]=useState('')
-  const [promotion,setpromotion]=useState('')
-  const [status,setStatus]=useState('')
+  const [quantity, setQuantity] = useState('')
+  const [promotion, setpromotion] = useState('')
+  const [status, setStatus] = useState('')
   //selectables
-  const [unit,setUnit]=useState('')
-
+  const [unit, setUnit] = useState('')
+    //loadinggg
+    const [loading,isloading]=useState(false)
   //HandleFileChange...
   // HandleFileChange with base64 conversion
   const HandleFileChange = async (e) => {
     const files = Array.from(e.target.files);
     setMessage('You can only upload up to 4 images.');
     setOpen(true);
-    if ( files.length < 4 ) {
+    if (files.length === 2) {
 
-      toast.error("Must Select aleast and maximum 4 images",{
-        position:"bottom-right"
+      toast.success("Good Current System only support 2 Images only", {
+        position: "bottom-right"
       })
-      setImages([])
+
+    } 
+    if ( files.length > 4 ) {
+
+      toast.error("Current System only Support 2 images ", {
+        position: "bottom-right"
+      })
     }
+    
+
     // Convert each file to base64
     const newImages = await Promise.all(
       files.map((file) => {
@@ -72,10 +80,50 @@ const AddProduct = () => {
     setImages((prevImages) => [...prevImages, ...newImages]);
     console.log(images)
   };
- ///clear State
- const ClearState=async()=>{
-  setImages([])
- }
+  ///clear State
+  const ClearState = async () => {
+    setImages([])
+  }
+
+  // Handle Upload
+  const HandleUpload = async () => {
+    try {
+      const response = await axios.post(
+        `${ENDPOINT}/admin/product/upload`,
+        {
+          id:"",
+          title:title,
+          brand:brand,
+          img1:"",
+          img2:"",
+          description:description,
+          regprice:regularprice,
+          saleprice:saleprice,
+          category:category,
+          subcategory:subCategory,
+          promotion:promotion,
+          status:status,
+          qty:quantity,
+          unit:unit,
+          weight:weight,
+          dimensions:dimensions
+        }, // Add your request payload here if needed
+        {
+          headers: {
+            'Content-Type': 'application/json', // Set Content-Type to application/json
+            // You can also add other headers, like authorization if needed
+          },
+        }
+      );
+
+      // Handle the response, maybe log it or do something with the result
+      console.log('Upload successful', response.data);
+    } catch (error) {
+      console.error('Upload failed', error);
+    }
+  };
+
+
   return (
     <div className='addproduct-wrapper'>
 
@@ -95,7 +143,7 @@ const AddProduct = () => {
           <p style={{ color: '#848484', fontSize: "0.8rem", fontWeight: "500", display: "flex", columnGap: "1rem", alignItems: "center" }}>Product Images <input type="file" multiple onChange={HandleFileChange} /></p>
           {/* Image Preview GRid */}
           <div className='images_upload_grid'>
-            {images.slice(0, 4).map((image, index) => (
+            {images.slice(0, 2).map((image, index) => (
               <div className='upload_prview_card' style={{ position: "relative" }} key={index}>
                 {images.length ? ( // Check if the image exists
                   <img
@@ -118,7 +166,7 @@ const AddProduct = () => {
             <div>
               <h3 style={{ color: "#848484", fontSize: "0.9rem" }} className="user_name">Description </h3>
               <p className="user_name_ans">
-                <MDBTextArea style={{ resize: "none" }} onChange={(event)=>setdescription(event.target.value)} rows={8} size="lg" placeholder="Product Description.." />
+                <MDBTextArea style={{ resize: "none" }} onChange={(event) => setdescription(event.target.value)} rows={8} size="lg" placeholder="Product Description.." />
               </p>
             </div>
           </div>
@@ -128,7 +176,7 @@ const AddProduct = () => {
           <div>
             <h3 style={{ color: "#848484" }} className="user_name">Product Name </h3>
             <p className="user_name_ans">
-              <MDBInput onChange={(event)=>settitle(event.target.value)} size="lg" placeholder="Product Name" />
+              <MDBInput onChange={(event) => settitle(event.target.value)} size="lg" placeholder="Product Name" />
             </p>
           </div>
           {/* row 1 */}
@@ -136,7 +184,7 @@ const AddProduct = () => {
             <div>
               <h3 style={{ color: "#848484" }} className="user_name">Brand Name </h3>
               <p className="user_name_ans">
-                <MDBInput onChange={(event)=>setbrand(event.target.value)} size="lg" placeholder="Brand." />
+                <MDBInput onChange={(event) => setbrand(event.target.value)} size="lg" placeholder="Brand." />
               </p>
             </div>
 
@@ -147,13 +195,13 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">Regular Price. </h3>
               <p className="user_name_ans">
-                <MDBInput type="number" onChange={(event)=>Setregularprice(event.target.value)} size="lg" placeholder="Regular Market Price." />
+                <MDBInput type="number" onChange={(event) => Setregularprice(event.target.value)} size="lg" placeholder="Regular Market Price." />
               </p>
             </div>
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">Sale Price </h3>
               <p className="user_name_ans">
-                <MDBInput type="number"  onChange={(event)=>setsaleprice(event.target.value)}  size="lg" placeholder="Sale Price" />
+                <MDBInput type="number" onChange={(event) => setsaleprice(event.target.value)} size="lg" placeholder="Sale Price" />
               </p>
             </div>
           </div>
@@ -163,7 +211,7 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">Category</h3>
               <p className="user_name_ans">
-                <Form.Select onChange={(event)=>Setcategory(event.target.value)} style={{ width: "100%" }} aria-label="Default select example">
+                <Form.Select onChange={(event) => Setcategory(event.target.value)} style={{ width: "100%" }} aria-label="Default select example">
                   <option value="uncatogrized"> None</option>
                   <option value="men">Men</option>
                   <option value="women">Women</option>
@@ -176,7 +224,7 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">SubCategory </h3>
               <p className="user_name_ans">
-              <MDBInput   onChange={(event)=>setsubCategory(event.target.value)}  size="lg" placeholder="SubCategory" />
+                <MDBInput onChange={(event) => setsubCategory(event.target.value)} size="lg" placeholder="SubCategory" />
 
               </p>
             </div>
@@ -186,7 +234,7 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">Product Promotions</h3>
               <p className="user_name_ans">
-                <Form.Select onChange={(event)=>setStatus(event.target.value)} style={{ width: "100%" }} aria-label="Default select example">
+                <Form.Select onChange={(event) => setStatus(event.target.value)} style={{ width: "100%" }} aria-label="Default select example">
 
                   <option value="instock">In Stock</option>
                   <option value="outofstock">Out of Stock</option>
@@ -200,7 +248,7 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">Stock Status</h3>
               <p className="user_name_ans">
-                <Form.Select onChange={(event)=>setpromotion(event.target.value)} style={{ width: "100%" }} aria-label="Default select example">
+                <Form.Select onChange={(event) => setpromotion(event.target.value)} style={{ width: "100%" }} aria-label="Default select example">
                   <option value="trending">Trending</option>
                   <option value="bestseller">Best Seller</option>
                   <option value="limited">Limited Time Only</option>
@@ -214,7 +262,7 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">Unit</h3>
               <p className="user_name_ans">
-                <Form.Select onChange={(event)=>setUnit(event.target.value)} style={{ width: "100%" }} aria-label="Default select example">
+                <Form.Select onChange={(event) => setUnit(event.target.value)} style={{ width: "100%" }} aria-label="Default select example">
                   <option value="piece"> Pieces</option>
                   <option value="boxes">Boxes</option>
                   <option value="kg">Kilogram</option>
@@ -227,7 +275,7 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">Quantity /InStock </h3>
               <p className="user_name_ans">
-                <MDBInput type="number" onChange={(event)=>setQuantity(event.target.value)}   size="lg" placeholder="Quantity" />
+                <MDBInput type="number" onChange={(event) => setQuantity(event.target.value)} size="lg" placeholder="Quantity" />
               </p>
             </div>
           </div>
@@ -236,13 +284,13 @@ const AddProduct = () => {
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name"> Dimensions/L*W*H <RxDimensions /> </h3>
               <p className="user_name_ans">
-                <MDBInput  onChange={(event)=>setdimensions(event.target.value)} size="lg" placeholder="Enter Dimensions" />
+                <MDBInput onChange={(event) => setdimensions(event.target.value)} size="lg" placeholder="Enter Dimensions" />
               </p>
             </div>
             <div style={{ width: "100%" }}>
               <h3 style={{ color: "#848484" }} className="user_name">Weight in kgs <BsBoxSeamFill /> </h3>
               <p className="user_name_ans">
-                <MDBInput onChange={(event)=>Setweight(event.target.value)} size="lg" placeholder="Enter Weight" />
+                <MDBInput onChange={(event) => Setweight(event.target.value)} size="lg" placeholder="Enter Weight" />
               </p>
             </div>
           </div>
@@ -260,7 +308,7 @@ const AddProduct = () => {
           {/* Row 9  */}
           <div style={{ display: "flex", width: "100%", columnGap: "0.4rem", flexDirection: "row-reverse" }} className='row_inputs'>
             <div style={{ width: "100%" }}>
-              <MDBBtn style={{ width: "100%", padding: "0.7rem", backgroundColor: '#4BB497' }}>Publish Product</MDBBtn>
+              <MDBBtn onClick={() => HandleUpload()} style={{ width: "100%", padding: "0.7rem", backgroundColor: '#4BB497' }}>Publish Product</MDBBtn>
             </div>
           </div>
 

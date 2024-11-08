@@ -22,11 +22,13 @@ const LikedSlice = createSlice({
     },
     // Optional: Remove item from liked products (you can implement it based on your requirements)
     removeFromLiked: (state, action) => {
-      const id = action.payload;
-      state.products = state.products.filter((item) => item._id !== id);
+      state.products = state.products.filter((product) => product._id !== action.payload._id);
     },
     ClearLikes:(state)=>{
         state.products = [];
+    },
+    setLikedItems:(state,action)=>{
+      state.products=action.payload
     }
   },
 });
