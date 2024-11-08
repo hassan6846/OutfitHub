@@ -1,5 +1,7 @@
 const User = require("../../models/UserModel");
-const Jwt = require("jsonwebtoken")
+const Jwt = require("jsonwebtoken");
+const GenerateOtp = require("../../utils/GenerateOtp");
+const { SendOtpMail } = require("../../utils/Otpmailer");
 
 const Register = async (req, res, next) => {
     const { username, email, phone, password } = req.body
