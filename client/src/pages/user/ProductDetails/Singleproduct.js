@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
 // SWIPPER
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -6,7 +6,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules';
 // components
-import { useLocation,useNavigate  } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul';
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
@@ -21,17 +21,37 @@ import { blinkSVG } from '../../../helpers/GlobalVariables';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slug from '../../../helpers/Slugify';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart,removeFromCart } from '../../../Slices/CartSlice';
+//state
+
 const Singleproduct = () => {
+  const dispatch = useDispatch()
+  const cartProducts = useSelector((state) => state.cart.products);
+  const [isInCart, setIsInCart] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
   const product = location.state; // Access the passed item via location.state
+
   useEffect(() => {
     console.log(product)
+    const productExists = cartProducts.some((item) => item._id === product._id);
+    setIsInCart(productExists);
     if (!product) {
       navigate('/404', { replace: false });
       return null; // Ensure the component doesn't render further
     }
-  },[product])
+  }, [product,cartProducts,navigate])
+
+  const handleCartToggle = () => {
+    if (isInCart) {
+      dispatch(removeFromCart({ id: product._id }));
+    } else {
+      dispatch(addToCart({ ...product, quantity: 1 }));
+    }
+    setIsInCart(!isInCart);
+  };
   const mockImages = [
     "https://charcoal.com.pk/cdn/shop/files/DSC01422.jpg?v=1702534486&width=700",
     "https://charcoal.com.pk/cdn/shop/files/DSC01422.jpg?v=1702534486&width=700",
@@ -56,7 +76,7 @@ const Singleproduct = () => {
     openOnload: 0
   }
   //params
- 
+
   return (
     <>
 
@@ -73,8 +93,8 @@ const Singleproduct = () => {
             {/* MOBILE PREVIEW SLIDES PRODUCT NEEDED TO ADD LOADER */}
             <Swiper pagination={true} modules={[Pagination]} className='swiper_main_all' >
               {mockImages.map((imageUrl, index) => (
-                <SwiperSlide className='Slide_shop'>  
-                 <LazyLoadImage effect='blur' className='single_images_shop' key={index} src={imageUrl} alt="Product_img" /></SwiperSlide>
+                <SwiperSlide className='Slide_shop'>
+                  <LazyLoadImage effect='blur' className='single_images_shop' key={index} src={imageUrl} alt="Product_img" /></SwiperSlide>
               ))}
             </Swiper>
           </div>
@@ -87,8 +107,11 @@ const Singleproduct = () => {
             <p className='flash_few'>Only few left in Stock!</p>
             <p className='flash_Text_p_yellow'>Sale is <span className='flash_Text_p_yellow_span'>Live <img style={{ height: "10px" }} alt='blink_img' src={blinkSVG} /></span></p>
             <div className='button_flex_single'>
-              <MDBBtn className='single_cart_btn' style={{ backgroundColor: "#4BB497", width:"40%"}}>ADD TO CART</MDBBtn>  
-             
+              <MDBBtn className='single_cart_btn'  onClick={handleCartToggle}   style={{ backgroundColor: "#4BB497", width: "40%" }}>
+
+              {isInCart ? "REMOVE FROM CART" : "ADD TO CART"}
+              </MDBBtn>
+
             </div>
             {/* flex */}
             <div className='icon_delivery_time'>
@@ -105,10 +128,10 @@ const Singleproduct = () => {
                 {
                   product.tags && product.tags.length > 0 ? (
                     product.tags.map((tag, index) => (
-                      <Link 
-           
-                      to={`/shop/tags/${Slug(tag)}`}
-                      key={index} className='single_button_tag'>
+                      <Link
+
+                        to={`/shop/tags/${Slug(tag)}`}
+                        key={index} className='single_button_tag'>
                         {tag}
                       </Link>
                     ))
