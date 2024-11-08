@@ -5,6 +5,8 @@
 
 
 .no_items_inCart{
+    height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
