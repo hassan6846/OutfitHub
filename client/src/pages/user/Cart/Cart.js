@@ -11,13 +11,18 @@ import {
   MDBRow,
   MDBTypography,
 } from "mdb-react-ui-kit";
+import { useDispatch } from "react-redux"
+
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Cart.css";
+import { clearCart } from "../../../Slices/CartSlice";
 function Cart() {
+
+  const dispatch = useDispatch()
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "white" }}>
-    
+
       <MDBContainer className="py-5 h-100">
         <MDBRow className="justify-content-center align-items-center h-100">
           <MDBCol className="d-flex justify-content-center" size="13">
@@ -37,7 +42,10 @@ function Cart() {
                           Shopping Cart
                         </MDBTypography>
                         <MDBTypography className="mb-0 text-muted">
-                          3 items
+
+                        </MDBTypography>
+                        <MDBTypography style={{cursor:"pointer"}} onClick={() => dispatch(clearCart())}>
+                          Clear
                         </MDBTypography>
                       </div>
                       <div className="cart_items_contional">
@@ -282,7 +290,7 @@ function Cart() {
                       </div>
 
                       <MDBBtn
-                      href="/checkout"
+                        href="/checkout"
                         style={{ backgroundColor: "#4BB497" }}
                         block
                         size="lg"
