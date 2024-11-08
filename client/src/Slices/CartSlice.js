@@ -28,8 +28,10 @@ const cartSlice = createSlice({
          state.amount += newItem.price * (newItem.quantity || 1);
       },
       removeFromCart: (state, action) => {
-         const { id } = action.payload;
-         state.products = state.products.filter((product) => product.id !== id);
+       
+         state.products = state.products.filter(product => product._id !== action.payload.id);
+
+  
       },
       incrementProduct: (state, action) => {
          // Your logic for incrementing product quantity
