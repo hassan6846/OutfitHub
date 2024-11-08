@@ -10,7 +10,7 @@ import Loginbtns from "../../../components/IconBtns/LoginPageBtns.js";
 import {ENDPOINT} from "../../../api/Endpoint.js"
 
 //state
-import { setId ,setName,setAvatar,SETMAIL ,setGender,setJoinedIn,setRole} from "../../../Slices/UserSlices.js";
+import { setId ,setName,setAvatar,SETMAIL ,setGender,setJoinedIn,setRole,setPHONE} from "../../../Slices/UserSlices.js";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -80,13 +80,15 @@ const Login = () => {
       // Log the response and its data
     
       console.log("Response data:", response.data.user);
-      dispatch(()=>setId(response.data.user._id))
-      dispatch(()=>SETMAIL(response.data.user.email))
-      dispatch(()=>setGender(response.data.user.gender))
-      dispatch(()=>setAvatar(response.data.user.avatar.url))
-      dispatch(()=>setName(response.data.user.username))
-      dispatch(()=>setJoinedIn(response.data.user.createdAt))
-      dispatch(()=>setRole(response.data.user.role      ))
+      dispatch(setId(response.data.user._id));
+      dispatch(SETMAIL(response.data.user.email));
+      dispatch(setGender(response.data.user.gender));
+      dispatch(setAvatar(response.data.user.avatar.url));
+      dispatch(setName(response.data.user.username));
+      dispatch(setJoinedIn(response.data.user.createdAt));
+      dispatch(setRole(response.data.user.role));
+      dispatch(setPHONE(response.data.user.createdAt));
+      
       // Handle successful login
       toast.success("Successfully logged in");
     } catch (error) {

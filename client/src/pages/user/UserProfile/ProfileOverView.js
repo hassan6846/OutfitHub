@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from "react-router-dom"
 import "./ProfileOverView.css"
 import { FiEdit2 } from "react-icons/fi"
@@ -9,6 +9,15 @@ import { useSelector } from 'react-redux'
 const ProfileOverView = () => {
   const cart = useSelector((state) => state.cart);
   const avatar = useSelector((state) => state.user.avatar);
+  const name = useSelector((state) => state.user.name);
+  const email=useSelector((state)=>state.user.email)
+  const gender=useSelector((state)=>state.user.gender)
+  const joinedin=useSelector((state)=>state.user.joinedin)
+  const phone=useSelector((state)=>state.user.phone)
+
+  useEffect(()=>{
+    console.log(avatar)
+  })
   return (
     <>
 
@@ -19,22 +28,22 @@ const ProfileOverView = () => {
         <div className='user_detail_wrapper'>
           <div>
             <h3 className='user_name'>Full Name |<span><Link to="/user/edit">Edit</Link></span> </h3>
-            <p style={{ display: "flex", alignItems: "center", columnGap: "0.5rem" }} className='user_name_ans'>HassanAli <MDBBadge color='info' light>User</MDBBadge></p>
+            <p style={{ display: "flex", alignItems: "center", columnGap: "0.5rem" }} className='user_name_ans'>{name}<MDBBadge color='info' light>User</MDBBadge></p>
           </div>
           {/* Email */}
           <div>
             <h3 className='user_name'>Email</h3>
-            <p style={{ display: "flex", alignItems: "center", columnGap: "1rem" }} className='user_name_ans'>ha6817334@gmail.com </p>
+            <p style={{ display: "flex", alignItems: "center", columnGap: "1rem" }} className='user_name_ans'>{email}</p>
           </div>
           {/* GENDER */}
           <div>
             <h3 className='user_name'>Gender</h3>
-            <p className='user_name_ans'>Male 👨</p>
+            <p className='user_name_ans'>{gender} </p>
           </div>
           {/* DATE OF Joined */}
           <div>
             <h3 className='user_name'>Joined In</h3>
-            <p className='user_name_ans'>25/2/2023</p>
+            <p className='user_name_ans'>{joinedin}</p>
           </div>
           {/* Orders */}
           <div>
@@ -49,7 +58,7 @@ const ProfileOverView = () => {
           {/* Mobile Number */}
           <div className='details_wrapper'>
             <h3 className='user_name'>Mobile Number</h3>
-            <p style={{ display: "flex", alignItems: 'center', columnGap: "1rem" }} className='user_name_ans'>03160490149  </p>
+            <p style={{ display: "flex", alignItems: 'center', columnGap: "1rem" }} className='user_name_ans'> asd{phone}   </p>
           </div>
 
         </div>
