@@ -8,7 +8,8 @@ import toast, { Toaster } from "react-hot-toast";
 import "./Login.css";
 // components and Library.
 import Loginbtns from "../../../components/IconBtns/LoginPageBtns.js";
-
+import { ENDPOINT } from "../../../api/Endpoint.js";
+//state
 
 const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false); // Track login submission
@@ -31,7 +32,7 @@ const Login = () => {
       }
 
       if (values.password.length < 7) {
-        errors.password = "Please valid Password You might be joking";
+        errors.password = "Password must be at least 7 characters long";
       }
 
       return errors;
@@ -44,28 +45,36 @@ const Login = () => {
       setIsSubmitting(true); // Start login submission
 
       const api = axios.create({
-        baseURL: "http://localhost:3001",
+        baseURL: ENDPOINT,
+
+          headers: {
+            'Content-Type': 'application/json',
+          },
+
       });
 
       try {
-        const stringedVal = JSON.stringify(values);
-        console.log(JSON.parse(stringedVal));
-        await api.post("/api/v1/login", {
+        const response = await api.post("/api/v1/login", {
           email: values.email,
           password: values.password,
-        });
+          
+        },
+      
+      );
 
         // Handle successful login
         toast.success("Successfully logged in");
+        console.log(response);
       } catch (error) {
         console.log(error);
 
+        // Improved error handling
         if (error.response && error.response.data && error.response.data.msg) {
           toast.error(error.response.data.msg);
         } else if (error.message) {
-          toast.error(error.response.data.Msg);
+          toast.error(error.message); // Adjusted to use error.message
         } else {
-          toast.error("Error when logging in");
+          toast.error("An error occurred during login.");
         }
       } finally {
         setIsSubmitting(false); // End login submission
@@ -74,6 +83,7 @@ const Login = () => {
   });
 
   useEffect(() => {
+    // Optional: Clear session data only when required
     sessionStorage.clear();
   }, []);
 

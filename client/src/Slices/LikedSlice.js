@@ -1,16 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const LikedSlice=createSlice({
-    name:"like",
-    initialState:{
-        product:[],
-        
-    },
-    reducers:{
-        ///sync the liked
+const LikedSlice = createSlice({
+  name: "like",
+  initialState: {
+    products: [],
+  },
+  reducers: {
+     ///sync the liked
         // clear like
         //add to like 
         //remove item from likes
-    
+
+    addtoLiked: (state, action) => {
+      const newItem = action.payload;
+      const existingItem = state.products.find((item) => item._id === newItem._id);
+
+      if (!existingItem) {
+        // If the item doesn't exist, add it to the products array
+        state.products.push({ ...newItem });
+      }
+    },
+    // Optional: Remove item from liked products (you can implement it based on your requirements)
+    removeFromLiked: (state, action) => {
+      const id = action.payload;
+      state.products = state.products.filter((item) => item._id !== id);
+    },
+    ClearLikes:(state)=>{
+        state.products = [];
     }
-})
+  },
+});
+
+export const { addtoLiked, removeFromLiked } = LikedSlice.actions;
+export default LikedSlice.reducer;

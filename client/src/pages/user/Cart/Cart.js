@@ -24,10 +24,10 @@ function Cart() {
   }, [cartProducts])
   const dispatch = useDispatch()
   return (
-    <section className="h-100 h-custom" style={{ backgroundColor: "white" }}>
-         {
-          cartProducts.length>0?(
-            <MDBContainer className="py-5 h-100">
+    <section className="h-110 h-custom" style={{ backgroundColor: "white" }}>
+      {
+        cartProducts.length > 0 ? (
+          <MDBContainer className="py-5 h-100">
             <MDBRow className="justify-content-center align-items-center h-100">
               <MDBCol className="d-flex justify-content-center" size="13">
                 <MDBCard
@@ -46,17 +46,17 @@ function Cart() {
                               Shopping Cart
                             </MDBTypography>
                             <MDBTypography className="mb-0 text-muted">
-    
+
                             </MDBTypography>
                             <MDBTypography style={{ cursor: "pointer" }} onClick={() => dispatch(clearCart())}>
                               Clear
                             </MDBTypography>
                           </div>
-    
-    
-    
+
+
+
                           <div className="cart_items_contional">
-    
+
                             {
                               cartProducts.map((product, index) => (
                                 <><hr className="my-4" />
@@ -85,13 +85,13 @@ function Cart() {
                                       <MDBBtn color="link" className="px-2">
                                         <MDBIcon fas icon="minus" />
                                       </MDBBtn>
-    
+
                                       <MDBInput
                                         type="number"
                                         min="0"
                                         defaultValue={1}
                                         size="sm" />
-    
+
                                       <MDBBtn color="link" className="px-2">
                                         <MDBIcon fas icon="plus" />
                                       </MDBBtn>
@@ -103,28 +103,28 @@ function Cart() {
                                     </MDBCol>
                                     <MDBCol md="1" lg="1" xl="1" className="text-end">
                                       <Link onClick={() => dispatch(removeFromCart({ id: product._id }))} className="text-muted">
-    
+
                                         <MDBIcon fas icon="times" />
                                       </Link>
                                     </MDBCol>
                                   </MDBRow></>
-    
+
                               ))
                             }
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
                             <hr className="my-4" />
-    
-    
+
+
                           </div>
-    
-    
+
+
                           <div className="pt-5">
                             <MDBTypography tag="h6" className="mb-0">
                               <MDBCardText tag="a" href="#!" className="text-body">
@@ -137,7 +137,7 @@ function Cart() {
                           </div>
                         </div>
                       </MDBCol>
-    
+
                       <MDBCol lg="4" className="bg-grey">
                         <div className="p-5">
                           <MDBTypography
@@ -146,9 +146,9 @@ function Cart() {
                           >
                             Summary
                           </MDBTypography>
-    
+
                           <hr className="my-4" />
-    
+
                           <div className="d-flex justify-content-between mb-4">
                             <MDBTypography tag="h5" className="text-uppercase">
                               Products
@@ -161,51 +161,20 @@ function Cart() {
                             </MDBTypography>
                             <MDBTypography tag="h5">€ 5</MDBTypography>
                           </div>
-                          <div className="d-flex justify-content-between mb-4">
-                            <MDBTypography tag="h5" className="text-uppercase">
-                              Total
-                            </MDBTypography>
-                            <MDBTypography tag="h5">€ 5</MDBTypography>
-                          </div>
-                          <MDBTypography
-                            style={{ fontSize: "1.1rem" }}
-                            tag="h5"
-                            className="text-uppercase mb-3"
-                          >
-                            Select Shipping Type
-                          </MDBTypography>
-    
-                          <div className="mb-4 pb-2">
-                            <select
-                              className="select p-2 rounded bg-grey"
-                              style={{ width: "100%" }}
-                            >
-                              <option value="1">
-                                1 Day Air Cargo Shipping -20$
-                              </option>
-                              <option value="2">
-                                Two Days Standard Shipping -5$
-                              </option>
-                            </select>
-                          </div>
-    
-                          <MDBTypography tag="h5" className="text-uppercase mb-3">
-                            Coupon Code
-                          </MDBTypography>
-    
-                          <div className="mb-5">
-                            <MDBInput size="lg" label="Enter your code" />
-                          </div>
-    
+
+
+
+
+
                           <hr className="my-4" />
-    
+
                           <div className="d-flex justify-content-between mb-5">
                             <MDBTypography tag="h5" className="text-uppercase">
                               Total price
                             </MDBTypography>
                             <MDBTypography tag="h5">€ 137.00</MDBTypography>
                           </div>
-    
+
                           <MDBBtn
                             href="/checkout"
                             style={{ backgroundColor: "#4BB497" }}
@@ -222,8 +191,8 @@ function Cart() {
               </MDBCol>
             </MDBRow>
           </MDBContainer>
-          ):(
-            <div className="no_items_inCart">
+        ) : (
+          <div className="no_items_inCart">
             <p className="no_cart_items_msg">
               There are no items in this cart
             </p>
@@ -231,12 +200,11 @@ function Cart() {
               CONTINUE SHOPPING
             </Link>
           </div>
-          )
-         }
+        )
+      }
 
 
 
-      {/*  */}
 
     </section>
   );
