@@ -8,7 +8,7 @@ const UserSlice = createSlice({
         email: "",
         role: [],
         gender: "",
-        phone:"",
+        phone: "",
         avatar: "",
         joinedin: "",
     },
@@ -34,11 +34,11 @@ const UserSlice = createSlice({
         setJoinedIn: (state, action) => {
             state.joinedin = action.payload;
         },
-        setPHONE:(state,action)=>{
-            state.action=action.payload
+        setPHONE: (state, action) => {
+            state.phone = action.payload
         }
     }
 });
 
-export const { setId, setName, SETMAIL, setRole, setGender, setAvatar, setJoinedIn ,setPHONE} = UserSlice.actions;
+export const { setId, setName, SETMAIL, setRole, setGender, setAvatar, setJoinedIn, setPHONE } = UserSlice.actions;
 export default UserSlice.reducer;

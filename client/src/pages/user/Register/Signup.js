@@ -1,43 +1,34 @@
-// ... (your existing imports)
-
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
-// import toast from "react-hot-toast";
-// import { useFormik } from "formik";
-// import axios from "axios";
-
-// css
 import "./Signup.css";
-// Local Components
 
 import { MDBBtn } from "mdb-react-ui-kit";
 import InputProps from "../../../components/inputprops/InputProps";
-
-import { MuiOtpInput } from "mui-one-time-password-input"
-// Stepper
 import { Stepper } from "@mui/material";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Fade from "@mui/material/Fade";
-// icon
-import { CiMail } from "react-icons/ci";
+import toast from "react-hot-toast";
+
+
 
 const Signup = () => {
     const steps = ['1. Enter Details',  '2. Complete']
     const [activeStep, setActiveStep] = useState(0);
+    //States
+    const [email,setemail]=useState("")
+    const [name,setname]=useState("")
+    const [lastname,setlastname]=useState("")
+    const [password,setpassword]=useState('')
+    const [cpassword,setcpassword]=useState('')
+    //Button Disable
+    const [buttonActive,setbuttonActive]=useState(true)
 
-    const [otp, setOtp] = useState('')
-    /* 
-    FunctionSteppers
-    */
 
-    // nextStep
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
-    const handleChange = (newValue) => {
-        setOtp(newValue)
-    }
+
     //Goback
 
     return (
@@ -74,7 +65,7 @@ const Signup = () => {
                             {/* Country & Number */}
                             <InputProps title="Phone Number" type="number" />
                             <div className="btn_next">
-                                <MDBBtn onClick={handleNext} style={{ backgroundColor: "#4BB497" }} className="next_action">Create my account</MDBBtn>
+                                <MDBBtn disabled={buttonActive} onClick={handleNext} style={{ backgroundColor: "#4BB497" }} className="next_action">Create my account</MDBBtn>
                             </div>
                         </div>
                     </Fade>

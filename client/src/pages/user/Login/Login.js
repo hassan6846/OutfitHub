@@ -87,7 +87,7 @@ const Login = () => {
       dispatch(setName(response.data.user.username));
       dispatch(setJoinedIn(response.data.user.createdAt));
       dispatch(setRole(response.data.user.role));
-      dispatch(setPHONE(response.data.user.createdAt));
+      dispatch(setPHONE(response.data.user.phone));
       
       // Handle successful login
       toast.success("Successfully logged in");

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from "react-router-dom"
 import "./ProfileOverView.css"
 import { FiEdit2 } from "react-icons/fi"
-import { defaultUserImg } from "../../../helpers/GlobalVariables"
+
 import { MDBBadge } from "mdb-react-ui-kit"
 import { useSelector } from 'react-redux'
 
@@ -58,7 +58,7 @@ const ProfileOverView = () => {
           {/* Mobile Number */}
           <div className='details_wrapper'>
             <h3 className='user_name'>Mobile Number</h3>
-            <p style={{ display: "flex", alignItems: 'center', columnGap: "1rem" }} className='user_name_ans'> asd{phone}   </p>
+            <p style={{ display: "flex", alignItems: 'center', columnGap: "1rem" }} className='user_name_ans'> {phone}   </p>
           </div>
 
         </div>
