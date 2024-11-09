@@ -23,7 +23,7 @@ import Fade from "@mui/material/Fade";
 import { CiMail } from "react-icons/ci";
 
 const Signup = () => {
-    const steps = ['1. Enter Details', '2. Verify email', '3. Complete']
+    const steps = ['1. Enter Details',  '2. Complete']
     const [activeStep, setActiveStep] = useState(0);
 
     const [otp, setOtp] = useState('')
@@ -79,35 +79,9 @@ const Signup = () => {
                         </div>
                     </Fade>
                     {/* 2 */}
-                    <Fade in={activeStep === 1}>
-                        <div className="stepper_2" style={{ display: activeStep === 1 ? 'block' : 'none' }}>
-                            <p style={{ marginBottom: "0" }} className="email_head">Verify your email</p>
 
-                            <p className="email_verify_tag">  We have sent an <span className="email_bold">otp</span> email to <span className="email_bold"> ha6817330@gmail.com</span></p>
-
-                            <div className="otp_justify"><div className="signup_otp_verify"><MuiOtpInput gap={1} value={otp} onChange={handleChange} /></div></div>
-                            <div className="otp_verify_submit"><MDBBtn className="otp_verify_btn" onClick={handleNext} style={{ backgroundColor: "#4BB497" }}>Verify</MDBBtn></div>
-
-                            <div className="instruction_mail">
-                                <div className="icon_flex_mail">  <CiMail size={40} /></div>
-                                <ol>
-                                    <li>1 Go to your mail box and open the <span className="email_bold">email that we just sent you.</span></li>
-                                    <li>2 Click on the <span className="email_bold">link</span> to <span className="email_bold">verify</span> your account to continue.</li>
-                                </ol>
-                            </div>
-                            <p className="para_signup">Haven’t received the email from us? <span className="Link_login"> Resend email.</span></p>
-                        </div>
-                    </Fade>
                     {/* 3 */}
-                    <Fade in={activeStep === 2}>
-                        <div className="stepper_3" style={{ display: activeStep === 2 ? 'block' : 'none' }}>
-            
-                         
-                            {/* otp */}
-                            <div className="otp_verify_submit"><MDBBtn className="otp_verify_btn" onClick={handleNext} style={{ backgroundColor: "#4BB497" }}>Finish Setup.</MDBBtn></div>
 
-                        </div>
-                    </Fade>
 
                     {/* optional if The Steps Ends Then Show The Lottie Files. */}
                     {activeStep === steps.length ? (
