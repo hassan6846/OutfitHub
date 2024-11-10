@@ -9,31 +9,44 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Fade from "@mui/material/Fade";
 import toast from "react-hot-toast";
-
-
+import { ENDPOINT } from "../../../api/Endpoint";
+//ENDPOINT
 
 const Signup = () => {
-    const steps = ['1. Enter Details',  '2. Complete']
+    const steps = ['1. Enter Details', '2. Complete'] //state
     const [activeStep, setActiveStep] = useState(0);
     //States
-    const [email,setemail]=useState("")
-    const [name,setname]=useState("")
-    const [lastname,setlastname]=useState("")
-    const [password,setpassword]=useState('')
-    const [cpassword,setcpassword]=useState('')
+    const [name, setname] = useState("")
+    const [lastname, setlastname] = useState("")
+    const [email, setemail] = useState("")
+    const [password, setpassword] = useState('')
+    const [cpassword, setcpassword] = useState('')
     //Button Disable
-    const [buttonActive,setbuttonActive]=useState(true)
+    const [buttonActive, setbuttonActive] = useState(true)
 
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
 
-    //Goback
+    //PASSWORD...
+    const validatePassword = (password) => {
+        return password.length >= 7;
+      };
 
+    // Validation EMAIL
+    const validateEmail = (email) => {
+        // Basic email validation
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return regex.test(email);
+    };
+    //  Handle SUBMIT.....
+    const HandleSubmit = async (e) => {
+        e.preventDefault();
+    }
     return (
         <>
-          
+
             <section className="signup_container">
 
                 <div className="signup_form_wrapper">
@@ -55,13 +68,13 @@ const Signup = () => {
                     {/* 1 */}
                     <Fade in={activeStep === 0}>
                         <div className="stepper_1" style={{ display: activeStep === 0 ? 'block' : 'none' }}>
-                            <InputProps title="E-mail" type="Email" />
+                            <InputProps Change={(e) => setemail(e.target.value)} title="E-mail" type="Email" />
                             <div className="input_flex_signup">
-                                <InputProps title="First name" type="text" />
-                                <InputProps title="Last name" type="text" />
+                                <InputProps onChange={(e) => setname(e.target.value)} title="First name" type="text" />
+                                <InputProps onChange={(e) => setlastname(e.target.value)} title="Last name" type="text" />
                             </div>
-                            <InputProps title="Password" type="password" />
-                            <InputProps title="Confirm password" type="password" />
+                            <InputProps Change={(e) => setpassword(e.target.value)} title="Password" type="password" />
+                            <InputProps Change={(e) => setcpassword(e.target.value)} title="Confirm password" type="password" />
                             {/* Country & Number */}
                             <InputProps title="Phone Number" type="number" />
                             <div className="btn_next">
@@ -86,7 +99,7 @@ const Signup = () => {
 
                 </div>
             </section>
-         
+
         </>
     )
 };

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Link } from "react-router-dom"
 import "./ProfileOverView.css"
 import { FiEdit2 } from "react-icons/fi"
-
 import { MDBBadge } from "mdb-react-ui-kit"
 import { useSelector } from 'react-redux'
 

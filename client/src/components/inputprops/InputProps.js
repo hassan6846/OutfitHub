@@ -4,7 +4,10 @@ const InputProps = (props) => {
   return (
     <div style={{display:"flex",flexDirection:"column"}}>
     <p style={{marginBottom:"0.2rem",fontSize:"14px",marginTop:"0.2rem"}}>{props.title}</p>
-<MDBInput type={props.type}/>
+<MDBInput  
+
+onChange={props.onChange}
+type={props.type}/>
 
     </div>
   )
