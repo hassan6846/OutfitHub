@@ -2,7 +2,7 @@ import { React } from "react";
 
 
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes,  } from "react-router-dom";
 // components
 import Home from "./pages/user/Home/Home";
 import LoginPage from "./pages/user/Login/Login";
@@ -48,6 +48,7 @@ import { CookieConsent } from "react-cookie-consent"
 import Tags from "./pages/user/Tags/Tags";
 import Trending from "./pages/user/Trending/Trending";
 import NewArrival from "./pages/user/NewArrival/NewArrival";
+
 const Routing = () => {
 
   return (

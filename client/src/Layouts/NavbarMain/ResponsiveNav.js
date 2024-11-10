@@ -15,7 +15,8 @@ import { RiMenu3Line } from "react-icons/ri";
 import menu3 from "react-useanimations/lib/menu3";
 import { LuSearch } from "react-icons/lu";
 // Constants
-import { CompanyLogo, defaultUserImg, ALT } from "../../helpers/GlobalVariables";
+
+import { CompanyLogo, ALT } from "../../helpers/GlobalVariables";
 // CSS imported
 import "./ResponsiveNav.css";
 //
@@ -40,6 +41,8 @@ import { ENDPOINT } from "../../api/Endpoint";
 //main component...
 
 const ResponsiveNav = () => {
+  const avatar = useSelector((state) => state.user.avatar);
+
   const signOut = useSignOut()
   const cart = useSelector((state) => state.cart);
   const [showResults, SetshowResults] = useState(false);
@@ -276,7 +279,7 @@ const ResponsiveNav = () => {
                   className="nav_img"
                   height="40px"
                   alt="alt"
-                  src={defaultUserImg}
+                  src={avatar}
                 />{" "}
                 <BsChevronDown className="profile_icon_dropdown" />
                 <div className="dropdown_results_nav">

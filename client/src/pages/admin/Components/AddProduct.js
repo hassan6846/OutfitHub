@@ -11,12 +11,14 @@ import IconButton from '@mui/material/IconButton';
 import { toast } from 'react-hot-toast'
 import { ENDPOINT } from '../../../api/Endpoint'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 
 
 
 
 const AddProduct = () => {
+  const id=useSelector((state)=>state.user.userid)
   const [images, setImages] = useState([]);
   const [description, setdescription] = useState("")
   const [title, settitle] = useState('')
@@ -91,7 +93,7 @@ const AddProduct = () => {
       const response = await axios.post(
         `${ENDPOINT}/admin/product/upload`,
         {
-          id:"",
+          id:id,
           title:title,
           brand:brand,
           img1:"",
