@@ -16,6 +16,7 @@ const UserSchema = new mongoose.Schema({
     validate: [validator.isEmail, "Please Enter a valid Email"],
   },
   phone: {
+    unique: true,
     type: String,
     required: [true, "Kindly Enter the Contact Number"],
 
@@ -61,7 +62,7 @@ const UserSchema = new mongoose.Schema({
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
-  lastPasswordUpdate: Date,
+ 
 },{timestamps:true});
 
 //HASHING PASSWORD BEFORE SAFE METHOD..
