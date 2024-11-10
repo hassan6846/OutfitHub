@@ -1,30 +1,72 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid'); // Importing the uuid package
 
-const OrderSchema=new mongoose.Schema({
-    OrderedAt:{
-        default:Date.now,
-        required:false,
+
+// Schema Model
+const OrderSchema = new mongoose.Schema({
+    OrderId: {
+        type: String,
+        default: () => uuidv4(), // Using uuid to generate a unique OrderId
     },
-    Total:{
-
+    shippingInfo: {
+        address: {
+            type: String,
+            required: true,
+        },
+        city: {
+            type: String,
+            default: "Lahore",
+        },
+        state: {
+            type: String,
+            default: "Punjab",
+        },
+        country: {
+            type: String,
+            default: "Pakistan",
+        },
+        pinCode: {
+            type: Number,
+            default: 54000,
+        },
+        phoneNo: {
+            type: Number,
+            required: true,
+        },
     },
-    Status:{
-
+    products: [{
+        product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+        quantity: { type: Number, required: true },
+        price: { type: Number, required: true }, // Could be SalePrice or RegularPrice
+    }],
+    orderedBy: {
+        type: String, // Assuming this is a reference to a user's ID
+        required: true,
     },
-    PaymentType:{
-
+    orderedAt: {
+        type: Date,
+        default: Date.now(),
     },
-    PaidOnline:{
-
+    orderStatus: {
+        type: String,
+        enum: ["Pending", "Shipped", "Delivered", "Cancelled"],
+        default: "Pending",
     },
- products:{
-    type:[Object]
- },
- orderedBy:{
-    type:mongoose.Types.ObjectId
+    PaymentMethod: {
+        type: String,
+        enum: ["CreditCard", "PayPal", "CashOnDelivery"],
+        required: true,
+    },
+    orderState: {
+        type: Boolean,
+        default: false, // false if shipped
+    },
+    TotalAmount: {
+        type: Number,
+        required: true,
+    }
+});
 
- },
- OrderDetails:{
-    //ref the address Schema if you want.. address book
- }
-})
+const Order = mongoose.model('Order', OrderSchema);
+
+module.exports = Order;
