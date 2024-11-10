@@ -1,7 +1,6 @@
-import { React, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Signup.css";
-
 import { MDBBtn } from "mdb-react-ui-kit";
 import InputProps from "../../../components/inputprops/InputProps";
 import { Stepper } from "@mui/material";
@@ -11,103 +10,110 @@ import Fade from "@mui/material/Fade";
 import toast from "react-hot-toast";
 import { ENDPOINT } from "../../../api/Endpoint";
 import axios from "axios";
-//ENDPOINT
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-    const steps = ['1. Enter Details', '2. Complete'] //state
-    const [activeStep, setActiveStep] = useState(0);
-    //States
-    const [name, setname] = useState("")
-    const [lastname, setlastname] = useState("")
-    const [email, setemail] = useState("")
-    const [password, setpassword] = useState('')
-    const [cpassword, setcpassword] = useState('')
-    //Button Disable
-    const [buttonActive, setbuttonActive] = useState(true)
+    const navigate = useNavigate();
 
+    const steps = ['1. Enter Details', '2. Complete'];
+    const [activeStep, setActiveStep] = useState(0);
+
+    const [name, setName] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
+    const [cpassword, setCpassword] = useState("");
+    const [buttonActive, setButtonActive] = useState(true);
+
+    // useEffect for validation and enabling/disabling the button
+    useEffect(() => {
+        const isFormValid = name && lastname && validateEmail(email) && phone && validatePassword(password) && password === cpassword;
+        setButtonActive(!isFormValid); // disable if form is not valid
+    }, [name, lastname, email, phone, password, cpassword]);
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
 
-    //PASSWORD...
     const validatePassword = (password) => {
         return password.length >= 7;
-      };
+    };
 
-    // Validation EMAIL
     const validateEmail = (email) => {
-        // Basic email validation
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return regex.test(email);
     };
-    //  Handle SUBMIT.....
+
     const HandleSubmit = async (e) => {
         e.preventDefault();
+        
+        const username = `${name}${lastname}`;
+
         try {
-            const response=await axios.post
+            const response = await axios.post(`${ENDPOINT}/register`, {
+                username,
+                email,
+                phone,
+                password,
+            });
+            if (response.data.success) {
+                toast.success("Account created successfully");
+                handleNext();
+                navigate("/login")
+            }
         } catch (error) {
-             console.log(error)
+            console.error(error);
+            toast.error(error.response.data.message);
         }
-    }
+    };
+
     return (
-        <>
+        <section className="signup_container">
+            <div className="signup_form_wrapper">
+                <h1 className="signup_head">Sign up for an account</h1>
+                <p className="para_signup">
+                    No credit card required. Already have an account? <Link to="/login" className="Link_login">Log in.</Link>
+                </p>
 
-            <section className="signup_container">
+                <Stepper activeStep={activeStep} alternativeLabel>
+                    {steps.map((label) => (
+                        <Step key={label}>
+                            <StepLabel>{label}</StepLabel>
+                        </Step>
+                    ))}
+                </Stepper>
 
-                <div className="signup_form_wrapper">
-                    <h1 className="signup_head">Sign up for an account</h1>
-                    <p className="para_signup" >No credit card required. Already have an account?<Link to="/login" className="Link_login">Log in.</Link></p>
-
-                    {/* Stepper will be here */}
-                    <Stepper activeStep={activeStep} alternativeLabel>
-                        {steps.map((label, index) => {
-                            const stepProps = {};
-                            const labelProps = {};
-                            return (
-                                <Step key={label} {...stepProps}>
-                                    <StepLabel {...labelProps}>{label}</StepLabel>
-                                </Step>
-                            );
-                        })}
-                    </Stepper>
-                    {/* 1 */}
-                    <Fade in={activeStep === 0}>
-                        <div className="stepper_1" style={{ display: activeStep === 0 ? 'block' : 'none' }}>
-                            <InputProps Change={(e) => setemail(e.target.value)} title="E-mail" type="Email" />
-                            <div className="input_flex_signup">
-                                <InputProps onChange={(e) => setname(e.target.value)} title="First name" type="text" />
-                                <InputProps onChange={(e) => setlastname(e.target.value)} title="Last name" type="text" />
-                            </div>
-                            <InputProps Change={(e) => setpassword(e.target.value)} title="Password" type="password" />
-                            <InputProps Change={(e) => setcpassword(e.target.value)} title="Confirm password" type="password" />
-                            {/* Country & Number */}
-                            <InputProps title="Phone Number" type="number" />
-                            <div className="btn_next">
-                                <MDBBtn disabled={buttonActive} onClick={handleNext} style={{ backgroundColor: "#4BB497" }} className="next_action">Create my account</MDBBtn>
-                            </div>
+                <Fade in={activeStep === 0}>
+                    <div className="stepper_1" style={{ display: activeStep === 0 ? 'block' : 'none' }}>
+                        <InputProps onChange={(e) => setEmail(e.target.value)} title="E-mail" type="email" />
+                        <div className="input_flex_signup">
+                            <InputProps onChange={(e) => setName(e.target.value)} title="First name" type="text" />
+                            <InputProps onChange={(e) => setLastname(e.target.value)} title="Last name" type="text" />
                         </div>
-                    </Fade>
-                    {/* 2 */}
+                        <InputProps onChange={(e) => setPassword(e.target.value)} title="Password" type="password" />
+                        <InputProps onChange={(e) => setCpassword(e.target.value)} title="Confirm password" type="password" />
+                        <InputProps onChange={(e) => setPhone(e.target.value)} title="Phone Number" type="number" />
+                        <div className="btn_next">
+                            <MDBBtn disabled={buttonActive} onClick={HandleSubmit} style={{ backgroundColor: "#4BB497" }} className="next_action">
+                                Create my account
+                            </MDBBtn>
+                        </div>
+                    </div>
+                </Fade>
 
-                    {/* 3 */}
-
-
-                    {/* optional if The Steps Ends Then Show The Lottie Files. */}
-                    {activeStep === steps.length ? (
-                        <>
-                            <p style={{ marginBottom: "0" }} className="email_head">Account created sucessfully</p>
-                            <p className="para_signup" >You'll be redirected in few Seconds.</p>
-                            <div className="animation_frame"><iframe title="animtion" src="https://lottie.host/embed/d47526ca-363e-4b36-aca8-d9f655b05ae8/p7PkPstxRx.json"></iframe></div>
-                        </>
-                    ) : null
-                    }
-
-                </div>
-            </section>
-
-        </>
-    )
+                {activeStep === steps.length && (
+                    <>
+                        <p style={{ marginBottom: "0" }} className="email_head">Account created successfully</p>
+                        <p className="para_signup">You'll be redirected in a few seconds.</p>
+                        <div className="animation_frame">
+                            <iframe title="animation" src="https://lottie.host/embed/d47526ca-363e-4b36-aca8-d9f655b05ae8/p7PkPstxRx.json"></iframe>
+                        </div>
+                    </>
+                )}
+            </div>
+        </section>
+    );
 };
 
 export default Signup;
