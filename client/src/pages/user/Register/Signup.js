@@ -10,6 +10,7 @@ import StepLabel from "@mui/material/StepLabel";
 import Fade from "@mui/material/Fade";
 import toast from "react-hot-toast";
 import { ENDPOINT } from "../../../api/Endpoint";
+import axios from "axios";
 //ENDPOINT
 
 const Signup = () => {
@@ -43,6 +44,11 @@ const Signup = () => {
     //  Handle SUBMIT.....
     const HandleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const response=await axios.post
+        } catch (error) {
+             console.log(error)
+        }
     }
     return (
         <>
