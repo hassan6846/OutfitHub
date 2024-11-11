@@ -36,6 +36,7 @@
     "socket.io": "^4.8.1",
     "streamifier": "^0.1.1",
     "stripe": "^17.2.1",
+    "uuid": "^11.0.2",
     "validator": "^13.9.0"
   },
   "devDependencies": {
