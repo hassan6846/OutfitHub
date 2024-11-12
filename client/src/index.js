@@ -9,7 +9,9 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 // Redux Store 
 import { Provider } from 'react-redux';
-import store from './store/Store'
+import {store,persistor} from './store/Store'
+import { PersistGate } from 'redux-persist/integration/react';
+
 //stripe
 
 
@@ -17,7 +19,9 @@ const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
 
     <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+            <App />
+        </PersistGate>
     </Provider>
 );
 reportWebVitals();

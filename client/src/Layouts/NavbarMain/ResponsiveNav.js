@@ -273,7 +273,7 @@ const ResponsiveNav = () => {
 
             {/* use terinary operators instead */}
             <div className="profile_Dropdown_nav">
-              <Link  to={isAuthenticated ? "/user" : "/signup"}  className="User_profile_dropdown">
+              <Link  className="User_profile_dropdown">
                 {" "}
                 <img
                   className="nav_img"
