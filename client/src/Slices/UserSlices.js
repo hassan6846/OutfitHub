@@ -12,6 +12,7 @@ const UserSlice = createSlice({
         avatar: "",
         joinedin: "",
         isAuthenticated:false,
+
     },
     reducers: {
         setId: (state, action) => {
@@ -40,9 +41,10 @@ const UserSlice = createSlice({
         },
         setAuth:(state,action)=>{
             state.isAuthenticated=action.payload
-        }
+        },
+
     }
 });
 
-export const { setId, setName, SETMAIL, setRole, setGender, setAvatar, setJoinedIn, setPHONE ,setAuth} = UserSlice.actions;
+export const { setId, setName, SETMAIL,  setGender, setAvatar, setJoinedIn, setPHONE ,setAuth,setRole} = UserSlice.actions;
 export default UserSlice.reducer;

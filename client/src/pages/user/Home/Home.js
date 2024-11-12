@@ -11,6 +11,7 @@ import LandingCarsoul from '../../../components/LandingCarsoul/LandingCarsoul'
 import Catalogue from '../../../components/Catalogue/Catalogue'
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading'
 import CategoryBar from '../../../components/CategoryBar/CategoryBar'
+
 // ////////////////
 
 const Home = () => {

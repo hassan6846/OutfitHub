@@ -1,5 +1,5 @@
 // Modules or Utils
-import React, { useEffect } from 'react'
+
 import { Link } from 'react-router-dom'
 import { BiLeftArrowAlt } from "react-icons/bi"
 // components

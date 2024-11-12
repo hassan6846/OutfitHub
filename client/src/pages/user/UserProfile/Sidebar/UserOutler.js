@@ -7,7 +7,7 @@ import { TbHeartPlus } from "react-icons/tb"
 
 
 import { LuContact } from "react-icons/lu"
-import { GiGrowth } from "react-icons/gi"
+
 import { defaultUserImg } from '../../../../helpers/GlobalVariables'
 // css
 import "./UserOutlet.css"

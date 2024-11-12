@@ -98,7 +98,7 @@ const Routing = () => {
        
           </Route>
           {/* ADMIN PRIVATE ROUTE */}
-          <Route path="/admin" element={<ProtectedRoute isAdminRequired={true}> <AdminOutlet /></ProtectedRoute>}>
+          <Route path="/admin" element={<ProtectedRoute requiredRole="admin" > <AdminOutlet /></ProtectedRoute>}>
             <Route path="/admin" element={<AdminOverview />} />
             <Route path="logout" element={<Logout />} />
             <Route path="orders" element={<Orders />} />

@@ -12,11 +12,12 @@ import { useNavigate } from "react-router-dom";
 
 //state
 import { setId ,setName,setAvatar,SETMAIL ,setGender,setJoinedIn,setRole,setPHONE, setAuth} from "../../../Slices/UserSlices.js";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 const Login = () => {
   const navigate = useNavigate();
-
+   // Optional: Clear session data only when required
+   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const dispatch=useDispatch()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -120,7 +121,11 @@ const Login = () => {
   };
 
   useEffect(() => {
-    // Optional: Clear session data only when required
+ 
+    if(isAuthenticated===true){
+      navigate('/')
+    }
+    
     sessionStorage.clear();
   }, []);
 
