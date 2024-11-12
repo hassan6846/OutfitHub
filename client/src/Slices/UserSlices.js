@@ -11,6 +11,7 @@ const UserSlice = createSlice({
         phone: "",
         avatar: "",
         joinedin: "",
+        isAuthenticated:false,
     },
     reducers: {
         setId: (state, action) => {
@@ -36,9 +37,12 @@ const UserSlice = createSlice({
         },
         setPHONE: (state, action) => {
             state.phone = action.payload
+        },
+        setAuth:(state,action)=>{
+            state.isAuthenticated=action.payload
         }
     }
 });
 
-export const { setId, setName, SETMAIL, setRole, setGender, setAvatar, setJoinedIn, setPHONE } = UserSlice.actions;
+export const { setId, setName, SETMAIL, setRole, setGender, setAvatar, setJoinedIn, setPHONE ,setAuth} = UserSlice.actions;
 export default UserSlice.reducer;

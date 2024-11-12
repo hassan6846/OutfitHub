@@ -48,6 +48,7 @@ import { CookieConsent } from "react-cookie-consent"
 import Tags from "./pages/user/Tags/Tags";
 import Trending from "./pages/user/Trending/Trending";
 import NewArrival from "./pages/user/NewArrival/NewArrival";
+import ProtectedRoute from "./components/Protected/ProductRoute";
 
 const Routing = () => {
 
@@ -86,7 +87,7 @@ const Routing = () => {
           {/* User Routes */}
      
           {/* Private Routes CANNOT BE VISITED Without LOGIN */}
-          <Route path="/user" element={<UserProfile />}>
+          <Route path="/user" element={<ProtectedRoute><UserProfile /></ProtectedRoute>}>
             <Route path="/user" element={<ProfileOverView />} />
             <Route path="order" element={<Order />} />
             <Route path="edit" element={<EditUserProfile />} />
@@ -97,7 +98,7 @@ const Routing = () => {
        
           </Route>
           {/* ADMIN PRIVATE ROUTE */}
-          <Route path="/admin" element={<AdminOutlet />}>
+          <Route path="/admin" element={<ProtectedRoute isAdminRequired={true}> <AdminOutlet /></ProtectedRoute>}>
             <Route path="/admin" element={<AdminOverview />} />
             <Route path="logout" element={<Logout />} />
             <Route path="orders" element={<Orders />} />

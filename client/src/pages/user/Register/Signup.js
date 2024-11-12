@@ -10,10 +10,10 @@ import Fade from "@mui/material/Fade";
 import toast from "react-hot-toast";
 import { ENDPOINT } from "../../../api/Endpoint";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 
 const Signup = () => {
-    const navigate = useNavigate();
+
 
     const steps = ['1. Enter Details', '2. Complete'];
     const [activeStep, setActiveStep] = useState(0);
@@ -60,8 +60,9 @@ const Signup = () => {
             if (response.data.success) {
                 toast.success("Account created successfully");
                 handleNext();
-                navigate("/login")
+             
             }
+        
         } catch (error) {
             console.error(error);
             toast.error(error.response.data.message);

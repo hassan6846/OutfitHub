@@ -8,12 +8,15 @@ import "./Login.css";
 // components and Library.
 import Loginbtns from "../../../components/IconBtns/LoginPageBtns.js";
 import {ENDPOINT} from "../../../api/Endpoint.js"
+import { useNavigate } from "react-router-dom";
 
 //state
-import { setId ,setName,setAvatar,SETMAIL ,setGender,setJoinedIn,setRole,setPHONE} from "../../../Slices/UserSlices.js";
+import { setId ,setName,setAvatar,SETMAIL ,setGender,setJoinedIn,setRole,setPHONE, setAuth} from "../../../Slices/UserSlices.js";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const dispatch=useDispatch()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -94,15 +97,21 @@ const Login = () => {
       dispatch(setJoinedIn(response.data.user.createdAt));
       dispatch(setRole(response.data.user.role));
       dispatch(setPHONE(response.data.user.phone));
-      
+      dispatch(setAuth(true))
+      //Redirect
+     
+
       // Handle successful login
       toast.success("Successfully logged in");
+      navigate('/')
     } catch (error) {
       console.log("Error during login:", error);
       if (error.response) {
         console.log("Error response data:", error.response.data.message);
         toast.error( error.response.data.message)
+        dispatch(setAuth(false))
       } else {
+        dispatch(setAuth(false))
         console.log("Error message:", error.message);
       }
     } finally {

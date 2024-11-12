@@ -42,7 +42,7 @@ import { ENDPOINT } from "../../api/Endpoint";
 
 const ResponsiveNav = () => {
   const avatar = useSelector((state) => state.user.avatar);
-
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
   const signOut = useSignOut()
   const cart = useSelector((state) => state.cart);
   const [showResults, SetshowResults] = useState(false);
@@ -112,7 +112,7 @@ const ResponsiveNav = () => {
       fetchProduct()
     }
 
-  },[searchValue])
+  }, [searchValue])
 
   //////////////////
   return (
@@ -158,7 +158,7 @@ const ResponsiveNav = () => {
               <span style={{ position: "relative" }}>
                 <BsFillCartFill className="cart-icon" />
                 <span className="cart_length" style={{ position: "absolute" }}>
-                {cart.products.length}
+                  {cart.products.length}
                 </span>
               </span>
             </Link>
@@ -221,15 +221,15 @@ const ResponsiveNav = () => {
                     {product.map((item, index) => (
 
 
-                      <Link onClick={HandleCardClick} 
-                      key={index} 
-                      
-                      to={{
-                        pathname:`/shop/${Slug(item.name)}`,
-                      
-                      }} 
-                      state={item}
-                      className='dropdown_card_nav'>
+                      <Link onClick={HandleCardClick}
+                        key={index}
+
+                        to={{
+                          pathname: `/shop/${Slug(item.name)}`,
+
+                        }}
+                        state={item}
+                        className='dropdown_card_nav'>
                         {/* Title & Price */}
 
                         <div style={{ display: "flex", alignItems: "center" }}>
@@ -273,7 +273,7 @@ const ResponsiveNav = () => {
 
             {/* use terinary operators instead */}
             <div className="profile_Dropdown_nav">
-              <Link to="/user" className="User_profile_dropdown">
+              <Link  to={isAuthenticated ? "/user" : "/signup"}  className="User_profile_dropdown">
                 {" "}
                 <img
                   className="nav_img"
@@ -283,30 +283,40 @@ const ResponsiveNav = () => {
                 />{" "}
                 <BsChevronDown className="profile_icon_dropdown" />
                 <div className="dropdown_results_nav">
-                  <Link to="/signup" className="dropdown_items_nav">
-                    <AiOutlineUserAdd />
-                    LOGIN/SIGNUP
-                  </Link>
 
-                  {/* if he is logged in then */}
-                  <Link to="/user" className="dropdown_items_nav">
-                    <FaUserCircle />
-                    Your Profile
-                  </Link>
-                  <Link to="/cart" className="dropdown_items_nav">
-                    <AiOutlineShoppingCart /> Cart
-                  </Link>
-                  <Link to="/user/wishlists" className="dropdown_items_nav">
-                    <AiOutlineHeart /> Wishlists{" "}
-                  </Link>
-                  <Link to="/user/messages" className="dropdown_items_nav">
-                    <AiOutlineMessage />
-                    Messages
-                  </Link>
-                  <Link onClick={() => signOut()} className="dropdown_items_nav">
-                    <TbLogout2 />
-                    LOGOUT
-                  </Link>
+
+                  {/* Show login/signup link if user is not authenticated */}
+                  {!isAuthenticated && (
+                    <Link to="/signup" className="dropdown_items_nav">
+                      <AiOutlineUserAdd />
+                      LOGIN/SIGNUP
+                    </Link>
+                  )}
+
+                  {/* Show profile, cart, and other links if user is authenticated */}
+                  {isAuthenticated && (
+                    <div >
+                      <Link to="/user" className="dropdown_items_nav">
+                        <FaUserCircle />
+                        Your Profile
+                      </Link>
+                      <Link to="/cart" className="dropdown_items_nav">
+                        <AiOutlineShoppingCart /> Cart
+                      </Link>
+                      <Link to="/user/wishlists" className="dropdown_items_nav">
+                        <AiOutlineHeart /> Wishlists
+                      </Link>
+                      <Link to="/user/messages" className="dropdown_items_nav">
+                        <AiOutlineMessage />
+                        Messages
+                      </Link>
+                      <Link onClick={() => signOut()} className="dropdown_items_nav">
+                        <TbLogout2 />
+                        LOGOUT
+                      </Link>
+                    </div>
+                  )}
+
                   <Link to="/faqs" className="dropdown_items_nav">
                     <FaQuestion />
                     FAQ'S
