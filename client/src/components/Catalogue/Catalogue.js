@@ -1,5 +1,5 @@
 // imports css
-import 'react-loading-skeleton/dist/skeleton.css'
+
 import "./Catalogue.css";
 import { Link } from 'react-router-dom'
 
