@@ -21,30 +21,29 @@ const Login = async (req, res, next) => {
             });
         }
 
-        // Log the found user and password
-        console.log("Found user:", finduser);
-        console.log("Password from request:", password);
-        console.log("Hashed password in DB:", finduser.password);
-
         // Compare password
         const isCorrectPassword = await bcrypt.compare(password, finduser.password);
         if (!isCorrectPassword) {
             return res.status(401).json({
                 success: false,
-                message: "Invalid password(This is test only ill use invalid Credentials for better security)",
+                message: "Invalid credentials",
             });
         }
 
         // If password is correct, send token
-        const token = Jwt.sign({ id: finduser._id }, process.env.JWT_SECRET, {
-            expiresIn: "1h", // Adjust as necessary
-        });
-        res.cookie(token, "token")
+        const token = Jwt.sign(
+            { id: finduser._id, role: finduser.role }, // Include role array in the token
+            process.env.JWT_SECRET,
+            { expiresIn: "1h" }
+        );
+
+        // Set token in HttpOnly cookie for security
+        res.cookie("token", token, { httpOnly: true, secure: true, maxAge: 3600000 });
+
         return res.status(200).json({
             success: true,
             message: "Login successful.",
-            token: token,
-            user: finduser, // Only return necessary user data
+            user: { id: finduser._id, role: finduser.role },
         });
     } catch (error) {
         console.error("Login error:", error);
