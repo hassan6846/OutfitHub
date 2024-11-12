@@ -1,21 +1,23 @@
-const User = require("../../models/UserModel");
-const Jwt = require("jsonwebtoken")
-
+const Jwt = require("jsonwebtoken");
 
 const Logout = async (req, res, next) => {
-    try {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict'
+    });
 
-        res.status(200).json({
-            token: null,
-            sucess: true,
-            message: "Logout sucessfully"
-        }).clearCookie("token");
-    } catch (error) {
-        console.error(error);
-        return res
-            .status(500)
-            .json({ success: false, message: "Internal server error" });
-    }
+    return res.status(200).json({
+      success: true,
+      message: "Logged out successfully"
+    });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error" });
+  }
+};
 
-}
-module.exports = Logout
+module.exports = Logout;
