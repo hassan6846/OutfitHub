@@ -20,7 +20,9 @@ app.use(bodyParser.json(
 app.use(bodyParser.urlencoded({ extended: true ,limit:'50mb' }));
 app.use(cookieParser());
 app.use(cors({
-  origin:true
+  methods: "GET,POST,PUT,DELETE",
+  origin: "http://localhost:3000", // Frontend URL
+  credentials: true, // Allow sending and receiving cookies
 }));
 app.use(express.json({limit: '50mb'}));
 

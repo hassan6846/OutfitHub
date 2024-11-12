@@ -75,7 +75,13 @@ const Login = () => {
       const response = await axios.post(`${ENDPOINT}/login`, {
         email,
         password,
-      });
+      
+      }
+    ,
+    {
+      withCredentials:true
+    }
+    );
 
       // Log the response and its data
     

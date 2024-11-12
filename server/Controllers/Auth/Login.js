@@ -43,7 +43,7 @@ const Login = async (req, res, next) => {
         return res.status(200).json({
             success: true,
             message: "Login successful.",
-            user: { id: finduser._id, role: finduser.role },
+            user: finduser,
         });
     } catch (error) {
         console.error("Login error:", error);
