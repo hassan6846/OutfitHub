@@ -106,6 +106,9 @@ const CreateProduct = async (req, res) => {
             product: newProduct
         });
     } catch (error) {
+        if (error.code === 11000) {
+            res.status(400).json({ success: false, message: "Product name must be unique" });
+          } 
         console.error("Error creating product:", error);
         return res.status(500).json({
             success: false,

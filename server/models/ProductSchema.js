@@ -4,7 +4,9 @@ const ProductSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please Enter product Name"],
-    trim: true
+    trim: true,
+    unique: true,  
+  
   },
   brand: {
     type: String,
@@ -37,7 +39,7 @@ const ProductSchema = new mongoose.Schema({
   likes: {
     type: Number,
     required: false,
-    default:0
+    default: 0
   },
 
   postedAt: {
@@ -54,40 +56,42 @@ const ProductSchema = new mongoose.Schema({
     required: true
   },
   RegularPrice: {
-    type:String,
-    required:true,
+    type: String,
+    required: true,
   },
-  Quantitiy:{
-    type:String,
-    required:true,
+  Quantitiy: {
+    type: String,
+    required: true,
   },
   SalePrice: {
-    type:String,
-    required:true,
+    type: String,
+    required: true,
   },
   Unit: {
-    type:String,
-    default:"piece",
+    type: String,
+    default: "piece",
 
   },
   kgWeight: {
-    default:"undefined",
+    default: "undefined",
     type: String,
   },
   Dimensions: {
-    default:"0x0x0",
+    default: "0x0x0",
     type: String
   },
   Status: {
-    type:String,
-    default:"instock",
-  
+    type: String,
+    default: "instock",
+
   },
   Promotion: {
-    type:String,
-    default:"newarrival",
+    type: String,
+    default: "newarrival",
 
   }
 })
+ProductSchema.index({ name: 1 }, { unique: true });
+
 const Product = mongoose.model("Product", ProductSchema)
 module.exports = Product
