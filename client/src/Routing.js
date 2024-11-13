@@ -37,7 +37,6 @@ import AllUsers from "./pages/admin/Components/AllUsers";
 import Messages from "./pages/admin/Components/Messages";
 import Logout from "./pages/admin/Components/logout"
 // Auth
-import { AuthProvider } from "react-auth-kit"
 import ResponsiveNav from './Layouts/NavbarMain/ResponsiveNav'
 import Footer from "./Layouts/footer/Footer";
 import { Toaster } from "react-hot-toast"
@@ -51,75 +50,70 @@ import ProtectedRoute from "./components/Protected/ProductRoute";
 const Routing = () => {
 
   return (
-    <AuthProvider authType={'cookie'}
-      authName={'_auth'}
-      cookieDomain={window.location.hostname}
-      cookieSecure={false}
+
+
+      <><Router>
+      <ResponsiveNav />
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Products />} />
+        <Route path="/shop/:title" element={<Singleproduct />} />
+
+
+        <Route path="/shop/tags/:tag" element={<Tags />} />
+        <Route path="/shop/promotions/trendings" element={<Trending />} />
+        <Route path="/shop/promotions/new-arrival" element={<NewArrival />} />
+        <Route path="/faqs" element={<FaqPage />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        {/* don't be visited after user logged in */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/password/forgot" element={<ForgotPassword />} />
+        {/* sessions can also not be visited until you make request*/}
+        <Route path="/password/reset/:id" element={<ResetPassword />} />
+        <Route path="/password/reset/*" element={<ErrorPage />} />
+        {/* 404 page */}
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/404" element={<ErrorPage />} />
+        {/* User Routes */}
+
+        {/* Private Routes CANNOT BE VISITED Without LOGIN */}
+        <Route path="/user" element={<ProtectedRoute><UserProfile /></ProtectedRoute>}>
+          <Route path="/user" element={<ProfileOverView />} />
+          <Route path="order" element={<Order />} />
+          <Route path="edit" element={<EditUserProfile />} />
+          <Route path="address" element={<UserAdressBook />} />
+          <Route path="address/new" element={<AddNewAdress />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="wishlists" element={<Wishlists />} />
+
+        </Route>
+        {/* ADMIN PRIVATE ROUTE */}
+        <Route path="/admin" element={<ProtectedRoute requiredRole="admin"> <AdminOutlet /></ProtectedRoute>}>
+
+          <Route path="logout" element={<Logout />} />
+          <Route path="orders" element={<Orders />} />
+
+          <Route path="products" element={<AllProducts />} />
+          <Route path="products/add" element={<AddProduct />} />
+          <Route path="users" element={<AllUsers />} />
+          <Route path="messages" element={<Messages />} />
+
+        </Route>
+      </Routes>
+      <Toaster />
+      <Footer />
+    </Router><CookieConsent
+
+
+      style={{ right: "5px" }}
     >
-
-      <Router>
-        <ResponsiveNav />
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Products />} />
-          <Route path="/shop/:title" element={<Singleproduct />} />
-
-
-          <Route path="/shop/tags/:tag" element={<Tags/>}/> 
-          <Route path="/shop/promotions/trendings" element={<Trending/>}/>
-          <Route path="/shop/promotions/new-arrival" element={<NewArrival/>}/>
-          <Route path="/faqs" element={<FaqPage />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout/>}/>
-          {/* don't be visited after user logged in */}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/password/forgot" element={<ForgotPassword />} />
-          {/* sessions can also not be visited until you make request*/}
-          <Route path="/password/reset/:id" element={<ResetPassword />} />
-          <Route path="/password/reset/*" element={<ErrorPage />} />
-          {/* 404 page */}
-          <Route path="*" element={<ErrorPage />} />
-          <Route path="/404" element={<ErrorPage />} />
-          {/* User Routes */}
-     
-          {/* Private Routes CANNOT BE VISITED Without LOGIN */}
-          <Route path="/user" element={<ProtectedRoute><UserProfile /></ProtectedRoute>}>
-            <Route path="/user" element={<ProfileOverView />} />
-            <Route path="order" element={<Order />} />
-            <Route path="edit" element={<EditUserProfile />} />
-            <Route path="address" element={<UserAdressBook />} />
-            <Route path="address/new" element={<AddNewAdress />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="wishlists" element={<Wishlists />} />
-       
-          </Route>
-          {/* ADMIN PRIVATE ROUTE */}
-          <Route path="/admin" element={<ProtectedRoute requiredRole="admin" > <AdminOutlet /></ProtectedRoute>}>
-     
-            <Route path="logout" element={<Logout />} />
-            <Route path="orders" element={<Orders />} />
-
-            <Route path="products" element={<AllProducts />} />
-            <Route path="products/add" element={<AddProduct />} />
-            <Route path="users" element={<AllUsers />} />
-            <Route path="messages" element={<Messages />} />
-
-          </Route>
-        </Routes>
-        <Toaster />
-        <Footer />
-      </Router>
-      <CookieConsent
-
-
-        style={{ right: "5px" }}
-      >
         This website uses cookies to ensure you get best experience at out webiste{" "}
         <span style={{ fontSize: "10px", textDecoration: "underline", marginLeft: "0.3rem", color: "#4BB497", fontWeight: "bold", cursor: "pointer" }}>learn more about privacy policiy.</span>
-      </CookieConsent>
-    </AuthProvider>
+      </CookieConsent></>
+
   );
 };
 
