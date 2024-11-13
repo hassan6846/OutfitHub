@@ -14,6 +14,7 @@ const ProductContainer = () => {
 
   useEffect(() => {
     fetchProducts();
+    // eslint-disable-next-line 
   },[page,products]);
 
   const fetchProducts = async () => {

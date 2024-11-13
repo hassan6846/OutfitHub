@@ -105,10 +105,11 @@ const CreateProduct = async (req, res) => {
             msg: "Product created successfully",
             product: newProduct
         });
-    } catch (error) {
+    } catch (error) {     
+        
         if (error.code === 11000) {
-            res.status(400).json({ success: false, message: "Product name must be unique" });
-          } 
+        res.status(400).json({ success: false, message: "Product name must be unique" });
+      } 
         console.error("Error creating product:", error);
         return res.status(500).json({
             success: false,

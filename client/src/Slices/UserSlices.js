@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { defaultUserImg } from "../helpers/GlobalVariables";
 
 const UserSlice = createSlice({
     name: 'user',
@@ -9,7 +10,7 @@ const UserSlice = createSlice({
         role: [],
         gender: "",
         phone: "",
-        avatar: "",
+        avatar: defaultUserImg,
         joinedin: "",
         isAuthenticated:false,
 
@@ -42,9 +43,19 @@ const UserSlice = createSlice({
         setAuth:(state,action)=>{
             state.isAuthenticated=action.payload
         },
-
+        ClearAll: (state) => {
+            state.isAuthenticated = false;
+            state.avatar = defaultUserImg;
+            state.joinedin = "";
+            state.role = [];
+            state.phone = "";
+            state.email = "";
+            state.gender = "";
+            state.userid = "";
+            state.name = "";
+        }
     }
 });
 
-export const { setId, setName, SETMAIL,  setGender, setAvatar, setJoinedIn, setPHONE ,setAuth,setRole} = UserSlice.actions;
+export const { setId, setName, SETMAIL,  setGender, setAvatar, setJoinedIn, setPHONE ,setAuth,setRole,ClearAll} = UserSlice.actions;
 export default UserSlice.reducer;

@@ -2,7 +2,7 @@
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import UseAnimation from "react-useanimations";
-import { useSignOut } from "react-auth-kit"
+
 import axios from "axios";
 // icons
 import { FiSearch } from "react-icons/fi";
@@ -14,45 +14,34 @@ import { FaQuestion } from "react-icons/fa6";
 import { RiMenu3Line } from "react-icons/ri";
 import menu3 from "react-useanimations/lib/menu3";
 import { LuSearch } from "react-icons/lu";
-// Constants
-
 import { CompanyLogo, ALT } from "../../helpers/GlobalVariables";
-// CSS imported
 import "./ResponsiveNav.css";
-//
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slug from "../../helpers/Slugify";
-// import { useQuery } from "@tanstack/react-query";
-//spinner
 import Alertbar from "../../components/Alert/Alert";
-// Main NavComponent.
-//clickAway
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import TextField from "@mui/material/TextField";
-
 import { useSelector } from "react-redux"
 import { ENDPOINT } from "../../api/Endpoint";
-//
+import Logout from "../../api/Logout";
 
 
 
 
-//main component...
+
 
 const ResponsiveNav = () => {
   const avatar = useSelector((state) => state.user.avatar);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
-  const signOut = useSignOut()
   const cart = useSelector((state) => state.cart);
   const [showResults, SetshowResults] = useState(false);
   const [searchValue, setSearchValue] = useState("")
   const [isActive, setIsActive] = useState(true);
-  // message for start searching
   const [startSearch, SetstartSearch] = useState(false)
   const [isHovered, setIsHovered] = useState(20);
   const [product, setproduct] = useState([])
-  //Handle Click input (show)
+
   const handleInputClick = () => {
     SetstartSearch(true)
 
@@ -92,9 +81,6 @@ const ResponsiveNav = () => {
   const HandleCardClick = () => {
     SetshowResults(false)
   }
-
-
-  ///useEffect api Fetch
   useEffect(() => {
 
     // main
@@ -111,7 +97,7 @@ const ResponsiveNav = () => {
 
       fetchProduct()
     }
-
+// eslint-disable-next-line
   }, [searchValue])
 
   //////////////////
@@ -310,7 +296,7 @@ const ResponsiveNav = () => {
                         <AiOutlineMessage />
                         Messages
                       </Link>
-                      <Link onClick={() => signOut()} className="dropdown_items_nav">
+                      <Link onClick={() => Logout()} className="dropdown_items_nav">
                         <TbLogout2 />
                         LOGOUT
                       </Link>

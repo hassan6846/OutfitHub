@@ -7,15 +7,22 @@ const GetUsers = require('../Controllers/Users/GetLatestUser')
 const CreateProduct = require('../Controllers/Product/CreateProduct')
 const AllProducts = require('../Controllers/Product/GetAll')
 const DeleteProduct = require('../Controllers/Product/DeleteProduct')
-
-
+const CountProduct = require('../Controllers/Stats/CountProduct')
+const { getLast30DaysCreditUsage } = require('../Controllers/Stats/CreditUsage')
+const  totalUploads  = require('../Controllers/Stats/TotalUploads')
 //middlewares
 
 const { isAuthenticated, isAuthorized } = require('../middlewares/Auth')
+
+
+
 //routes
-router.route('/admin/user-count').get(isAuthenticated, isAuthorized("admin"), CountUser);
-router.route('/admin/get-users').get(isAuthenticated, isAuthorized("admin"), GetUsers)
-router.route('/admin/product/upload').post(isAuthenticated, isAuthorized("admin"), CreateProduct)
-router.route('/admin/product/all').get(isAuthenticated, isAuthorized("admin"), AllProducts)//get all products
-router.route('/admin/product/delete/:id').post(isAuthenticated, isAuthorized("admin"), DeleteProduct)
+router.route('/admin/user-count').get(CountUser);
+router.route('/admin/product-count').get(CountProduct)
+router.route('/admin/cloduinary/usage').get(getLast30DaysCreditUsage)
+router.route('/admin/get-users').get( GetUsers)
+router.route('/admin/product/upload').post(CreateProduct)
+router.route('/admin/product/all').get( AllProducts)//get all products
+router.route('/admin/product/delete/:id').post( DeleteProduct)
+router.route('/admin/cloudinary/total-uploads').get(totalUploads)
 module.exports = router

@@ -1,9 +1,9 @@
 import { React, useState } from 'react'
 import { Link } from "react-router-dom"
 import { BiUpload, BiLogOutCircle, } from "react-icons/bi"
-import { BsBox2, BsFillCartFill,BsFillMapFill} from "react-icons/bs"
+import { BsBox2, BsFillCartFill} from "react-icons/bs"
 import { BiSolidUser, BiSolidMessageSquareDetail } from "react-icons/bi"
-import { TfiStatsUp } from "react-icons/tfi"
+
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md"
 import { defaultUserImg } from '../../../helpers/GlobalVariables'
 import { AiOutlineAppstoreAdd } from "react-icons/ai"
@@ -32,11 +32,7 @@ const AdminSidebar = () => {
             {/* user Profile IMAGE */}
             <div className='aside_profiel_image_cover'> <img className={Aside_img} src={defaultUserImg} alt="profile_img" /> <BiUpload className='upload_icon_aside' />   </div>
             {/* IMAGE DIV ENDS HERE */}
-            <div className={aside_link_flex}>
-                <p className={Asideheading}>Overview</p>
-                <Link to="/admin" className='aside_links'> <TfiStatsUp className={aside_icon_state} /> <span className={Asidespan}>Overview</span> </Link>
-                <Link to="/admin/stats" className='aside_links'> <BsFillMapFill className={aside_icon_state} /> <span className={Asidespan}>Stats</span> </Link>
-            </div>
+
             {/* ORDER */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Products</p>
@@ -51,7 +47,7 @@ const AdminSidebar = () => {
             </div>
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Users</p>
-                <Link to="/admin/users" className='aside_links'> <BiSolidUser className={aside_icon_state} /> <span className={Asidespan}>All Users</span> </Link>
+                <Link to="/admin/users" className='aside_links'> <BiSolidUser className={aside_icon_state} /> <span className={Asidespan}>All Users /Stats</span> </Link>
             </div>
             {/* WISHLISTS */}
 

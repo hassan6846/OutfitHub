@@ -18,7 +18,7 @@ import { useSelector } from 'react-redux'
 
 
 const AddProduct = () => {
-  const id=useSelector((state)=>state.user.userid)
+  const id = useSelector((state) => state.user.userid)
   const [images, setImages] = useState([]);
   const [description, setdescription] = useState("")
   const [title, settitle] = useState('')
@@ -30,15 +30,18 @@ const AddProduct = () => {
   const [dimensions, setdimensions] = useState('')
   const [category, Setcategory] = useState('')
   const [subCategory, setsubCategory] = useState('')
+  // eslint-disable-next-line
   const [open, setOpen] = React.useState(false);
+  // eslint-disable-next-line
   const [message, setMessage] = useState('');
+
   const [quantity, setQuantity] = useState('')
   const [promotion, setpromotion] = useState('')
   const [status, setStatus] = useState('')
   //selectables
   const [unit, setUnit] = useState('')
-    //loadinggg
-    const [loading,isloading]=useState(false)
+  // eslint-disable-next-line
+  const [loading, isloading] = useState(false)
   //HandleFileChange...
   // HandleFileChange with base64 conversion
   const HandleFileChange = async (e) => {
@@ -51,14 +54,14 @@ const AddProduct = () => {
         position: "bottom-right"
       })
 
-    } 
-    if ( files.length > 4 ) {
+    }
+    if (files.length > 4) {
 
       toast.error("Current System only Support 2 images ", {
         position: "bottom-right"
       })
     }
-    
+
 
     // Convert each file to base64
     const newImages = await Promise.all(
@@ -93,22 +96,22 @@ const AddProduct = () => {
       const response = await axios.post(
         `${ENDPOINT}/admin/product/upload`,
         {
-          id:id,
-          title:title,
-          brand:brand,
-          img1:"",
-          img2:"",
-          description:description,
-          regprice:regularprice,
-          saleprice:saleprice,
-          category:category,
-          subcategory:subCategory,
-          promotion:promotion,
-          status:status,
-          qty:quantity,
-          unit:unit,
-          weight:weight,
-          dimensions:dimensions
+          id: id,
+          title: title,
+          brand: brand,
+          img1: "",
+          img2: "",
+          description: description,
+          regprice: regularprice,
+          saleprice: saleprice,
+          category: category,
+          subcategory: subCategory,
+          promotion: promotion,
+          status: status,
+          qty: quantity,
+          unit: unit,
+          weight: weight,
+          dimensions: dimensions
         }, // Add your request payload here if needed
         {
           headers: {

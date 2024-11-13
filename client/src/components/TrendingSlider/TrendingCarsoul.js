@@ -26,6 +26,7 @@ export default function TrendingCarsoul(props) {
       }
     }
     fetchProduct()
+    // eslint-disable-next-line 
   }, [])
   return (
     <>

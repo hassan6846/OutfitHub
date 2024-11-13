@@ -10,8 +10,10 @@
 .user_manegment_card {
   width: 33.33%;
   cursor: pointer;
+  border-radius: 5px;
   padding: 2rem;
-  min-height: 20rem;
+  height: auto;
+
   box-shadow: rgba(0, 0, 0, 0.13) 0px 3px 8px;
 }
 

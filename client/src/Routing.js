@@ -29,14 +29,12 @@ import Checkout from "./pages/user/Checkout/Checkout";
 
 // ADMIN
 import AdminOutlet from "./pages/admin/Sidebar/AdminOutlet";
-import AdminOverview from "./pages/admin/Components/Overview";
+
 import AddProduct from "./pages/admin/Components/AddProduct";
 import AllProducts from "./pages/admin/Components/AllProducts";
 import Orders from "./pages/admin/Components/Orders";
 import AllUsers from "./pages/admin/Components/AllUsers";
-
 import Messages from "./pages/admin/Components/Messages";
-import Stats from "./pages/admin/Components/Stats";
 import Logout from "./pages/admin/Components/logout"
 // Auth
 import { AuthProvider } from "react-auth-kit"
@@ -99,10 +97,10 @@ const Routing = () => {
           </Route>
           {/* ADMIN PRIVATE ROUTE */}
           <Route path="/admin" element={<ProtectedRoute requiredRole="admin" > <AdminOutlet /></ProtectedRoute>}>
-            <Route path="/admin" element={<AdminOverview />} />
+     
             <Route path="logout" element={<Logout />} />
             <Route path="orders" element={<Orders />} />
-            <Route path="stats" element={<Stats />} />
+
             <Route path="products" element={<AllProducts />} />
             <Route path="products/add" element={<AddProduct />} />
             <Route path="users" element={<AllUsers />} />
