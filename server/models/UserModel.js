@@ -77,5 +77,15 @@ UserSchema.pre("save", async function (next) {
 UserSchema.methods.comparePassword = async function (password) {
   return await bycrypt.compare(password, this.password);
 };
+
+UserSchema.method.getResetPasswordToken=function(){
+   const resetToken = crypto.randomBytes(20).toString("hex");
+   this.resetPasswordToken = crypto
+     .createHash("sha256")
+     .update(resetToken)
+     .digest("hex");
+   this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+   return resetToken;
+}
 const User = mongoose.model("User", UserSchema);
 module.exports = User;
