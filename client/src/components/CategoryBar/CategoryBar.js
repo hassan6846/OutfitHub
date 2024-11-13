@@ -106,7 +106,7 @@ const CategoryBar = () => {
         Data.map((data) => (
           <div style={{ display: "flex", flexDirection: "column", rowGap: "0.5rem", alignItems: "center", marginBottom: "10px" }}>
             <Link to="/shop">
-              <img alt={data.image} style={{ height: "220px", width: "220px", objectFit: 'cover' }} src={data.image} /></Link>
+              <img alt={data.image} style={{ height: "180px", width: "180px", objectFit: 'cover',borderRadius:"5px" }} src={data.image} /></Link>
             <p style={{ marginTop: 0, marginBottom: 0, fontWeight: "500", fontSize: "16px", color: "#131039" }}>{data.title}</p>
           </div>
         ))
