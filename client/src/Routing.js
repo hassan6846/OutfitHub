@@ -2,7 +2,7 @@ import { React } from "react";
 
 
 
-import { BrowserRouter as Router, Route, Routes,  } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
 // components
 import Home from "./pages/user/Home/Home";
 import LoginPage from "./pages/user/Login/Login";
@@ -52,7 +52,7 @@ const Routing = () => {
   return (
 
 
-      <><Router>
+    <><Router>
       <ResponsiveNav />
       <Routes>
         {/* Public Routes */}
@@ -105,7 +105,8 @@ const Routing = () => {
       </Routes>
       <Toaster />
       <Footer />
-    </Router><CookieConsent
+    </Router>
+    <CookieConsent
 
 
       style={{ right: "5px" }}
