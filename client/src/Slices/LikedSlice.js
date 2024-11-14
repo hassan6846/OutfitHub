@@ -19,6 +19,7 @@ const LikedSlice = createSlice({
         // If the item doesn't exist, add it to the products array
         state.products.push({ ...newItem });
       }
+      console.log(state)
     },
     // Optional: Remove item from liked products (you can implement it based on your requirements)
     removeFromLiked: (state, action) => {
