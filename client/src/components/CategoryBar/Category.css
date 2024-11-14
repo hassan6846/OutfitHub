@@ -3,6 +3,9 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 0px;
-    padding: 5rem;
+   
+    width:100%;
+    padding:55px;
     grid-row-gap: 0px;
+    margin-top: 2rem;
 } 
