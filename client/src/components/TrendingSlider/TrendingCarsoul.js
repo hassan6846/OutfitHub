@@ -12,8 +12,11 @@ import ProductCard from "../Card/ProductCard";
 import axios from "axios";
 import { ENDPOINT } from "../../api/Endpoint";
 import Slug from "../../helpers/Slugify";
+import { addtoLiked } from "../../Slices/LikedSlice";
+import { useDispatch } from "react-redux";
 
 export default function TrendingCarsoul(props) {
+  const dispatch=useDispatch()
   const [data, setdata] = useState([])
   useEffect(() => {
     const fetchProduct = async () => {
@@ -45,7 +48,7 @@ export default function TrendingCarsoul(props) {
                 // pathname:`/shop/${Slug(item.name)}`,
                 state={product}
                 tagoneLink={`/shop/tags/${Slug(product.tags[0] || '')}`}
-
+                iconClick={() => dispatch(addtoLiked(product))}
                 tagtwoLink={`/shop/tags/${Slug(product.tags[1] || '')}`}
                 tagthreelink={`/shop/tags/${Slug(product.tags[2] || '')}`}
                 tagone={product.tags[0] || ''}
