@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid'); // Importing the uuid package
 
-
 // Schema Model
 const OrderSchema = new mongoose.Schema({
     OrderId: {
@@ -24,6 +23,7 @@ const OrderSchema = new mongoose.Schema({
         country: {
             type: String,
             default: "Pakistan",
+            required: false,
         },
         pinCode: {
             type: Number,
@@ -40,8 +40,9 @@ const OrderSchema = new mongoose.Schema({
         price: { type: Number, required: true }, // Could be SalePrice or RegularPrice
     }],
     orderedBy: {
-        type: String, // Assuming this is a reference to a user's ID
+        type: mongoose.Schema.ObjectId, 
         required: true,
+        ref:'User'
     },
     orderedAt: {
         type: Date,

@@ -39,9 +39,11 @@ const auth=require("./Routes/AuthRoutes")
 const payment=require('./Routes/PaymentRoute')
 const admin=require('./Routes/AdminRoutes')
 const product=require('./Routes/ProductRoutes')
+const order=require("./Routes/OrderRoutes")
 //Endpoints
 app.use("/api/v1", auth) //user
 app.use('/api/v1',payment)
 app.use('/api/v1',product)
 app.use('/api/v1',admin)
+app.use('/api/v1',order)
 module.exports = app
