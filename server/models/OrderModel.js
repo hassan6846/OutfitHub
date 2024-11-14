@@ -30,19 +30,18 @@ const OrderSchema = new mongoose.Schema({
             default: 54000,
         },
         phoneNo: {
-            type: Number,
+            type: String,
             required: true,
         },
     },
     products: [{
-        product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
-        quantity: { type: Number, required: true },
-        price: { type: Number, required: true }, // Could be SalePrice or RegularPrice
+        type: Object,
+        required: true,
     }],
     orderedBy: {
-        type: mongoose.Schema.ObjectId, 
+        type: mongoose.Schema.ObjectId,
         required: true,
-        ref:'User'
+        ref: 'User'
     },
     orderedAt: {
         type: Date,
@@ -55,7 +54,7 @@ const OrderSchema = new mongoose.Schema({
     },
     PaymentMethod: {
         type: String,
-        enum: ["CreditCard",  "CashOnDelivery"],
+        enum: ["CreditCard", "CashOnDelivery"],
         required: true,
     },
     orderState: {
@@ -63,7 +62,7 @@ const OrderSchema = new mongoose.Schema({
         default: false, // false if shipped
     },
 
-    OrderAmount:{
+    OrderAmount: {
         type: Number,
         required: true,
     },

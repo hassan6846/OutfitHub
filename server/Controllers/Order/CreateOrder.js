@@ -3,7 +3,7 @@ const User = require("../../models/UserModel");
 const jwt = require("jsonwebtoken")
 
 const CreateOrder = async (req, res, next) => {
-    const { orderamount, id, address, city, phone, total } = req.body
+    const { orderamount, address, city, phone, total ,method} = req.body
     const token = req.cookies.token
 
     //required fields.
@@ -12,7 +12,7 @@ const CreateOrder = async (req, res, next) => {
             success: false,
             message: "Unautherized"
         })
-    } if (!orderamount || !id || !address || !city || !phone || !total) {
+    } if (!orderamount || !address || !city || !phone || !total) {
         res.status(400).json({
             success: false,
             message: "All fields are  required",
@@ -20,16 +20,18 @@ const CreateOrder = async (req, res, next) => {
         })
     }
     try {
+        const decoded=await jwt.decode(token)
         const createorder = new Order({
             OrderAmount: orderamount,
-            orderedBy: id,
+            orderedBy: decoded.id,
             shippingInfo: {
                 address: address,
                 city: city,
-                phone: phone
+                phoneNo: phone
 
             },
-            TotalAmount: total
+            TotalAmount: total,
+            PaymentMethod:method
 
         })
         await createorder.save()
@@ -37,7 +39,8 @@ const CreateOrder = async (req, res, next) => {
       
         res.status(200).json({
             success: true,
-            messsage: "Order Created Sucessfully View in your profile pic",
+            messsage: "Order Created Sucessfully View in your profile ",
+      
         })
     } catch (error) {
         console.error("Login error:", error);
