@@ -1,11 +1,10 @@
 import React from 'react'
-import { PaymentElement } from '@stripe/react-stripe-js';
-function Checkout() {
+
+const Checkout = () => {
   return (
-    <form>
-      <PaymentElement />
-      <button>Submit</button>
-    </form>
+    <div>
+      
+    </div>
   )
 }
 
