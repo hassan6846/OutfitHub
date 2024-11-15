@@ -112,7 +112,7 @@ const ResponsiveNav = () => {
         withCredentials:true
       })
       toast.success(response.data.message)
-      window.location.reload()
+      
         navigate('/login')
 
       console.log(response)
