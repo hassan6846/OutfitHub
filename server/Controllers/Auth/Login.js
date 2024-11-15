@@ -38,7 +38,7 @@ const Login = async (req, res, next) => {
         );
 
         // Set token in HttpOnly cookie for security
-        res.cookie("token", token, {  secure: false, maxAge: 3600000 });
+        res.cookie("token", token, {  httpOnly: true, secure: false, maxAge: 3600000 });
 
         return res.status(200).json({
             success: true,
