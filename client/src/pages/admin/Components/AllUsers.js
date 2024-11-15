@@ -32,11 +32,11 @@ const AllUsers = () => {
     const fetchData = async () => {
       try {
         const [userCountResponse, usersResponse, uploadResponse,productResponse,storageusageResponse] = await Promise.all([
-          axios.get(`${ENDPOINT}/admin/user-count`),
-          axios.get(`${ENDPOINT}/admin/get-users`),
-          axios.get(`${ENDPOINT}/admin/cloudinary/total-uploads`),
-          axios.get(`${ENDPOINT}/admin/product-count`),
-          axios.get(`${ENDPOINT}/admin/cloduinary/usage`)
+          axios.get(`${ENDPOINT}/admin/user-count`,{withCredentials:true}),
+          axios.get(`${ENDPOINT}/admin/get-users`,{withCredentials:true}),
+          axios.get(`${ENDPOINT}/admin/cloudinary/total-uploads`,{withCredentials:true}),
+          axios.get(`${ENDPOINT}/admin/product-count`,{withCredentials:true}),
+          axios.get(`${ENDPOINT}/admin/cloduinary/usage`,{withCredentials:true})
         ])
         await Setusercount(userCountResponse.data.data)
         await Setallusers(usersResponse.data.data)

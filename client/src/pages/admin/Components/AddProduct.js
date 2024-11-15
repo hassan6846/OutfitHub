@@ -118,6 +118,7 @@ const AddProduct = () => {
             'Content-Type': 'application/json', // Set Content-Type to application/json
             // You can also add other headers, like authorization if needed
           },
+          withCredentials:true
         }
       );
 
