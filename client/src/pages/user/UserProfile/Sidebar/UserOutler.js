@@ -11,13 +11,13 @@ import { ENDPOINT } from "../../../../api/Endpoint"
 import { defaultUserImg } from '../../../../helpers/GlobalVariables'
 
 // // cssf
-import { useDispatch } from "react-redux";
+
 import { persistor } from '../../../../store/Store'
 import "./UserOutlet.css"
 
 
 const UserOutler = () => {
-    const dispatch = useDispatch();
+
 
     const navigate = useNavigate()
     const [toggled, setToggled] = useState(true)

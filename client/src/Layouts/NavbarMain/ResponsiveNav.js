@@ -22,7 +22,7 @@ import Slug from "../../helpers/Slugify";
 import Alertbar from "../../components/Alert/Alert";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import TextField from "@mui/material/TextField";
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { ENDPOINT } from "../../api/Endpoint";
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-hot-toast"
@@ -34,7 +34,7 @@ import { persistor } from "../../store/Store";
 
 
 const ResponsiveNav = () => {
-  const dispatch = useDispatch();
+
   const navigate = useNavigate()
   const avatar = useSelector((state) => state.user.avatar);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated)

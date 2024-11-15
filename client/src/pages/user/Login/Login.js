@@ -120,6 +120,15 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+ 
+    if(isAuthenticated===true){
+      navigate('/')
+    }
+    
+
+    // eslint-disable-next-line 
+  }, []);
 
   return (
     <div>
