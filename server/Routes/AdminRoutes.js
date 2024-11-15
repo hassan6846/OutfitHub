@@ -9,7 +9,8 @@ const AllProducts = require('../Controllers/Product/GetAll')
 const DeleteProduct = require('../Controllers/Product/DeleteProduct')
 const CountProduct = require('../Controllers/Stats/CountProduct')
 const { getLast30DaysCreditUsage } = require('../Controllers/Stats/CreditUsage')
-const  totalUploads  = require('../Controllers/Stats/TotalUploads')
+const totalUploads = require('../Controllers/Stats/TotalUploads')
+const { isAuthorized, isAuthenticated } = require('../middlewares/Auth')
 //middlewares
 
 
@@ -19,9 +20,10 @@ const  totalUploads  = require('../Controllers/Stats/TotalUploads')
 router.route('/admin/user-count').get(CountUser);
 router.route('/admin/product-count').get(CountProduct)
 router.route('/admin/cloduinary/usage').get(getLast30DaysCreditUsage)
-router.route('/admin/get-users').get( GetUsers)
-router.route('/admin/product/upload').post(CreateProduct)
-router.route('/admin/product/all').get( AllProducts)//get all products
-router.route('/admin/product/delete/:id').post( DeleteProduct)
+router.route('/admin/get-users').get(GetUsers)
+router.route('/admin/product/upload').post(isAuthenticated, isAuthorized, CreateProduct);
+
+router.route('/admin/product/all').get(AllProducts)//get all products
+router.route('/admin/product/delete/:id').post(DeleteProduct)
 router.route('/admin/cloudinary/total-uploads').get(totalUploads)
 module.exports = router
