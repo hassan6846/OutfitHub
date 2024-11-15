@@ -112,7 +112,7 @@ const ResponsiveNav = () => {
         withCredentials:true
       })
       toast.success(response.data.message)
-
+      window.location.reload()
         navigate('/login')
 
       console.log(response)
@@ -309,7 +309,7 @@ const ResponsiveNav = () => {
                         <AiOutlineShoppingCart /> Cart
                       </Link>
                       <Link to="/user/wishlists" className="dropdown_items_nav">
-                        <AiOutlineHeart /> Wishlists
+                        <AiOutlineHeart /> Liked Items
                       </Link>
                       <Link to="/user/contact" className="dropdown_items_nav">
                         <AiOutlineMessage />
