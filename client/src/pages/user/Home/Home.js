@@ -1,5 +1,5 @@
 // library
-import { React } from 'react'
+import { React, useEffect } from 'react'
 import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul'
 
 // style sheets
@@ -11,11 +11,19 @@ import LandingCarsoul from '../../../components/LandingCarsoul/LandingCarsoul'
 import Catalogue from '../../../components/Catalogue/Catalogue'
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading'
 import CategoryBar from '../../../components/CategoryBar/CategoryBar'
-
+import { jwtDecode } from "jwt-decode"
+import Cookies from "js-cookie"
 // ////////////////
 
 const Home = () => {
-
+  useEffect(() => {
+    const token = Cookies.get('token'); // Retrieve the cookie with the name 'token'
+    if (token) {
+      console.log('Cookie "token" value:', token);
+    } else {
+      console.log('Cookie "token" not found.');
+    }
+  })
   return (
     <div>
 

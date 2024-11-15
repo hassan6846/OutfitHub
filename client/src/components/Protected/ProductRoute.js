@@ -1,29 +1,21 @@
 import { Navigate } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
-import { getToken,isTokenExpired } from '../../helpers/util';
-
-// A utility to check if the user has the required role
-const hasRole = (requiredRole) => {
-  const decodedToken = getToken();
-  return decodedToken && decodedToken.role && decodedToken.role.includes(requiredRole);
-};
+import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 
 const ProtectedRoute = ({ children, requiredRole }) => {
-  const token = getToken();
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const roles = useSelector((state) => state.user.role);
 
-  // Check if the token exists and if it's not expired
-  if (!token || isTokenExpired()) {
+  if (!isAuthenticated) {
     toast.error("You must log in to access this page");
     return <Navigate to="/login" replace />;
   }
 
-  // Check if the required role is present in the token
-  if (requiredRole && !hasRole(requiredRole)) {
+  if (requiredRole && !roles.includes(requiredRole)) {
     toast.error("You do not have permission to access this page");
     return <Navigate to="/404" replace />;
   }
 
-  // If the user has the required role, render the children
   return children;
 };
 

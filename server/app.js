@@ -18,7 +18,9 @@ app.use(bodyParser.json(
   }
 ));
 app.use(bodyParser.urlencoded({ extended: true ,limit:'50mb' }));
-app.use(cookieParser());
+app.use(cookieParser({
+
+}));
 app.use(cors({
   methods: "GET,POST,PUT,DELETE",
   origin: "http://localhost:3000", // Frontend URL 

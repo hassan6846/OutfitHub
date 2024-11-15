@@ -114,7 +114,7 @@ const ResponsiveNav = () => {
       toast.success(response.data.message)
       
         navigate('/login')
-
+       window.location.reload()
       console.log(response)
     } catch (error) {
       console.log(error.message)

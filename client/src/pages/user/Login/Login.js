@@ -120,12 +120,6 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
- 
-   
-    sessionStorage.clear();
-    // eslint-disable-next-line 
-  }, []);
 
   return (
     <div>
