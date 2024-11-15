@@ -13,7 +13,7 @@ const persistConfig = {
 const rootReducer = {
   cart: persistReducer(persistConfig, CartSlice),
   like: persistReducer(persistConfig, LikedSlice),
-  user: persistReducer(persistConfig, UserSlice),
+  user: UserSlice
 };
 
 const store = configureStore({
