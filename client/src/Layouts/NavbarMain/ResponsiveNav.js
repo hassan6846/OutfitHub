@@ -311,7 +311,7 @@ const ResponsiveNav = () => {
                       <Link to="/user/wishlists" className="dropdown_items_nav">
                         <AiOutlineHeart /> Wishlists
                       </Link>
-                      <Link to="/user/messages" className="dropdown_items_nav">
+                      <Link to="/user/contact" className="dropdown_items_nav">
                         <AiOutlineMessage />
                         Messages
                       </Link>
