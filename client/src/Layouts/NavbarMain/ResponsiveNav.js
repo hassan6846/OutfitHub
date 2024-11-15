@@ -24,7 +24,8 @@ import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import TextField from "@mui/material/TextField";
 import { useSelector } from "react-redux"
 import { ENDPOINT } from "../../api/Endpoint";
-import Logout from "../../api/Logout";
+import { useNavigate } from 'react-router-dom';
+import {toast} from "react-hot-toast"
 
 
 
@@ -32,6 +33,7 @@ import Logout from "../../api/Logout";
 
 
 const ResponsiveNav = () => {
+  const navigate=useNavigate()
   const avatar = useSelector((state) => state.user.avatar);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
   const cart = useSelector((state) => state.cart);
@@ -101,6 +103,23 @@ const ResponsiveNav = () => {
   }, [searchValue])
 
   //////////////////
+
+  const  HandleLogout=async()=>{
+    try {
+      const response=await axios.post(`${ENDPOINT}/logout`,{
+      
+      },{
+        withCredentials:true
+      })
+      toast.success(response.data.message)
+
+        navigate('/login')
+
+      console.log(response)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   return (
     <>
       <Alertbar />
@@ -296,7 +315,7 @@ const ResponsiveNav = () => {
                         <AiOutlineMessage />
                         Messages
                       </Link>
-                      <Link onClick={() => Logout()} className="dropdown_items_nav">
+                      <Link onClick={() => HandleLogout()} className="dropdown_items_nav">
                         <TbLogout2 />
                         LOGOUT
                       </Link>
