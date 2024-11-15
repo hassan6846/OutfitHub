@@ -22,10 +22,11 @@ import Slug from "../../helpers/Slugify";
 import Alertbar from "../../components/Alert/Alert";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import TextField from "@mui/material/TextField";
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { ENDPOINT } from "../../api/Endpoint";
 import { useNavigate } from 'react-router-dom';
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast"
+import { persistor } from "../../store/Store";
 
 
 
@@ -33,7 +34,8 @@ import {toast} from "react-hot-toast"
 
 
 const ResponsiveNav = () => {
-  const navigate=useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
   const avatar = useSelector((state) => state.user.avatar);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
   const cart = useSelector((state) => state.cart);
@@ -99,22 +101,26 @@ const ResponsiveNav = () => {
 
       fetchProduct()
     }
-// eslint-disable-next-line
+    // eslint-disable-next-line
   }, [searchValue])
 
   //////////////////
 
-  const  HandleLogout=async()=>{
+  const HandleLogout = async () => {
     try {
-      const response=await axios.post(`${ENDPOINT}/logout`,{
-      
-      },{
-        withCredentials:true
+      const response = await axios.post(`${ENDPOINT}/logout`, {
+
+      }, {
+        withCredentials: true
       })
       toast.success(response.data.message)
-      
-        navigate('/login')
-       window.location.reload()
+
+      await persistor.purge();
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.reload()
+      navigate('/login')
+
       console.log(response)
     } catch (error) {
       console.log(error.message)
@@ -278,7 +284,7 @@ const ResponsiveNav = () => {
 
             {/* use terinary operators instead */}
             <div className="profile_Dropdown_nav">
-              <Link  className="User_profile_dropdown">
+              <Link className="User_profile_dropdown">
                 {" "}
                 <img
                   className="nav_img"

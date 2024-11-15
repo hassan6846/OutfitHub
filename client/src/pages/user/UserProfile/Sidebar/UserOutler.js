@@ -9,10 +9,16 @@ import { toast } from "react-hot-toast"
 import { LuContact } from "react-icons/lu"
 import { ENDPOINT } from "../../../../api/Endpoint"
 import { defaultUserImg } from '../../../../helpers/GlobalVariables'
-// // css
+
+// // cssf
+import { useDispatch } from "react-redux";
+import { persistor } from '../../../../store/Store'
 import "./UserOutlet.css"
 
+
 const UserOutler = () => {
+    const dispatch = useDispatch();
+
     const navigate = useNavigate()
     const [toggled, setToggled] = useState(true)
     function SidebarTOGGLE() {
@@ -35,7 +41,11 @@ const UserOutler = () => {
                 withCredentials: true
             })
             toast.success(response.data.message)
-            window.location.reload()
+            persistor.purge();
+
+            // Optional: Clear other session storage or cookies if necessary
+            localStorage.clear();
+            sessionStorage.clear();
             navigate('/login')
 
             console.log(response)
