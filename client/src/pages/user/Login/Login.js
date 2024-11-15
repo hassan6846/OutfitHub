@@ -122,10 +122,7 @@ const Login = () => {
 
   useEffect(() => {
  
-    if(isAuthenticated===true){
-      navigate('/')
-    }
-    
+   
     sessionStorage.clear();
     // eslint-disable-next-line 
   }, []);
