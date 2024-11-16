@@ -19,6 +19,7 @@ import "./Cart.css";
 import { clearCart, removeFromCart } from "../../../Slices/CartSlice";
 function Cart() {
   const cartProducts = useSelector((state) => state.cart.products);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   useEffect(() => {
     console.log(cartProducts)
   }, [cartProducts])
@@ -176,12 +177,14 @@ function Cart() {
                           </div>
 
                           <MDBBtn
-                            href="/checkout"
+                            href={isAuthenticated?'/checkout':'login'}
                             style={{ backgroundColor: "#4BB497" }}
                             block
                             size="lg"
                           >
-                            Register
+                      {isAuthenticated ? 'Checkout' : 'Register'}
+
+
                           </MDBBtn>
                         </div>
                       </MDBCol>
