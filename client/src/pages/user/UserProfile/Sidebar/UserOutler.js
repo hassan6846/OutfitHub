@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { BiUser, BiMapAlt, BiUpload, BiLogOutCircle } from "react-icons/bi"
 
 import { MdOutlinePendingActions, MdOutlineKeyboardArrowLeft } from "react-icons/md"
@@ -19,7 +19,7 @@ import "./UserOutlet.css"
 const UserOutler = () => {
 
 
-    const navigate = useNavigate()
+    
     const [toggled, setToggled] = useState(true)
     function SidebarTOGGLE() {
         setToggled(!toggled)

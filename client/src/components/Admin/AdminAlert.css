@@ -1,0 +1,50 @@
+/* AdminAlert.css */
+.AdminAlertWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: #131039;
+    color: white;
+    padding: 10px;
+
+}
+
+.AdminAlertIcon {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.AdminAlertText {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.HoverTarget {
+    display: inline-block;
+    position: relative;
+    color: #fff;
+    margin: 0;
+}
+
+.HoverTarget:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  .HoverTarget:hover{
+color: #fff;
+  }
+  .HoverTarget:hover:after {
+    transform: scaleX(1);
+    color: #fff;
+    transform-origin: bottom left;
+  }

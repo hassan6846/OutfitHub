@@ -20,11 +20,12 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slug from "../../helpers/Slugify";
 import Alertbar from "../../components/Alert/Alert";
+
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import TextField from "@mui/material/TextField";
 import { useSelector } from "react-redux"
 import { ENDPOINT } from "../../api/Endpoint";
-import { useNavigate } from 'react-router-dom';
+
 import { toast } from "react-hot-toast"
 import { persistor } from "../../store/Store";
 
@@ -33,9 +34,10 @@ import { persistor } from "../../store/Store";
 
 
 
+
 const ResponsiveNav = () => {
 
-  const navigate = useNavigate()
+
   const avatar = useSelector((state) => state.user.avatar);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
   const cart = useSelector((state) => state.cart);
@@ -128,6 +130,7 @@ const ResponsiveNav = () => {
   }
   return (
     <>
+   
       <Alertbar />
       <div>
         <div className={toggleClass}> <div className="mobile_sidebar" style={{ width: "100%", height: "100%", backgroundColor: "#eee", display: "flex", flexDirection: "column" }} >

@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { BsTelephoneFill } from "react-icons/bs";
 import { MdOutlineClose } from "react-icons/md";
 import  "./Alert.css";
+import {useSelector} from "react-redux"
 function Alertbar() {
-  
-  const [showAlert, setShowAlert] = useState(true);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const [showAlert, setShowAlert] = useState(isAuthenticated===false);
   const closeAlert = () => {
     setShowAlert(false);
   };
@@ -23,7 +24,7 @@ function Alertbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isAuthenticated,showAlert]);
 
   if (!showAlert) {
     return null; // Do not render the alert if showAlert is false
@@ -59,7 +60,7 @@ function Alertbar() {
               className="signup_link"
               to="/signup"
             >
-              | Sign Up Now
+              | Sign Up Now 
             </Link>
           </p>
         </div>
