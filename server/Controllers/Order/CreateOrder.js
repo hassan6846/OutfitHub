@@ -1,47 +1,63 @@
 const Order = require("../../models/OrderModel");
 const User = require("../../models/UserModel");
-const jwt = require("jsonwebtoken")
+const mongoose = require("mongoose");
 
 const CreateOrder = async (req, res, next) => {
-    const { orderamount, address, city, phone, total ,method} = req.body
+    const { address, city, phone, total, method, product, id } = req.body;
 
-if (!orderamount || !address || !city || !phone || !total) {
-        res.status(400).json({
+    // Log the ID to verify it's being passed correctly
+    console.log("User ID:", id);
+
+    if (!address || !city || !phone || !total || !product || !id) {
+        return res.status(400).json({
             success: false,
-            message: "All fields are  required",
-            decoded
-        })
+            message: "All fields are required",
+        });
     }
+
+    // Validate the 'id' to be a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid user ID",
+        });
+    }
+
+    // Check if the user exists
+    const user = await User.findById(id);
+    if (!user) {
+        return res.status(404).json({
+            success: false,
+            message: "User not found",
+        });
+    }
+
     try {
-        const decoded=await jwt.decode(token)
         const createorder = new Order({
-            OrderAmount: orderamount,
-            orderedBy: decoded.id,
+            orderedBy: id,  // Ensure that this is a valid ObjectId
             shippingInfo: {
                 address: address,
                 city: city,
-                phoneNo: phone
-
+                phoneNo: phone,
             },
             TotalAmount: total,
-            PaymentMethod:method
+            products: product,
+            PaymentMethod: method,
+        });
 
-        })
-        await createorder.save()
-        
-      
+        await createorder.save();
+
         res.status(200).json({
             success: true,
-            messsage: "Order Created Sucessfully View in your profile ",
-      
-        })
+            message: "Order Created Successfully. View it in your profile.",
+        });
     } catch (error) {
-        console.error("Login error:", error);
+        console.error("Order creation error:", error);
         return res.status(500).json({
             success: false,
             message: error.message,
         });
     }
-}
+};
 
-module.exports = CreateOrder
+module.exports = CreateOrder;

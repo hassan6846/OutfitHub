@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid'); // Importing the uuid package
+const User = require('./UserModel');
 
 // Schema Model
 const OrderSchema = new mongoose.Schema({
@@ -62,10 +63,6 @@ const OrderSchema = new mongoose.Schema({
         default: false, // false if shipped
     },
 
-    OrderAmount: {
-        type: Number,
-        required: true,
-    },
     TotalAmount: {
         type: Number,
         required: true,
