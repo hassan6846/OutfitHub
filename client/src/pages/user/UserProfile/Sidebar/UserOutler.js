@@ -40,13 +40,13 @@ const UserOutler = () => {
             }, {
                 withCredentials: true
             })
-            toast.success(response.data.message)
-            persistor.purge();
 
-            // Optional: Clear other session storage or cookies if necessary
+            await persistor.purge();
             localStorage.clear();
             sessionStorage.clear();
-            navigate('/login')
+            window.location.href = '/';
+
+            toast.success(response.data.message)
 
             console.log(response)
         } catch (error) {

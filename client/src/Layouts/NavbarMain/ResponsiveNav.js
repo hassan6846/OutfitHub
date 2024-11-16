@@ -113,14 +113,14 @@ const ResponsiveNav = () => {
       }, {
         withCredentials: true
       })
-      toast.success(response.data.message)
+
 
       await persistor.purge();
       localStorage.clear();
       sessionStorage.clear();
-      window.location.reload()
-      navigate('/login')
-
+      window.location.href = '/';
+  
+      toast.success(response.data.message)
       console.log(response)
     } catch (error) {
       console.log(error.message)
