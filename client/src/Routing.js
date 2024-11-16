@@ -44,16 +44,14 @@ import Trending from "./pages/user/Trending/Trending";
 import NewArrival from "./pages/user/NewArrival/NewArrival";
 import ProtectedRoute from "./components/Protected/ProductRoute";
 //stripe
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-const stripePromise = loadStripe('pk_test_51NIDjMKxIUjmCPdCkuccRvfJCOR0Wl7VcFMfc4CMfy2I1K0eXKe0UEUm6doBSnkdOfK3JPjGdccVrx6kiuNu77vc00xifmoTSq');
+
 const Routing = () => {
 
   return (
 
 
-    <Elements stripe={stripePromise}>
-      <Router>
+
+    <><Router>
       <ResponsiveNav />
       <Routes>
         {/* Public Routes */}
@@ -106,16 +104,15 @@ const Routing = () => {
       </Routes>
       <Toaster />
       <Footer />
-    </Router>
-      <CookieConsent
+    </Router><CookieConsent
 
 
-        style={{ right: "5px" }}
-      >
+      style={{ right: "5px" }}
+    >
         This website uses cookies to ensure you get best experience at out webiste{" "}
         <span style={{ fontSize: "10px", textDecoration: "underline", marginLeft: "0.3rem", color: "#4BB497", fontWeight: "bold", cursor: "pointer" }}>learn more about privacy policiy.</span>
-      </CookieConsent>
-    </Elements>
+      </CookieConsent></>
+
 
   );
 };

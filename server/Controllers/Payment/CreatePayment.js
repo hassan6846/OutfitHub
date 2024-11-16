@@ -4,10 +4,8 @@ const CreatePayment = async (req, res, next) => {
     const shippingCharges = 200; // Shipping charges in PKR
 
     try {
-        // Correct variable name for amount
         const amountInPaisa = req.body.amount * 100; // Convert amount to paisa
 
-        // Validate amount
         if (amountInPaisa < 20000) {
             return res.status(400).json({
                 success: false,
@@ -15,10 +13,9 @@ const CreatePayment = async (req, res, next) => {
             });
         }
 
-        // Convert platform fee to paisa
         const chargeFeeInPaisa = shippingCharges * 100;
 
-        // Creating payment intent
+        // Create payment intent
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amountInPaisa + chargeFeeInPaisa, // Total amount in paisa
             currency: "pkr",
@@ -27,13 +24,13 @@ const CreatePayment = async (req, res, next) => {
             },
         });
 
-        // Return client secret to the client
-        res.json({ paymentIntent: paymentIntent.client_secret });
+        // Return only the client_secret with the correct key name
+        res.json({ clientSecret: paymentIntent.client_secret });
     } catch (error) {
-        console.error("Payment error:", error); // More specific logging
+        console.error("Payment error:", error);
         return res.status(500).json({
             success: false,
-            message: "Internal server error.",
+            message: error.message,
         });
     }
 };

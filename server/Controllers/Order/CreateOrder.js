@@ -4,15 +4,8 @@ const jwt = require("jsonwebtoken")
 
 const CreateOrder = async (req, res, next) => {
     const { orderamount, address, city, phone, total ,method} = req.body
-    const token = req.cookies.token
 
-    //required fields.
-    if (!token) {
-        res.status(401).json({
-            success: false,
-            message: "Unautherized"
-        })
-    } if (!orderamount || !address || !city || !phone || !total) {
+if (!orderamount || !address || !city || !phone || !total) {
         res.status(400).json({
             success: false,
             message: "All fields are  required",
