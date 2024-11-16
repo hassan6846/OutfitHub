@@ -1,5 +1,9 @@
 import { React, useState } from 'react'
 import { Link } from "react-router-dom"
+import axios from "axios"
+import {ENDPOINT} from "../../../api/Endpoint"
+import {persistor} from "../../../store/Store"
+import {toast} from "react-hot-toast"
 import { BiUpload, BiLogOutCircle, } from "react-icons/bi"
 import { BsBox2, BsFillCartFill} from "react-icons/bs"
 import { BiSolidUser, BiSolidMessageSquareDetail } from "react-icons/bi"
@@ -25,7 +29,27 @@ const AdminSidebar = () => {
     const Aside_img = toggled ? "aside_user_profile_img_toggle" : "aside_user_profile_img"
     const aside_icon_state = toggled ? "aside_icon_state_toggled" : "aside_icon_state"
     const aside_link_flex = toggled ? "aside_link_flex_toggled" : "aside_link_flex"
+//LOGOUT
+const HandleLogout = async () => {
+    try {
+      const response = await axios.post(`${ENDPOINT}/logout`, {
 
+      }, {
+        withCredentials: true
+      })
+
+
+      await persistor.purge();
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = '/';
+  
+      toast.success(response.data.message)
+      console.log(response)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
     return (
         <aside className={divClassName}>
             <div onClick={SidebarTOGGLE} className='aside_user_toggle'><MdOutlineKeyboardArrowLeft className='aside_icon_toggle' /></div>
@@ -59,7 +83,7 @@ const AdminSidebar = () => {
             {/* ALL */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Actions</p>
-                <Link to="/admin/logout" className='aside_links'> <BiLogOutCircle className={aside_icon_state} /> <span className={Asidespan}>Logout</span> </Link>
+                <Link to="/admin/logout" onClick={()=>HandleLogout()} className='aside_links'> <BiLogOutCircle className={aside_icon_state} /> <span className={Asidespan}>Logout</span> </Link>
             </div>
 
 
