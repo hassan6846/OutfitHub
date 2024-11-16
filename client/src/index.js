@@ -5,12 +5,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 
-//components entry.
+
 import App from './App';
-//css
+
 import './index.css';
 
-//store And State
+
 import { Provider } from 'react-redux';
 import { store, persistor } from './store/Store'
 import { PersistGate } from 'redux-persist/integration/react';

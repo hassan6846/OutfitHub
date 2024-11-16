@@ -8,7 +8,7 @@ const BreadCrumb = () => {
   const pathParts = pathname.split('/').filter((part) => part !== '');
   return (
     <div className='breadCrumb_Wrapper-100'>
-    {/* Render breadcrumb links */}
+
     {pathParts.map((part, index) => (
       <React.Fragment key={index}>
         <Link className='bread_crumb_link' to={`/${pathParts.slice(0, index + 1).join('/')}`}>{part}</Link>

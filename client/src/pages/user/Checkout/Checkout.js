@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 const Checkout = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const [amount, setAmount] = useState(5000); // Example amount in cents
+  const [amount, setAmount] = useState(5000);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -21,7 +21,7 @@ const Checkout = () => {
     }
 
     try {
-      // Send the amount to your backend
+
       const response = await fetch(`${ENDPOINT}/payment/create`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -34,7 +34,7 @@ const Checkout = () => {
         throw new Error('Failed to get client secret from server.');
       }
 
-      // Confirm the payment
+
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
@@ -61,8 +61,8 @@ const Checkout = () => {
         <h2>Payment Amount</h2>
         <input
           type="number"
-          value={amount / 100} // Convert cents to dollars for UI
-          onChange={(e) => setAmount(Number(e.target.value))} // Convert dollars to cents
+          value={amount / 100}
+          onChange={(e) => setAmount(Number(e.target.value))}
         />
         <CardElement />
         <button type="submit" disabled={!stripe || loading}>

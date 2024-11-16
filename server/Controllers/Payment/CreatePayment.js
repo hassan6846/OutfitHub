@@ -1,10 +1,10 @@
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 const CreatePayment = async (req, res, next) => {
-    const shippingCharges = 200; // Shipping charges in PKR
+    const shippingCharges = 200; 
 
     try {
-        const amountInPaisa = req.body.amount * 100; // Convert amount to paisa
+        const amountInPaisa = req.body.amount * 100; 
 
         if (amountInPaisa < 20000) {
             return res.status(400).json({
@@ -15,16 +15,16 @@ const CreatePayment = async (req, res, next) => {
 
         const chargeFeeInPaisa = shippingCharges * 100;
 
-        // Create payment intent
+        
         const paymentIntent = await stripe.paymentIntents.create({
-            amount: amountInPaisa + chargeFeeInPaisa, // Total amount in paisa
+            amount: amountInPaisa + chargeFeeInPaisa, 
             currency: "pkr",
             automatic_payment_methods: {
                 enabled: true,
             },
         });
 
-        // Return only the client_secret with the correct key name
+        
         res.json({ clientSecret: paymentIntent.client_secret });
     } catch (error) {
         console.error("Payment error:", error);
