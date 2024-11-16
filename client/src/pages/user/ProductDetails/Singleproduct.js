@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
 // SWIPPER
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -23,6 +24,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slug from '../../../helpers/Slugify';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart,removeFromCart } from '../../../Slices/CartSlice';
+import toast from 'react-hot-toast';
 //state
 
 const Singleproduct = () => {
@@ -47,8 +49,14 @@ const Singleproduct = () => {
   const handleCartToggle = () => {
     if (isInCart) {
       dispatch(removeFromCart({ id: product._id }));
+      toast('Removed from Cart', {
+        icon: '😥',
+      });
     } else {
       dispatch(addToCart({ ...product, quantity: 1 }));
+      toast('Added to liked item!', {
+        icon: '🎉',
+      });
     }
     setIsInCart(!isInCart);
   };
