@@ -1,6 +1,6 @@
 
 import "./AddProduct.css"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { MDBInput, MDBBtn, MDBTextArea } from "mdb-react-ui-kit"
 import { ImPriceTag } from "react-icons/im"
@@ -93,6 +93,12 @@ const AddProduct = () => {
   }
 
   // Handle Upload
+  const HandleSubmit = async () => {
+    if (!title || !description || !regularprice || !saleprice) {
+      toast.error("Please fill in all required fields.🙏");
+      return;
+  }
+
   const HandleUpload = async () => {
     try {
       const response = await axios.post(
@@ -101,8 +107,8 @@ const AddProduct = () => {
           id: id,
           title: title,
           brand: brand,
-          img1: "",
-          img2: "",
+          img1: images[0].base64,
+          img2: images[0].base64,
           description: description,
           regprice: regularprice,
           saleprice: saleprice,
@@ -120,17 +126,22 @@ const AddProduct = () => {
             'Content-Type': 'application/json', // Set Content-Type to application/json
             // You can also add other headers, like authorization if needed
           },
-          withCredentials:true
+          withCredentials: true
         }
       );
 
       // Handle the response, maybe log it or do something with the result
       console.log('Upload successful', response.data);
+      toast.success("Product Upload Sucesss")
+
     } catch (error) {
       console.error('Upload failed', error);
     }
   };
-
+  HandleUpload()
+}
+ // Check if all required fields are filled
+ const isFormValid = title && description && regularprice && saleprice;
 
   return (
     <div className='addproduct-wrapper'>
@@ -316,7 +327,7 @@ const AddProduct = () => {
           {/* Row 9  */}
           <div style={{ display: "flex", width: "100%", columnGap: "0.4rem", flexDirection: "row-reverse" }} className='row_inputs'>
             <div style={{ width: "100%" }}>
-              <MDBBtn onClick={() => HandleUpload()} style={{ width: "100%", padding: "0.7rem", backgroundColor: '#4BB497' }}>Publish Product</MDBBtn>
+              <MDBBtn type="submit"  disabled={!isFormValid} onClick={() => HandleSubmit()} style={{ width: "100%", padding: "0.7rem", backgroundColor: '#4BB497' }}>Publish Product</MDBBtn>
             </div>
           </div>
 

@@ -42,8 +42,8 @@ const CreateProduct = async (req, res) => {
         return new Promise((resolve, reject) => {
             cloudinary.uploader.upload(dataURI, {
                 folder: 'Ecommerce/products',
-                categorization: "imagga_tagging",
-                auto_tagging: 0.4, // Ensure Cloudinary attempts to auto-tag the image
+                // categorization: "imagga_tagging",
+                // auto_tagging: 0.4, // Ensure Cloudinary attempts to auto-tag the image
                 resource_type: "auto",
             }, (error, result) => {
                 if (error) {

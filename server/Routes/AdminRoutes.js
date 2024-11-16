@@ -21,7 +21,7 @@ router.route('/admin/user-count').get(CountUser);
 router.route('/admin/product-count').get(CountProduct)
 router.route('/admin/cloduinary/usage').get(getLast30DaysCreditUsage)
 router.route('/admin/get-users').get(GetUsers)
-router.route('/admin/product/upload').post(isAuthenticated, isAuthorized, CreateProduct);
+router.route('/admin/product/upload').post( CreateProduct);
 
 router.route('/admin/product/all').get(AllProducts)//get all products
 router.route('/admin/product/delete/:id').post(DeleteProduct)
