@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+
 import "./AddProduct.css"
+import React, { useState } from 'react'
+
 import { MDBInput, MDBBtn, MDBTextArea } from "mdb-react-ui-kit"
 import { ImPriceTag } from "react-icons/im"
 import { RxDimensions } from "react-icons/rx"

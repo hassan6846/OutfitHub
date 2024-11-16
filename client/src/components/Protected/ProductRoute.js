@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
   const roles = useSelector((state) => state.user.role);
 
   if (!isAuthenticated) {
-    toast.error("You must log in to access this page");
+    toast.error("You must log in to access this page or Page wont Existed");
     return <Navigate to="/login" replace />;
   }
 

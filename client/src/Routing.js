@@ -57,10 +57,10 @@ const Routing = () => {
         <Route path="/faqs" element={<FaqPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={
-            <ProtectedRoute>
-              <Checkout />
-            </ProtectedRoute>
-          } />
+          <ProtectedRoute>
+            <Checkout />
+          </ProtectedRoute>
+        } />
 
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />f
