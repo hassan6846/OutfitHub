@@ -56,10 +56,14 @@ const Routing = () => {
         <Route path="/shop/promotions/new-arrival" element={<NewArrival />} />
         <Route path="/faqs" element={<FaqPage />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout" element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          } />
 
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/signup" element={<SignupPage />} />f
         <Route path="/password/forgot" element={<ForgotPassword />} />
 
         <Route path="/password/reset/:id" element={<ResetPassword />} />
