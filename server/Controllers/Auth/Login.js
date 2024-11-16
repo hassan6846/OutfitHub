@@ -12,7 +12,7 @@ const Login = async (req, res, next) => {
             });
         }
 
-        // Find user by email
+        
         const finduser = await User.findOne({ email: email });
         if (!finduser) {
             return res.status(404).json({
@@ -21,7 +21,7 @@ const Login = async (req, res, next) => {
             });
         }
 
-        // Compare password
+        
         const isCorrectPassword = await bcrypt.compare(password, finduser.password);
         if (!isCorrectPassword) {
             return res.status(401).json({
@@ -30,15 +30,15 @@ const Login = async (req, res, next) => {
             });
         }
 
-        // If password is correct, send token
+        
         const token = Jwt.sign(
-            { id: finduser._id, role: finduser.role }, // Include role array in the token
+            { id: finduser._id, role: finduser.role }, 
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
         );
 
-        // Set token in HttpOnly cookie for security
-        res.cookie("token", token, {  httpOnly: true, secure: false, maxAge: 3600000 });
+        
+        res.cookie("token", token, { httpOnly: true, secure: false, maxAge: 3600000 });
 
         return res.status(200).json({
             success: true,

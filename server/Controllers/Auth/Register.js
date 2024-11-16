@@ -14,7 +14,7 @@ const Register = async (req, res, next) => {
             })
     }
     try {
-        // Check if the phone number is already registered
+        
 
         const FindByPhone = await User.findOne({ phone: phone });
         if (FindByPhone) {
@@ -23,7 +23,7 @@ const Register = async (req, res, next) => {
                 message: "Phone Already Linked to Another Account",
             });
         }
-        // Check if the Email  is already registered
+        
 
         const FindByEmail = await User.findOne({ email });
         if (FindByEmail) {
@@ -32,7 +32,7 @@ const Register = async (req, res, next) => {
                 message: "Email Already Linked to Another Account",
             });
         }
-        // Create the user
+        
         const newUser = new User({
             username: username,
             email: email,
@@ -45,7 +45,7 @@ const Register = async (req, res, next) => {
             expiresIn:5000,
             
         })
-        //respond with sucesss
+        
         res.status(201).json({
             success:true,
             message:"User Created Sucessfully",

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-// Import Swiper React components
+
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
+
 import "swiper/css";
 import 'swiper/css/navigation';
 import "./TrendingCarsoul.css";
 
-// card
+
 import ProductCard from "../Card/ProductCard";
 import axios from "axios";
 import { ENDPOINT } from "../../api/Endpoint";
@@ -30,20 +30,20 @@ export default function TrendingCarsoul(props) {
       }
     }
     fetchProduct()
-    // eslint-disable-next-line 
+    
   }, [])
   const handleLikeToggle = (product) => {
-    // Check if the product is already in the liked list
+    
     const isLiked = liked.some((item) => item._id === product._id);
   
     if (isLiked) {
-      // If liked, dispatch removeFromLiked action
+      
       dispatch(removeFromLiked(product));
       toast('Removed from Liked item!', {
         icon: '😥',
       });
     } else {
-      // If not liked, dispatch addtoLiked action
+      
       dispatch(addtoLiked(product));
       toast('Added to liked item!', {
         icon: '🎉',
@@ -65,7 +65,7 @@ export default function TrendingCarsoul(props) {
             <SwiperSlide style={{ width: "auto" }} key={product.id}>
               <ProductCard
                 saved={Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}
-                // pathname:`/shop/${Slug(item.name)}`,
+                
                 state={product}
                 tagoneLink={`/shop/tags/${Slug(product.tags[0] || '')}`}
                 iconClick={() => handleLikeToggle(product)}

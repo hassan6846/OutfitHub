@@ -4,8 +4,8 @@ const upload = require("./multer");
 
 const getDataUri = (file) => {
     const parser = new DataURIParser();
-    const extName = path.extname(file.originalname).toString(); // Corrected spelling
-    return parser.format(extName, file.buffer); // Use file.buffer to get the file content
+    const extName = path.extname(file.originalname).toString(); 
+    return parser.format(extName, file.buffer); 
 };
 
 module.exports = getDataUri;

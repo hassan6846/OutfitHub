@@ -10,7 +10,7 @@ function Alertbar() {
   const closeAlert = () => {
     setShowAlert(false);
   };
-      // Check the scroll position and hide the alert if needed
+      
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 150) {
@@ -18,16 +18,16 @@ function Alertbar() {
       }
     };
 
-    // Add the scroll event listener when the component mounts
+    
     window.addEventListener("scroll", handleScroll);
-    // Remove the scroll event listener when the component unmounts
+    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isAuthenticated,showAlert]);
 
   if (!showAlert) {
-    return null; // Do not render the alert if showAlert is false
+    return null; 
   }
 
   return (

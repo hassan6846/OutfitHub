@@ -9,7 +9,7 @@
 .Catlogue_wrapper {
   width: 100%;
   height: 230px;
-  /* background-color: rgb(190, 190, 192); */
+ 
   margin-top: 1rem;
   display: flex;
   flex-direction: row;
@@ -18,15 +18,15 @@
 .Catalogue_row {
   width: 90%;
   height: 100%;
-  /* background-color:rgb(185, 45, 45); */
-  /* flex:  */
+ 
+ 
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
 }
 .width_33_1 {
   width: 33.33%;
-  /* background-color: #e5e5e5; */
+ 
   height: 100%;
   border-radius: 5px;
   background-repeat: no-repeat;
@@ -34,14 +34,14 @@
 }
 .width_33_2 {
   width: 33.33%;
-  /* background-color: #e5e5e5; */
+ 
   height: 100%;
   border-radius: 5px;
   background-repeat: no-repeat;
 }
 .width_33_3 {
   width: 33.33%;
-  /* background-color: #e5e5e5; */
+ 
   height: 100%;
   border-radius: 5px;
 
@@ -64,7 +64,7 @@
   height: 50%;
   border-radius: 5px;
 }
-/* media query here */
+
 @media (min-width: 300px) and (max-width: 600px) {
   .Catlogue_wrapper {
     height: 300px;
@@ -90,7 +90,7 @@
     height: 100%;
   }
 }
-/* animations */
+
 .width_33_1:hover,
 .middle_child:hover,
 .width_33_3:hover {

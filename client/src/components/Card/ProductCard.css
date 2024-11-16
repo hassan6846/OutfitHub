@@ -30,7 +30,7 @@
 }
 
 .product_card_image_view {
-  /* scale: 1.1; */
+ 
   width: 100%;
   height: 430px;
   object-fit: cover;
@@ -49,7 +49,7 @@
   cursor: pointer;
 
   box-shadow: 0 0 0 0px black;
-  /* Add a 1px black outline */
+ 
 }
 
 .heart-icon.liked {
@@ -103,7 +103,7 @@
 
   background-color: #f1edef;
   letter-spacing: 0.8px;
-  /* Complementary green color */
+ 
 }
 .like_item_card {
   position: absolute;

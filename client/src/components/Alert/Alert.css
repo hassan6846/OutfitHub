@@ -15,7 +15,7 @@
 
   opacity: 1;
   transition: opacity 0.3s ease-in-out 0.2s;
-  /* Added transition property with delay */
+ 
 }
 
 .alerted_wrapper {
