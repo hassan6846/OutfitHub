@@ -14,7 +14,7 @@ import {
 
 import "./Checkout.css"
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearCart } from "../../../Slices/CartSlice";
 import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js"
 import { useState } from "react";
@@ -23,6 +23,7 @@ import { toast } from "react-hot-toast"
 import axios from "axios";
 
 const Checkout = () => {
+  const navigate=useNavigate()
   const stripe = useStripe();
   const elements = useElements();
   const dispatch = useDispatch()
@@ -128,7 +129,7 @@ const Checkout = () => {
         setMessage('Payment succeeded!');
         toast.success("Payment Sucessfull")
          await CreateOrder()
-
+          navigate('/user/order')
       }
     } catch (error) {
       setMessage(error.message || 'An error occurred.');
