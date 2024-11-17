@@ -126,15 +126,15 @@ const Checkout = () => {
                           
                           <div className="d-flex justify-content-between mb-4">
                             <MDBTypography tag="h5" className="text-uppercase">
-                              Products
+                              Total
                             </MDBTypography>
-                            <MDBTypography tag="h5">€ 132.00</MDBTypography>
+                            <MDBTypography tag="h5">132 Rs</MDBTypography>
                           </div>
                           <div className="d-flex justify-content-between mb-4">
                             <MDBTypography tag="h5" className="text-uppercase">
                               Shipping CHARGES
                             </MDBTypography>
-                            <MDBTypography tag="h5">€ 5</MDBTypography>
+                            <MDBTypography tag="h5">250 Rs</MDBTypography>
                           </div>
 
 
@@ -147,7 +147,7 @@ const Checkout = () => {
                             <MDBTypography tag="h5" className="text-uppercase">
                               Total price
                             </MDBTypography>
-                            <MDBTypography tag="h5">€ 137.00</MDBTypography>
+                            <MDBTypography tag="h5"> 137.00 Rs</MDBTypography>
                           </div>
 
                           <MDBBtn
