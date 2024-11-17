@@ -1,0 +1,30 @@
+.h-custom{
+    height: 100vh;
+    width: 100%;
+}
+
+
+.no_items_inCart{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.no_cart_items_msg{
+    text-align: center;
+    color: #848484;
+    text-align: center;
+}
+.no_cart_Link{
+    background-color: #4BB497;
+    padding: 1rem 2rem;
+    color: white;
+ 
+}
+.text-uppercase{
+    font-size: 0.9rem;
+    color: #848484;
+   
+}

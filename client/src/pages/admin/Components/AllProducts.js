@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
 import { IoAddCircle } from "react-icons/io5";
-import { FaRegMoneyBillAlt, FaShoppingCart, FaHeart } from "react-icons/fa"; // Add icons for price, cart, etc.
+import { FaRegMoneyBillAlt,  } from "react-icons/fa"; // Add icons for price, cart, etc.
 import axios from "axios";
 import { ENDPOINT } from "../../../api/Endpoint";
 import "./AllProducts.css";
@@ -63,10 +63,7 @@ const AllProducts = () => {
                   Rs{product.SalePrice}/-
                 </span>
               </div>
-              <div style={styles.actions}>
-                <MDBBtn style={styles.cartBtn}><FaShoppingCart /> Add to Cart</MDBBtn>
-                <MDBBtn style={styles.wishlistBtn}><FaHeart /> Add to Wishlist</MDBBtn>
-              </div>
+     
             </div>
           </div>
         ))}
