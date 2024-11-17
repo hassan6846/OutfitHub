@@ -3,10 +3,8 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardImage,
-
   MDBCol,
   MDBContainer,
-
   MDBInput,
   MDBRow,
   MDBTypography,
