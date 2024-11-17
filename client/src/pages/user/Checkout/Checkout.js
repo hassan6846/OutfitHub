@@ -6,8 +6,7 @@ import {
 
   MDBCol,
   MDBContainer,
-  MDBIcon,
-  // eslint-disable-next-line 
+
   MDBInput,
   MDBRow,
   MDBTypography,
@@ -17,14 +16,127 @@ import "./Checkout.css"
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { clearCart } from "../../../Slices/CartSlice";
-import {AddressElement} from "@stripe/react-stripe-js"
+import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js"
+import { useState } from "react";
+import { ENDPOINT } from "../../../api/Endpoint";
+import { toast } from "react-hot-toast"
+import axios from "axios";
 
 const Checkout = () => {
+  const stripe = useStripe();
+  const elements = useElements();
   const dispatch = useDispatch()
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-
+  //selector
   const cartProducts = useSelector((state) => state.cart.products);
+  const userid = useSelector((state) => state.user.userid)
+  //Loadig States
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [amount, setAmount] = useState(5000);
 
+  const [isCardValid, setIsCardValid] = useState(false);
+  const [address, setaddress] = useState("")
+  const [City, setCity] = useState("Lahore")
+  const [Phone, Setphone] = useState("+92 000 0000000")
+
+  const lightTheme = {
+    style: {
+      base: {
+
+        color: "#000000",
+        fontFamily: "Arial, sans-serif",
+        backgroundColor: "#f7f7f7",
+
+        fontSize: "16px",
+        "::placeholder": {
+          color: "#d3d3d3",
+        },
+      },
+      invalid: {
+        color: "#ff4d4f",
+        iconColor: "#ff4d4f",
+      },
+    },
+  };
+  //Validate fieldss
+  const isFormValid = address && City && Phone && isCardValid;
+  const handleCardChange = (event) => {
+    setIsCardValid(event.complete); // If card info is valid, set isCardValid to true
+  };
+
+  const CreateOrder = async () => {
+    try {
+     
+      const response = await axios.post(
+        `${ENDPOINT}/order/new`,
+        {
+          id: userid,
+          address: address,
+          city: City,
+          phone: Phone,
+          total: amount,
+          method: "CreditCard",
+          product: cartProducts,
+        },
+        { withCredentials: true, withXSRFToken: true }
+      );
+  
+
+      if (response.status === 200) {
+        toast.success("Order placed successfully!");
+
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error("Something went wrong! Please try again.");
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    setMessage('');
+
+    if (!stripe || !elements) {
+      setMessage('Stripe.js has not loaded yet.');
+      setLoading(false);
+      return;
+    }
+
+    try {
+
+      const response = await fetch(`${ENDPOINT}/payment/create`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount }),
+      });
+
+      const { clientSecret } = await response.json();
+
+      if (!clientSecret) {
+        throw new Error('Failed to get client secret from server.');
+      }
+      const result = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      });
+
+      if (result.error) {
+        setMessage(result.error.message);
+      } else if (result.paymentIntent.status === 'succeeded') {
+        setMessage('Payment succeeded!');
+        toast.success("Payment Sucessfull")
+         await CreateOrder()
+
+      }
+    } catch (error) {
+      setMessage(error.message || 'An error occurred.');
+      toast.error(error.message)
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <section className="h-110 h-custom" style={{ backgroundColor: "white" }}>
       {
@@ -60,7 +172,7 @@ const Checkout = () => {
                           <div className="cart_items_contional">
 
                             {
-                              cartProducts.map((product, index) => (
+                              cartProducts.slice(0, 4).map((product, index) => (
                                 <><hr className="my-4" />
                                   <MDBRow className="mb-4 d-flex justify-content-between align-items-center">
                                     <MDBCol md="2" lg="2" xl="2">
@@ -85,7 +197,7 @@ const Checkout = () => {
                                       </MDBTypography>
                                     </MDBCol>
                                     <MDBCol md="1" lg="1" xl="1" className="text-end">
-    
+
                                     </MDBCol>
                                   </MDBRow></>
 
@@ -107,7 +219,7 @@ const Checkout = () => {
 
                           <div className="pt-5">
                             <MDBTypography tag="h6" className="mb-0">
-             
+
                             </MDBTypography>
                           </div>
                         </div>
@@ -123,7 +235,7 @@ const Checkout = () => {
                           </MDBTypography>
 
                           <hr className="my-4" />
-                          
+
                           <div className="d-flex justify-content-between mb-4">
                             <MDBTypography tag="h5" className="text-uppercase">
                               Total
@@ -136,30 +248,56 @@ const Checkout = () => {
                             </MDBTypography>
                             <MDBTypography tag="h5">250 Rs</MDBTypography>
                           </div>
-
+                          <div className="d-flex justify-content-between mb-4">
+                            <MDBTypography tag="h5" className="text-uppercase">
+                              Quantity
+                            </MDBTypography>
+                            <MDBTypography tag="h5"> x 1</MDBTypography>
+                          </div>
 
 
 
 
                           <hr className="my-4" />
-
-                          <div className="d-flex justify-content-between mb-5">
-                            <MDBTypography tag="h5" className="text-uppercase">
-                              Total price
-                            </MDBTypography>
-                            <MDBTypography tag="h5"> 137.00 Rs</MDBTypography>
-                          </div>
-
-                          <MDBBtn
-                            href={isAuthenticated ? '/checkout' : 'login'}
-                            style={{ backgroundColor: "#4BB497" }}
-                            block
-                            size="lg"
+                          <MDBTypography
+                            tag="h3"
+                            className="fw-bold mb-5 mt-2 pt-1"
                           >
-                            {isAuthenticated ? 'Checkout' : 'Register'}
+                            Shipment Details
+                          </MDBTypography>
+
+                          <div className="d-flex justify-content-between mb-5 flex-d row">
+
+                            <MDBInput wrapperStyle={{ marginBottom: 10 }} onChange={(e) => setaddress(e.target.value)} value={address} label="Address" />
+
+                            <MDBInput wrapperStyle={{ marginBottom: 10 }} value={City} onChange={(e) => setCity(e.target.value)} label="City" />
+                            <MDBInput wrapperStyle={{ marginBottom: 10 }} value={Phone} onChange={(e) => Setphone(e.target.value)} label="Phone" />
 
 
-                          </MDBBtn>
+                          </div>
+                          <form onSubmit={handleSubmit}>
+                            <MDBTypography
+                              tag="h3"
+                              className="fw-bold mb-5 mt-2 pt-1"
+                            >
+                              Card Details
+                            </MDBTypography>
+                            <div className="d-flex justify-content-between mb-5 flex-d row">
+                              <CardElement onChange={handleCardChange} options={lightTheme} />
+                            </div>
+
+                            <MDBBtn
+                              type="submit"
+                              style={{ backgroundColor: "#4BB497" }}
+                              block
+                              size="lg"
+                              disabled={!isFormValid || !stripe || loading}
+                            >
+                              {loading ? 'Processing...' : 'Pay'}
+
+
+                            </MDBBtn>
+                          </form>
                         </div>
                       </MDBCol>
                     </MDBRow>
