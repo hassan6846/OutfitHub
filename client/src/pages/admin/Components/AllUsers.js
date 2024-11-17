@@ -4,6 +4,7 @@ import axios from "axios"
 //imports
 import { ENDPOINT } from "../../../api/Endpoint"
 
+
 //styles
 import "./AllUsers.css"
 //icons
@@ -21,28 +22,30 @@ const AllUsers = () => {
   const [allusers, Setallusers] = useState([]) //to held no of user being fetched./
   const [anchorEl, setAnchorEl] = useState(null); // To control menu open/close state
   const [uploads, setuploads] = useState(0)
-  const [productcount,setproductcount]=useState(0)
-  const [storageusage,setstorageusage]=useState(0)
+  const [productcount, setproductcount] = useState(0)
+  const [storageusage, setstorageusage] = useState(0)
   // Handle menu open/close
   const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
   const handleMenuClose = () => setAnchorEl(null);
-
+  //loading
+  const [loading, isloading] = useState(true)
   //useEffect
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [userCountResponse, usersResponse, uploadResponse,productResponse,storageusageResponse] = await Promise.all([
-          axios.get(`${ENDPOINT}/admin/user-count`,{withCredentials:true}),
-          axios.get(`${ENDPOINT}/admin/get-users`,{withCredentials:true}),
-          axios.get(`${ENDPOINT}/admin/cloudinary/total-uploads`,{withCredentials:true}),
-          axios.get(`${ENDPOINT}/admin/product-count`,{withCredentials:true}),
-          axios.get(`${ENDPOINT}/admin/cloduinary/usage`,{withCredentials:true})
+        const [userCountResponse, usersResponse, uploadResponse, productResponse, storageusageResponse] = await Promise.all([
+          axios.get(`${ENDPOINT}/admin/user-count`, { withCredentials: true }),
+          axios.get(`${ENDPOINT}/admin/get-users`, { withCredentials: true }),
+          axios.get(`${ENDPOINT}/admin/cloudinary/total-uploads`, { withCredentials: true }),
+          axios.get(`${ENDPOINT}/admin/product-count`, { withCredentials: true }),
+          axios.get(`${ENDPOINT}/admin/cloduinary/usage`, { withCredentials: true })
         ])
         await Setusercount(userCountResponse.data.data)
         await Setallusers(usersResponse.data.data)
         await setuploads(uploadResponse.data.totalUploads)
         await setproductcount(productResponse.data.data)
         await setstorageusage(storageusageResponse.data.final)
+        isloading(false)
       } catch (error) {
         console.log("Error While Fetching The data")
         throw (error)
@@ -53,20 +56,26 @@ const AllUsers = () => {
   }, [])
 
   return (
+
+
+
     <div>
       <p style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }} className='wishlist_page_head'>User Manegment,   </p>
       <p style={{ fontSize: "1.1rem", marginBottom: "0.4rem", color: "#131039", padding: "0.4rem", fontWeight: "500" }}>Users Overview,/stats</p>
+
+
+
       <div className='row_user_data_cards'>
-        <div className='user_manegment_card'> <p className='usersCount'>  <span className='icons_flex_user_maneg'><PiUsersThree  size={70} className='icon_user_maneg' /></span> {usercount}</p> <p>Total Registerd Users.</p>
+        <div className='user_manegment_card'> <p className='usersCount'>  <span className='icons_flex_user_maneg'><PiUsersThree size={70} className='icon_user_maneg' /></span> {usercount}</p> <p>Total Registerd Users.</p>
 
 
         </div>
 
 
 
-        <div className='user_manegment_card'> <p className='usersCount'>  <span className='icons_flex_user_maneg'><SlGraph  size={70} className='icon_user_maneg' /></span> {uploads}</p> <p>Total Image Asset Hosted.</p></div>
-        <div className='user_manegment_card'> <p className='usersCount'>  <span className='icons_flex_user_maneg'><FaHandsHelping  size={70} className='icon_user_maneg' /></span> {productcount}</p> <p>Total Product Uploaded</p></div>
-        <div className='user_manegment_card'> <p className='usersCount'>  <span className='icons_flex_user_maneg'><RiRadioButtonLine  size={70} className='icon_user_maneg' /></span> {Math.floor(storageusage)} mb</p> <p>Total Cloud Storage used</p></div>
+        <div className='user_manegment_card'> <p className='usersCount'>  <span className='icons_flex_user_maneg'><SlGraph size={70} className='icon_user_maneg' /></span> {uploads}</p> <p>Total Image Asset Hosted.</p></div>
+        <div className='user_manegment_card'> <p className='usersCount'>  <span className='icons_flex_user_maneg'><FaHandsHelping size={70} className='icon_user_maneg' /></span> {productcount}</p> <p>Total Product Uploaded</p></div>
+        <div className='user_manegment_card'> <p className='usersCount'>  <span className='icons_flex_user_maneg'><RiRadioButtonLine size={70} className='icon_user_maneg' /></span> {Math.floor(storageusage)} mb</p> <p>Total Cloud Storage used</p></div>
       </div>
 
       {/* Graphs Vistors World And New Users */}
@@ -122,6 +131,7 @@ const AllUsers = () => {
       </div>
     </div>
   )
+
 }
 
 export default AllUsers
