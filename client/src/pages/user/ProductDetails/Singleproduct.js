@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // SWIPPER
 
@@ -23,12 +23,15 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slug from '../../../helpers/Slugify';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart,removeFromCart } from '../../../Slices/CartSlice';
+import { addToCart, removeFromCart } from '../../../Slices/CartSlice';
 import toast from 'react-hot-toast';
 //state
 
 const Singleproduct = () => {
+  
   const dispatch = useDispatch()
+  const roles = useSelector((state) => state.user.role);
+  const isAdmin = roles.includes('admin');
   const cartProducts = useSelector((state) => state.cart.products);
   const [isInCart, setIsInCart] = useState(false);
 
@@ -44,15 +47,24 @@ const Singleproduct = () => {
       navigate('/404', { replace: false });
       return null; // Ensure the component doesn't render further
     }
-  }, [product,cartProducts,navigate])
+  }, [product, cartProducts, navigate])
 
   const handleCartToggle = () => {
+
+
     if (isInCart) {
       dispatch(removeFromCart({ id: product._id }));
       toast('Removed from Cart', {
         icon: '😥',
       });
-    } else {
+    } if (isAdmin) {
+      toast('Admin action detected! 😳', {
+        icon: '🧐',
+      });
+    }
+
+
+    else {
       dispatch(addToCart({ ...product, quantity: 1 }));
       toast('Added to liked item!', {
         icon: '🎉',
@@ -115,9 +127,9 @@ const Singleproduct = () => {
             <p className='flash_few'>Only few left in Stock!</p>
             <p className='flash_Text_p_yellow'>Sale is <span className='flash_Text_p_yellow_span'>Live <img style={{ height: "10px" }} alt='blink_img' src={blinkSVG} /></span></p>
             <div className='button_flex_single'>
-              <MDBBtn className='single_cart_btn'  onClick={handleCartToggle}   style={{ backgroundColor: "#4BB497", width: "40%" }}>
+              <MDBBtn className='single_cart_btn' disabled={isAdmin} onClick={handleCartToggle} style={{ backgroundColor: "#4BB497", width: "40%" }}>
 
-              {isInCart ? "REMOVE FROM CART" : "ADD TO CART"}
+                {isInCart ? "REMOVE FROM CART" : "ADD TO CART"}
               </MDBBtn>
 
             </div>

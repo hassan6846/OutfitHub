@@ -1,119 +1,121 @@
-import React from 'react'
-import "./Orders.css"
-import { FaEdit, FaEye } from "react-icons/fa"
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./Orders.css";
+import axios from "axios";
+import { ENDPOINT } from "../../../api/Endpoint";
+import { useSelector } from "react-redux";
+// UI components
+import Divider from '@mui/material/Divider';
+import Chip from '@mui/material/Chip';
+import { CiCreditCard1 } from "react-icons/ci";
+import { LiaAddressBook } from "react-icons/lia";
+import { FaMoneyBillWaveAlt, FaFilter } from "react-icons/fa";
 
-import Checkbox from '@mui/material/Checkbox';
-import { LazyLoadImage } from "react-lazy-load-image-component"
-import 'react-lazy-load-image-component/src/effects/opacity.css';
-import { BsFillCaretDownFill } from "react-icons/bs"
-
-import { Link } from 'react-router-dom';
-import { useState } from "react"
- const ImageAddress = "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 const Orders = () => {
+  const userid = useSelector((state) => state.user.userid);
+  const [data, setData] = useState([]);
+  const [isDelivered, setIsDelivered] = useState(false); // `null` means no chip is selected
 
-  const [collapsable,setCollapsable]=useState(true)
-  function collapsableToggle() {
-    setCollapsable(!collapsable)
-}
-const dropdown_collapsableClass = collapsable ? "dropdown_view_toggle" : "dropdown_view"
+  useEffect(() => {
+    const FetchOrder = async () => {
+      try {
+        const response = await axios.get(`${ENDPOINT}/admin/orders?orderState=${isDelivered}`);
+        const order = response.data.orders;
+        console.log(order);
+        setData(order);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    FetchOrder();
+  }, [userid,isDelivered]);
+  const handleChipClick = (status) => {
+    if (status === 'Delivered') {
+      setIsDelivered(true);  // "Delivered" selected
+    } else {
+      setIsDelivered(false); // "Active-Non delivered" selected
+    }
+  };
   return (
-    <>
-    <p style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }} className='wishlist_page_head'>Orders <span></span> </p>
-
-    <div className='dropdown_wrapper_datagrid'>
-  
-  
-     <section>
-      <div className='orderDatagrid'>
-
-        {/* product Image */}
-        <div className='Image_description'>
-
-          <Checkbox className='datagridCheck' style={{ marginRight: "0.5rem" }} />
-          <LazyLoadImage            wrapperClassName="imageMain_product_order"  effect="opacity" className='product_imageMain' src={ImageAddress} alt='img'  />
-          <p  className="datagrid_title"style={{ marginBottom: "0" }}>Fuji Film 2k Camera</p>
-          <p className="mobile_sku" style={{ marginBottom: "0" }}>Tr-001</p>
+    <div>
+      <p className="wishlist_page_head">Your Orders</p>
+      {data.length === 0 ? (
+        <div className="Order_msg_wrapper">
+          <p className="order_msg_txt">No one has Ordered anything yet.</p>
+          <Link to="/shop" className="wishlistLink">Visit Home</Link>
         </div>
-        <p className='desktop_sku' style={{ marginBottom: "0" }}>SKU-001</p>
-        <p className='stock_status' style={{ marginBottom: "0" }}>InStock <span style={{ color: "red" }}>(2)</span></p>
-        <p className='datagrid_category' style={{ marginBottom: "0" ,color:"rgb(0,107,255)",fontWeight:"500"}}>Electronics</p>
-        <p className='datagrid_sub' style={{ marginBottom: "0" }}>Camera</p>
-      
-        <p className='price_datagrid' style={{ marginBottom: "0" }}>254$ <span style={{ textDecoration: "line-through", fontSize: "13px" }}>300$</span></p>
-        <p className='Last_updated' style={{ marginBottom: "0" }}>Last Modified: <br /> 28/4/2023</p>
-        {/* Actions */}
-        <div className='action_Wrapper'>
-          <Link><FaEdit size={20} /></Link>
-          <Link><FaEye size={20} /></Link>
-          <Link className='dropdown_Link_collapsble' onClick={collapsableToggle}><BsFillCaretDownFill size={20} /></Link>
-         
-        </div>
-      </div>
+      ) : (
+        data.map((order) => (
+          <>
+            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", padding: "5px", marginBottom: "20px" }}>
+              <div>
+                <p style={{ marginBottom: "0px", fontSize: "18px" }}> <FaFilter />Sort Orders By</p>
+              </div>
 
-{/* collapsble */}
-    <div className={dropdown_collapsableClass}>
-      <div className='dropdown_collapsable'> 
-        <div className='product_table_head'style={{fontSize:"1.2rem"}}>Product</div>
-        <div className='image_table'><img alt="product_img" className='product_table_image' src={ImageAddress}/> <p style={{margin:"0"}}>Xiaomi NoteBook </p></div>
-        <div className='product_table_head'>Sku:<span style={{fontSize:'13px',fontWeight:"500"}}>TR-001</span></div>
-        <div className='product_table_head'>Stock status:<span style={{color:"#4BB497",fontWeight:"bold"}}>In Stock</span> (120)</div>
-        <div className='product_table_head'>Price: <span style={{fontSize:'13px',fontWeight:"500"}}>$254</span></div>
-        <div className='product_table_head'>Category:<span style={{color:"rgb(0,107,255)",fontWeight:"bold"}}>Electronics</span></div>
-      </div>
-      {/* ends here */}
+              <div style={{ flexDirection: "row", columnGap: '10px' }}>
+                <Chip
+                  style={{ marginLeft: "5px", cursor: "pointer" }}
+                  label="Delivered"
+                  color={isDelivered === true ? 'primary' : 'default'} // Apply primary color when selected
+                  onClick={() => handleChipClick('Delivered')}
+                  selected={isDelivered === true}
+                />
+
+                <Chip
+                  style={{ marginLeft: "5px", cursor: "pointer" }}
+                  label="Active-Non delivered"
+                  color={isDelivered === false ? 'primary' : 'default'} // Apply primary color when selected
+                  onClick={() => handleChipClick('Active-Non delivered')}
+                  selected={isDelivered === false}
+                />
+              </div>
+            </div>
+            <div key={order.OrderId} className="OrderCard">
+              <div style={{ display: 'flex', flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ flexDirection: "row", display: "flex", alignItems: "center", columnGap: 10 }}>
+                  <Chip style={{ backgroundColor: "#4BB497" }} label="#Order Id" />
+                  <p style={{ marginBottom: 0, fontSize: "13px" }}> #{order.OrderId}</p>
+                </div>
+
+                <Chip style={{ cursor: "pointer" }} label={order.orderStatus} />
+              </div>
+
+              <p>Order Date: {new Date(order.orderedAt).toLocaleDateString('en-US')}</p>
+
+              <Divider />
+              {order.products.map((product, index) => (
+                <div key={index} style={{ marginTop: "5px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+                  <div style={{ flexDirection: "row", display: 'flex' }}>
+                    <img
+                      src={product.image[0]}
+                      alt={product.name}
+                      style={{ height: "150px", width: "150px", objectFit: "cover", borderRadius: "5px" }} />
+
+                    <div style={{ flexDirection: "column", display: 'flex', justifyContent: "center", alignItems: "flex-start", marginLeft: "20px" }}>
+                      <p style={{ marginBottom: "10px" }}>{product.name}</p>
+                      <p style={{ marginBottom: "10px" }}>{product.description}</p>
+                    </div>
+                  </div>
+
+                  <div style={{ flexDirection: "column", display: 'flex', justifyContent: "center", alignItems: "flex-start", marginLeft: "20px" }}>
+                    <p style={{ marginBottom: "10px" }}>{product.SalePrice * product.quantity} Rs</p>
+                    <p style={{ marginBottom: "10px" }}>Qty: {product.quantity}</p>
+                  </div>
+                </div>
+              ))}
+              <Divider />
+              <div style={{ marginTop: "20px" }}>
+                <p style={{ marginBottom: "10px", fontSize: "13px" }}><CiCreditCard1 />    Payment Method : {order.PaymentMethod}</p>
+                <p style={{ marginBottom: "10px", fontSize: "13px" }}><LiaAddressBook /> Delivery Address : {order.shippingInfo.address} ,{order.shippingInfo.city},{order.shippingInfo.country}</p>
+                <p style={{ marginBottom: "10px", fontSize: "16px" }}><FaMoneyBillWaveAlt />
+                  Total Amount : {order.TotalAmount} Rs</p>
+
+              </div>
+            </div></>
+        ))
+      )}
     </div>
+  );
+};
 
-    </section>
-
-  
-    <section>
-      <div className='orderDatagrid'>
-
-        {/* product Image */}
-        <div className='Image_description'>
-
-          <Checkbox className='datagridCheck' style={{ marginRight: "0.5rem" }} />
-          <LazyLoadImage            wrapperClassName="imageMain_product_order"  effect="opacity" className='product_imageMain' src={ImageAddress} alt='img'  />
-          <p  className="datagrid_title"style={{ marginBottom: "0" }}>Fuji Film 2k Camera</p>
-          <p className="mobile_sku" style={{ marginBottom: "0" }}>Tr-001</p>
-        </div>
-        <p className='desktop_sku' style={{ marginBottom: "0" }}>SKU-001</p>
-        <p className='stock_status' style={{ marginBottom: "0" }}>InStock <span style={{ color: "red" }}>(2)</span></p>
-        <p className='datagrid_category' style={{ marginBottom: "0" ,color:"white",fontWeight:"500",backgroundColor:"#4BB497",padding:"0.2rem",borderRadius:"2px"}}>Electronics</p>
-        <p className='datagrid_sub' style={{ marginBottom: "0" }}>Camera</p>
-      
-        <p className='price_datagrid' style={{ marginBottom: "0" }}>254$ <span style={{ textDecoration: "line-through", fontSize: "13px" }}>300$</span></p>
-        <p className='Last_updated' style={{ marginBottom: "0" }}>Last Modified: <br /> 28/4/2023</p>
-        {/* Actions */}
-        <div className='action_Wrapper'>
-          <Link><FaEdit size={20} /></Link>
-          <Link><FaEye size={20} /></Link>
-          <Link className='dropdown_Link_collapsble' onClick={collapsableToggle}><BsFillCaretDownFill size={20} /></Link>
-         
-        </div>
-      </div>
-
-{/* collapsble */}
-    <div className={dropdown_collapsableClass}>
-      <div className='dropdown_collapsable'> 
-        <div className='product_table_head'style={{fontSize:"1.2rem"}}>Product</div>
-        <div className='image_table'><img alt="product_img" className='product_table_image' src={ImageAddress}/> <p style={{margin:"0"}}>Xiaomi NoteBook </p></div>
-        <div className='product_table_head'>Sku:<span style={{fontSize:'13px',fontWeight:"500"}}>TR-001</span></div>
-        <div className='product_table_head'>Stock status:<span style={{color:"#4BB497",fontWeight:"bold"}}>In Stock</span> (120)</div>
-        <div className='product_table_head'>Price: <span style={{fontSize:'13px',fontWeight:"500"}}>$254</span></div>
-        <div className='product_table_head'>Category:<span style={{color:"rgb(0,107,255)",fontWeight:"bold"}}>Electronics</span></div>
-      </div>
-      {/* ends here */}
-    </div>
-
-    </section>
-
-
-
-    </div>
-    </>
-  )
-}
-
-export default Orders
+export default Orders;
