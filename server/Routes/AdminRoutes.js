@@ -10,12 +10,11 @@ const DeleteProduct = require('../Controllers/Product/DeleteProduct')
 const CountProduct = require('../Controllers/Stats/CountProduct')
 const { getLast30DaysCreditUsage } = require('../Controllers/Stats/CreditUsage')
 const totalUploads = require('../Controllers/Stats/TotalUploads')
-const { isAuthorized, isAuthenticated } = require('../middlewares/Auth')
 const GetAllOrders = require('../Controllers/Order/GetAllOrder')
 //middlewares
 
 
-
+const { isAuthorized, isAuthenticated } = require('../middlewares/Auth')
 
 //routes
 router.route('/admin/user-count').get(CountUser);

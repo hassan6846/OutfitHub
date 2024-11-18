@@ -22,7 +22,9 @@ export default function TrendingCarsoul(props) {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`${ENDPOINT}/products/promotions/trending`);
+        const response = await axios.get(`${ENDPOINT}/products/promotions/trending`,{
+          withCredentials:true
+        });
         setdata(response.data.product)
         console.log(data)
       } catch (error) {
@@ -30,7 +32,7 @@ export default function TrendingCarsoul(props) {
       }
     }
     fetchProduct()
-    
+    // eslint-disable-next-line
   }, [])
   const handleLikeToggle = (product) => {
     

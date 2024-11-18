@@ -3,9 +3,18 @@
   background-color: #4bb497;
   padding: 0.5rem;
 }
-.wislisht_empty_container {
+.wishlist_empty_container {
   display: flex;
   justify-content: center;
+  height: 70vh;
   align-items: center;
   flex-direction: column;
+}
+.wishlist_page_head{
+  box-shadow: rgba(100, 100, 111, 0.123) 0px 7px 20px 0px;
+  font-size: 2.5rem;
+  padding: 1rem;
+  color: rgb(19, 16, 57);
+  font-weight: 500;
+  border-radius: 5px;
 }

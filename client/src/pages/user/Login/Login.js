@@ -10,6 +10,7 @@ import Loginbtns from "../../../components/IconBtns/LoginPageBtns.js";
 import {ENDPOINT} from "../../../api/Endpoint.js"
 import { useNavigate } from "react-router-dom";
 
+import Cookie from "js-cookie"
 //state
 import { setId ,setName,setAvatar,SETMAIL ,setGender,setJoinedIn,setRole,setPHONE, setAuth} from "../../../Slices/UserSlices.js";
 import { useDispatch,useSelector } from "react-redux";
@@ -89,7 +90,7 @@ const Login = () => {
 
       // Log the response and its data
     
-      console.log("Response data:", response.data.user);
+
       dispatch(setId(response.data.user._id));
       dispatch(SETMAIL(response.data.user.email));
       dispatch(setGender(response.data.user.gender));
@@ -100,7 +101,7 @@ const Login = () => {
       dispatch(setPHONE(response.data.user.phone));
       dispatch(setAuth(true))
       //Redirect
-     
+      Cookie.set("token",response.data.token)
 
       // Handle successful login
       toast.success("Successfully logged in");

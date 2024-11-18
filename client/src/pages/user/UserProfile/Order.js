@@ -18,7 +18,9 @@ const Order = () => {
   useEffect(() => {
     const FetchOrder = async () => {
       try {
-        const response = await axios.get(`${ENDPOINT}/order/user/${userid}`);
+        const response = await axios.get(`${ENDPOINT}/order/user/${userid}`,{
+          withCredentials:true
+        });
         const order = response.data.orders;
         console.log(order);
         setData(order);
