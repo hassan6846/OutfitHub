@@ -9,14 +9,16 @@ import { BsBox2, BsFillCartFill} from "react-icons/bs"
 import { BiSolidUser, BiSolidMessageSquareDetail } from "react-icons/bi"
 
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md"
-import { defaultUserImg } from '../../../helpers/GlobalVariables'
+
 import { AiOutlineAppstoreAdd } from "react-icons/ai"
 
 // css
 import "./AdminSidebar.css"
+import { useSelector } from 'react-redux'
 
 
 const AdminSidebar = () => {
+    const avatar = useSelector((state) => state.user.avatar);
     const [toggled, setToggled] = useState(true)
     function SidebarTOGGLE() {
         setToggled(!toggled)
@@ -54,7 +56,7 @@ const HandleLogout = async () => {
         <aside className={divClassName}>
             <div onClick={SidebarTOGGLE} className='aside_user_toggle'><MdOutlineKeyboardArrowLeft className='aside_icon_toggle' /></div>
             {/* user Profile IMAGE */}
-            <div className='aside_profiel_image_cover'> <img className={Aside_img} src={defaultUserImg} alt="profile_img" /> <BiUpload className='upload_icon_aside' />   </div>
+            <div className='aside_profiel_image_cover'> <img className={Aside_img} src={avatar} alt="profile_img" /> <BiUpload className='upload_icon_aside' />   </div>
             {/* IMAGE DIV ENDS HERE */}
 
             {/* ORDER */}
