@@ -1,71 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import InfiniteScroll from "react-infinite-scroll-component";
-import "./ProductContainer.css";
+import React, { useState } from 'react';
+import { Tab, Tabs, Chip, Avatar, Box, Typography } from '@mui/material';
+import { useEffect } from 'react';
 
-import ProductCard from '../Card/ProductCard';
-import axios from 'axios';
-import CircularProgress from '@mui/material/CircularProgress';
-import { ENDPOINT } from '../../api/Endpoint';
-import Slug from '../../helpers/Slugify';
-const ProductContainer = () => {
-  const [products, setProducts] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
+const ProductCategories = () => {
+  const [selectedTab, setSelectedTab] = useState(0); // Active tab index
+  const [selectedChip, setSelectedChip] = useState(0); // Active chip inside each tab
 
-  useEffect(() => {
-    fetchProducts();
-    // eslint-disable-next-line 
-  },[page,products]);
+  // Sample category data for each tab (Men, Women, Girls, Kids, New Arrivals)
+  const categories = [
+    { label: 'Men', subCategories: ['Clothing', 'Footwear', 'Accessories'] },
+    { label: 'Women', subCategories: ['Clothing', 'Footwear', 'Beauty'] },
+    { label: 'Girls', subCategories: ['Clothing', 'Footwear', 'Toys'] },
+    { label: 'Kids', subCategories: ['Clothing', 'Toys', 'Accessories'] },
+    { label: 'New Arrivals', subCategories: ['Clothing', 'Footwear', 'Beauty'] },
+  ];
 
-  const fetchProducts = async () => {
-    try {
-      const response = await axios.get(`${ENDPOINT}/products?page=${page}&limit=10`);
-      const newProducts = response.data.data;
-
-      if (newProducts.length === 0) {
-        setHasMore(false);
-        return;
-      }
-
-      setProducts(prevProducts => [...prevProducts, ...newProducts]);
-      setPage(page + 1);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
+  // Handle tab change
+  const handleTabChange = (event, newTab) => {
+    setSelectedTab(newTab);
+    setSelectedChip(0); // Reset selected chip when tab changes
   };
 
-  console.log(products)
+  // Handle chip selection
+  const handleChipClick = (chipIndex) => {
+    setSelectedChip(chipIndex);
+    console.log(`Selected Tab: ${categories[selectedTab].label}`);
+    console.log(`Selected Chip: ${categories[selectedTab].subCategories[chipIndex]}`);
+  };
 
   return (
-    <section className='product_container_flex'>
-      <InfiniteScroll 
-    
-      style={{width:"100%"}}
-        dataLength={products.length}
-        next={fetchProducts}
-        hasMore={hasMore}
-        loader={<div style={{width:"100%",height:"90vh",display:'flex',justifyContent:'center',alignItems:"center",padding:"1rem"}}><CircularProgress/></div>}
-        className='Product_container_results'
+    <Box>
+      {/* Tabs */}
+      <Tabs
+        value={selectedTab}
+        onChange={handleTabChange}
+        aria-label="Product Categories"
+        centered
+
+          variant="scrollable"
       >
-
-        {products.map(product => (
-          <ProductCard
-          saved={Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}
-          // pathname:`/shop/${Slug(item.name)}`,
-          state={product}
-          tagone={product.tags[Math.floor(Math.random() * product.tags.length)]}
-          tagtwo={product.tags[Math.floor(Math.random() * product.tags.length)]}
-          tagsthree={product.tags[Math.floor(Math.random() * product.tags.length)]}
-          to={`/shop/${Slug(product.name)}`}
-          name={product.name}
-          image={product.image[0]}
-          // Replace with the actual property name for name
-          />
+        {categories.map((category, index) => (
+          <Tab label={category.label} key={index} />
         ))}
+      </Tabs>
 
-      </InfiniteScroll>
-    </section>
+      {/* Display subcategories (Chips) */}
+      <Box sx={{ padding: 2 }}>
+        <Typography variant="h6" gutterBottom>
+          {categories[selectedTab].label} Categories
+        </Typography>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+          {categories[selectedTab].subCategories.map((subCategory, index) => (
+            <Chip
+              key={index}
+              label={subCategory}
+              avatar={<Avatar>{subCategory.charAt(0)}</Avatar>}
+              clickable
+              color={selectedChip === index ? 'primary' : 'default'}
+              onClick={() => handleChipClick(index)}
+              sx={{ cursor: 'pointer' }}
+            />
+          ))}
+        </Box>
+      </Box>
+    </Box>
   );
-}
+};
 
-export default ProductContainer;
+export default ProductCategories;
