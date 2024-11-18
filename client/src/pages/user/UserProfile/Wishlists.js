@@ -1,23 +1,37 @@
 import React, { useEffect } from "react";
 import "./Wishlists.css";
-import Checkbox from '@mui/material/Checkbox';
-
+import Checkbox from "@mui/material/Checkbox";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite';
+import { useDispatch, useSelector } from "react-redux";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import Favorite from "@mui/icons-material/Favorite";
+import { removeFromLiked } from "../../../Slices/LikedSlice";
+import toast from "react-hot-toast";
+
 export default function Wishlists() {
+  const dispatch = useDispatch();
   const likedItems = useSelector((state) => state.like.products);
 
   useEffect(() => {
     console.log(likedItems); // Debugging the likedItems array
   }, [likedItems]);
 
+  const handleLikeToggle = (product) => {
+    const isLiked = likedItems.some((item) => item._id === product._id);
+
+    if (isLiked) {
+      dispatch(removeFromLiked(product));
+      toast("Removed from Liked item!", {
+        icon: "😥",
+      });
+    }
+    // Optionally, you can handle adding a product to likedItems if required in the future.
+  };
+
   return (
     <>
       <p className="wishlist_page_head">Liked Items</p>
 
-      {/* Conditional Rendering Inside */}
       {likedItems.length === 0 ? (
         <div className="wishlist_empty_container">
           <p>Your Wishlist is Empty</p>
@@ -26,23 +40,25 @@ export default function Wishlists() {
           </Link>
         </div>
       ) : (
-        // This is where we render the liked items if there are any
         <div className="wishlist_products_container">
           {likedItems.map((product, index) => (
             <div
               key={index}
               style={{
-                boxShadow:"rgba(100, 100, 111, 0.123) 0px 7px 20px 0px",
+                boxShadow: "rgba(100, 100, 111, 0.123) 0px 7px 20px 0px",
                 marginTop: "5px",
                 display: "flex",
-                borderRadius:"5px",
+                borderRadius: "5px",
                 flexDirection: "row",
-                marginBottom:"30px",
-                padding:"20px",
+                marginBottom: "30px",
+                padding: "20px",
                 justifyContent: "space-between",
               }}
             >
-              <div className="" style={{ flexDirection: "row", display: 'flex' }}>
+              <div
+                className=""
+                style={{ flexDirection: "row", display: "flex" }}
+              >
                 <img
                   src={product.image[0]} // Assuming product has an array of images
                   alt={product.name}
@@ -57,7 +73,7 @@ export default function Wishlists() {
                 <div
                   style={{
                     flexDirection: "column",
-                    display: 'flex',
+                    display: "flex",
                     justifyContent: "center",
                     alignItems: "flex-start",
                     marginLeft: "20px",
@@ -71,25 +87,24 @@ export default function Wishlists() {
               <div
                 style={{
                   flexDirection: "column",
-                  display: 'flex',
+                  display: "flex",
                   justifyContent: "center",
                   alignItems: "flex-start",
                   marginLeft: "20px",
                 }}
               >
                 <Checkbox
-                  // onclick aadd the passed state to the liked slice state...
-
-                  sx={
-                    {
+                  checked={likedItems.some((item) => item._id === product._id)} // Checkbox reflects liked state
+                  onChange={() => handleLikeToggle(product)} // Toggle like state on click
+                  sx={{
+                    color: "black",
+                    "&.Mui-checked": {
                       color: "black",
-                      '&.Mui-checked': {
-                        color: "black"
-                      }
-                    }
-                  }
-
-                  icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                    },
+                  }}
+                  icon={<FavoriteBorder />}
+                  checkedIcon={<Favorite />}
+                />
               </div>
             </div>
           ))}

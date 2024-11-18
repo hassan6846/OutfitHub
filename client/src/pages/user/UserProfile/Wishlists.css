@@ -1,52 +1,11 @@
-.img_wishlists {
-  border-radius: 0px;
-}
-.wishlist_page_head {
-  box-shadow: rgba(100, 100, 111, 0.123) 0px 7px 20px 0px;
-  font-size: 2.5rem;
-  padding: 1rem;
-  color: rgb(19, 16, 57);
-  font-weight: 500;
-  border-radius: 5px;
-}
-.trash_icon_btn {
-  width: fit-content;
-  padding: 5px;
-  border-radius: 5px;
-  display: flex;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  background-color: #f9e1e5;
-}
-.flash_icon_wislisht {
-  stroke: #af233a;
-  fill: #af233a;
-}
-.Wishlist_cart_btns {
-  background-color: rgb(75, 180, 151);
-  color: #131039;
-  display: flex;
+.wishlistLink {
+  color: white;
+  background-color: #4bb497;
+  padding: 0.5rem;
 }
 .wislisht_empty_container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.wishlistLink {
-  color: white;
-  background-color: #4bb497;
-  padding: 0.5rem;
-}
-.pokemon_img {
-  height: 10px;
-  object-fit: contain;
-}
-@media screen and (min-width: 300px) and (max-width: 660px) {
-  .wishlist_page_head {
-    padding: 0.3rem;
-    font-size: 1.4rem;
-  }
 }
