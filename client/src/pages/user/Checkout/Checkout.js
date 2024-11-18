@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { clearCart } from "../../../Slices/CartSlice";
 import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ENDPOINT } from "../../../api/Endpoint";
 import { toast } from "react-hot-toast"
 import axios from "axios";
@@ -29,6 +29,8 @@ const Checkout = () => {
   const cartProducts = useSelector((state) => state.cart.products);
   const userid = useSelector((state) => state.user.userid)
   const totalAmount = cartProducts.reduce((acc, product) => acc + product.SalePrice * product.quantity, 0);
+  const totalQty = cartProducts.reduce((acc, product) => acc + product.quantity, 0);
+
   //Loadig States
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -38,7 +40,7 @@ const Checkout = () => {
   const [address, setaddress] = useState("")
   const [City, setCity] = useState("Lahore")
   const [Phone, Setphone] = useState("+92 000 0000000")
-
+ const deliveryCharges=250
   const lightTheme = {
     style: {
       base: {
@@ -137,6 +139,9 @@ const Checkout = () => {
       setLoading(false);
     }
   };
+  useEffect(()=>{
+  setAmount(totalAmount+deliveryCharges)
+  },[totalAmount])
   return (
     <section className="h-110 h-custom" style={{ backgroundColor: "white" }}>
       {
@@ -197,7 +202,9 @@ const Checkout = () => {
                                       </MDBTypography>
                                     </MDBCol>
                                     <MDBCol md="1" lg="1" xl="1" className="text-end">
-
+                                    <MDBTypography tag="h6" className="mb-0">
+                                        x {product.quantity}
+                                      </MDBTypography>
                                     </MDBCol>
                                   </MDBRow></>
 
@@ -240,7 +247,7 @@ const Checkout = () => {
                             <MDBTypography tag="h5" className="text-uppercase">
                               Total
                             </MDBTypography>
-                            <MDBTypography tag="h5">132 Rs</MDBTypography>
+                            <MDBTypography tag="h5">{ amount} Rs</MDBTypography>
                           </div>
                           <div className="d-flex justify-content-between mb-4">
                             <MDBTypography tag="h5" className="text-uppercase">
@@ -248,14 +255,20 @@ const Checkout = () => {
                             </MDBTypography>
                             <MDBTypography tag="h5">250 Rs</MDBTypography>
                           </div>
+
                           <div className="d-flex justify-content-between mb-4">
                             <MDBTypography tag="h5" className="text-uppercase">
                               Quantity
                             </MDBTypography>
-                            <MDBTypography tag="h5"> x 1</MDBTypography>
+                            <MDBTypography tag="h5"> x {totalQty}</MDBTypography>
                           </div>
 
-
+                          <div className="d-flex justify-content-between mb-4">
+                            <MDBTypography tag="h5" className="text-uppercase">
+                             final amount:
+                            </MDBTypography>
+                            <MDBTypography tag="h5">{amount} Rs</MDBTypography>
+                          </div>
 
 
                           <hr className="my-4" />
