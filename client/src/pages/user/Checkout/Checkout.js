@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { clearCart } from "../../../Slices/CartSlice";
 import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ENDPOINT } from "../../../api/Endpoint";
 import { toast } from "react-hot-toast"
 import axios from "axios";
@@ -137,9 +137,6 @@ const Checkout = () => {
       setLoading(false);
     }
   };
-  useEffect(()=>{
-    setAmount(totalAmount)
-  })
   return (
     <section className="h-110 h-custom" style={{ backgroundColor: "white" }}>
       {
