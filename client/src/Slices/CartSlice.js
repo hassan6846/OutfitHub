@@ -28,16 +28,39 @@ const cartSlice = createSlice({
          state.amount += newItem.price * (newItem.quantity || 1);
       },
       removeFromCart: (state, action) => {
-       
+
          state.products = state.products.filter(product => product._id !== action.payload.id);
 
-  
+
       },
       incrementProduct: (state, action) => {
-         // Your logic for incrementing product quantity
+         const productToIncrement = state.products.find(
+            (product) => product._id === action.payload.id
+         );
+
+         if (productToIncrement) {
+            productToIncrement.quantity += 1;
+            state.quantity += 1;
+           
+         }
       },
       decrementProduct: (state, action) => {
-         // Your logic for decrementing product quantity
+         const productToDecrement = state.products.find(
+            (product) => product._id === action.payload.id
+         );
+
+         if (productToDecrement && productToDecrement.quantity > 1) {
+            productToDecrement.quantity -= 1;
+            state.quantity -= 1;
+            
+         } else if (productToDecrement && productToDecrement.quantity === 1) {
+            // If quantity is 1, remove the product from the cart
+            state.quantity -= 1;
+        
+            state.products = state.products.filter(
+               (product) => product._id !== action.payload.id
+            );
+         }
       },
       clearCart: (state) => {
          state.products = [];

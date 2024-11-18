@@ -16,13 +16,17 @@ import { useDispatch, useSelector } from "react-redux"
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Cart.css";
-import { clearCart, removeFromCart } from "../../../Slices/CartSlice";
+import { clearCart, removeFromCart, decrementProduct, incrementProduct } from "../../../Slices/CartSlice";
 function Cart() {
   const cartProducts = useSelector((state) => state.cart.products);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+
+  const totalAmount = cartProducts.reduce((acc, product) => acc + product.SalePrice * product.quantity, 0);
+ 
   useEffect(() => {
-    console.log(cartProducts)
-  }, [cartProducts])
+    console.log(totalAmount)
+
+  }, [cartProducts,totalAmount])
   const dispatch = useDispatch()
   return (
     <section className="h-110 h-custom" style={{ backgroundColor: "white" }}>
@@ -83,17 +87,19 @@ function Cart() {
                                       xl="3"
                                       className="d-flex align-items-center"
                                     >
-                                      <MDBBtn color="link" className="px-2">
+                                      <MDBBtn onClick={() => dispatch(decrementProduct({ id: product._id }))} color="link" className="px-2">
                                         <MDBIcon fas icon="minus" />
                                       </MDBBtn>
 
                                       <MDBInput
                                         type="number"
-                                        min="0"
+                                        min="1"
+                                        value={product.quantity}
                                         defaultValue={1}
+                                        max="20"
                                         size="sm" />
 
-                                      <MDBBtn color="link" className="px-2">
+                                      <MDBBtn onClick={() => dispatch(incrementProduct({ id: product._id }))} color="link" className="px-2">
                                         <MDBIcon fas icon="plus" />
                                       </MDBBtn>
                                     </MDBCol>
@@ -154,13 +160,13 @@ function Cart() {
                             <MDBTypography tag="h5" className="text-uppercase">
                               Products
                             </MDBTypography>
-                            <MDBTypography tag="h5">€ 132.00</MDBTypography>
+                            <MDBTypography tag="h5">{ totalAmount}Rs</MDBTypography>
                           </div>
                           <div className="d-flex justify-content-between mb-4">
                             <MDBTypography tag="h5" className="text-uppercase">
                               Shipping CHARGES
                             </MDBTypography>
-                            <MDBTypography tag="h5">€ 5</MDBTypography>
+                            <MDBTypography tag="h5">{250}Rs</MDBTypography>
                           </div>
 
 
@@ -173,16 +179,16 @@ function Cart() {
                             <MDBTypography tag="h5" className="text-uppercase">
                               Total price
                             </MDBTypography>
-                            <MDBTypography tag="h5">€ 137.00</MDBTypography>
+                            <MDBTypography tag="h5"> Rs {totalAmount+250}</MDBTypography>
                           </div>
 
                           <MDBBtn
-                            href={isAuthenticated?'/checkout':'login'}
+                            href={isAuthenticated ? '/checkout' : 'login'}
                             style={{ backgroundColor: "#4BB497" }}
                             block
                             size="lg"
                           >
-                      {isAuthenticated ? 'Checkout' : 'Register'}
+                            {isAuthenticated ? 'Checkout' : 'Register'}
 
 
                           </MDBBtn>

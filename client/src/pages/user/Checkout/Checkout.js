@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { clearCart } from "../../../Slices/CartSlice";
 import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ENDPOINT } from "../../../api/Endpoint";
 import { toast } from "react-hot-toast"
 import axios from "axios";
@@ -28,10 +28,11 @@ const Checkout = () => {
   //selector
   const cartProducts = useSelector((state) => state.cart.products);
   const userid = useSelector((state) => state.user.userid)
+  const totalAmount = cartProducts.reduce((acc, product) => acc + product.SalePrice * product.quantity, 0);
   //Loadig States
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
-  const [amount, setAmount] = useState(5000);
+  const [amount, setAmount] = useState("");
 
   const [isCardValid, setIsCardValid] = useState(false);
   const [address, setaddress] = useState("")
@@ -136,6 +137,9 @@ const Checkout = () => {
       setLoading(false);
     }
   };
+  useEffect(()=>{
+    setAmount(totalAmount)
+  })
   return (
     <section className="h-110 h-custom" style={{ backgroundColor: "white" }}>
       {
