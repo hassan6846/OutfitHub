@@ -33,6 +33,7 @@ const Checkout = () => {
 
   //Loadig States
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line
   const [message, setMessage] = useState('');
   const [amount, setAmount] = useState("");
 

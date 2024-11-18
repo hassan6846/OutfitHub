@@ -37,7 +37,7 @@ import { persistor } from "../../store/Store";
 
 const ResponsiveNav = () => {
 
-
+  const roles = useSelector((state) => state.user.role);
   const avatar = useSelector((state) => state.user.avatar);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
   const cart = useSelector((state) => state.cart);
@@ -121,7 +121,7 @@ const ResponsiveNav = () => {
       localStorage.clear();
       sessionStorage.clear();
       window.location.href = '/';
-  
+
       toast.success(response.data.message)
       console.log(response)
     } catch (error) {
@@ -130,7 +130,7 @@ const ResponsiveNav = () => {
   }
   return (
     <>
-   
+
       <Alertbar />
       <div>
         <div className={toggleClass}> <div className="mobile_sidebar" style={{ width: "100%", height: "100%", backgroundColor: "#eee", display: "flex", flexDirection: "column" }} >
@@ -306,6 +306,14 @@ const ResponsiveNav = () => {
                       LOGIN/SIGNUP
                     </Link>
                   )}
+                  {
+                    roles.includes('admin') && (
+                      <Link to="/admin" className="dropdown_items_nav">
+                        <AiOutlineUserAdd />
+                        ADMIN
+                      </Link>
+                    )
+                  }
 
                   {/* Show profile, cart, and other links if user is authenticated */}
                   {isAuthenticated && (

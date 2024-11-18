@@ -8,16 +8,18 @@ import axios from "axios"
 import { toast } from "react-hot-toast"
 import { LuContact } from "react-icons/lu"
 import { ENDPOINT } from "../../../../api/Endpoint"
-import { defaultUserImg } from '../../../../helpers/GlobalVariables'
+
 
 // // cssf
 
 import { persistor } from '../../../../store/Store'
+import { useSelector } from 'react-redux'
 import "./UserOutlet.css"
 
 
-const UserOutler = () => {
 
+const UserOutler = () => {
+    const avatar = useSelector((state) => state.user.avatar);
 
     
     const [toggled, setToggled] = useState(true)
@@ -57,7 +59,7 @@ const UserOutler = () => {
         <aside className={divClassName}>
             <div onClick={SidebarTOGGLE} className='aside_user_toggle'><MdOutlineKeyboardArrowLeft className='aside_icon_toggle' /></div>
             {/* user Profile IMAGE */}
-            <div className='aside_profiel_image_cover'> <img className={Aside_img} src={defaultUserImg} alt="profile_img" /> <BiUpload className='upload_icon_aside' />   </div>
+            <div className='aside_profiel_image_cover'> <img className={Aside_img} src={avatar} alt="profile_img" /> <BiUpload className='upload_icon_aside' />   </div>
             {/* IMAGE DIV ENDS HERE */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Manage My Account</p>
