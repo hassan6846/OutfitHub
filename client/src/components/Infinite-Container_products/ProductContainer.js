@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Tab, Tabs, Chip, Avatar, Box, Typography } from '@mui/material';
-import { useEffect } from 'react';
+import { Tab, Tabs, Chip, Avatar, Box, Divider } from '@mui/material';
+
 
 const ProductCategories = () => {
   const [selectedTab, setSelectedTab] = useState(0); // Active tab index
@@ -8,7 +8,7 @@ const ProductCategories = () => {
 
   // Sample category data for each tab (Men, Women, Girls, Kids, New Arrivals)
   const categories = [
-    { label: 'Men', subCategories: ['Clothing', 'Footwear', 'Accessories'] },
+    { label: 'Men', subCategories: ['Clothing', 'Footwear', 'Accessories','Accessories','Accessories','Accessories','Accessories'] },
     { label: 'Women', subCategories: ['Clothing', 'Footwear', 'Beauty'] },
     { label: 'Girls', subCategories: ['Clothing', 'Footwear', 'Toys'] },
     { label: 'Kids', subCategories: ['Clothing', 'Toys', 'Accessories'] },
@@ -29,27 +29,27 @@ const ProductCategories = () => {
   };
 
   return (
-    <Box>
+    <Box 
+    style={{flexDirection:"column",justifyContent: "center", alignItems: "center", display: "flex"}}
+    >
       {/* Tabs */}
       <Tabs
         value={selectedTab}
         onChange={handleTabChange}
         aria-label="Product Categories"
         centered
-
-          variant="scrollable"
+     style={{fontFamily:"Outfit', sans-serif",fontSize:"14px"}}
+        variant="scrollable"
       >
         {categories.map((category, index) => (
-          <Tab label={category.label} key={index} />
+          <Tab style={{fontSize:"12px",fontFamily:"Outfit', sans-serif"}} label={category.label} key={index} />
         ))}
       </Tabs>
-
+  
       {/* Display subcategories (Chips) */}
-      <Box sx={{ padding: 2 }}>
-        <Typography variant="h6" gutterBottom>
-          {categories[selectedTab].label} Categories
-        </Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+      <Box sx={{ padding: 2 ,width:"100%"}}>
+      <Divider style={{marginBottom:"10px"}}/>
+        <Box sx={{ display: 'flex', gap: 2 ,overflowX:"auto"}}>
           {categories[selectedTab].subCategories.map((subCategory, index) => (
             <Chip
               key={index}
