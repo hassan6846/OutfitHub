@@ -8,10 +8,10 @@ const ProductCategories = () => {
   const [selectedChip, setSelectedChip] = useState(0);
 
   const categories = [
-    { label: 'Men', subCategories: ['All', 'Footwear', 'Accessories', 'Accessories', 'Accessories', 'Accessories'] },
-    { label: 'Women', subCategories: ['All', 'Footwear', 'Beauty'] },
-    { label: 'Girls', subCategories: ['All', 'Footwear', 'Toys'] },
-    { label: 'Kids', subCategories: ['All', 'Toys', 'Accessories'] },
+    { label: 'Men', subCategories: ['All', 'Footwear', 'Casual', 'Trousers','Sports','T-Shirts','Casual-Shirts'] },
+    { label: 'Women', subCategories: ['All','Tops','Kurta','Sleepwear','Makeup','Bottoms','Pumps','Sneakers','Lawn','Dresses','Handbags','Shalwar-Kameez'] },
+    { label: 'Girls', subCategories: ['All', 'Footwear', 'Toys','Clothing'] },
+    { label: 'Kids', subCategories: ['All', 'Toys', 'Clothing'] },
     { label: 'New Arrivals', subCategories: ['All', 'Footwear', 'Beauty'] },
   ];
 

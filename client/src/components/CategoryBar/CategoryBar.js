@@ -9,7 +9,7 @@ const CategoryBar = () => {
       param: "", //redirecting
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20231003/Category_Top%20(1).gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Tops",
 
 
     },
@@ -18,7 +18,7 @@ const CategoryBar = () => {
       param: "", //redirecting
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Kurta.gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Kurta",
 
     },
     {
@@ -26,28 +26,28 @@ const CategoryBar = () => {
       param: "", //redirecting
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20231003/Category_Fusion%20(1).gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Shalwar-Kameez",
 
     }, {
       title: "Handbags",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_HandBags.gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Handbags",
 
     }, {
       title: "Dresses",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Dresses.gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Dresses",
 
     }, {
       title: "Men's Casual Shirts",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20231003/Category_Men_Casual_Shirt.gif",
       category: "Men",
-      subcategory: "",
+      subcategory: "Casual-Shirts",
 
     },
     {
@@ -55,28 +55,28 @@ const CategoryBar = () => {
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20231003/7.Mens-T-Shirts.gif",
       category: "Men",
-      subcategory: "",
+      subcategory: "T-Shirts",
 
     }, {
       title: "Girls Clothings",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Gilrs_Clothing.gif",
       category: "Girls",
-      subcategory: "",
+      subcategory: "Clothing",
 
     }, {
       title: "Boys Clothings",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Boys_Clothing.gif",
       category: "Kids",
-      subcategory: "",
+      subcategory: "Clothing",
 
     }, {
       title: "Lawn",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Lawn.gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Lawn",
 
 
     }, {
@@ -84,56 +84,56 @@ const CategoryBar = () => {
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Women's_Sneakers.gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Sneakers",
 
     }, {
       title: "Sports Shoes",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Sports_Shoes.gif",
       category: "Men",
-      subcategory: "",
+      subcategory: "Sports",
 
     }, {
       title: "Women's Pumps",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Women's_Pumps.gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Pumps",
 
     }, {
       title: "Casual Shoes",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Casual_Shoes.gif",
       category: "Men",
-      subcategory: "",
+      subcategory: "Casual",
 
     }, {
       title: "Trousers",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Trousers.gif",
       category: "Men",
-      subcategory: "",
+      subcategory: "Trousers",
 
     }, {
       title: "Women's Bottoms",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Women's_Bottoms.gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Bottoms",
 
     }, {
       title: "Makeup",
       param: "Women",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Makeup.gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Makeup",
 
     }, {
       title: "Women's Sleepwear",
       param: "",
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Women's_Sleepwear.gif",
       category: "Women",
-      subcategory: "",
+      subcategory: "Sleepwear",
 
     },
   ]
