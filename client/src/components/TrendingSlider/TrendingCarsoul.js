@@ -63,9 +63,10 @@ export default function TrendingCarsoul(props) {
 
       >
         {
-          data.map((product) => (
-            <SwiperSlide style={{ width: "auto" }} key={product.id}>
+          data.map((product,index) => (
+            <SwiperSlide       key={product._id} style={{ width: "auto" }} >
               <ProductCard
+         
                 saved={Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}
                 
                 state={product}

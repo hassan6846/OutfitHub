@@ -32,7 +32,7 @@ import { Toaster } from "react-hot-toast"
 import { CookieConsent } from "react-cookie-consent"
 import Tags from "./pages/user/Tags/Tags";
 import Trending from "./pages/user/Trending/Trending";
-import NewArrival from "./pages/user/NewArrival/NewArrival";
+
 import ProtectedRoute from "./components/Protected/ProductRoute";
 
 
@@ -53,7 +53,7 @@ const Routing = () => {
 
         <Route path="/shop/tags/:tag" element={<Tags />} />
         <Route path="/shop/promotions/trendings" element={<Trending />} />
-        <Route path="/shop/promotions/new-arrival" element={<NewArrival />} />
+
         <Route path="/faqs" element={<FaqPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={

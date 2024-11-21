@@ -21,7 +21,7 @@ const SliderImages = [
 ];
 
 const LandingCarsoul = () => {
-  console.log(SliderImages);
+
   return (
     <Swiper
       className="Land_swiper"

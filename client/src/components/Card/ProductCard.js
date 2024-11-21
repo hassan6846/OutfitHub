@@ -11,7 +11,7 @@ export default function ProductCard(props) {
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   
   return (
-    <div className="card-container">
+    <div key={props.key} className="card-container">
       <div className="card_wrapper">
         <div className="image-container">
           <div className="sale_intro">-{props.saved}%</div>

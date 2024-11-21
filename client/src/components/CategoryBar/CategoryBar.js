@@ -141,8 +141,8 @@ const CategoryBar = () => {
     <div className='Category_Container' >
       {/* map card */}
       {
-        Data.map((data) => (
-          <div style={{ display: "flex", flexDirection: "column", rowGap: "0.5rem", alignItems: "center", marginBottom: "10px" }}>
+        Data.map((data,index) => (
+          <div  key={index} style={{ display: "flex", flexDirection: "column", rowGap: "0.5rem", alignItems: "center", marginBottom: "10px" }}>
             <Link state={
               [
                 { label: data.category, subCategories: [data.subcategory] }
