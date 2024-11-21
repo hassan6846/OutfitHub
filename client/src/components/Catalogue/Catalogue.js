@@ -7,12 +7,31 @@ const Catalogue = (props) => {
   return (
     <div className='Catlogue_wrapper'>
       <div className='Catalogue_row' >
-        <Link className='width_33_1' style={{ backgroundImage: `url(${props.men})` }}></Link>
+        <Link
+          to="/shop"
+          state={
+            [
+              { label: 'men', subCategories: ['all'] }
+            ]
+          } className='width_33_1' style={{ backgroundImage: `url(${props.men})` }}></Link>
+
         <div className='width_33_2  middle_column  ' >
-          <Link className='middle_child  middle_1' style={{ backgroundImage: `url(${props.kids})` }} ></Link>
-          <Link to={props.trendurl} className='middle_child middle_2' style={{ backgroundImage: `url(${props.trend})` }} ></Link>
+          <Link to="/shop" state={
+            [
+              { label: 'kids', subCategories: ['all'] }
+            ]
+          } className='middle_child  middle_1' style={{ backgroundImage: `url(${props.kids})` }} ></Link>
+          <Link to="/shop" className='middle_child middle_2' state={
+            [
+              { label: 'New Arrivals', subCategories: ['all'] }
+            ]
+          } style={{ backgroundImage: `url(${props.trend})` }} ></Link>
         </div>
-        <Link className='width_33_3' style={{ backgroundImage: `url(${props.women})` }}></Link>
+        <Link to="/shop" className='width_33_3' state={
+          [
+            { label: 'women', subCategories: ['all'] }
+          ]
+        } style={{ backgroundImage: `url(${props.women})` }}></Link>
       </div>
     </div>
   )
