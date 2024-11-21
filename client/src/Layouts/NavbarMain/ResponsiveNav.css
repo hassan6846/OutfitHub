@@ -18,10 +18,9 @@
   list-style: none;
 }
 
-/* Add your CSS or SCSS file */
+
 @media (max-width: 767px) {
 
-  /* You can adjust the max-width as needed for your mobile view */
   .my-custom-button {
     display: none;
   }
@@ -65,9 +64,11 @@
   position: relative;
   width: 360px;
 }
-.desktop_nav_input>div{
+
+.desktop_nav_input>div {
   border-radius: 50px;
 }
+
 .cart_length {
   background-color: #4bb497;
   padding: 1px 9px;

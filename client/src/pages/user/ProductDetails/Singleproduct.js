@@ -28,21 +28,23 @@ import toast from 'react-hot-toast';
 //state
 
 const Singleproduct = () => {
-  
+  const [mockimg, setmockimg] = useState([])
+  const [descrption,setdescription]=useState("")
   const dispatch = useDispatch()
   const roles = useSelector((state) => state.user.role);
   const isAdmin = roles.includes('admin');
   const cartProducts = useSelector((state) => state.cart.products);
   const [isInCart, setIsInCart] = useState(false);
-
   const navigate = useNavigate();
   const location = useLocation();
   const product = location.state; // Access the passed item via location.state
 
   useEffect(() => {
-    console.log(product)
+
     const productExists = cartProducts.some((item) => item._id === product._id);
     setIsInCart(productExists);
+    setmockimg(product.image)
+    setdescription(product.description)
     if (!product) {
       navigate('/404', { replace: false });
       return null; // Ensure the component doesn't render further
@@ -72,20 +74,14 @@ const Singleproduct = () => {
     }
     setIsInCart(!isInCart);
   };
-  const mockImages = [
-    "https://charcoal.com.pk/cdn/shop/files/DSC01422.jpg?v=1702534486&width=700",
-    "https://charcoal.com.pk/cdn/shop/files/DSC01422.jpg?v=1702534486&width=700",
-    "https://charcoal.com.pk/cdn/shop/files/DSC01422.jpg?v=1702534486&width=700",
-    "https://charcoal.com.pk/cdn/shop/files/DSC01422.jpg?v=1702534486&width=700",
 
-  ];
   const faqdata = {
     title: "",
     rows: [
       {
         title: `PRODUCT DESCRIPTION`,
         content: `   <ol> 
-      <li> ${product.description}</li>
+      <li> ${descrption}</li>
 
       </ol>`
       },]
@@ -112,7 +108,7 @@ const Singleproduct = () => {
             </div>
             {/* MOBILE PREVIEW SLIDES PRODUCT NEEDED TO ADD LOADER */}
             <Swiper pagination={true} modules={[Pagination]} className='swiper_main_all' >
-              {mockImages.map((imageUrl, index) => (
+              {mockimg.map((imageUrl, index) => (
                 <SwiperSlide className='Slide_shop'>
                   <LazyLoadImage effect='blur' className='single_images_shop' key={index} src={imageUrl} alt="Product_img" /></SwiperSlide>
               ))}
