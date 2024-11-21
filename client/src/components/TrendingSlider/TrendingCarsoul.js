@@ -12,18 +12,18 @@ import ProductCard from "../Card/ProductCard";
 import axios from "axios";
 import { ENDPOINT } from "../../api/Endpoint";
 import Slug from "../../helpers/Slugify";
-import { addtoLiked,removeFromLiked } from "../../Slices/LikedSlice";
-import { useDispatch,useSelector } from "react-redux";
-import {toast} from "react-hot-toast"
+import { addtoLiked, removeFromLiked } from "../../Slices/LikedSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-hot-toast"
 export default function TrendingCarsoul(props) {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
   const [data, setdata] = useState([])
   const liked = useSelector((state) => state.like.products);
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`${ENDPOINT}/products/promotions/trending`,{
-          withCredentials:true
+        const response = await axios.get(`${ENDPOINT}/products/promotions/trending`, {
+          withCredentials: true
         });
         setdata(response.data.product)
         console.log(data)
@@ -35,24 +35,24 @@ export default function TrendingCarsoul(props) {
     // eslint-disable-next-line
   }, [])
   const handleLikeToggle = (product) => {
-    
+
     const isLiked = liked.some((item) => item._id === product._id);
-  
+
     if (isLiked) {
-      
+
       dispatch(removeFromLiked(product));
       toast('Removed from Liked item!', {
         icon: '😥',
       });
     } else {
-      
+
       dispatch(addtoLiked(product));
       toast('Added to liked item!', {
         icon: '🎉',
       });
     }
   };
-  
+
   return (
     <>
       <Swiper
@@ -63,12 +63,12 @@ export default function TrendingCarsoul(props) {
 
       >
         {
-          data.map((product,index) => (
-            <SwiperSlide       key={product._id} style={{ width: "auto" }} >
+          data.map((product, index) => (
+            <SwiperSlide key={product._id} style={{ width: "auto" }} >
               <ProductCard
-         
+
                 saved={Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}
-                
+
                 state={product}
                 tagoneLink={`/shop/tags/${Slug(product.tags[0] || '')}`}
                 iconClick={() => handleLikeToggle(product)}
