@@ -59,7 +59,7 @@ const Tags = () => {
   };
 
   return (
-    <div>
+    <div className="Tags-Page-Container">
       {
         product.map((product, index) => (
           <ProductCard

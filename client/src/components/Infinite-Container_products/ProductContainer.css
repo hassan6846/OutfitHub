@@ -1,24 +1,13 @@
-.Product_container_results {
+
+.flex-Container-Infiite{
+  width: 100%;
+  height: auto;
   display: flex;
+  row-gap: 5px;
+  background-color: #fff;
+  column-gap: 5px;
+  justify-content: center;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
-  height: fit-content;
-  width: 95%;
-  justify-content: center;
-  row-gap: 0.5vh;
-
-  column-gap: 0.5vh;
+  align-items: flex-start;
 }
-.product_container_flex {
-  display: flex;
-  height: fit-content;
-  width: 100%;
-  
-  justify-content: center;
-  
-}
-.infinite-scroll-component__outerdiv{
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-

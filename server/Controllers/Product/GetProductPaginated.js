@@ -2,15 +2,34 @@ const Product = require("../../models/ProductSchema");
 
 const GetPaginatedProduct = async (req, res, next) => {
     try {
-        const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
-        const limit = parseInt(req.query.limit) || 5; // Default limit to 5 if not provided
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
 
-        const products = await Product.find({})
-            .skip(skip)
-            .limit(limit);
+        const category = req.query.category;
+        const subcategory = req.query.subcategory;
+        const lowtohigh = req.query.lowtohigh === 'true';
 
-        const totalProducts = await Product.countDocuments(); // Get total count of products
+        const filter = {};
+
+
+        if (category) {
+            filter.category = { $regex: new RegExp(`^${category}$`, 'i') };
+
+            if (subcategory) {
+      
+                filter.subcategory = { $regex: new RegExp(`^${subcategory}$`, 'i') };
+            }
+        }
+
+        const sort = lowtohigh ? { SalePrice: 1 } : { SalePrice: -1 };
+
+        const products = await Product.find(filter)
+            .skip(skip)
+            .limit(limit)
+            .sort(sort);
+
+        const totalProducts = await Product.countDocuments(filter);
         const totalPages = Math.ceil(totalProducts / limit);
 
         res.status(200).json({

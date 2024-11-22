@@ -3,7 +3,7 @@ const Product = require("../../models/ProductSchema");
 
 const GetTrendingProducts = async (req, res, next) => {
     try {
-        const product=await Product.find({Promotion:"trending"})
+        const product = await Product.find({ Promotion: "trending" })
 
         res.status(200).json({
             success: true,
@@ -17,4 +17,4 @@ const GetTrendingProducts = async (req, res, next) => {
         });
     }
 }
-module.exports=GetTrendingProducts
+module.exports = GetTrendingProducts
