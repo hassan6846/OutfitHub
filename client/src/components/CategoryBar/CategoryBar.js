@@ -148,8 +148,8 @@ const CategoryBar = () => {
                 { label: data.category, subCategories: [data.subcategory] }
               ]
             } to="/shop">
-              <img alt={data.image} style={{ height: "180px", width: "180px", objectFit: 'cover', borderRadius: "5px" }} src={data.image} /></Link>
-            <p style={{ marginTop: 0, marginBottom: 0, fontWeight: "500", fontSize: "16px", color: "#131039" }}>{data.title}</p>
+              <img className='ImageCategory' alt={data.image} src={data.image} /></Link>
+            <p className='Cateogry_img_p'>{data.title}</p>
           </div>
         ))
       }
