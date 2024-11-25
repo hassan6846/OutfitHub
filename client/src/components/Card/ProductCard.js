@@ -49,8 +49,8 @@ export default function ProductCard(props) {
               >
                 {props.name}
                 <div style={{display:"flex",columnGap:'5px',alignItems:"center",flexDirection:"row"}}>
-                  <p style={{marginBottom:"0px"}}>300</p>
-                  <p style={{marginBottom:"0px",fontSize:"13px",color:"#d01345",textDecorationLine:"line-through"}}>390</p>
+                  <p style={{marginBottom:"0px"}}>{props.salePrice}</p>
+                  <p style={{marginBottom:"0px",fontSize:"13px",color:"#d01345",textDecorationLine:"line-through",}}>{props.orignalPrice}</p>
                 </div>
               </div>
             </Link>
