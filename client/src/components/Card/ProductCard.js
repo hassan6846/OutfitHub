@@ -32,7 +32,7 @@ export default function ProductCard(props) {
               effect="blur"
             />
           </Link>
-          <div></div>
+
         </div>
         <div className="product-info">
           <div>
@@ -48,6 +48,10 @@ export default function ProductCard(props) {
                 }}
               >
                 {props.name}
+                <div style={{display:"flex",columnGap:'5px',alignItems:"center",flexDirection:"row"}}>
+                  <p style={{marginBottom:"0px"}}>300</p>
+                  <p style={{marginBottom:"0px",fontSize:"13px",color:"#d01345",textDecorationLine:"line-through"}}>390</p>
+                </div>
               </div>
             </Link>
             <div
