@@ -24,7 +24,7 @@ const ProductCategories = () => {
     { label: 'Women', subCategories: ['All', 'Tops', 'Kurta', 'Sleepwear', 'Makeup', 'Bottoms', 'Pumps', 'Sneakers', 'Lawn', 'Dresses', 'Handbags', 'Shalwar-Kameez'] },
     { label: 'Girls', subCategories: ['All', 'Footwear', 'Toys', 'Clothing'] },
     { label: 'Kids', subCategories: ['All', 'Toys', 'Clothing'] },
-    { label: 'New Arrivals', subCategories: ['All',] },
+ 
   ];
 
   // Fetch product data based on categoryData

@@ -18,6 +18,7 @@ const CreateProduct = async (req, res) => {
         qty,
         unit,
         weight,
+        tags,
         dimensions,
     } = req.body;
 
@@ -83,7 +84,7 @@ const CreateProduct = async (req, res) => {
             image: imageUrls,
             category: category,
             subcategory: subcategory,
-            tags: tagsFromCloudinary,  // Tags from Cloudinary
+            tags: tags,  // Tags from Cloudinary
             PostedBy: id,
             RegularPrice: regprice,
             Quantitiy: qty,

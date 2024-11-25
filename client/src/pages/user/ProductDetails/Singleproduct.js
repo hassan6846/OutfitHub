@@ -116,6 +116,7 @@ const Singleproduct = () => {
           </div>
           {/* Flexbox for product details */}
           <div className='Single_product_details'>
+          <p className='product_name_single'>{product.brand}</p>
             <p className='product_name_single'>{product.name}</p>
             <p className='product_full_single'>{product.description}</p>
             <p className='product_id_single'>ID : {product._id}</p>
