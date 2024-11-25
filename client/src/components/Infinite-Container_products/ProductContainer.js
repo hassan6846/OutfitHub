@@ -20,11 +20,11 @@ const ProductCategories = () => {
 
   // Static categories data (no need for useMemo)
   const categories = [
-    { label: 'Men', subCategories: ['All', 'Footwear', 'Casual', 'Trousers', 'Sports', 'T-Shirts', 'Casual-Shirts'] },
+    { label: 'Men', subCategories: ['All', 'Casual', 'Trousers', 'Sports', 'T-Shirts', 'Casual-Shirts'] },
     { label: 'Women', subCategories: ['All', 'Tops', 'Kurta', 'Sleepwear', 'Makeup', 'Bottoms', 'Pumps', 'Sneakers', 'Lawn', 'Dresses', 'Handbags', 'Shalwar-Kameez'] },
     { label: 'Girls', subCategories: ['All', 'Footwear', 'Toys', 'Clothing'] },
     { label: 'Kids', subCategories: ['All', 'Toys', 'Clothing'] },
-    { label: 'New Arrivals', subCategories: ['All', 'Footwear', 'Beauty'] },
+    { label: 'New Arrivals', subCategories: ['All',] },
   ];
 
   // Fetch product data based on categoryData
@@ -149,8 +149,13 @@ const ProductCategories = () => {
             {
               data.map((product, index) => (
                 <ProductCard key={product._id}
-                  saved={Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}
-
+                
+                saved={(
+                  (parseFloat(product.RegularPrice) - parseFloat(product.SalePrice)) / parseFloat(product.RegularPrice)
+              ) * 100}
+              
+                  orignalPrice={product.RegularPrice}
+                  salePrice={product.SalePrice}
                   state={product}
                   tagoneLink={`/shop/tags/${Slug(product.tags[0] || '')}`}
                   iconClick={() => handleLikeToggle(product)}

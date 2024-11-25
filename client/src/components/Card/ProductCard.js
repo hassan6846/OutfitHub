@@ -14,7 +14,7 @@ export default function ProductCard(props) {
     <div key={props.key} className="card-container">
       <div className="card_wrapper">
         <div className="image-container">
-          <div className="sale_intro">-{props.saved}%</div>
+          <div className="sale_intro">-{Math.floor(props.saved)}%</div>
           <div className="like_item_card">
             {" "}
 

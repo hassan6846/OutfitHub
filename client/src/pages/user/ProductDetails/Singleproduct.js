@@ -119,7 +119,10 @@ const Singleproduct = () => {
             <p className='product_name_single'>{product.name}</p>
             <p className='product_full_single'>{product.description}</p>
             <p className='product_id_single'>ID : {product._id}</p>
-            <p className='single_price_page'><span className='price_before_single'>Rs {product.RegularPrice}</span> <span className='price_after_single'>Rs {product.SalePrice}</span><span className='discount_percentage_single'>{Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}% off</span></p>
+            <p className='single_price_page'><span className='price_before_single'>Rs {product.RegularPrice}</span> <span className='price_after_single'>Rs {product.SalePrice}</span><span className='discount_percentage_single'>{(!isNaN(parseFloat(product.RegularPrice)) && !isNaN(parseFloat(product.SalePrice))) 
+  ? Math.floor(((parseFloat(product.RegularPrice) - parseFloat(product.SalePrice)) / parseFloat(product.RegularPrice)) * 100)
+  : 0}
+% off</span></p>
             <p className='flash_few'>Only few left in Stock!</p>
             <p className='flash_Text_p_yellow'>Sale is <span className='flash_Text_p_yellow_span'>Live <img style={{ height: "10px" }} alt='blink_img' src={blinkSVG} /></span></p>
             <div className='button_flex_single'>
