@@ -9,7 +9,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default function ProductCard(props) {
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-  
+
   return (
     <div key={props.key} className="card-container">
       <div className="card_wrapper">
@@ -48,9 +48,9 @@ export default function ProductCard(props) {
                 }}
               >
                 {props.name}
-                <div style={{display:"flex",columnGap:'5px',alignItems:"center",flexDirection:"row"}}>
-                  <p style={{marginBottom:"0px"}}>{props.salePrice}</p>
-                  <p style={{marginBottom:"0px",fontSize:"13px",color:"#d01345",textDecorationLine:"line-through",}}>{props.orignalPrice}</p>
+                <div style={{ display: "flex", columnGap: '5px', alignItems: "center", flexDirection: "row" }}>
+                  <p style={{ marginBottom: "0px" }}>{props.salePrice}</p>
+                  <p style={{ marginBottom: "0px", fontSize: "13px", color: "#d01345", textDecorationLine: "line-through", }}>{props.orignalPrice}</p>
                 </div>
               </div>
             </Link>
@@ -67,22 +67,22 @@ export default function ProductCard(props) {
             <div className="category_buttons_wrapper">
               {/* all category or tags will be map here no using  */}
               <Link to={props.tagoneLink} className="tag-links">
-  {props.tagone.length > 20 ? `${props.tagone.substring(0, 20)}...` : props.tagone}
-</Link>
-<Link to={props.tagtwoLink} className="tag-links">
-  {props.tagtwo.length > 20 ? `${props.tagtwo.substring(0, 20)}...` : props.tagtwo}
-</Link>
-<Link to={props.tagthreelink} className="tag-links">
-  {props.tagsthree.length > 20 ? `${props.tagsthree.substring(0, 20)}...` : props.tagsthree}
-</Link></div>
+                {props.tagone.length > 10 ? `${props.tagone.substring(0, 8)}...` : props.tagone}
+              </Link>
+              <Link to={props.tagtwoLink} className="tag-links">
+                {props.tagtwo.length > 10 ? `${props.tagtwo.substring(0,8)}...` : props.tagtwo}
+              </Link>
+              <Link to={props.tagthreelink} className="tag-links">
+                {props.tagsthree.length > 10 ? `${props.tagsthree.substring(0, 8)}...` : props.tagsthree}
+              </Link></div>
 
           </div>
           {/* Add Icon State Here */}
           <div className="card_icons_like">
 
             <Checkbox
-            // onclick aadd the passed state to the liked slice state...
-            onClick={props.iconClick}
+              // onclick aadd the passed state to the liked slice state...
+              onClick={props.iconClick}
               sx={
                 {
                   color: "black",
