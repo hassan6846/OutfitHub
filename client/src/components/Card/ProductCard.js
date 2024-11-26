@@ -66,9 +66,15 @@ export default function ProductCard(props) {
 
             <div className="category_buttons_wrapper">
               {/* all category or tags will be map here no using  */}
-              <Link to={props.tagoneLink} className="tag-links">{props.tagone}</Link>
-              <Link to={props.tagtwoLink} className="tag-links">{props.tagtwo}</Link>
-              <Link to={props.tagthreelink} className="tag-links">{props.tagsthree}</Link></div>
+              <Link to={props.tagoneLink} className="tag-links">
+  {props.tagone.length > 20 ? `${props.tagone.substring(0, 20)}...` : props.tagone}
+</Link>
+<Link to={props.tagtwoLink} className="tag-links">
+  {props.tagtwo.length > 20 ? `${props.tagtwo.substring(0, 20)}...` : props.tagtwo}
+</Link>
+<Link to={props.tagthreelink} className="tag-links">
+  {props.tagsthree.length > 20 ? `${props.tagsthree.substring(0, 20)}...` : props.tagsthree}
+</Link></div>
 
           </div>
           {/* Add Icon State Here */}
