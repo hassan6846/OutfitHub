@@ -4,7 +4,6 @@ var multer = require('multer');
 var upload = multer();
 
 
-
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
@@ -48,4 +47,15 @@ app.use('/api/v1',payment)
 app.use('/api/v1',product)
 app.use('/api/v1',admin)
 app.use('/api/v1',order)
+
+///Static
+const path = require('path');
+
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 module.exports = app
