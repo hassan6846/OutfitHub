@@ -10,21 +10,23 @@ import { removeFromLiked, addtoLiked } from '../../Slices/LikedSlice';
 import Slug from '../../helpers/Slugify';
 import "./ProductContainer.css";
 import InfiniteScroll from "react-infinite-scroll-component";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const ProductCategories = () => {
-
   const dispatch = useDispatch();
   const liked = useSelector((state) => state.like.products);
   const location = useLocation();
+  const [loading, setloading] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
   const [selectedChip, setSelectedChip] = useState(0);
-  const [categoryData, setCategoryData] = useState({ label: 'Men', subCategories: ['All'] });
-  const [data, setData] = useState([]);  // This will store the fetched product data
-  const [page, setPage] = useState(1);  // 📝 State to track the current page
-  const [hasMore, setHasMore] = useState(true);  // 📝 To track if there are more products
+  const [categoryLabel, setCategoryLabel] = useState('Men'); // separate state for label
+  const [subcategory, setSubcategory] = useState('All'); // separate state for subcategory
+  const [data, setData] = useState([]); // This will store the fetched product data
+  const [page, setPage] = useState(1); // State to track the current page
+  const [hasMore, setHasMore] = useState(true); // To track if there are more products
   const state = location.state;
 
-  // Static categories data (no need for useMemo)
+  // Static categories data
   const categories = [
     { label: 'Men', subCategories: ['All', 'Casual', 'Trousers', 'Sports', 'T-Shirts', 'Casual-Shirts'] },
     { label: 'Women', subCategories: ['All', 'Tops', 'Kurta', 'Sleepwear', 'Makeup', 'Bottoms', 'Pumps', 'Sneakers', 'Lawn', 'Dresses', 'Handbags', 'Shalwar-Kameez'] },
@@ -32,19 +34,16 @@ const ProductCategories = () => {
     { label: 'Kids', subCategories: ['All', 'Toys', 'Clothing'] },
   ];
 
-  // Fetch product data based on categoryData
+  // Fetch product data based on categoryLabel and subcategory
   const fetchProduct = async () => {
     const limit = 10;
     const currentPage = page;
-
-    // Use state from location if it exists, otherwise use default Men and All
-    const stateData = state && state[0] ? state[0] : categoryData;  // Handle array in state
-    const subcategory = stateData.subCategories.includes("All") ? "" : stateData.subCategories.join(',');
-    const category = stateData.label.toLowerCase();
+    const category = categoryLabel.toLowerCase();
+    const subcategoryQuery = subcategory === 'All' ? "" : subcategory; // Do not pass anything for 'All'
 
     try {
-      // Make API request with the relevant parameters
-      const response = await axios.get(`${ENDPOINT}/products?subcategory=${subcategory}&category=${category}&page=${currentPage}&limit=${limit}&lowtohigh=true`);
+      setloading(true);
+      const response = await axios.get(`${ENDPOINT}/products?subcategory=${subcategoryQuery}&category=${category}&page=${currentPage}&limit=${limit}&lowtohigh=true`);
 
       if (response.data.data.length === 0) {
         setHasMore(false);
@@ -53,10 +52,11 @@ const ProductCategories = () => {
         setData((prevData) => [...prevData, ...response.data.data]); // Appends new data
         setPage(currentPage + 1); // Increment page for next fetch
       }
-
     } catch (error) {
       console.log(error);
       toast.error("Error While Fetching Products");
+    } finally {
+      setloading(false);
     }
   };
 
@@ -64,16 +64,13 @@ const ProductCategories = () => {
   useEffect(() => {
     const stateData = state && state[0] ? state[0] : null;
 
-    // If location.state exists and has a valid category, update categoryData
     if (stateData) {
       const { label, subCategories } = stateData;
       const categoryIndex = categories.findIndex((category) => category.label.toLowerCase() === label.toLowerCase());
 
       if (categoryIndex >= 0) {
-        setCategoryData({
-          label,
-          subCategories: subCategories.length > 0 ? subCategories : ['All'],
-        });
+        setCategoryLabel(label);
+        setSubcategory(subCategories && subCategories.length > 0 ? subCategories[0] : 'All'); // Default to first subcategory
         setSelectedTab(categoryIndex);
 
         const validSubCategory = categories[categoryIndex].subCategories.find(subCategory => subCategories.includes(subCategory));
@@ -81,21 +78,18 @@ const ProductCategories = () => {
       }
     } else {
       // Default category (Men, All)
-      setCategoryData({
-        label: 'Men',
-        subCategories: ['All'],
-      });
+      setCategoryLabel('Men');
+      setSubcategory('All');
     }
   }, [state]);
 
-  // Effect for fetching products whenever categoryData changes (e.g., tab or subcategory)
+  // Effect for fetching products whenever categoryLabel or subcategory changes
   useEffect(() => {
-    // Reset data when categoryData changes
     setData([]);
-    setPage(1);   // Reset page to 1 to load new products
-    setHasMore(true); // Reset hasMore to true for the new category
-    fetchProduct();  // Fetch products for the selected category/subcategory
-  }, [categoryData]);  // This triggers every time categoryData changes (including when tabs or chips are clicked)
+    setPage(1); // Reset page to 1
+    setHasMore(true); // Reset hasMore to true
+    fetchProduct(); // Fetch products for the selected category/subcategory
+  }, [categoryLabel, subcategory]);
 
   // Handle like/unlike action for a product
   const handleLikeToggle = (product) => {
@@ -113,8 +107,8 @@ const ProductCategories = () => {
   // Handle tab change (category switch)
   const handleTabChange = (event, newTab) => {
     setSelectedTab(newTab);
-    setSelectedChip(0);
-    setCategoryData(categories[newTab]); // Update categoryData based on selected tab
+    setCategoryLabel(categories[newTab].label); // Update categoryLabel based on selected tab
+    setSubcategory('All'); // Reset subcategory to 'All' on tab change
   };
 
   // Handle chip click (subcategory selection)
@@ -122,20 +116,8 @@ const ProductCategories = () => {
     const selectedSubCategory = categories[selectedTab].subCategories[chipIndex];
     setSelectedChip(chipIndex);
 
-    // Update categoryData based on the selected chip (subcategory)
-    const newCategoryData = {
-      ...categoryData,
-      subCategories: selectedSubCategory === 'All' ? ['All'] : [selectedSubCategory],
-    };
-
-    // Update the state first
-    setCategoryData(newCategoryData);
-
-    // Fetch products immediately after state update
-    setPage(1); // Reset page to 1
-    setData([]); // Clear existing products
-    setHasMore(true); // Reset 'hasMore' state
-    fetchProduct(); // Fetch new products for the selected category/subcategory
+    // Update subcategory based on the selected chip (subcategory)
+    setSubcategory(selectedSubCategory === 'All' ? 'All' : selectedSubCategory);
   };
 
   // Handle infinite scroll and load more products
@@ -184,7 +166,11 @@ const ProductCategories = () => {
           </Box>
         </Box>
       </Box>
-
+      {loading && (
+        <div style={{ height: "80vh", width: "100%", justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
+          <CircularProgress />
+        </div>
+      )}
       {/* Display fetched product data */}
       <div>
         {data && data.length > 0 ? (
@@ -219,7 +205,9 @@ const ProductCategories = () => {
             ))}
           </InfiniteScroll>
         ) : (
-          <p>No products available</p>
+          <div style={{ height: "90vh", width: "100%", display: "flex", justifyContent: "center" }}>
+            <p>No products available</p>
+          </div>
         )}
       </div>
     </>
