@@ -177,10 +177,10 @@ const ProductCategories = () => {
           <InfiniteScroll
             next={ReachEnd}
             hasMore={hasMore}
-            refreshFunction={fetchProduct}
+   
             dataLength={data.length}
             pullDownToRefreshThreshold={0.8}
-            pullDownToRefresh={true}
+          
             className="flex-Container-Infiite"
           >
             {data.map((product, index) => (
