@@ -12,7 +12,7 @@ const BreadCrumb = () => {
     {pathParts.map((part, index) => (
       <React.Fragment key={index}>
         <Link className='bread_crumb_link' to={`/${pathParts.slice(0, index + 1).join('/')}`}>{part}</Link>
-        {index < pathParts.length - 1 && <span className='breadcrumb-separator'> <MdNavigateNext/> </span>}
+        {index < pathParts.length - 1 && <span className='breadcrumb-separator'> <MdNavigateNext/>   </span>}
       </React.Fragment>
     ))}
   </div>

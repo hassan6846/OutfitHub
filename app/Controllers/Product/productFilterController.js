@@ -22,9 +22,6 @@ const filterProducts = async (req, res, next) => {
       filter.subcategory = subcategory;
     }
 
-    if (brand) {
-      filter.brand = brand;
-    }
 
     // Apply price range filter if minPrice and/or maxPrice are provided
     if (minPrice || maxPrice) {

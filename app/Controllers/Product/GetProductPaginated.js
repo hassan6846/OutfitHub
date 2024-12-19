@@ -8,7 +8,7 @@ const GetPaginatedProduct = async (req, res, next) => {
 
         const category = req.query.category;
         const subcategory = req.query.subcategory;
-        const lowtohigh = req.query.lowtohigh === 'true';
+        const lowtohigh = req.query.lowtohigh === 'false';
 
         const filter = {};
 
@@ -20,6 +20,9 @@ const GetPaginatedProduct = async (req, res, next) => {
       
                 filter.subcategory = { $regex: new RegExp(`^${subcategory}$`, 'i') };
             }
+        }
+        if(subcategory){
+            filter.subcategory===null||undefined
         }
 
         const sort = lowtohigh ? { SalePrice: 1 } : { SalePrice: -1 };
