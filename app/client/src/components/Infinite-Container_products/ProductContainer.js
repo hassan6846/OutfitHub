@@ -166,50 +166,48 @@ const ProductCategories = () => {
           </Box>
         </Box>
       </Box>
-      {loading && (
+    
+      {loading ? (
         <div style={{ height: "80vh", width: "100%", justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
           <CircularProgress />
         </div>
+      ) : (
+        <div>
+          {data.length === 0 ? (
+            <div style={{ height: "100vh", width: "100%", display: "flex", justifyContent: "center",alignItems:"center" }}>
+              <p>No products available</p>
+            </div>
+          ) : (
+            <InfiniteScroll
+              next={ReachEnd}
+              hasMore={hasMore}
+              dataLength={data.length}
+              className="flex-Container-Infiite"
+            >
+              {data.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  saved={((parseFloat(product.RegularPrice) - parseFloat(product.SalePrice)) / parseFloat(product.RegularPrice)) * 100}
+                  orignalPrice={product.RegularPrice}
+                  salePrice={product.SalePrice}
+                  state={product}
+                  tagoneLink={`/shop/tags/${Slug(product.tags[0] || '')}`}
+                  iconClick={() => handleLikeToggle(product)}
+                  tagtwoLink={`/shop/tags/${Slug(product.tags[1] || '')}`}
+                  tagthreelink={`/shop/tags/${Slug(product.tags[2] || '')}`}
+                  tagone={product.tags[0] || ''}
+                  tagtwo={product.tags[1] || ''}
+                  tagsthree={product.tags[2] || ''}
+                  isChecked={liked.some((likedProduct) => likedProduct._id === product._id)}
+                  to={`/shop/${Slug(product.name)}`}
+                  name={product.name}
+                  image={product.image[0]}
+                />
+              ))}
+            </InfiniteScroll>
+          )}
+        </div>
       )}
-      {/* Display fetched product data */}
-      <div>
-        {data && data.length > 0 ? (
-          <InfiniteScroll
-            next={ReachEnd}
-            hasMore={hasMore}
-   
-            dataLength={data.length}
-            pullDownToRefreshThreshold={0.8}
-          
-            className="flex-Container-Infiite"
-          >
-            {data.map((product, index) => (
-              <ProductCard
-                key={product._id}
-                saved={((parseFloat(product.RegularPrice) - parseFloat(product.SalePrice)) / parseFloat(product.RegularPrice)) * 100}
-                orignalPrice={product.RegularPrice}
-                salePrice={product.SalePrice}
-                state={product}
-                tagoneLink={`/shop/tags/${Slug(product.tags[0] || '')}`}
-                iconClick={() => handleLikeToggle(product)}
-                tagtwoLink={`/shop/tags/${Slug(product.tags[1] || '')}`}
-                tagthreelink={`/shop/tags/${Slug(product.tags[2] || '')}`}
-                tagone={product.tags[0] || ''}
-                tagtwo={product.tags[1] || ''}
-                tagsthree={product.tags[2] || ''}
-                isChecked={liked.some((likedProduct) => likedProduct._id === product._id)}
-                to={`/shop/${Slug(product.name)}`}
-                name={product.name}
-                image={product.image[0]}
-              />
-            ))}
-          </InfiniteScroll>
-        ) : (
-          <div style={{ height: "90vh", width: "100%", display: "flex", justifyContent: "center" }}>
-            <p>No products available</p>
-          </div>
-        )}
-      </div>
     </>
   );
 };
