@@ -1,6 +1,7 @@
 .breadCrumb_Wrapper-100 {
   margin-bottom: 0.3rem;
-
+  display: flex;
+  flex-direction: row;
   padding: 1rem;
   width: fit-content;
  

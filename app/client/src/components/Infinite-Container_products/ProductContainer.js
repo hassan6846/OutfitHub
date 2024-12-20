@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { Tab, Tabs, Chip, Avatar, Box, Divider } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import { toast } from "react-hot-toast";
@@ -19,27 +19,27 @@ const ProductCategories = () => {
   const [loading, setloading] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
   const [selectedChip, setSelectedChip] = useState(0);
-  const [categoryLabel, setCategoryLabel] = useState('Men'); // separate state for label
-  const [subcategory, setSubcategory] = useState('All'); // separate state for subcategory
-  const [data, setData] = useState([]); // This will store the fetched product data
-  const [page, setPage] = useState(1); // State to track the current page
-  const [hasMore, setHasMore] = useState(true); // To track if there are more products
+  const [categoryLabel, setCategoryLabel] = useState('Men');
+  const [subcategory, setSubcategory] = useState('All');
+  const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
   const state = location.state;
 
-  // Static categories data
-  const categories = [
+  // Memoize categories array to prevent unnecessary re-renders
+  const categories = useMemo(() => [
     { label: 'Men', subCategories: ['All', 'Casual', 'Trousers', 'Sports', 'T-Shirts', 'Casual-Shirts'] },
     { label: 'Women', subCategories: ['All', 'Tops', 'Kurta', 'Sleepwear', 'Makeup', 'Bottoms', 'Pumps', 'Sneakers', 'Lawn', 'Dresses', 'Handbags', 'Shalwar-Kameez'] },
     { label: 'Girls', subCategories: ['All', 'Footwear', 'Toys', 'Clothing'] },
     { label: 'Kids', subCategories: ['All', 'Toys', 'Clothing'] },
-  ];
+  ], []);
 
-  // Fetch product data based on categoryLabel and subcategory
-  const fetchProduct = async () => {
+  // Memoize the fetchProduct function with useCallback
+  const fetchProduct = useCallback(async () => {
     const limit = 10;
     const currentPage = page;
     const category = categoryLabel.toLowerCase();
-    const subcategoryQuery = subcategory === 'All' ? "" : subcategory; // Do not pass anything for 'All'
+    const subcategoryQuery = subcategory === 'All' ? "" : subcategory;
 
     try {
       setloading(true);
@@ -49,8 +49,8 @@ const ProductCategories = () => {
         setHasMore(false);
         toast.success("You've reached the end! 😢");
       } else {
-        setData((prevData) => [...prevData, ...response.data.data]); // Appends new data
-        setPage(currentPage + 1); // Increment page for next fetch
+        setData((prevData) => [...prevData, ...response.data.data]);
+        setPage(currentPage + 1);
       }
     } catch (error) {
       console.log(error);
@@ -58,7 +58,7 @@ const ProductCategories = () => {
     } finally {
       setloading(false);
     }
-  };
+  }, [categoryLabel, subcategory, page]);
 
   // Effect for setting category data based on location state
   useEffect(() => {
@@ -70,26 +70,25 @@ const ProductCategories = () => {
 
       if (categoryIndex >= 0) {
         setCategoryLabel(label);
-        setSubcategory(subCategories && subCategories.length > 0 ? subCategories[0] : 'All'); // Default to first subcategory
+        setSubcategory(subCategories && subCategories.length > 0 ? subCategories[0] : 'All');
         setSelectedTab(categoryIndex);
 
         const validSubCategory = categories[categoryIndex].subCategories.find(subCategory => subCategories.includes(subCategory));
         setSelectedChip(validSubCategory ? categories[categoryIndex].subCategories.indexOf(validSubCategory) : 0);
       }
     } else {
-      // Default category (Men, All)
       setCategoryLabel('Men');
       setSubcategory('All');
     }
-  }, [state]);
+  }, [state, categories]);
 
   // Effect for fetching products whenever categoryLabel or subcategory changes
   useEffect(() => {
-    setData([]);
+    setData([]); // Clear previous data when category or subcategory changes
     setPage(1); // Reset page to 1
     setHasMore(true); // Reset hasMore to true
     fetchProduct(); // Fetch products for the selected category/subcategory
-  }, [categoryLabel, subcategory]);
+  }, [categoryLabel, subcategory, fetchProduct]); // Fetch when categoryLabel, subcategory, or fetchProduct changes
 
   // Handle like/unlike action for a product
   const handleLikeToggle = (product) => {
@@ -107,7 +106,7 @@ const ProductCategories = () => {
   // Handle tab change (category switch)
   const handleTabChange = (event, newTab) => {
     setSelectedTab(newTab);
-    setCategoryLabel(categories[newTab].label); // Update categoryLabel based on selected tab
+    setCategoryLabel(categories[newTab].label);
     setSubcategory('All'); // Reset subcategory to 'All' on tab change
   };
 
@@ -115,14 +114,11 @@ const ProductCategories = () => {
   const handleChipClick = (chipIndex) => {
     const selectedSubCategory = categories[selectedTab].subCategories[chipIndex];
     setSelectedChip(chipIndex);
-
-    // Update subcategory based on the selected chip (subcategory)
     setSubcategory(selectedSubCategory === 'All' ? 'All' : selectedSubCategory);
   };
 
   // Handle infinite scroll and load more products
   const ReachEnd = () => {
-    console.log("Reached the end of the list");
     if (!hasMore) {
       console.log("No more products to load");
     } else {
@@ -133,7 +129,6 @@ const ProductCategories = () => {
   return (
     <>
       <Box style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
-        {/* Tabs */}
         <Tabs
           value={selectedTab}
           onChange={handleTabChange}
@@ -149,7 +144,6 @@ const ProductCategories = () => {
           ))}
         </Tabs>
 
-        {/* Display subcategories (Chips) */}
         <Box sx={{ padding: 2, width: '100%' }}>
           <Divider style={{ marginBottom: '10px' }} />
           <Box sx={{ display: 'flex', gap: 2, overflowX: 'auto' }}>
@@ -174,8 +168,8 @@ const ProductCategories = () => {
       ) : (
         <div>
           {data.length === 0 ? (
-            <div style={{ height: "100vh", width: "100%", display: "flex", justifyContent: "center",alignItems:"center" }}>
-              <p>No products available</p>
+            <div style={{ height: "100vh", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <p>No products available or Check your Connection</p>
             </div>
           ) : (
             <InfiniteScroll
