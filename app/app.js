@@ -1,15 +1,14 @@
 //imports and modules
 const express = require("express");
+const app=express()
 var multer = require('multer');
 var upload = multer();
-
-
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
-const app=express()
+
 // MiddleWares Configs
 app.use(bodyParser.json(
   {
@@ -50,6 +49,7 @@ app.use('/api/v1',order)
 
 ///Static
 const path = require('path');
+const { connectDb } = require("./config/dbConnect");
 
 
 app.use(express.static(path.join(__dirname, 'build')));
@@ -58,4 +58,6 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+
+connectDb()
 module.exports = app

@@ -8,12 +8,11 @@
     "server": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "ME",
   "license": "ISC",
   "dependencies": {
     "@stripe/stripe-js": "^1.54.0",
     "bcrypt": "^5.1.0",
-    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cloudinary": "^1.37.3",
     "cookie-parser": "^1.4.6",
@@ -23,8 +22,6 @@
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "express-rate-limit": "^7.0.1",
-    "firebase": "^10.7.1",
-    "firebase-admin": "^12.0.0",
     "jsonwebtoken": "^9.0.0",
     "md5": "^2.3.0",
     "mongoose": "^7.6.7",
