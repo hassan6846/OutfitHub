@@ -1,7 +1,8 @@
 [build]
-  functions = "netlify/functions"
+  functions = "netlify/functions"  # Serverless functions directory
+  publish = "build"                # Frontend build folder (directly under the root)
 
 [[redirects]]
-  from = "/api/v1*"
-  to = "/.netlify/functions/server/:splat"
+  from = "/api/v1/*"               # Matches any request starting with /api/v1/
+  to = "/.netlify/functions/server/:splat"  # Redirects API requests to the corresponding serverless function
   status = 200
