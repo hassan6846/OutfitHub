@@ -9,5 +9,11 @@ const LoginRequestLimits = RateLimit({
 })
 
 
-
-module.exports = LoginRequestLimits
+const ForgotPasswordLimit = RateLimit({
+    windowMs: 60 * 60 * 1000, 
+    limit: 5,
+    standardHeaders: 'draft-7', 
+    legacyHeaders: false,
+    message: { message: 'Dont Spam Server Try Again in  1-Hour' }
+});
+module.exports = {LoginRequestLimits,ForgotPasswordLimit}
