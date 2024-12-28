@@ -8,7 +8,7 @@ const { getByTag } = require('../Controllers/Product/GetbyTags')
 const router = express.Router()
 //controllers
 
-const {isAuthenticated,isAuthorized} =require ("../middlewares/Auth")
+
 
 router.route('/products').get(GetPaginatedProduct)
 router.route('/products/:query').get(QueryProduct)
