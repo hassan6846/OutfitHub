@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
     validate: [validator.isAlphanumeric, "Username should contain only letters and numbers"],
   },
   email: {
-    required: [true, "Please Enter Your Email"],
+    required: true,
     unique: [true, "Email Already Exists"],
     validate: [validator.isEmail, "Please Enter a valid Email"],
   },
