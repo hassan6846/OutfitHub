@@ -29,10 +29,13 @@ const OrderSchema = new mongoose.Schema({
         pinCode: {
             type: Number,
             default: 54000,
+            required: false,
+
         },
         phoneNo: {
             type: String,
             required: true,
+            
         },
     },
     products: [{

@@ -1,25 +1,32 @@
 const mongoose = require("mongoose")
+const validator = require("validator");
+const { validate } = require("./UserModel");
+
 
 const ProductSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please Enter product Name"],
     trim: true,
-    unique: true,  
-  
+    unique: true,
+
   },
   brand: {
     type: String,
-    required: false,
+    required: [true, "Please Enter Brand Name"],
     default: undefined
   },
   description: {
     type: String,
-    required: [true, "Please Enter product Description"]
+    required: [true, "Please Enter product Description"],
+    maxLength: [500, "Description cannot exceed 500 characters"],
+
   },
   image: {
     type: [String],
     required: [true, "Kindly Add Some Images to Preview (minimum limit is 3)"],
+   
+
 
   },
   category: {
