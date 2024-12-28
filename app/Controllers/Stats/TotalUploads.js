@@ -1,10 +1,10 @@
 const cloudinary = require("../../utils/Cloudinary");
 
-const totalUploads = async (req, res, next) => {
+const totalUploads = async (res) => {
   try {
-  
+
     const usageData = await cloudinary.api.usage();
-    const totalUploadsCount = usageData.resources || 0; 
+    const totalUploadsCount = usageData.resources || 0;
 
     res.json({ totalUploads: totalUploadsCount });
   } catch (error) {
@@ -13,4 +13,4 @@ const totalUploads = async (req, res, next) => {
   }
 };
 
-module.exports = totalUploads ;
+module.exports = totalUploads;

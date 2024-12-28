@@ -1,6 +1,6 @@
 const Product = require("../../models/ProductSchema");
 
-const CountProduct = async (req, res) => {
+const CountProduct = async (res) => {
     try {
         const Count = await Product.countDocuments({})
         res.status(200).json({
@@ -14,4 +14,4 @@ const CountProduct = async (req, res) => {
             .json({ success: false, message: "Internal server error" });
     }
 }
-module.exports=CountProduct
+module.exports = CountProduct
