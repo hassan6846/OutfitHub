@@ -1,6 +1,19 @@
-const mongoose=require("mongoose")
-//we have to save the product model and check if the id exisit in the array then in the frontend we ill implement condition if
-//user liked or not
-const LikedSchma=new mongoose.Schema({
-    
-})
+const mongoose = require("mongoose")
+const LikedSchma = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true
+    },
+    likedItems: [{
+        type: mongoose.Schema.ObjectId,
+        ref: "Product"
+    }],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+
+}, { timestamps: true })
+
+module.exports = mongoose.model("Liked", LikedSchma)

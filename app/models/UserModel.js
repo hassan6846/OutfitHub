@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bycrypt = require("bcrypt");
 const validator = require("validator");
 
+
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -30,6 +31,7 @@ const UserSchema = new mongoose.Schema({
     minLength: [8, "Password should be greater than 8 characters"],
     select: false,
     maxLength: [30, "Password cannot exceed 30 characters"],
+    validate: [validator.isStrongPassword, "Password should contain at least 1 lowercase, 1 uppercase, 1 number, 1 special character and should be 8 characters long"],
 
 
   },
@@ -59,7 +61,7 @@ const UserSchema = new mongoose.Schema({
 
     type: Boolean,
     default: false,
-    
+
 
   },
   gender: {
