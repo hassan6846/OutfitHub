@@ -13,17 +13,17 @@ const totalUploads = require('../Controllers/Stats/TotalUploads')
 const GetAllOrders = require('../Controllers/Order/GetAllOrder')
 //middlewares
 
-
 const { isAuthorized, isAuthenticated } = require('../middlewares/Auth')
 
 //routes
-router.route('/admin/user-count').get(CountUser);
-router.route('/admin/product-count').get(CountProduct)
-router.route('/admin/cloduinary/usage').get(getLast30DaysCreditUsage)
-router.route('/admin/get-users').get(GetUsers)
-router.route('/admin/product/upload').post( CreateProduct);
-router.route('/admin/orders').get(GetAllOrders)
-router.route('/admin/product/all').get(AllProducts)//get all products
-router.route('/admin/product/delete/:id').post(DeleteProduct)
-router.route('/admin/cloudinary/total-uploads').get(totalUploads)
+router.route('/admin/user-count').get(isAuthenticated, isAuthorized, CountUser)
+router.route('/admin/product-count').get(isAuthenticated, isAuthorized, CountProduct)
+router.route('/admin/cloduinary/usage').get(isAuthenticated, isAuthorized, getLast30DaysCreditUsage)
+router.route('/admin/get-users').get(isAuthenticated, isAuthorized, GetUsers)
+router.route('/admin/product/upload').post(isAuthenticated, isAuthorized, CreateProduct)
+router.route('/admin/orders').get(isAuthenticated, isAuthorized, GetAllOrders)
+router.route('/admin/product/all').get(isAuthenticated, isAuthorized, AllProducts) //get all products
+router.route('/admin/product/delete/:id').post(isAuthenticated, isAuthorized, DeleteProduct)
+router.route('/admin/cloudinary/total-uploads').get(isAuthenticated, isAuthorized, totalUploads)
+
 module.exports = router
