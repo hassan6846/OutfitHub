@@ -8,23 +8,29 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Please  Enter  your name"],
     maxLength: [30, "Name cannot exceed 30 characters"],
     minLength: [4, "Name should have more than 4 characters"],
+    validate: [validator.isAlphanumeric, "Username should contain only letters and numbers"],
   },
   email: {
-    type: String,
     required: [true, "Please Enter Your Email"],
-    unique: true,
+    unique: [true, "Email Already Exists"],
     validate: [validator.isEmail, "Please Enter a valid Email"],
   },
   phone: {
-    unique: true,
+    unique: [true, "Phone Number Already Exists"],
     type: String,
     required: [true, "Kindly Enter the Contact Number"],
+    maxLength: [15, "Contact Number cannot exceed 15 characters"],
+    validate: [validator.isMobilePhone, "Please Enter a valid Contact Number"],
+
 
   },
   password: {
     type: String,
     required: [true, "Please Enter Your Password"],
     minLength: [8, "Password should be greater than 8 characters"],
+    select: false,
+    maxLength: [30, "Password cannot exceed 30 characters"],
+
 
   },
   avatar: {
@@ -40,8 +46,8 @@ const UserSchema = new mongoose.Schema({
     },
   },
   role: {
-    type: [String], 
     // ["user",'vendor','admin']
+    type: [String],
     default: ["user"],
   },
   createdAt: {
@@ -49,21 +55,25 @@ const UserSchema = new mongoose.Schema({
     default: Date.now,
   },
   IsVerifiedEmail: {
+
     type: Boolean,
     default: false,
 
+
   },
-  gender:{
-    type:String,
-    required:false,
-    default:"undefined",
-    
-  
+  gender: {
+    type: String,
+    required: false,
+    enum: ["male", "female", "other", "undefined"],
+    default: "undefined",
+
+
+
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
- 
-},{timestamps:true});
+
+}, { timestamps: true });
 
 //HASHING PASSWORD BEFORE SAFE METHOD..
 UserSchema.pre("save", async function (next) {
@@ -78,14 +88,15 @@ UserSchema.methods.comparePassword = async function (password) {
   return await bycrypt.compare(password, this.password);
 };
 
-UserSchema.method.getResetPasswordToken=function(){
-   const resetToken = crypto.randomBytes(20).toString("hex");
-   this.resetPasswordToken = crypto
-     .createHash("sha256")
-     .update(resetToken)
-     .digest("hex");
-   this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
-   return resetToken;
+// GET RESET PASSWORD TOKEN
+UserSchema.method.getResetPasswordToken = function () {
+  const resetToken = crypto.randomBytes(20).toString("hex");
+  this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+  this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+  return resetToken;
 }
 const User = mongoose.model("User", UserSchema);
 module.exports = User;
