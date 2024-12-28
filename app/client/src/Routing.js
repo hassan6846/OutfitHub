@@ -1,5 +1,7 @@
 import { React } from "react";
 import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
+
+//components
 import Home from "./pages/user/Home/Home";
 import LoginPage from "./pages/user/Login/Login";
 import SignupPage from "./pages/user/Register/Signup";
@@ -39,9 +41,6 @@ import ProtectedRoute from "./components/Protected/ProductRoute";
 const Routing = () => {
 
   return (
-
-
-
     <><Router>
       <ResponsiveNav />
       <Routes>
