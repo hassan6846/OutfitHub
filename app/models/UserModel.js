@@ -49,6 +49,7 @@ const UserSchema = new mongoose.Schema({
     // ["user",'vendor','admin']
     type: [String],
     default: ["user"],
+    enum: ["user", "  vendor", "admin"]
   },
   createdAt: {
     type: Date,
