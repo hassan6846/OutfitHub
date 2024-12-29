@@ -21,11 +21,14 @@ const Tags = () => {
 
   const [product, setproducts] = useState([])
   const params = useParams()
-
+    
   useEffect(() => {
     const fetchProductByTags = async () => {
+
       try {
-        const response = await axios.get(`${ENDPOINT}/products/tags/${params.tag}`, {
+        const encodedTag = encodeURIComponent(params.tag); 
+        console.log(encodedTag)
+        const response = await axios.get(`${ENDPOINT}/products/tags/${encodedTag}`, {
           withCredentials: true,
         })
 
