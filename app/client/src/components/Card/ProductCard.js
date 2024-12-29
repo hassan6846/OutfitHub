@@ -36,7 +36,11 @@ export default function ProductCard(props) {
         </div>
         <div className="product-info">
           <div>
-            <Link to="/s">
+            <Link
+              state={props.state}
+              to={props.to}
+
+            >
               {" "}
               <div
                 className="product-name_card"
@@ -47,7 +51,9 @@ export default function ProductCard(props) {
 
                 }}
               >
-                {props.name}
+                <p>{props.name.length > 30 ? `${props.name.substring(0, 30)}...` : props.name}</p>
+
+
                 <div style={{ display: "flex", columnGap: '5px', alignItems: "center", flexDirection: "row" }}>
                   <p style={{ marginBottom: "0px" }}>{props.salePrice}</p>
                   <p style={{ marginBottom: "0px", fontSize: "13px", color: "#d01345", textDecorationLine: "line-through", }}>{props.orignalPrice}</p>
@@ -67,13 +73,13 @@ export default function ProductCard(props) {
             <div className="category_buttons_wrapper">
               {/* all category or tags will be map here no using  */}
               <Link to={props.tagoneLink} className="tag-links">
-                {props.tagone.length > 10 ? `${props.tagone.substring(0, 8)}...` : props.tagone}
+                {props.tagone.length > 10 ? `${props.tagone.substring(0, 6)}...` : props.tagone}
               </Link>
               <Link to={props.tagtwoLink} className="tag-links">
-                {props.tagtwo.length > 10 ? `${props.tagtwo.substring(0,8)}...` : props.tagtwo}
+                {props.tagtwo.length > 10 ? `${props.tagtwo.substring(0, 6)}...` : props.tagtwo}
               </Link>
               <Link to={props.tagthreelink} className="tag-links">
-                {props.tagsthree.length > 10 ? `${props.tagsthree.substring(0, 8)}...` : props.tagsthree}
+                {props.tagsthree.length > 10 ? `${props.tagsthree.substring(0, 6)}...` : props.tagsthree}
               </Link></div>
 
           </div>

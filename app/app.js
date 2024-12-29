@@ -18,8 +18,8 @@ app.use(bodyParser.json({type: 'application/*+json'}));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cookieParser({}));
 app.use(cors({
-  origin: '*', // Allow all origins
-
+  origin: 'http://localhost:3000', // Allow specific origin
+  credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));
 app.use(morgan('dev'));

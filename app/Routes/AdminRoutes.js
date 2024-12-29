@@ -22,7 +22,7 @@ router.route('/admin/cloduinary/usage').get(isAuthenticated, isAuthorized, getLa
 router.route('/admin/get-users').get(isAuthenticated, isAuthorized, GetUsers)
 router.route('/admin/product/upload').post(isAuthenticated, isAuthorized, CreateProduct)
 router.route('/admin/orders').get(isAuthenticated, isAuthorized, GetAllOrders)
-router.route('/admin/product/all').get(isAuthenticated, isAuthorized, AllProducts) //get all products
+router.route('/admin/product/all').get(isAuthenticated,isAuthorized("admin"), AllProducts) //get all products
 router.route('/admin/product/delete/:id').post(isAuthenticated, isAuthorized, DeleteProduct)
 router.route('/admin/cloudinary/total-uploads').get(isAuthenticated, isAuthorized, totalUploads)
 

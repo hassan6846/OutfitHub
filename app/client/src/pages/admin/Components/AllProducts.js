@@ -14,7 +14,10 @@ const AllProducts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data: allProducts } = await axios.get(`${ENDPOINT}/admin/product/all`);
+        const { data: allProducts } = await axios.get(`${ENDPOINT}/admin/product/all`,{
+          withCredentials:true
+          
+        });
         setData(allProducts.data);
         setLoading(false);
       } catch (error) {
