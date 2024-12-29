@@ -1,173 +1,197 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-// SWIPPER
-
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+// Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css'
-import 'swiper/css/pagination'
+import 'swiper/css';
+import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
-// components
-import { useLocation, useNavigate } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 
+// Components
+import Breadcrumb from '../../../Layouts/BreadCrumb/BreadCrumb';
 import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul';
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
-import Faq from "react-faq-component"
-import Breadcrumb from "../../../Layouts/BreadCrumb/BreadCrumb"
-// css
-
+import Faq from 'react-faq-component';
+// CSS
 import './Singleproduct.css';
+// MDB Button
 import { MDBBtn } from 'mdb-react-ui-kit';
-import { blinkSVG } from '../../../helpers/GlobalVariables';
-//lazy loading component
-import { LazyLoadImage } from "react-lazy-load-image-component";
+// Helpers
+
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slug from '../../../helpers/Slugify';
+// Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../../../Slices/CartSlice';
+// Toast
 import toast from 'react-hot-toast';
-//state
+// API Endpoint
+import axios from 'axios';
+import { ENDPOINT } from '../../../api/Endpoint';
 
 const Singleproduct = () => {
-  const [mockimg, setmockimg] = useState([])
-  const [descrption,setdescription]=useState("")
-  const dispatch = useDispatch()
+  const [data, setData] = useState(null); // Product data
+  const [loading, setLoading] = useState(true); // Loading state set to true initially
+  const [isInCart, setIsInCart] = useState(false);
+
+  const dispatch = useDispatch();
   const roles = useSelector((state) => state.user.role);
   const isAdmin = roles.includes('admin');
   const cartProducts = useSelector((state) => state.cart.products);
-  const [isInCart, setIsInCart] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
   const product = location.state; // Access the passed item via location.state
 
   useEffect(() => {
-
-    const productExists = cartProducts.some((item) => item._id === product._id);
-    setIsInCart(productExists);
-    setmockimg(product.image)
-    setdescription(product.description)
     if (!product) {
-      navigate('/404', { replace: false });
-      return null; // Ensure the component doesn't render further
+      navigate('/404', { replace: true });
+      return;
     }
-  }, [product, cartProducts, navigate])
+
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(`${ENDPOINT}/product/${product._id}`, {
+          headers: { 'Content-Type': 'application/json' },
+        });
+        setData(response.data.data);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+        navigate('/404', { replace: true });
+      } finally {
+        setLoading(false); // Set loading to false once data is fetched
+      }
+    };
+
+    fetchProduct();
+  }, [product, navigate]);
+
+  useEffect(() => {
+    if (data) {
+      const productExists = cartProducts.some((item) => item._id === data._id);
+      setIsInCart(productExists);
+    }
+  }, [data, cartProducts]);
 
   const handleCartToggle = () => {
-
+    if (isAdmin) {
+      toast('Admin action detected! 😳', { icon: '🧐' });
+      return;
+    }
 
     if (isInCart) {
-      dispatch(removeFromCart({ id: product._id }));
-      toast('Removed from Cart', {
-        icon: '😥',
-      });
-    } if (isAdmin) {
-      toast('Admin action detected! 😳', {
-        icon: '🧐',
-      });
+      dispatch(removeFromCart({ id: data._id }));
+      toast('Removed from Cart', { icon: '😥' });
+    } else {
+      dispatch(addToCart({ ...data, quantity: 1 }));
+      toast('Added to Cart!', { icon: '🎉' });
     }
 
-
-    else {
-      dispatch(addToCart({ ...product, quantity: 1 }));
-      toast('Added to liked item!', {
-        icon: '🎉',
-      });
-    }
     setIsInCart(!isInCart);
   };
 
-  const faqdata = {
-    title: "",
+  const faqData = {
+    title: '',
     rows: [
       {
-        title: `PRODUCT DESCRIPTION`,
-        content: `   <ol> 
-      <li> ${descrption}</li>
+        title: 'PRODUCT DESCRIPTION',
+        content: `<ol><li>${data?.description || 'No description available.'}</li></ol>`,
+      },
+    ],
+  };
 
-      </ol>`
-      },]
-  }
-  const OpenConfig = {
+  const faqConfig = {
     animate: true,
     tabFocus: true,
-    openOnload: 0
+    openOnload: 0,
+  };
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100%' }}>
+        <CircularProgress />
+      </div>
+    );
   }
-  //params
+
+  if (!data) {
+    return <p>Product not found.</p>;
+  }
 
   return (
     <>
-
-
       <Breadcrumb />
-      <section className='single_product_page_container'>
-        <div className='single_wrapper_80'>
-          <div className='images_overflow_single'>
-            <div className='container_desktop_images_preview'>
-              {product.image.map((imageUrl, index) => (
-                <LazyLoadImage delayTime="1" width="48%" loading="lazy" effect="blur" className='single_images_shop' key={index} src={imageUrl} alt="product_imgs" />
+      <section className="single_product_page_container">
+        <div className="single_wrapper_80">
+          {/* Images */}
+          <div className="images_overflow_single">
+            <div className="container_desktop_images_preview">
+              {data.image?.map((imageUrl, index) => (
+                <LazyLoadImage
+                  key={index}
+                  delayTime="1"
+                  width="48%"
+                  loading="lazy"
+                  effect="blur"
+                  className="single_images_shop"
+                  src={imageUrl}
+                  alt={`product_img_${index}`}
+                />
               ))}
             </div>
-            {/* MOBILE PREVIEW SLIDES PRODUCT NEEDED TO ADD LOADER */}
-            <Swiper pagination={true} modules={[Pagination]} className='swiper_main_all' >
-              {mockimg.map((imageUrl, index) => (
-                <SwiperSlide className='Slide_shop'>
-                  <LazyLoadImage effect='blur' className='single_images_shop' key={index} src={imageUrl} alt="Product_img" /></SwiperSlide>
+            <Swiper pagination={true} modules={[Pagination]} className="swiper_main_all">
+              {data.image?.map((imageUrl, index) => (
+                <SwiperSlide key={index} className="Slide_shop">
+                  <LazyLoadImage effect="blur" className="single_images_shop" src={imageUrl} alt={`Product_img_${index}`} />
+                </SwiperSlide>
               ))}
             </Swiper>
           </div>
-          {/* Flexbox for product details */}
-          <div className='Single_product_details'>
-          <p className='product_name_single'>{product.brand}</p>
-            <p className='product_name_single'>{product.name}</p>
-            <p className='product_full_single'>{product.description}</p>
-            <p className='product_id_single'>ID : {product._id}</p>
-            <p className='single_price_page'><span className='price_before_single'>Rs {product.RegularPrice}</span> <span className='price_after_single'>Rs {product.SalePrice}</span><span className='discount_percentage_single'>{(!isNaN(parseFloat(product.RegularPrice)) && !isNaN(parseFloat(product.SalePrice))) 
-  ? Math.floor(((parseFloat(product.RegularPrice) - parseFloat(product.SalePrice)) / parseFloat(product.RegularPrice)) * 100)
-  : 0}
-% off</span></p>
-            <p className='flash_few'>Only few left in Stock!</p>
-            <p className='flash_Text_p_yellow'>Sale is <span className='flash_Text_p_yellow_span'>Live <img style={{ height: "10px" }} alt='blink_img' src={blinkSVG} /></span></p>
-            <div className='button_flex_single'>
-              <MDBBtn className='single_cart_btn' disabled={isAdmin} onClick={handleCartToggle} style={{ backgroundColor: "#4BB497", width: "40%" }}>
-
-                {isInCart ? "REMOVE FROM CART" : "ADD TO CART"}
-              </MDBBtn>
-
-            </div>
-            {/* flex */}
-            <div className='icon_delivery_time'>
-              <p className='delivery_time_heading'>Delivery Time:</p>
-              <p className='delivery_estimate'>Lahore, Rawalpindi, Islamabad: 1-2 days</p>
-              <p className='delivery_estimate'>Other cities: 1-4 days</p>
-            </div>
-
-            <Faq config={OpenConfig} data={faqdata} />
-            {/* links */}
-            <div className='category_links_single_page'>
-              <p className='delivery_time_heading'>#Tags</p>
-              <div className='category_links_tags_flex'>
-                {
-                  product.tags && product.tags.length > 0 ? (
-                    product.tags.map((tag, index) => (
-                      <Link
-
-                        to={`/shop/tags/${Slug(tag)}`}
-                        key={index} className='single_button_tag'>
-                        {tag}
-                      </Link>
-                    ))
-                  ) : (
-                    <p>No tags available</p> // Optional fallback if no tags exist
-                  )
-                }
+          {/* Product Details */}
+          <div className="Single_product_details">
+            <p className="product_name_single">{data.brand}</p>
+            <p className="product_name_single">{data.name}</p>
+            <p className="product_full_single">{data.description}</p>
+            <p className="product_id_single">ID: {data._id}</p>
+            <p className="single_price_page">
+              <span className="price_before_single">Rs {data.RegularPrice}</span>
+              <span className="price_after_single">Rs {data.SalePrice}</span>
+              <span className="discount_percentage_single">
+                {data.RegularPrice && data.SalePrice
+                  ? Math.floor(((data.RegularPrice - data.SalePrice) / data.RegularPrice) * 100)
+                  : 0}
+                % off
+              </span>
+            </p>
+            <MDBBtn
+              className="single_cart_btn"
+              disabled={isAdmin}
+              onClick={handleCartToggle}
+              style={{ backgroundColor: '#4BB497', width: '40%' }}
+            >
+              {isInCart ? 'REMOVE FROM CART' : 'ADD TO CART'}
+            </MDBBtn>
+            <Faq config={faqConfig} data={faqData} />
+            <div className="category_links_single_page">
+              <p className="delivery_time_heading">#Tags</p>
+              <div className="category_links_tags_flex">
+                {data.tags?.length > 0 ? (
+                  data.tags.map((tag, index) => (
+                    <Link key={index} to={`/shop/tags/${Slug(tag)}`} className="single_button_tag">
+                      {tag}
+                    </Link>
+                  ))
+                ) : (
+                  <p>No tags available</p>
+                )}
               </div>
-
             </div>
           </div>
         </div>
       </section>
-      <Cathead display="none" heading="Recomendations &bull;" />
+      <Cathead display="none" heading="Recommendations &bull;" />
       <TrendingCarsoul margin="20px" />
-
     </>
   );
 };
