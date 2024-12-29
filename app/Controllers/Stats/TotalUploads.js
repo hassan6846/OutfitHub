@@ -1,8 +1,7 @@
 const cloudinary = require("../../utils/Cloudinary");
 
-const totalUploads = async (res) => {
+const totalUploads = async (req, res) => {
   try {
-
     const usageData = await cloudinary.api.usage();
     const totalUploadsCount = usageData.resources || 0;
 

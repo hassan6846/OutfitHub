@@ -1,18 +1,16 @@
-const User=require("../../models/UserModel")
+const User = require("../../models/UserModel")
 
-
-const CountUser=async(req,res)=>{
+const CountUser = async (req, res) => {
     try {
-        const Count=await User.countDocuments({})
+        const Count = await User.countDocuments({})
         res.status(200).json({
-            success:true,
-            data:Count
+            success: true,
+            data: Count
         })
     } catch (error) {
-        console.error(error);
-        return res
-            .status(500)
-            .json({ success: false, message: "Internal server error" });
+        console.error(error)
+        res.status(500).json({ success: false, message: "Internal server error" })
     }
 }
-module.exports=CountUser
+
+module.exports = CountUser

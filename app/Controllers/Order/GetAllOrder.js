@@ -22,7 +22,7 @@ const GetAllOrders = async (req, res, next) => {
   } catch (error) {
     res.status(400).json({
       success: false,
-      message: "🖕 Stop Fukin with da server dmbasss",
+      message: "Failed to retrieve orders",
       log: error.message,
     });
     console.log(error.message);
