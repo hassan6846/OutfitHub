@@ -6,7 +6,7 @@ const Login = require("../Controllers/Auth/Login");
 const Logout = require("../Controllers/Auth/Logout");
 
 //middlewares
-const LoginRequestLimits = require("../utils/RateLimit");
+const {LoginRequestLimits} = require("../utils/RateLimit");
 const { isAuthenticated } = require("../middlewares/Auth");
 //Routes
 router.route('/register').post(LoginRequestLimits, Register)
