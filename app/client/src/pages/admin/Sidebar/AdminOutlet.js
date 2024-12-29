@@ -5,6 +5,7 @@ import "./AdminOutlet.css";
 import AdminSidebar from "./AdminSidebar";
 import { Outlet } from "react-router-dom";
 
+
 const AdminOutlet = () => {
   return (
     <>
@@ -13,7 +14,9 @@ const AdminOutlet = () => {
       <div className="sidebar_div_parent">
         <AdminSidebar />
         <div className="scrollable_container">
+          
           <Outlet />
+        
         </div>
       </div>
 
