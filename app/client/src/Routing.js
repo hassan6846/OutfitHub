@@ -1,20 +1,28 @@
+
+//Imports 
 import { React } from "react";
 import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
-
+import { Toaster } from "react-hot-toast"
+import { CookieConsent } from "react-cookie-consent"
 //components
 import Home from "./pages/user/Home/Home";
+
+//auth
 import LoginPage from "./pages/user/Login/Login";
 import SignupPage from "./pages/user/Register/Signup";
-import ErrorPage from "./pages/user/404/ErrorPage";
 import ForgotPassword from "./pages/user/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/user/ResetPassword/ResetPassword";
+//404
+import ErrorPage from "./pages/user/404/ErrorPage";
+//Shopping
 import Products from "./pages/user/Shop/Products";
 import Singleproduct from "./pages/user/ProductDetails/Singleproduct";
 import Cart from "./pages/user/Cart/Cart";
-import UserProfile from "./pages/user/UserProfile/UserProfile";
-import FaqPage from "./pages/user/Faqs/Faq";
+//profile 
 import ProfileOverView from "./pages/user/UserProfile/ProfileOverView";
+import UserProfile from "./pages/user/UserProfile/UserProfile";
 import UserAdressBook from "./pages/user/UserProfile/UserAdressBook";
+import FaqPage from "./pages/user/Faqs/Faq";
 import Contact from "./pages/user/UserProfile/Contact";
 import Wishlists from "./pages/user/UserProfile/Wishlists";
 import Order from "./pages/user/UserProfile/Order";
@@ -28,13 +36,12 @@ import Orders from "./pages/admin/Components/Orders";
 import AllUsers from "./pages/admin/Components/AllUsers";
 import Messages from "./pages/admin/Components/Messages";
 import Logout from "./pages/admin/Components/logout"
+import Trending from "./pages/user/Trending/Trending";
+import Tags from "./pages/user/Tags/Tags";
+//layout components 
 import ResponsiveNav from './Layouts/NavbarMain/ResponsiveNav'
 import Footer from "./Layouts/footer/Footer";
-import { Toaster } from "react-hot-toast"
-import { CookieConsent } from "react-cookie-consent"
-import Tags from "./pages/user/Tags/Tags";
-import Trending from "./pages/user/Trending/Trending";
-
+//utils
 import ProtectedRoute from "./components/Protected/ProductRoute";
 
 
@@ -63,12 +70,10 @@ const Routing = () => {
         } />
 
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />f
+        <Route path="/signup" element={<SignupPage />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />
-
         <Route path="/password/reset/:id" element={<ResetPassword />} />
         <Route path="/password/reset/*" element={<ErrorPage />} />
-
         <Route path="*" element={<ErrorPage />} />
         <Route path="/404" element={<ErrorPage />} />
 
@@ -98,11 +103,10 @@ const Routing = () => {
       </Routes>
       <Toaster />
       <Footer />
-    </Router><CookieConsent
-
-
-      style={{ right: "5px" }}
-    >
+    </Router>
+      <CookieConsent
+        style={{ right: "5px" }}
+      >
         This website uses cookies to ensure you get best experience at out webiste{" "}
         <span style={{ fontSize: "10px", textDecoration: "underline", marginLeft: "0.3rem", color: "#4BB497", fontWeight: "bold", cursor: "pointer" }}>learn more about privacy policiy.</span>
       </CookieConsent></>
