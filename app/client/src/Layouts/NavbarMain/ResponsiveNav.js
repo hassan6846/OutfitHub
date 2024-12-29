@@ -178,19 +178,33 @@ const ResponsiveNav = () => {
             </Link>
           </div>
         </div>
+
         <nav className="navbar_container">
-          <Link
-            className="nav_link_company"
-            to="/"
-            style={{
-              backgroundColor: "#eee",
-              boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
-              padding: "6px",
-              borderRadius: "5px",
-            }}
-          >
-            <img src={CompanyLogo} alt={ALT} />
-          </Link>
+          <div className="nav_links_wrapper_init">
+
+
+            <Link
+              className="nav_link_company"
+              to="/"
+              style={{
+                backgroundColor: "#eee",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+                padding: "6px",
+                borderRadius: "5px",
+              }}
+            >
+              <img src={CompanyLogo} alt={ALT} />
+            </Link>
+            <Link>Men</Link>
+            <Link>Women</Link>
+            <Link>Kids</Link>
+            <Link>Beauty</Link>
+            <Link>Girls</Link>
+            <Link>Sale</Link>
+    
+            <Link>Others</Link>
+
+          </div>
           <form
             style={{ position: "relative" }}
             onSubmit={handleSubmit}

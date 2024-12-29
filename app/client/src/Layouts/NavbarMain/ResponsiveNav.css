@@ -181,6 +181,11 @@
   border-radius: 2px;
 }
 
+.nav_links_wrapper_init{
+  display: flex;
+  column-gap: 2rem;
+  align-items: center;
+}
 @media screen and (min-width: 300px) and (max-width: 660px) {
   .desktop_nav_input {
     width: 400px;
