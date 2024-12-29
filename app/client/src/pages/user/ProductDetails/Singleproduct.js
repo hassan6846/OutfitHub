@@ -189,7 +189,7 @@ const Singleproduct = () => {
               <div className="category_links_tags_flex">
                 {data.tags?.length > 0 ? (
                   data.tags.map((tag, index) => (
-                    <Link key={index} to={`/shop/tags/${Slug(tag)}`} className="single_button_tag">
+                    <Link key={index} to={`/shop/tags/${encodeURIComponent(tag)}`} className="single_button_tag">
                       {tag}
                     </Link>
                   ))
