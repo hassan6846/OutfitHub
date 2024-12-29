@@ -3,6 +3,8 @@
   transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 10px;
+height: fit-content;
 }
 
 .card_main_context {
@@ -13,8 +15,9 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
-  align-items: center;
 
+  align-items: center;
+  height: fit-content;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.199) 0px 3px 8px;
 }
