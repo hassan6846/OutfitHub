@@ -90,10 +90,9 @@ const Routing = () => {
         </Route>
 
         <Route path="/admin" element={<ProtectedRoute requiredRole="admin"> <AdminOutlet /></ProtectedRoute>}>
-
+        <Route path="/admin" element={<AllProducts />} />
           <Route path="logout" element={<Logout />} />
           <Route path="orders" element={<Orders />} />
-
           <Route path="products" element={<AllProducts />} />
           <Route path="products/add" element={<AddProduct />} />
           <Route path="users" element={<AllUsers />} />
