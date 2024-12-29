@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 const validator = require("validator");
-const { validate } = require("./UserModel");
+
 
 const AddressSchema = new mongoose.Schema({
     addressTitle: {
