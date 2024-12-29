@@ -1,18 +1,16 @@
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-
-
-import App from './App';
-
+import reportWebVitals from './reportWebVitals';
+//css
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import './index.css';
 
+//imports 
+import App from './App';
 
-import { Provider } from 'react-redux';
 import { store, persistor } from './store/Store'
+import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { Elements } from '@stripe/react-stripe-js';
@@ -21,12 +19,12 @@ const stripePromise = loadStripe('pk_test_51NIDjMKxIUjmCPdCkuccRvfJCOR0Wl7VcFMfc
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
-<Elements stripe={stripePromise}>
-    <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-            <App />
-        </PersistGate>
-    </Provider>
+    <Elements stripe={stripePromise}>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <App />
+            </PersistGate>
+        </Provider>
     </Elements>
 );
 reportWebVitals();
