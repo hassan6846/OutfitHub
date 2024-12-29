@@ -43,6 +43,7 @@ import ResponsiveNav from './Layouts/NavbarMain/ResponsiveNav'
 import Footer from "./Layouts/footer/Footer";
 //utils
 import ProtectedRoute from "./components/Protected/ProductRoute";
+import Search from "./pages/user/SearchPage/Search";
 
 
 const Routing = () => {
@@ -56,8 +57,8 @@ const Routing = () => {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Products />} />
         <Route path="/shop/:title" element={<Singleproduct />} />
-
-
+         <Route path="/shop/search/:query" element={<Search />} />
+          
         <Route path="/shop/tags/:tag" element={<Tags />} />
         <Route path="/shop/promotions/trendings" element={<Trending />} />
 

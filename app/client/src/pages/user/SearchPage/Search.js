@@ -1,21 +1,26 @@
-import {React,useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 // css
 import "./search.module.css"
 // Components.
-
 import BreadCrumb from '../../../Layouts/BreadCrumb/BreadCrumb'
+
 const Search = () => {
-  const query=useParams()
+  const { query } = useParams()
+  const navigate = useNavigate()
+
   // useEffect.
-  useEffect(()=>{
-  console.log(query)
-  })
+  useEffect(() => {
+    if (!query) {
+      navigate('/404')
+    } else {
+      console.log(query)
+    }
+  }, [query, navigate])
+
   return (
     <>
-
-    <BreadCrumb/>
-
+      <BreadCrumb />
     </>
   )
 }
