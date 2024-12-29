@@ -195,14 +195,22 @@ const ResponsiveNav = () => {
             >
               <img src={CompanyLogo} alt={ALT} />
             </Link>
-            <Link>Men</Link>
-            <Link>Women</Link>
-            <Link>Kids</Link>
-            <Link>Beauty</Link>
-            <Link>Girls</Link>
-            <Link>Sale</Link>
-    
-            <Link>Others</Link>
+            <div style={{ display: "flex", flexDirection: "row", columnGap: "2rem" }}>
+              <div className="nav_links_wrapper_Main">
+                <p className="Link_Men">Men</p>
+                <div className="menu_Link_Comp"  >
+            
+                </div>
+              </div>
+   
+   
+
+      
+
+ 
+            </div>
+
+
 
           </div>
           <form

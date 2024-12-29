@@ -1,39 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import CircularProgress from '@mui/material/CircularProgress';
-
-// Components
 import Breadcrumb from '../../../Layouts/BreadCrumb/BreadCrumb';
 import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul';
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
 import Faq from 'react-faq-component';
-// CSS
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import './Singleproduct.css';
-// MDB Button
 import { MDBBtn } from 'mdb-react-ui-kit';
-// Helpers
-
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slug from '../../../helpers/Slugify';
-// Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../../../Slices/CartSlice';
-// Toast
 import toast from 'react-hot-toast';
-// API Endpoint
 import axios from 'axios';
 import { ENDPOINT } from '../../../api/Endpoint';
 
 const Singleproduct = () => {
-  const [data, setData] = useState(null); // Product data
-  const [loading, setLoading] = useState(true); // Loading state set to true initially
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [isInCart, setIsInCart] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
   const roles = useSelector((state) => state.user.role);
@@ -42,7 +38,7 @@ const Singleproduct = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const product = location.state; // Access the passed item via location.state
+  const product = location.state;
 
   useEffect(() => {
     if (!product) {
@@ -60,7 +56,7 @@ const Singleproduct = () => {
         console.error('Error fetching product:', error);
         navigate('/404', { replace: true });
       } finally {
-        setLoading(false); // Set loading to false once data is fetched
+        setLoading(false);
       }
     };
 
@@ -89,6 +85,16 @@ const Singleproduct = () => {
     }
 
     setIsInCart(!isInCart);
+  };
+
+  const handleOpen = (imageUrl) => {
+    setSelectedImage(imageUrl); // Set the image for dialog
+    setOpen(true); // Open the dialog
+  };
+
+  const handleClose = () => {
+    setOpen(false); // Close the dialog
+    setSelectedImage(null); // Reset the selected image
   };
 
   const faqData = {
@@ -124,7 +130,6 @@ const Singleproduct = () => {
       <Breadcrumb />
       <section className="single_product_page_container">
         <div className="single_wrapper_80">
-          {/* Images */}
           <div className="images_overflow_single">
             <div className="container_desktop_images_preview">
               {data.image?.map((imageUrl, index) => (
@@ -137,18 +142,24 @@ const Singleproduct = () => {
                   className="single_images_shop"
                   src={imageUrl}
                   alt={`product_img_${index}`}
+                  onClick={() => handleOpen(imageUrl)} // Open dialog with selected image
                 />
               ))}
             </div>
             <Swiper pagination={true} modules={[Pagination]} className="swiper_main_all">
               {data.image?.map((imageUrl, index) => (
                 <SwiperSlide key={index} className="Slide_shop">
-                  <LazyLoadImage effect="blur" className="single_images_shop" src={imageUrl} alt={`Product_img_${index}`} />
+                  <LazyLoadImage
+                    effect="blur"
+                    className="single_images_shop"
+                    src={imageUrl}
+                    alt={`Product_img_${index}`}
+                    onClick={() => handleOpen(imageUrl)} // Open dialog with selected image
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
-          {/* Product Details */}
           <div className="Single_product_details">
             <p className="product_name_single">{data.brand}</p>
             <p className="product_name_single">{data.name}</p>
@@ -190,6 +201,16 @@ const Singleproduct = () => {
           </div>
         </div>
       </section>
+
+      {/* Dialog for displaying the image */}
+      <Dialog open={open} onClose={handleClose}>
+
+        <DialogContent style={{overflow:"hidden",padding:0}}>
+          <img src={selectedImage} alt="Selected" style={{ maxHeight: '90%', maxWidth: '100%' }} />
+        </DialogContent>
+
+      </Dialog>
+
       <Cathead display="none" heading="Recommendations &bull;" />
       <TrendingCarsoul margin="20px" />
     </>
