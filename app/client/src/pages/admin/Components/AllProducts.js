@@ -6,6 +6,7 @@ import { FaRegMoneyBillAlt,  } from "react-icons/fa"; // Add icons for price, ca
 import axios from "axios";
 import { ENDPOINT } from "../../../api/Endpoint";
 import "./AllProducts.css";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const AllProducts = () => {
   const [data, setData] = useState([]);
@@ -28,7 +29,12 @@ const AllProducts = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // You can add a loading spinner or a placeholder here
+    return ( 
+    <div style={{height:"100vh",width:"100%",display:"flex",justifyContent:"center",alignItems:"center"}}> 
+      <CircularProgress />
+    </div>
+    )
+    // You can add a loading spinner or a placeholder here
   }
 
   return (

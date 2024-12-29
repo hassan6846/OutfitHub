@@ -25,8 +25,8 @@ const isAuthenticated = (req, res, next) => {
     }
 };
 
-const isAuthorized = () => (req, res, next) => {
-    const requiredRole = "admin"
+const isAuthorized = (requiredRole) => (req, res, next) => {
+    let requiredRole="admin"
     const token = req.cookies.token;
 
     // If no token is provided
@@ -57,7 +57,7 @@ const isAuthorized = () => (req, res, next) => {
             // If the required role is not in the roles array, deny access
             return res.status(403).json({
                 success: false,
-                message: "You are not authorized to access this resource.",
+                message: "Access denied: Insufficient role.",
             });
         }
     } catch (error) {
