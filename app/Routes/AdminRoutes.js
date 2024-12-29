@@ -9,7 +9,7 @@ const AllProducts = require('../Controllers/Product/GetAll')
 const DeleteProduct = require('../Controllers/Product/DeleteProduct')
 const CountProduct = require('../Controllers/Stats/CountProduct')
 const { getLast30DaysCreditUsage } = require('../Controllers/Stats/CreditUsage')
-const totalUploads = require('../Controllers/Stats/TotalUploads')w
+const totalUploads = require('../Controllers/Stats/TotalUploads')
 const GetAllOrders = require('../Controllers/Order/GetAllOrder')
 //middlewares
 
