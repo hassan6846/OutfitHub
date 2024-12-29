@@ -13,8 +13,34 @@ const AddressSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
- 
+
     },
+    mailno: {
+        type: String,
+        required: false,
+        trim: true
+    },
+    state: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    country: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    zipCode: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    streetAddress: {
+        type: String,
+        required: true,
+        trim: true
+    },
+
     user: {
         type: mongoose.Schema.ObjectId,
         required: true,
@@ -25,6 +51,17 @@ const AddressSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    PinDrop: {
+        lat: {
+            type: String,
+            required: true
+        },
+        long: {
+            type: String,
+            required: true
+        }
+
+    }
 
 }, {
     timestamps: true
