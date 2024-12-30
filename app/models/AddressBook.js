@@ -5,7 +5,6 @@ const validator = require("validator");
 const AddressSchema = new mongoose.Schema({
     addressTitle: {
         type: String,
-        validate: [validator.isAlphanumeric, "Please Enter a valid Address "],
         required: true,
         trim: true,
     },
@@ -53,16 +52,21 @@ const AddressSchema = new mongoose.Schema({
     },
     PinDrop: {
         lat: {
+            default: 0,
             type: String,
-            required: true
+            required: false
         },
         long: {
+            default: 0,
             type: String,
-            required: true
+            required: false
         }
 
-    }
-
+    },
+ createdAt:{
+        type: Date,
+        default: Date.now
+ }
 }, {
     timestamps: true
 }

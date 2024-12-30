@@ -40,12 +40,14 @@ const payment = require('./Routes/PaymentRoute')
 const admin = require('./Routes/AdminRoutes')
 const product = require('./Routes/ProductRoutes')
 const order = require("./Routes/OrderRoutes")
+const address=require("./Routes/AddressRoutes")
 //Endpoints
 app.use("/api/v1", auth) //user
 app.use('/api/v1', payment)
 app.use('/api/v1', product)
 app.use('/api/v1', admin)
 app.use('/api/v1', order)
+app.use('/api/v1', address)
 connectDb()
 
 //Server

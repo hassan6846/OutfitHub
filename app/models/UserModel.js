@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema(
     username: {
       type: String,
       required: [true, "Please Enter your name"],
-      maxLength: [30, "Name cannot exceed 30 characters"],
+      maxLength: [10, "Name cannot exceed 30 characters"],
       minLength: [4, "Name should have more than 4 characters"],
       validate: [
         validator.isAlphanumeric,
@@ -34,10 +34,7 @@ const UserSchema = new mongoose.Schema(
       minLength: [8, "Password should be greater than 8 characters"],
       maxLength: [30, "Password cannot exceed 30 characters"],
     
-      validate: [
-        validator.isStrongPassword,
-        "Password should contain at least 1 lowercase, 1 uppercase, 1 number, 1 special character, and should be 8 characters long",
-      ],
+
     },
     avatar: {
       public_id: {
