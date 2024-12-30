@@ -6,6 +6,7 @@ import "./search.css"
 import BreadCrumb from '../../../Layouts/BreadCrumb/BreadCrumb'
 import { ENDPOINT } from '../../../api/Endpoint'
 import CircularProgress from '@mui/material/CircularProgress';
+import ProductCard from "../../../components/Card/ProductCard"
 
 import axios from 'axios'
 import { toast } from "react-hot-toast"

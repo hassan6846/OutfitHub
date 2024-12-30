@@ -9,3 +9,15 @@
     flex-wrap: wrap;
     align-items: flex-start;
 }
+.Trending-Page{
+    min-height: 100vh;
+    padding: 2rem;
+}
+.loading-container{
+    height: 100vh;
+    width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
