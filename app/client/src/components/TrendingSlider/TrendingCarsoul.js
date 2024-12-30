@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import 'swiper/css/navigation';
 import "./TrendingCarsoul.css";
-
+import { Autoplay } from "swiper/modules";
 
 import ProductCard from "../Card/ProductCard";
 import axios from "axios";
@@ -56,6 +56,13 @@ export default function TrendingCarsoul(props) {
   return (
     <>
       <Swiper
+        modules={[Autoplay]}
+        
+        autoplay={{
+
+          delay: 1500,
+          disableOnInteraction: true,
+        }}
         spaceBetween={5}
         slidesPerView={'auto'}
         className="mySwiper"

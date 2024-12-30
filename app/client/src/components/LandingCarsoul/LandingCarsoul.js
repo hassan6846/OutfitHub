@@ -28,7 +28,7 @@ const LandingCarsoul = () => {
       modules={[Pagination, Autoplay]}
       autoplay={{
         delay: 2500,
-        disableOnInteraction: false,
+        disableOnInteraction: true,
       }}
       pagination={{
         clickable: true,
