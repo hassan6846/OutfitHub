@@ -199,15 +199,15 @@ const ResponsiveNav = () => {
               <div className="nav_links_wrapper_Main">
                 <p className="Link_Men">Men</p>
                 <div className="menu_Link_Comp"  >
-            
+
                 </div>
               </div>
-   
-   
 
-      
 
- 
+
+
+
+
             </div>
 
 
@@ -265,6 +265,7 @@ const ResponsiveNav = () => {
 
                         }}
                         state={item}
+
                         className='dropdown_card_nav'>
                         {/* Title & Price */}
 
@@ -288,7 +289,11 @@ const ResponsiveNav = () => {
                         {/*END*/}
                       </Link>
                     ))}</div>
-                  <button className="stickey_btn_nav" style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
+                  <Link
+
+                    to={`/shop/search/${searchValue}`}>
+                    <button className="stickey_btn_nav" style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
+                  </Link>
                 </div>
               </ClickAwayListener>
             )}
