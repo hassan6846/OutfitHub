@@ -65,14 +65,17 @@ const subcategories = {
 const Products = () => {
   const location = useLocation();
   const state = location.state;
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const liked = useSelector((state) => state.like.products);
+
   const [category, setCategory] = useState("men");
   const [subcategory, setSubcategory] = useState("all");
   const [tabValue, setTabValue] = useState(0);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [lowToHigh, setLowToHigh] = useState(false); // Sorting state
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
   const handleTabChange = (event, newValue) => {
     const categoryKeys = Object.keys(subcategories);
@@ -80,6 +83,8 @@ const Products = () => {
     setCategory(selectedCategory);
     setSubcategory("all");
     setTabValue(newValue);
+    setPage(1); // Reset page when category changes
+    setProducts([]); // Reset products when category changes
   };
 
   useEffect(() => {
@@ -95,43 +100,49 @@ const Products = () => {
     }
   }, [state]);
 
-  // Fetch products based on selected category, subcategory, and sorting
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      try {
-        const subcategoryParam = subcategory !== "all" ? `&subcategory=${subcategory}` : "";
-        const sortParam = lowToHigh ? "&lowtohigh=true" : "&lowtohigh=false";
-        const response = await axios.get(`${ENDPOINT}/products?category=${category}${subcategoryParam}${sortParam}&page=1&limit=8`);
-        setProducts(response.data.data);
-        console.log(response.data.data);  // Log fetched products
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchProducts = async (currentPage = 1) => {
+    setLoading(true);
+    try {
+      const subcategoryParam = subcategory !== "all" ? `&subcategory=${subcategory}` : "";
+      const sortParam = lowToHigh ? "&lowtohigh=true" : "&lowtohigh=false";
+      const response = await axios.get(
+        `${ENDPOINT}/products?category=${category}${subcategoryParam}${sortParam}&page=${currentPage}&limit=10`
+      );
 
-    fetchProducts();
-  }, [category, subcategory, lowToHigh]); // Removed `products` from dependencies
-  const handleLikeToggle = (product) => {
-
-    const isLiked = liked.some((item) => item._id === product._id);
-
-    if (isLiked) {
-
-      dispatch(removeFromLiked(product));
-      toast('Removed from Liked item!', {
-        icon: '😥',
-      });
-    } else {
-
-      dispatch(addtoLiked(product));
-      toast('Added to liked item!', {
-        icon: '🎉',
-      });
+      const newProducts = response.data.data;
+      setProducts((prevProducts) => [...prevProducts, ...newProducts]);
+      setHasMore(newProducts.length > 0); // Disable infinite scroll if no more data
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    setProducts([]); // Reset products on category/subcategory change
+    setPage(1); // Reset page
+    fetchProducts(1); // Fetch the first page
+    // eslint-disable-next-line
+  }, [category, subcategory, lowToHigh]);
+
+  const loadMoreProducts = () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    fetchProducts(nextPage);
+  };
+
+  const handleLikeToggle = (product) => {
+    const isLiked = liked.some((item) => item._id === product._id);
+    if (isLiked) {
+      dispatch(removeFromLiked(product));
+      toast("Removed from Liked item!", { icon: "😥" });
+    } else {
+      dispatch(addtoLiked(product));
+      toast("Added to liked item!", { icon: "🎉" });
+    }
+  };
+
   return (
     <div className="product_page_wrapper">
       {/* Tabs for Categories */}
@@ -167,15 +178,12 @@ const Products = () => {
 
         {/* Render subcategories inside a Swiper */}
         <div className="subcategory-container">
-          <Swiper
-            className="mySwiper"
-            spaceBetween={5}
-            slidesPerView={"auto"}
-          >
+          <Swiper className="mySwiper" spaceBetween={5} slidesPerView={"auto"}>
             {subcategories[category]?.map((subcat, index) => (
               <SwiperSlide style={{ width: "auto" }} key={index}>
                 <button
-                  className={`subcategory-button ${subcat.toLowerCase() === subcategory ? "active" : ""}`}
+                  className={`subcategory-button ${subcat.toLowerCase() === subcategory ? "active" : ""
+                    }`}
                   onClick={() => setSubcategory(subcat.toLowerCase())}
                 >
                   {subcat}
@@ -191,47 +199,84 @@ const Products = () => {
         </button>
 
         {/* Loading state */}
-        {loading ? (
-          <div style={{ height: "100vh", width: '100%', display: "flex", justifyContent: "center", alignItems: "center" }}>
+        {loading && page === 1 ? (
+          <div
+            style={{
+              height: "100vh",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <CircularProgress />
           </div>
         ) : (
-          <div style={{ minHeight: "100vh" }}>
-
-            <InfiniteScroll>
+          <InfiniteScroll
+            dataLength={products.length}
+            next={loadMoreProducts}
+            hasMore={hasMore}
+            loader={
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "10px 0",
+                }}
+              >
+                <CircularProgress />
+              </div>
+            }
+            endMessage={
+              <p style={{ textAlign: "center" }}>
+                <b>You have Reached to the End </b>
+              </p>
+            }
+          >
+            <div style={{ minHeight: "100vh",display:'flex',flexWrap:"wrap",justifyContent:'center',alignItems:"center" ,rowGap:10,columnGap:10}}>
               {products.length > 0 ? (
                 products.map((product) => (
-
                   <ProductCard
+                    key={product._id}
                     orignalPrice={product.RegularPrice}
                     salePrice={product.SalePrice}
-                    saved={Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}
-
+                    saved={Math.floor(
+                      ((Number(product.RegularPrice) -
+                        Number(product.SalePrice)) /
+                        Number(product.RegularPrice)) *
+                      100
+                    )}
                     state={product}
-                    tagoneLink={`/shop/tags/${Slug(product.tags[0] || '')}`}
+                    tagoneLink={`/shop/tags/${Slug(product.tags[0] || "")}`}
                     iconClick={() => handleLikeToggle(product)}
-                    tagtwoLink={`/shop/tags/${Slug(product.tags[1] || '')}`}
-                    tagthreelink={`/shop/tags/${Slug(product.tags[2] || '')}`}
-                    tagone={product.tags[0] || ''}
-                    tagtwo={product.tags[1] || ''}
-                    tagsthree={product.tags[2] || ''}
-                    isChecked={liked.some((likedProduct) => likedProduct._id === product._id)}
-
+                    tagtwoLink={`/shop/tags/${Slug(product.tags[1] || "")}`}
+                    tagthreelink={`/shop/tags/${Slug(product.tags[2] || "")}`}
+                    tagone={product.tags[0] || ""}
+                    tagtwo={product.tags[1] || ""}
+                    tagsthree={product.tags[2] || ""}
+                    isChecked={liked.some(
+                      (likedProduct) => likedProduct._id === product._id
+                    )}
                     to={`/shop/${Slug(product.name)}`}
                     name={product.name}
                     image={product.image[0]}
-
                   />
-
-
                 ))
               ) : (
-                <div style={{ height: "100vh", width: '100%', display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div
+                  style={{
+                    height: "100vh",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <p>No products found</p>
                 </div>
               )}
-            </InfiniteScroll>
-          </div>
+            </div>
+          </InfiniteScroll>
         )}
       </div>
     </div>
@@ -239,3 +284,4 @@ const Products = () => {
 };
 
 export default Products;
+

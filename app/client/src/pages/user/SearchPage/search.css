@@ -4,3 +4,12 @@
     height: auto fit-content;
     max-height: fit-content;
 }
+.product-grid{
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    row-gap: 10px;
+    column-gap: 10px;
+    align-items: self-start;
+    flex-wrap: wrap;
+}
