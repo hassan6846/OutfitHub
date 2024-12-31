@@ -8,6 +8,13 @@ import { ENDPOINT } from "../../../api/Endpoint";
 import "swiper/css";
 import axios from "axios";
 import CircularProgress from '@mui/material/CircularProgress';
+import ProductCard from "../../../components/Card/ProductCard";
+import Slug from "../../../helpers/Slugify";
+
+
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { addtoLiked ,removeFromLiked} from "../../../Slices/LikedSlice";
 const subcategories = {
   men: [
     "All",
@@ -56,7 +63,8 @@ const subcategories = {
 const Products = () => {
   const location = useLocation();
   const state = location.state;
-
+    const dispatch = useDispatch()
+  const liked = useSelector((state) => state.like.products);
   const [category, setCategory] = useState("men");
   const [subcategory, setSubcategory] = useState("all");
   const [tabValue, setTabValue] = useState(0);
@@ -92,8 +100,8 @@ const Products = () => {
       try {
         const subcategoryParam = subcategory !== "all" ? `&subcategory=${subcategory}` : "";
         const sortParam = lowToHigh ? "&lowtohigh=true" : "&lowtohigh=false";
-        const response = await axios.get(`${ENDPOINT}/products?category=${category}${subcategoryParam}${sortParam}&page=1&limit=10`);
-        setProducts(response.data.data); 
+        const response = await axios.get(`${ENDPOINT}/products?category=${category}${subcategoryParam}${sortParam}&page=1&limit=100`);
+        setProducts(response.data.data);
         console.log(response.data.data);  // Log fetched products
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -104,7 +112,24 @@ const Products = () => {
 
     fetchProducts();
   }, [category, subcategory, lowToHigh]); // Removed `products` from dependencies
+  const handleLikeToggle = (product) => {
 
+    const isLiked = liked.some((item) => item._id === product._id);
+
+    if (isLiked) {
+
+      dispatch(removeFromLiked(product));
+      toast('Removed from Liked item!', {
+        icon: '😥',
+      });
+    } else {
+
+      dispatch(addtoLiked(product));
+      toast('Added to liked item!', {
+        icon: '🎉',
+      });
+    }
+  };
   return (
     <div className="product_page_wrapper">
       {/* Tabs for Categories */}
@@ -165,21 +190,38 @@ const Products = () => {
 
         {/* Loading state */}
         {loading ? (
-          <div style={{height:"100vh",width:'100%',display:"flex",justifyContent:"center",alignItems:"center"}}>
-            <CircularProgress/>
+          <div style={{ height: "100vh", width: '100%', display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <CircularProgress />
           </div>
         ) : (
-          <div style={{minHeight:"100vh"}}>
+          <div style={{ minHeight: "100vh" }}>
             {products.length > 0 ? (
               products.map((product) => (
-                <div key={product._id}>
-                  <h4>{product.name}</h4>
-                  <p>{product.description}</p>
-                  <p>${product.price}</p>
-                </div>
+    
+                  <ProductCard
+                    orignalPrice={product.RegularPrice}
+                    salePrice={product.SalePrice}
+                    saved={Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}
+
+                    state={product}
+                    tagoneLink={`/shop/tags/${Slug(product.tags[0] || '')}`}
+                    iconClick={() => handleLikeToggle(product)}
+                    tagtwoLink={`/shop/tags/${Slug(product.tags[1] || '')}`}
+                    tagthreelink={`/shop/tags/${Slug(product.tags[2] || '')}`}
+                    tagone={product.tags[0] || ''}
+                    tagtwo={product.tags[1] || ''}
+                    tagsthree={product.tags[2] || ''}
+                    isChecked={liked.some((likedProduct) => likedProduct._id === product._id)}
+
+                    to={`/shop/${Slug(product.name)}`}
+                    name={product.name}
+                    image={product.image[0]}
+
+                  />
+     
               ))
             ) : (
-              <div style={{height:"100vh",width:'100%',display:"flex",justifyContent:"center",alignItems:"center"}}>
+              <div style={{ height: "100vh", width: '100%', display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <p>No products found</p>
               </div>
             )}
