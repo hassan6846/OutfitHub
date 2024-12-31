@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const CreateOrder = async (req, res, next) => {
     const { address, city, phone, total, method, product, id } = req.body;
-
+   
     // Log the ID to verify it's being passed correctly
     console.log("User ID:", id);
 
