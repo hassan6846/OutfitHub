@@ -21,7 +21,7 @@ import { toast } from "react-hot-toast"
 import axios from "axios";
 
 const Checkout = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const stripe = useStripe();
   const elements = useElements();
   const dispatch = useDispatch()
@@ -41,7 +41,7 @@ const Checkout = () => {
   const [address, setaddress] = useState("")
   const [City, setCity] = useState("Lahore")
   const [Phone, Setphone] = useState("+92 000 0000000")
- const deliveryCharges=250
+  const deliveryCharges = 250
   const lightTheme = {
     style: {
       base: {
@@ -69,7 +69,7 @@ const Checkout = () => {
 
   const CreateOrder = async () => {
     try {
-     
+
       const response = await axios.post(
         `${ENDPOINT}/order/new`,
         {
@@ -83,7 +83,7 @@ const Checkout = () => {
         },
         { withCredentials: true, withXSRFToken: true }
       );
-  
+
 
       if (response.status === 200) {
         toast.success("Order placed successfully!");
@@ -130,8 +130,8 @@ const Checkout = () => {
       } else if (result.paymentIntent.status === 'succeeded') {
         setMessage('Payment succeeded!');
         toast.success("Payment Sucessfull")
-         await CreateOrder()
-          navigate('/user/order')
+        await CreateOrder()
+        navigate('/user/order')
       }
     } catch (error) {
       setMessage(error.message || 'An error occurred.');
@@ -140,9 +140,9 @@ const Checkout = () => {
       setLoading(false);
     }
   };
-  useEffect(()=>{
-  setAmount(totalAmount+deliveryCharges)
-  },[totalAmount])
+  useEffect(() => {
+    setAmount(totalAmount + deliveryCharges)
+  }, [totalAmount])
   return (
     <section className="h-110 h-custom" style={{ backgroundColor: "white" }}>
       {
@@ -203,7 +203,7 @@ const Checkout = () => {
                                       </MDBTypography>
                                     </MDBCol>
                                     <MDBCol md="1" lg="1" xl="1" className="text-end">
-                                    <MDBTypography tag="h6" className="mb-0">
+                                      <MDBTypography tag="h6" className="mb-0">
                                         x {product.quantity}
                                       </MDBTypography>
                                     </MDBCol>
@@ -248,7 +248,7 @@ const Checkout = () => {
                             <MDBTypography tag="h5" className="text-uppercase">
                               Total
                             </MDBTypography>
-                            <MDBTypography tag="h5">{ amount} Rs</MDBTypography>
+                            <MDBTypography tag="h5">{amount} Rs</MDBTypography>
                           </div>
                           <div className="d-flex justify-content-between mb-4">
                             <MDBTypography tag="h5" className="text-uppercase">
@@ -266,7 +266,7 @@ const Checkout = () => {
 
                           <div className="d-flex justify-content-between mb-4">
                             <MDBTypography tag="h5" className="text-uppercase">
-                             final amount:
+                              final amount:
                             </MDBTypography>
                             <MDBTypography tag="h5">{amount} Rs</MDBTypography>
                           </div>

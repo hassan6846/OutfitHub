@@ -8,8 +8,8 @@ const CategoryBar = () => {
       title: "Tops",//for category
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20231003/Category_Top%20(1).gif",
-      category: "Women",
-      subcategory: "Tops",
+      category: "women",
+      subcategory: "tops",
 
 
     },
@@ -17,123 +17,123 @@ const CategoryBar = () => {
       title: "Kurta",//for category
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Kurta.gif",
-      category: "Women",
-      subcategory: "Kurta",
+      category: "women",
+      subcategory: "kurta",
 
     },
     {
       title: "Women's Shalwar Kameez",//for category
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20231003/Category_Fusion%20(1).gif",
-      category: "Women",
-      subcategory: "Shalwar-Kameez",
+      category: "women",
+      subcategory: "shalwar kameez",
 
     }, {
       title: "Handbags",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_HandBags.gif",
-      category: "Women",
-      subcategory: "Handbags",
+      category: "women",
+      subcategory: "handbags",
 
     }, {
       title: "Dresses",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Dresses.gif",
-      category: "Women",
-      subcategory: "Dresses",
+      category: "women",
+      subcategory: "dresses",
 
     }, {
       title: "Men's Casual Shirts",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20231003/Category_Men_Casual_Shirt.gif",
-      category: "Men",
-      subcategory: "Casual-Shirts",
+      category: "men",
+      subcategory: "casual shirts",
 
     },
     {
       title: "Men's T-Shirts",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20231003/7.Mens-T-Shirts.gif",
-      category: "Men",
-      subcategory: "T-Shirts",
+      category: "men",
+      subcategory: "t-shirts",
 
     }, {
       title: "Girls Clothings",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Gilrs_Clothing.gif",
-      category: "Girls",
-      subcategory: "Clothing",
+      category: "girls",
+      subcategory: "clothings",
 
     }, {
       title: "Boys Clothings",
-    
+
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Boys_Clothing.gif",
-      category: "Kids",
-      subcategory: "Clothing",
+      category: "kids",
+      subcategory: "clothings",
 
     }, {
       title: "Lawn",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Lawn.gif",
-      category: "Women",
-      subcategory: "Lawn",
+      category: "women",
+      subcategory: "lawn",
 
 
     }, {
       title: "Women's Sneakers",
- 
+
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Women's_Sneakers.gif",
-      category: "Women",
-      subcategory: "Sneakers",
+      category: "women",
+      subcategory: "sneakers",
 
     }, {
       title: "Sports Shoes",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Sports_Shoes.gif",
-      category: "Men",
-      subcategory: "Sports",
+      category: "men",
+      subcategory: "sports",
 
     }, {
       title: "Women's Pumps",
- 
+
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Women's_Pumps.gif",
-      category: "Women",
-      subcategory: "Pumps",
+      category: "women",
+      subcategory: "pumps",
 
     }, {
       title: "Casual Shoes",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Casual_Shoes.gif",
-      category: "Men",
-      subcategory: "Casual",
+      category: "men",
+      subcategory: "casual",
 
     }, {
       title: "Trousers",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Trousers.gif",
-      category: "Men",
-      subcategory: "Trousers",
+      category: "men",
+      subcategory: "trousers",
 
     }, {
       title: "Women's Bottoms",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Women's_Bottoms.gif",
-      category: "Women",
-      subcategory: "Bottoms",
+      category: "women",
+      subcategory: "bottoms",
 
     }, {
       title: "Makeup",
-    
+
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Makeup.gif",
-      category: "Women",
-      subcategory: "Makeup",
+      category: "women",
+      subcategory: "makeup",
 
     }, {
       title: "Women's Sleepwear",
 
       image: "https://d30fs77zq6vq2v.cloudfront.net/files/shares/20230828/Category_Women's_Sleepwear.gif",
-      category: "Women",
-      subcategory: "Sleepwear",
+      category: "women",
+      subcategory: "sleepwear",
 
     },
   ]
@@ -141,14 +141,14 @@ const CategoryBar = () => {
     <div className='Category_Container' >
       {/* map card */}
       {
-        Data.map((data,index) => (
-          <div  key={index} style={{ display: "flex", flexDirection: "column", rowGap: "0.5rem", alignItems: "center", marginBottom: "10px" }}>
+        Data.map((data, index) => (
+          <div key={index} style={{ display: "flex", flexDirection: "column", rowGap: "0.5rem", alignItems: "center", marginBottom: "10px" }}>
             <Link state={
-            {
-              category:data.category,
-              subcategory:data.subcategory,
-            }
-            
+              {
+                category: data.category,
+                subcategory: data.subcategory,
+              }
+
             } to="/shop">
               <img className='ImageCategory' alt={data.image} src={data.image} /></Link>
             <p className='Cateogry_img_p'>{data.title}</p>
