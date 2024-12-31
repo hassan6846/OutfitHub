@@ -17,6 +17,7 @@ const Trending = () => {
   const liked = useSelector((state) => state.like.products);
   const [product, setProducts] = useState([]);
 
+
   useEffect(() => {
     const fetchTrending = async () => {
       setLoading(true);
@@ -46,14 +47,14 @@ const Trending = () => {
   };
 
   return (
-    <section className="Trending-Page">
+    <section className="Trending_Page">
       <BreadCrumb />
       {loading ? (
         <div style={{height:"100vh",width:"100%",display:'flex',justifyContent:"center",alignItems:'center'}} className="loading-container">
           <CircularProgress />
         </div>
       ) : (
-        <div className="Trending-Page-Container">
+        <div className="Trending_Page_Container">
           {product.map((product, index) => (
             <ProductCard
               saved={Math.floor(((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100)}
