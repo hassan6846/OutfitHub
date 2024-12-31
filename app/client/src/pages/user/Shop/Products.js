@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 // components
 
-import ProductContainer from '../../../components/Infinite-Container_products/ProductContainer';
 // css
 import './products.css';
 import { useLocation } from 'react-router-dom';
@@ -25,7 +24,7 @@ const Products = () => {
 
       <div className='product-page-wrapper'>
  
-        <ProductContainer />
+      
         <p>{category}</p>
         <p>{subcategory}</p>
       </div>
