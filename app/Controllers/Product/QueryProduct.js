@@ -10,7 +10,7 @@ const QueryProduct=async(req,res,next)=>{
         });
     }
     try {
-        const products = await Product.find({ name: { $regex: query, $options: 'i' } }).limit(10);
+        const products = await Product.find({ name: { $regex: query, $options: 'i' } }).limit(30);
         if (!products) {
             return res.status(404).json({
                 success: false,

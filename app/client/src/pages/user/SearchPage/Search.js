@@ -1,54 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-// CSS
+import React, { useEffect } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+// css
 import "./search.css";
 // Components.
 import BreadCrumb from '../../../Layouts/BreadCrumb/BreadCrumb';
 import ProductCard from '../../../components/Card/ProductCard';
-import { ENDPOINT } from '../../../api/Endpoint';
-import CircularProgress from '@mui/material/CircularProgress';
-//state
+import Slug from '../../../helpers/Slugify';
+
 const Search = () => {
+  const { state } = useLocation();
   const { query } = useParams();
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]); // State for fetched products
-  const [loading, setLoading] = useState(false); // State for loading indicator
 
-  // Fetch search results whenever `query` changes.
+  const handleLikeToggle = (product) => {
+    // Handle the like/unlike logic here
+    console.log('Toggled like for:', product);
+  };
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      if (!query) {
-        navigate('/404'); // Redirect if no query
-        return;
-      }
-
-      setLoading(true); // Start loading
-      setProducts([]); // Clear previous results to avoid overlap
-      try {
-        const response = await axios.get(`${ENDPOINT}/products?search=${query}`);
-        setProducts(response.data.data || []); // Update state with fetched products
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      } finally {
-        setLoading(false); // Stop loading
-      }
-    };
-
-    fetchProducts();
-  }, [query, navigate]); // Dependency on `query`
+    if (!query) {
+      navigate('/404');
+    }
+    console.log("Query:", query);
+    console.log("State Products:", state?.products);
+  }, [query, navigate, state]);
 
   return (
     <>
       <BreadCrumb />
-      <div className="search-results">
-        {loading ? (
-          <div className="loading-container">
-            <CircularProgress />
-          </div>
-        ) : products.length > 0 ? (
+      <div className="search-results-container">
+        {state?.products?.length > 0 ? (
           <div className="product-grid">
-            {products.map((product) => (
+            {state.products.map((product) => (
               <ProductCard
                 key={product._id}
                 orignalPrice={product.RegularPrice}
@@ -57,16 +40,19 @@ const Search = () => {
                   ((Number(product.RegularPrice) - Number(product.SalePrice)) / Number(product.RegularPrice)) * 100
                 )}
                 state={product}
-                tagoneLink={`/shop/tags/${product.tags[0] || ''}`}
-                tagtwoLink={`/shop/tags/${product.tags[1] || ''}`}
-                tagthreelink={`/shop/tags/${product.tags[2] || ''}`}
-                tagone={product.tags[0] || ''}
-                tagtwo={product.tags[1] || ''}
-                tagsthree={product.tags[2] || ''}
-                isChecked={false} // Adjust if liked functionality is needed
-                to={`/shop/${product.name}`}
+                tagoneLink={`/shop/tags/${Slug(product.tags[0] || "")}`}
+                tagtwoLink={`/shop/tags/${Slug(product.tags[1] || "")}`}
+                tagthreelink={`/shop/tags/${Slug(product.tags[2] || "")}`}
+                tagone={product.tags[0] || ""}
+                tagtwo={product.tags[1] || ""}
+                tagsthree={product.tags[2] || ""}
+                isChecked={state.liked?.some(
+                  (likedProduct) => likedProduct._id === product._id
+                )}
+                to={`/shop/${Slug(product.name)}`}
                 name={product.name}
                 image={product.image[0]}
+                iconClick={() => handleLikeToggle(product)}
               />
             ))}
           </div>

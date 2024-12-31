@@ -104,9 +104,9 @@ height: fit-content;
   padding: 2px 3px;
   top: 3%;
   font-size: 12px;
-
+z-index: 25;
   left: 0%;
-  z-index: 999;
+
   color: #d01345;
   font-weight: bolder;
 

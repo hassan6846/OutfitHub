@@ -276,7 +276,7 @@ const ResponsiveNav = () => {
                       </Link>
                     ))}</div>
                   <Link
-
+                    state={{ products: product }}
                     to={`/shop/search/${searchValue}`}>
                     <button className="stickey_btn_nav" style={{ width: "100%", color: "#131039", backgroundColor: "#4BB497", outline: "none", border: "none", padding: "0.5rem", borderRadius: "5px" }}>See All Result <BsGraphUp style={{ marginLeft: "0.2rem" }} size={14} /></button>
                   </Link>

@@ -173,8 +173,8 @@ const Products = () => {
 
       {/* Display selected category and subcategories */}
       <div className="nested-content">
-        <h2>Category: {category}</h2>
-        <h3>Subcategory: {subcategory}</h3>
+        <p style={{marginBottom:'0'}}>Category: {category} Subcategory: {subcategory}</p>
+      
 
         {/* Render subcategories inside a Swiper */}
         <div className="subcategory-container">
