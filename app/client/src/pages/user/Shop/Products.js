@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-
-// css
 import "./products.css";
-// libs
 import { useLocation } from "react-router-dom";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { Swiper, SwiperSlide } from "swiper/react"; // Import Swiper components
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { ENDPOINT } from "../../../api/Endpoint";
 import "swiper/css";
-// Subcategories for each category
+import axios from "axios";
+import CircularProgress from '@mui/material/CircularProgress';
 const subcategories = {
   men: [
     "All",
@@ -22,7 +20,7 @@ const subcategories = {
     "Sandals",
     "T-Shirts",
     "Shirts",
-    'Casual Shirts',
+    "Casual Shirts",
     "Bags",
     "Sleep & Lounge",
     "Hoodies",
@@ -36,19 +34,19 @@ const subcategories = {
   women: [
     "All",
     "Lawn",
-    'Pumps',
-    'Sneakers',
+    "Pumps",
+    "Sneakers",
     "Shalwar kameez",
     "kurta",
     "Tops",
-    'Handbags',
+    "Handbags",
     "Khussa",
     "Jeans",
     "Sleepwear",
-    'Bottoms',
+    "Bottoms",
     "Suits",
-    'Makeup',
-    'Dresses',
+    "Makeup",
+    "Dresses",
     "Winter Wear",
   ],
   girls: ["All", "Clothings"],
@@ -62,23 +60,23 @@ const Products = () => {
   const [category, setCategory] = useState("men");
   const [subcategory, setSubcategory] = useState("all");
   const [tabValue, setTabValue] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [lowToHigh, setLowToHigh] = useState(false); // Sorting state
 
-  // Handle category changes via tabs
   const handleTabChange = (event, newValue) => {
     const categoryKeys = Object.keys(subcategories);
-    const selectedCategory = categoryKeys[newValue]; // Get category based on tab index
+    const selectedCategory = categoryKeys[newValue];
     setCategory(selectedCategory);
-    setSubcategory("all"); // Default subcategory to "all" when category changes
+    setSubcategory("all");
     setTabValue(newValue);
   };
 
-  // Update states when state is provided by useLocation
   useEffect(() => {
-    console.log(state);
     if (state) {
       const { category: newCategory, subcategory: newSubcategory } = state;
       const categoryKeys = Object.keys(subcategories);
-      const tabIndex = categoryKeys.indexOf(newCategory); // Find index of the category for Tabs
+      const tabIndex = categoryKeys.indexOf(newCategory);
       if (tabIndex !== -1) {
         setTabValue(tabIndex);
         setCategory(newCategory);
@@ -86,6 +84,26 @@ const Products = () => {
       }
     }
   }, [state]);
+
+  // Fetch products based on selected category, subcategory, and sorting
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const subcategoryParam = subcategory !== "all" ? `&subcategory=${subcategory}` : "";
+        const sortParam = lowToHigh ? "&lowtohigh=true" : "&lowtohigh=false";
+        const response = await axios.get(`${ENDPOINT}/products?category=${category}${subcategoryParam}${sortParam}&page=1&limit=10`);
+        setProducts(response.data.data); 
+        console.log(response.data.data);  // Log fetched products
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [category, subcategory, lowToHigh]); // Removed `products` from dependencies
 
   return (
     <div className="product_page_wrapper">
@@ -124,14 +142,11 @@ const Products = () => {
         <div className="subcategory-container">
           <Swiper
             className="mySwiper"
-                spaceBetween={5}
-                slidesPerView={'auto'}
-    
-
-     
+            spaceBetween={5}
+            slidesPerView={"auto"}
           >
             {subcategories[category]?.map((subcat, index) => (
-              <SwiperSlide  style={{ width: "auto" }} key={index}>
+              <SwiperSlide style={{ width: "auto" }} key={index}>
                 <button
                   className={`subcategory-button ${subcat.toLowerCase() === subcategory ? "active" : ""}`}
                   onClick={() => setSubcategory(subcat.toLowerCase())}
@@ -142,9 +157,35 @@ const Products = () => {
             ))}
           </Swiper>
         </div>
-      </div>
 
-      {/* Loading State if the product is State or being Fetched */}
+        {/* Sorting Button */}
+        <button onClick={() => setLowToHigh((prev) => !prev)}>
+          Sort by Price: {lowToHigh ? "Low to High" : "High to Low"}
+        </button>
+
+        {/* Loading state */}
+        {loading ? (
+          <div style={{height:"100vh",width:'100%',display:"flex",justifyContent:"center",alignItems:"center"}}>
+            <CircularProgress/>
+          </div>
+        ) : (
+          <div style={{minHeight:"100vh"}}>
+            {products.length > 0 ? (
+              products.map((product) => (
+                <div key={product._id}>
+                  <h4>{product.name}</h4>
+                  <p>{product.description}</p>
+                  <p>${product.price}</p>
+                </div>
+              ))
+            ) : (
+              <div style={{height:"100vh",width:'100%',display:"flex",justifyContent:"center",alignItems:"center"}}>
+                <p>No products found</p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
