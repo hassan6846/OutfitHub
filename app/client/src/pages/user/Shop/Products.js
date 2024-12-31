@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 
 // css
 import './products.css';
+//libs
 import { useLocation } from 'react-router-dom';
 
 const Products = () => {
@@ -22,7 +23,7 @@ const Products = () => {
   return (
     <>
 
-      <div className='product-page-wrapper'>
+      <div className='product_page_wrapper'>
  
       
         <p>{category}</p>
