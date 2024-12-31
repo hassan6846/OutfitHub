@@ -10,14 +10,12 @@ import TrendingCarsoul from '../../../components/TrendingSlider/TrendingCarsoul'
 import Cathead from '../../../components/CatalogueHeading/Catalogue_Heading';
 import Faq from 'react-faq-component';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
+
 import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 import './Singleproduct.css';
 import { MDBBtn } from 'mdb-react-ui-kit';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import Slug from '../../../helpers/Slugify';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../../../Slices/CartSlice';
 import toast from 'react-hot-toast';
@@ -211,7 +209,7 @@ const Singleproduct = () => {
 
       </Dialog>
 
-      <Cathead display="none" heading="Recommendations &bull;" />
+      <Cathead display="none" heading="Similar Products &bull;" />
       <TrendingCarsoul margin="20px" />
     </>
   );

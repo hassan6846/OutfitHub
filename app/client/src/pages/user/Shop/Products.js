@@ -14,7 +14,9 @@ import Slug from "../../../helpers/Slugify";
 
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { addtoLiked ,removeFromLiked} from "../../../Slices/LikedSlice";
+import { addtoLiked, removeFromLiked } from "../../../Slices/LikedSlice";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 const subcategories = {
   men: [
     "All",
@@ -63,7 +65,7 @@ const subcategories = {
 const Products = () => {
   const location = useLocation();
   const state = location.state;
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const liked = useSelector((state) => state.like.products);
   const [category, setCategory] = useState("men");
   const [subcategory, setSubcategory] = useState("all");
@@ -100,7 +102,7 @@ const Products = () => {
       try {
         const subcategoryParam = subcategory !== "all" ? `&subcategory=${subcategory}` : "";
         const sortParam = lowToHigh ? "&lowtohigh=true" : "&lowtohigh=false";
-        const response = await axios.get(`${ENDPOINT}/products?category=${category}${subcategoryParam}${sortParam}&page=1&limit=100`);
+        const response = await axios.get(`${ENDPOINT}/products?category=${category}${subcategoryParam}${sortParam}&page=1&limit=8`);
         setProducts(response.data.data);
         console.log(response.data.data);  // Log fetched products
       } catch (error) {
@@ -195,9 +197,11 @@ const Products = () => {
           </div>
         ) : (
           <div style={{ minHeight: "100vh" }}>
-            {products.length > 0 ? (
-              products.map((product) => (
-    
+
+            <InfiniteScroll>
+              {products.length > 0 ? (
+                products.map((product) => (
+
                   <ProductCard
                     orignalPrice={product.RegularPrice}
                     salePrice={product.SalePrice}
@@ -218,13 +222,15 @@ const Products = () => {
                     image={product.image[0]}
 
                   />
-     
-              ))
-            ) : (
-              <div style={{ height: "100vh", width: '100%', display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <p>No products found</p>
-              </div>
-            )}
+
+
+                ))
+              ) : (
+                <div style={{ height: "100vh", width: '100%', display: "flex", justifyContent: "center", alignItems: "center" }}>
+                  <p>No products found</p>
+                </div>
+              )}
+            </InfiniteScroll>
           </div>
         )}
       </div>

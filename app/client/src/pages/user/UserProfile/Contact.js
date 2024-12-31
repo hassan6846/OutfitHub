@@ -1,5 +1,4 @@
 import React from 'react'
-import { MDBBtn, MDBInput, MDBTextArea } from "mdb-react-ui-kit"
 import "./Contact.css"
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput } from "@chatscope/chat-ui-kit-react";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
