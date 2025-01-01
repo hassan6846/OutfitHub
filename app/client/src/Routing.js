@@ -92,12 +92,12 @@ const Routing = () => {
 
         </Route>
 
-        <Route path="/admin" element={<ProtectedRoute requiredRole="admin"> <AdminOutlet /></ProtectedRoute>}>
-        <Route path="/admin" element={<Stats />} />
+        <Route path="/admin"   element={<ProtectedRoute requiredRole="admin"> <AdminOutlet /></ProtectedRoute>}>
+        <Route path="/admin"   element={<Stats />} />
           <Route path="logout" element={<Logout />} />
           <Route path="orders" element={<Orders />} />
-          <Route path="products" element={<AllProducts />} />
-          <Route path="products/add" element={<AddProduct />} />
+          <Route path="products"   element={<AllProducts />} />
+          <Route path="new"  element={<AddProduct />} />
           <Route path="users" element={<AllUsers />} />
           <Route path="messages" element={<Messages />} />
 

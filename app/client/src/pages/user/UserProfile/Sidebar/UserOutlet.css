@@ -50,8 +50,21 @@
   align-items: center;
   column-gap: 0.3rem;
 }
-
-
+.aside_links_active{
+  background-color: #4BB497;
+}
+.aside_links_logout{
+   color: rgb(19, 16, 57);
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  column-gap: 0.3rem;
+}
+.aside_links_logout:hover{
+  color: #fff;
+  background-color: #4BB497;
+}
 .aside_links_toggled {
   justify-content: center;
   display: flex;

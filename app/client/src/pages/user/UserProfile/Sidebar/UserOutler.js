@@ -63,7 +63,10 @@ const UserOutler = () => {
             {/* IMAGE DIV ENDS HERE */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Manage My Account</p>
-                <NavLink to="/user" className='aside_links'> <BiUser className={aside_icon_state} /> <span className={Asidespan}>My Profile</span> </NavLink>
+                <NavLink   className={({ isActive }) => (isActive ? 'aside_links' : 'aside_links_active')} to="/user"> <BiUser className={aside_icon_state} /> <span className={Asidespan}>My Profile</span> </NavLink>
+            </div>
+            <div className={aside_link_flex}>
+                <p className={Asideheading}>Address</p>
                 <NavLink to="/user/address" className='aside_links'><BiMapAlt className={aside_icon_state} /><span className={Asidespan}>Address Book</span></NavLink>
             </div>
             {/* ORDER */}
@@ -91,7 +94,7 @@ const UserOutler = () => {
 
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Actions</p>
-                <NavLink onClick={() => HandleLogout()} className='aside_links'> <BiLogOutCircle className={aside_icon_state} /> <span className={Asidespan}>Logout</span> </NavLink>
+                <NavLink onClick={() => HandleLogout()} className='aside_links_logout'> <BiLogOutCircle className={aside_icon_state} /> <span className={Asidespan}>Logout</span> </NavLink>
             </div>
 
 

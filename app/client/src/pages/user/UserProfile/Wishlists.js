@@ -34,7 +34,7 @@ export default function Wishlists() {
 
       {likedItems.length === 0 ? (
         <div className="wishlist_empty_container">
-          <p>Your Wishlist is Empty</p>
+          <p>Your Likes list is Empty</p>
           <Link to="/shop" className="wishlistLink">
             Continue Shopping
           </Link>
