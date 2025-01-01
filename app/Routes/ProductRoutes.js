@@ -11,6 +11,13 @@ const router = express.Router()
 
 
 router.route('/products').get(GetPaginatedProduct)
+router.route('/test').get((req, res) => {
+    console.log("Hello World")
+  res.status(200).json({
+    success: true,
+    msg: "Hello World"
+  })
+})
 router.route('/products/:query').get(QueryProduct)
 router.route("/products/tags/:tag").get(getByTag)
 router.route('/product/:id').get(GetSingleProduct)
