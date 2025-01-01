@@ -7,6 +7,7 @@ import {toast} from "react-hot-toast"
 import { BiUpload, BiLogOutCircle, } from "react-icons/bi"
 import { BsBox2, BsFillCartFill} from "react-icons/bs"
 import { BiSolidUser, BiSolidMessageSquareDetail } from "react-icons/bi"
+import { GoGraph } from "react-icons/go";
 
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md"
 
@@ -19,7 +20,7 @@ import { useSelector } from 'react-redux'
 
 const AdminSidebar = () => {
     const avatar = useSelector((state) => state.user.avatar);
-    const [toggled, setToggled] = useState(true)
+    const [toggled, setToggled] = useState(false)
     function SidebarTOGGLE() {
         setToggled(!toggled)
     }
@@ -58,7 +59,11 @@ const HandleLogout = async () => {
             {/* user Profile IMAGE */}
             <div className='aside_profiel_image_cover'> <img className={Aside_img} src={avatar} alt="profile_img" /> <BiUpload className='upload_icon_aside' />   </div>
             {/* IMAGE DIV ENDS HERE */}
+            <div className={aside_link_flex}>
+                <p className={Asideheading}>Stats Overview</p>
+                <Link to="/admin" className='aside_links'> <GoGraph className={aside_icon_state} /> <span className={Asidespan}>Stats</span> </Link>
 
+            </div>
             {/* ORDER */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Products</p>

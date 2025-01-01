@@ -41,9 +41,11 @@ import Tags from "./pages/user/Tags/Tags";
 //layout components 
 import ResponsiveNav from './Layouts/NavbarMain/ResponsiveNav'
 import Footer from "./Layouts/footer/Footer";
+
 //utils
 import ProtectedRoute from "./components/Protected/ProductRoute";
 import Search from "./pages/user/SearchPage/Search";
+import Stats from "./pages/admin/Components/Stats";
 
 
 const Routing = () => {
@@ -91,7 +93,7 @@ const Routing = () => {
         </Route>
 
         <Route path="/admin" element={<ProtectedRoute requiredRole="admin"> <AdminOutlet /></ProtectedRoute>}>
-        <Route path="/admin" element={<AllProducts />} />
+        <Route path="/admin" element={<Stats />} />
           <Route path="logout" element={<Logout />} />
           <Route path="orders" element={<Orders />} />
           <Route path="products" element={<AllProducts />} />

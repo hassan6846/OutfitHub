@@ -74,7 +74,11 @@ const AllUsers = () => {
             <div className='user_manegment_card'> <p className='usersCount'>  <span className='icons_flex_user_maneg'><RiRadioButtonLine size={70} className='icon_user_maneg' /></span> {Math.floor(storageusage)} mb</p> <p>Total Cloud Storage used</p></div>
           </div>
           {/* Graphs Vistors World And New Users */}
-          <div className=''> </div>
+          <div className=''> 
+
+ 
+
+          </div>
           <p style={{ fontSize: "1.1rem", marginBottom: "0.4rem", color: "#131039", padding: "0.4rem", fontWeight: "500" }}>All Users.</p>
           {/* div For all users... */}
           <div className='all_users_datagrid'>
