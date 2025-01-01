@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import axios from "axios"
 import {ENDPOINT} from "../../../api/Endpoint"
 import {persistor} from "../../../store/Store"
@@ -61,36 +61,37 @@ const HandleLogout = async () => {
             {/* IMAGE DIV ENDS HERE */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Stats Overview</p>
-                <Link to="/admin" className='aside_links'> <GoGraph className={aside_icon_state} /> <span className={Asidespan}>Stats</span> </Link>
+                <NavLink activeClassName='aside_link_active' to="/admin"  className={({ isActive }) => (isActive ? 'aside_links' : '')}
+                > <GoGraph className={aside_icon_state} /> <span className={Asidespan}>Stats</span> </NavLink>
 
             </div>
             {/* ORDER */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Products</p>
-                <Link to="/admin/products" className='aside_links'> <BsBox2 className={aside_icon_state} /> <span className={Asidespan}>All Products</span> </Link>
-                <Link to="/admin/products/add" className='aside_links'> <AiOutlineAppstoreAdd className={aside_icon_state} /> <span className={Asidespan}>Add Product</span> </Link>
+                <NavLink to="/admin/products" className='aside_links'> <BsBox2 className={aside_icon_state} /> <span className={Asidespan}>All Products</span> </NavLink>
+                <NavLink to="/admin/products/add" className='aside_links'> <AiOutlineAppstoreAdd className={aside_icon_state} /> <span className={Asidespan}>Add Product</span> </NavLink>
             </div>
             {/* uSers */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Orders</p>
-                <Link to="/admin/orders" className='aside_links'> <BsFillCartFill className={aside_icon_state} /> <span className={Asidespan}>All Orders</span> </Link>
+                <NavLink to="/admin/orders" className='aside_links'> <BsFillCartFill className={aside_icon_state} /> <span className={Asidespan}>All Orders</span> </NavLink>
 
             </div>
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Users</p>
-                <Link to="/admin/users" className='aside_links'> <BiSolidUser className={aside_icon_state} /> <span className={Asidespan}>All Users /Stats</span> </Link>
+                <NavLink to="/admin/users" className='aside_links'> <BiSolidUser className={aside_icon_state} /> <span className={Asidespan}>All Users /Stats</span> </NavLink>
             </div>
             {/* WISHLISTS */}
 
             {/* vender OPTION REQUEST */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Messages</p>
-                <Link to="/admin/messages" className='aside_links'> <BiSolidMessageSquareDetail className={aside_icon_state} /> <span className={Asidespan}>Messages</span> </Link>
+                <NavLink to="/admin/messages" className='aside_links'> <BiSolidMessageSquareDetail className={aside_icon_state} /> <span className={Asidespan}>Messages</span> </NavLink>
             </div>
             {/* ALL */}
             <div className={aside_link_flex}>
                 <p className={Asideheading}>Actions</p>
-                <Link to="/admin/logout" onClick={()=>HandleLogout()} className='aside_links'> <BiLogOutCircle className={aside_icon_state} /> <span className={Asidespan}>Logout</span> </Link>
+                <NavLink to="/admin/logout" onClick={()=>HandleLogout()} className='aside_links'> <BiLogOutCircle className={aside_icon_state} /> <span className={Asidespan}>Logout</span> </NavLink>
             </div>
 
 

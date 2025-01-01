@@ -125,6 +125,10 @@ const ResponsiveNav = () => {
       toast.success(response.data.message)
       console.log(response)
     } catch (error) {
+      await persistor.purge();
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = '/';
       console.log(error.message)
     }
   }
